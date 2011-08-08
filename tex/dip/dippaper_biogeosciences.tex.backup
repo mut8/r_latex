@@ -1,0 +1,451 @@
+%% Copernicus Publications Manuscript Preparation Template for LaTeX Submissions
+%% ---------------------------------
+%% This template should be used for the following class files: copernicus.cls, copernicus2.cls, copernicus_discussions.cls
+%% The class files, the Copernicus LaTeX Manual with detailed explanations regarding the comments
+%% and some style files are bundled in the Copernicus Latex Package which can be downloaded from the different journal webpages.
+%% For further assistance please contact the Publication Production Office (production@copernicus.org).
+%% http://publications.copernicus.org
+
+
+%% Differing comments regarding the specific class files are highlighted.
+
+%% copernicus.cls
+\documentclass[journal abbreviation]{copernicus}
+
+%% copernicus2.cls
+%\documentclass[journal abbreviation]{copernicus2}
+
+%% copernicus_discussions.cls
+%\documentclass[journal abbreviation, hvmath, online]{copernicus_discussions}
+
+%bibtex
+\bibliographystyle{copernicus}
+
+
+\begin{document}
+
+
+\title{Early decomposition lignin degradation depends on nutrient availability in beech litter}
+
+
+\author[1]{Lukas Kohl}
+\author[1]{Maria Mooshammer}
+\author[1]{Sonja Leitner}
+\author[1]{Ieda H\"ammerle-N.}
+\author[1]{Alexander Frank}
+\author[1]{Lucia Fuchslueger}
+\author[1]{J\"org Schnecker}
+\author[2]{Katherina Keiblinger}
+\author[2]{Sophie Zechmeister-Bolkenstein}
+\author[1]{Wolfgang Wanek}
+\author[1]{Andreas Richter}
+
+
+
+\affil[1]{Checo}
+\affil[2]{BFW}
+
+
+%% The [] brackets identify the author to the corresponding affiliation, 1, 2, 3, etc. should be inserted.b
+
+
+
+\runningtitle{TEXT}
+
+\runningauthor{TEXT}
+ 
+\correspondence{me.\\ (email@here.at)}
+%check with wolfi
+
+
+\received{}
+\pubdiscuss{} %% only important for two-stage journals
+\revised{}
+\accepted{}
+\published{}
+%% These dates will be inserted by the Publication Production ffice during the typesetting process. 
+
+
+\firstpage{1}
+
+\maketitle
+
+
+
+\begin{abstract}
+TEXT
+\end{abstract}
+
+
+%% only used for copernicus2.cls
+%\abstract{
+% TEXT
+% \keywords{TEXT}}
+
+\input{introduction.tex}
+\input{materials.tex}
+\input{results.tex}
+\input{discussion.tex}
+
+
+
+
+
+
+
+%\appendix
+%\section{\\ \\ \hspace*{-7mm} HEADING}    %% Appendix A
+%\subsection                               %% Appendix A1, A2, etc.
+
+
+
+\begin{acknowledgements}
+FWF NRN MicDiF, Katherina Keiblinger DOC fForte
+Thanks to Andreas Bl\"ochl, Clemens Schwarzinger, and Birgit Wild for technical advice on Pyr-GC/MS techniques.
+\end{acknowledgements}
+
+
+
+
+\bibliography{references_lk.bib}
+
+%% Literature citations
+%% command                        & example result
+%% \citet{jones90}|               & Jones et al.\ (1990)
+%% \citep{jones90}|               & (Jones et al., 1990)
+%% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
+%% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
+%% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
+%% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+%% \citeauthor{jones90}|          & Jones et al.
+%% \citeyear{jones90}|            & 1990
+
+
+
+
+
+%% FIGURES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% ONE-COLUMN FIGURES
+
+%f
+%\begin{figure}[t]
+%\vspace*{2mm}
+%\begin{center}
+%%\includegraphics[width=8.3cm]{FILE NAME}
+%\end{center}
+%\caption{TEXT}
+%\end{figure}
+
+\begin{figure}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=8.3cm]{massloss_n_lit.pdf}
+\end{center}
+\label{n_massloss}
+\caption{Litter mass loss after 15 month vs. litter N content. R= 0.795, p \textless .001}
+\end{figure}
+
+\begin{figure}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=8.3cm]{resp_glcdepoly_h2.pdf}
+\includegraphics[width=8.3cm]{resp_glcdepoly_h3.pdf}
+\end{center}
+\label{resp_depoly}
+\caption{Quotient of respiration and glucan depolymerization. In AK microbial community respire significantly more non-glucose carbon after 2, but not after 6 month. Data from \cite{Leitner2011}}
+\end{figure}
+
+\begin{figure}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=8.3cm]{carb_differences_h3h0.pdf}
+\includegraphics[width=8.3cm]{lig_differences_h3h0.pdf}
+\end{center}
+\label{car_lig_6month}
+\caption{Difference in \% cTIC (sum of lig markers). error bars indicate 95\% confidence intervall.}
+\end{figure}
+
+\begin{figure}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=8.3cm]{enzymeratio.pdf}
+\end{center}
+\label{enz_ratio}
+\caption{Ratio between cellulase and two oxidative enzymes (phenolxydase and peroxydase). The two ratios are strongly correlated, oxidative enzymes are higher in AK than in other litter types.}
+\end{figure}
+
+
+
+\begin{figure*}[t]
+\vspace*{2mm}
+\begin{center}
+%\includegraphics[width=12cm]{timeseries_lci.pdf}
+\includegraphics[width=17cm]{timeseries_lci.pdf}
+\end{center}
+\label{lci}
+\caption{Development of the LCI (Lignin:(Lignin+Carbohydrates) and Lignin:N ratio}
+\end{figure*}
+
+\begin{figure}[t]
+\vspace*{2mm}
+  \begin{center}
+%\includegraphics[width=12cm]{timeseries_orig.pdf}
+\includegraphics[width=17cm]{timeseries_orig.pdf}
+
+\end{center}
+\label{timeseries}
+\caption{Decomposition dynamics of HMW compound classes}
+\end{figure}
+
+
+\begin{figure*}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=12cm]{allpeaks_allharvests_PCA12.pdf}
+\includegraphics[width=12cm]{allpeaks_allharvests_PCA34.pdf}
+
+\end{center}
+\caption{TEXT}
+\end{figure*}
+
+
+\begin{figure*}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=12cm]{pca12_carbos.pdf}
+\includegraphics[width=12cm]{pca13_carbos.pdf}
+
+\end{center}
+\caption{TEXT}
+\end{figure*}
+
+%% TWO-COLUMN FIGURES
+
+%f
+\begin{figure*}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=12cm]{ligonly_allharvests_PCA12.pdf}
+\includegraphics[width=12cm]{ligonly_allharvests_PCA13.pdf}
+
+\end{center}
+\caption{TEXT}
+\end{figure*}
+
+
+\begin{figure*}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=12cm]{controls_h1.pdf}
+\end{center}
+\label{litchem_h1}
+\caption{Litter chemistry: content of macro and micronutrients, 14 days after innoculation, n=5}
+\end{figure*}
+
+\begin{figure*}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=12cm]{controls_h2.pdf}
+\end{center}
+\label{litchem_h2}
+\caption{Litter chemistry: content of macro and micronutrients, 97 days after innoculation, n=5}
+\end{figure*}
+
+\begin{figure*}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=12cm]{doc_barplots.pdf}
+\end{center}
+\label{doc}
+\caption{dissolved organic carbon, total dissolved nitrogen, no3-, nh4+}
+\end{figure*}
+
+\begin{figure*}[t]
+\vspace*{2mm}
+\begin{center}
+\includegraphics[width=12cm]{plfa.pdf}
+\end{center}
+\label{plfa}
+\caption{Fungi : Bacteria ratios}
+\end{figure*}
+
+
+%% TABLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% ONE-COLUMN TABLE
+%t
+%\begin{table}[t]
+%\caption{TEXT}
+%\vskip4mm
+%\centering
+%\begin{tabular}{lllrr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\end{table}
+
+
+%% TWO-COLUMN TABLE
+
+%t
+%\begin{table*}[t]
+%\caption{TEXT}
+%\vskip4mm
+%\centering
+%\begin{tabular}{lllrr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\end{table*}
+
+%t
+\begin{table*}[t]
+\caption{TEXT}
+\vskip4mm
+\centering
+\begin{tabular}{lllll}
+\tophline
+Substance&code&origin&RT&m/z integrated\\
+\middlehline
+Furan&C&C&2.35&39+68\\ 
+Methylfuran&C&C&2.74&81+82\\ 
+Methylfuran&C&C&2.91&81+82\\ 
+Dimethylfuran&C&C&3.43&95+96\\ 
+Dimethylfuran&C&C&3.66&95+96\\ 
+Vinylfuran&C&C&5.01&65+94\\ 
+3-Furaldehyd&C&C&11.57&95+96\\ 
+2(5H)Furanon&C&C&11.69&55+98\\ 
+2-Furaldehyd&C&C&12.22&95+96\\ 
+Acetylfuran&C&C&12.99&95+110\\ 
+5-Methyl-2-furancarboxaldehyde&C&C&14.23&109+110\\ 
+Butyrolactone&C&C&15.22&56+86\\ 
+Furanmethanol&C&C&15.61&98\\ 
+5-Methyl-2(5H)-furanone&C&C&16.06&55+98\\ 
+5-hydroxymethylfuran-1-carboxaldehyde&C&C&27.51&97+126\\ 
+%unknown_furan_6.36&C&C&NA&\\ 
+%10.26_2-cyclopenten-1-one&C&C&10.26&53+54+52\\ 
+%10.51_2-methyl-2-cyclopenten-1-one&C&C&10.51&53+96\\ 
+%13.31_3-methyl-cyclopentanone&C&C&13.31&67+96\\ 
+%13.69_dimethylcyclopentenone&C&C&13.69&67+95+110\\ 
+%14.44_2-cyclopenten-1&4-dione&C&C&14.44&54+68+96\\ 
+%17.51_1&2-cylopentandione&C&C&17.51&55+98\\ 
+%18.14_2-cyclopenten-1-one&_-2-hydroxy-3-me&C&C&18.14&98\\ 
+%18.42_1&2-cyclopentanedione&_-3-methyl-&C&C&18.42&69+112\\ 
+
+%2-Oxopropanoic Acid& ME&C&C&7.92&43+102\\ 
+1-Hydroxypropanone&C&C&9.24&43\\ 
+%Propanoic acid& ME&C&C&12.1&43+102\\ 
+unknown carbohydrate 1&C&C&19.06&58+86+114\\ 
+unknown carbohydrate 2&C&C&19.35&98+126\\ 
+unknown carbohydrate 3&C&C&21.77&116\\ 
+unknown carbohydrate 4&C&C&22.33&44\\ 
+unknown carbohydrate 5&C&C&26.18&57+69\\ 
+unknown carbohydrate 6&C&C&31.67&73+135\\ 
+laevoglucosan&C&C&40.44&60+73\\ 
+27:1&Cut&Cut&NA&\\ 
+29:0&Cut&Cut&NA&\\ 
+29:1&Cut&Cut&NA&\\ 
+G0&L&L&18.87&109+124\\ 
+G1&L&L&20.32&123+138\\ 
+G2&L&L&21.4&137+152\\ 
+G3:1a&L&L&23.29&149+164\\ 
+G2:1&L&L&23.69&135+150\\ 
+G3:1b&L&L&24.48&149+164\\ 
+S0&L&L&24.58&139+154\\ 
+G3:1c&L&L&25.66&149+164\\ 
+S1&L&L&25.67&153+168\\ 
+S2&L&L&26.39&167+182\\ 
+H3:1&L&L&27.76&133+134\\ 
+S3:1a&L&L&27.97&179+194\\ 
+S2:1&L&L&28.37&165+180\\ 
+G1=O&L&L&28.4&109+152\\ 
+G3&L&L&28.72&137+166\\ 
+G3=O/-OH&L&L&28.77&182\\ 
+S3:1b&L&L&28.91&179+194\\ 
+G2=O&L&L&29.2&151+166\\ 
+G3=O&L&L&29.36&137+180\\ 
+S3:1c&L&L&30.16&194+179\\ 
+S1=O&L&L&32.68&139+182\\ 
+H1=O&L&L&32.7&121+122\\ 
+S3=O/-OH&L&L&32.8&212\\ 
+GAc&L&L&32.88&137+182\\ 
+S3&L&L&33.15&181+196\\ 
+S3=O&L&L&33.32&167+210\\ 
+G3:1=O&L&L&35.3&135+178\\ 
+G3:1-OH&L&L&37.1&180\\ 
+SAc&L&L&38.78&212\\ 
+S3:1=O&L&L&43.06&165+208\\ 
+toluene&N&N&NA&\\ 
+N-methyl-pyrrol&N&N&NA&\\ 
+pyridine&N&N&NA&\\ 
+methylpyridine1&N&N&NA&\\ 
+methylpyridine2&N&N&NA&\\ 
+pyrrole&N&N&NA&\\ 
+methylpyrrol1&N&N&NA&\\ 
+methylpyrrol2&N&N&NA&\\ 
+Pyridol&N&N&NA&\\ 
+Indole&N&N&NA&\\ 
+Methylindole&N&N&NA&\\ 
+%methylpyridine3_7.54&N&N&NA&\\ 
+xylene1&non&non&NA&\\ 
+xylene2&non&non&NA&\\ 
+xylene3&non&non&NA&\\ 
+methoxymethylbenzene&non&non&NA&\\ 
+benzaldehyde&non&non&NA&\\ 
+1-Methyl-4-methoxybenzene&non&non&15.98&\\ 
+Aceton&non&non&2.46&\\ 
+2-Propenal&non&non&2.6&\\ 
+2-Butanal&non&non&4.56&\\ 
+2,3-Pentadione&non&non&4.77&\\ 
+Hexanal&non&non&5.16&\\ 
+1-Penten-3-one&non&non&11.28&\\ 
+&Ph&Ph&21.02&\\ 
+&Ph&Ph&22.11&\\ 
+&Ph&Ph&22.22&\\ 
+&Ph&Ph&23.38&\\ 
+&Ph&Ph&26.93&\\ 
+&Ph&Ph&31.11&\\ 
+&Ph&Ph&31.86&\\ 
+&Ph&Ph&33.4&\\ 
+%unknown_alcyl_20.00&al&al&NA&\\ 
+%xylene4_6.99&non&non&NA&\\ 
+%limonen_7.29&non&non&NA&\\ 
+%indene_12.64&non&non&NA&\\ 
+
+% unknown_20.85&unk&unk&NA&\\ 
+% unknown_20.86&unk&unk&NA&\\ 
+% unknown_22.43&unk&unk&NA&\\ 
+% unknown_alkyl_22.82&unk&unk&NA&\\ 
+% hexan2&4dione&_-enol_23.92&unk&unk&NA&\\ 
+% benzofuran_26.19&unk&unk&NA&\\ 
+% unknown_27.76&unk&unk&NA&\\ 
+% 3-Penten-2-one&non&non&3.89&\\ 
+% 2,3-Butandione&non&non&3.67&\\ 
+% 3-Buten-2-one&non&non&3.39&\\ 
+% Methanol&non&non&2.88&\\ \bottomhline
+\end{tabular}
+\end{table*}
+
+
+%% The different columns must be seperated with a & command and should
+%% end with \\ to identify the column brake.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% If figures and tables must be numbered 1a, 1b, etc. the following command
+%% should be inserted before the begin{} command.
+
+%\addtocounter{figure}{-1}\renewcommand{\thefigure}{\arabic{figure}a}
+
+
+\end{document}

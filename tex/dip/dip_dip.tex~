@@ -1,0 +1,123 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[utf8x]{inputenc}
+\usepackage{textcomp, fixltx2e}
+\usepackage[authoryear, round, sort]{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{textgreek}
+\usepackage{graphicx}
+%\renewcommand{\thechapter}{}
+\renewcommand{\chaptername}{}
+
+\doublespacing
+%\addtolength{\oddsidemargin}{-.5in}
+%\addtolength{\evensidemargin}{-.5in}
+%\addtolength{\textwidth}{1in}
+%\addtolength{\topmargin}{-.5in}
+%\addtolength{\textheight}{1in}
+
+%opening
+\title{High molecular weight compounds in beech litter decomposition}
+\author{Lukas Kohl}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{flushright}
+\includegraphics{RZ_Logo_Uni_sw.jpg}
+\end{flushright}
+\vspace{2cm}
+
+\begin{center}
+\Huge \textbf{DIPLOMARBEIT}\\
+\vspace{1cm}
+\normalsize Titel der Diplomarbeit\\
+\large \textbf{``High molecular weight compounds \\ in beech litter decomposition''}\\
+\vspace{1cm}
+\normalsize Verfasser\\
+\large \textbf{Lukas Kohl}\\
+\vspace{1cm}
+\normalsize angestrebter akademischer Grad\\
+\large \textbf{Magister der Naturwissenschaften (Mag. rer. nat.)}\\
+\end{center}
+\vspace{5cm}
+
+\begin{flushleft}
+\normalsize Wien, 2011 \\
+Studienkennzahl lt. Studienblatt: A444\\
+Studienrichtung lt. Studienblatt: Ökologie\\
+Betreuer: Ao. Univ.-Prof. Mag. Dr. Wolfgang Wanek\\
+\end{flushleft}
+
+
+\end{titlepage}
+
+ 
+% Donna Haraway.
+% \newpage
+% 
+% \tableofcontents
+% 
+
+% \chapter*{Acknowledgements}
+% 
+% My supervisors Andreas Richter and Wolfgang Wanek, who gave me the chance to change from greenhorn biologist to still kinda green /something/. It's amazing being given the time to gather knowledge and become specialist for a method.. I also have to thank them and especially Marianne Popp (Head of the department for chemical ecology and ecosystem research) for creating an environment that made me return to my old chemical obsession. 
+% 
+% Both them and all my coworkers at the department I thank for the amazingly cooperative mood at the department and the solidarity among diplma, phd students and post docs at the department. 
+% 
+% For vital support with Pyr-GC/MS I want to thank especially clemens Schwarzinger and Andreas Blöchl who taught me my fist steps with the method and Instrumentation, and Birgit Wild for both continous technical support and the right amount of sarcasm when needed. Especial thanks also go to Maria Mooshammer who knew all relevant literiture and every piece of data of our project by hard. 
+% Further thanks go to Florian Hofhansl, and Tina Kaiser for vital advice on R programming and statistic questions when needed most. 
+% Thanks to Jörg Schnecker, partner in crime on our new Pyroprobe instrument, for hundreds of small tricks for sample preparation. 
+% 
+% To the whole MicDiF team, who collected an enormous amount of data on our samples, providing me with all data needed and much more. Ieda Hämmerle-N. and Lucia Fuchslueger were nursing Mesocosm. Data applied in the work presented: Katherina Keiblinger (Stoichiometry, inorganic litter chemistry), Ieda Hämmerle-N. for enzyme data. ...
+% 
+% For financial support and understanding to my parents, and to the oeh bundesvertretung (2009-2011) for tolerating my absence at work. 
+% 
+% Finally to N.N., author of P.H.D. - Comics. I never would have made it without your work.
+
+\chapter*{Introduction}
+
+
+This work is composed of three major parts that serve different perposes and are aimed at different readers: 
+
+\paragraph{General introduction} gives a broad introduction to litter decomposition and explains its importance in biogeochemical carbon and nutrient cycles. Plant polymers present in beech litter briefly presented. Furthermore, models and concepts used to describe litter decomposition and stoichiometrical approaches to describe decomposition processes are briefly reviewed. This chapter aims to give non-experts an compact overview over the background of this work. Finally, the experiment, of which this work forms part, is presented. 
+
+\paragraph{Methodological comments} aims at future users of analytical pyrolysis shares experiences with this technique. It explaines the ratio behind choices taken in the implemention of our pyrolysis-GC/MS methods, points out alternatives, pitfalls encountered and possible further developments. It is not written not so much for professional analytical chemists as for biologists and other amateurs working with the method.
+
+\paragraph{[name]}Is a manuscript written to be submitted to Soil Biology and Biochemistry, and aims to become a state-of-the-art original research article in a peer-reviewed international journal.
+
+\paragraph{Appendix} presents additional resources and data, both as background of the research presented and as help to future pyrolysis applicators. Especially a complete peak list an several chromatograms that might be helpful for pyrogram peak assignment are presented.
+
+
+\chapter{General Introduction}
+
+\input{generalintroduction.tex}
+
+\chapter{My fancy title}\footnote{whenever this gets ready, this paper will be submitted to...}
+% 
+% % Footnote: This paper is submitted to...
+% 
+% 
+\section{Abstract}
+
+\section{Introduction}
+\input{introduction.tex}
+\input{materials.tex}
+\input{results.tex}
+
+\input{discussion.tex}
+\section{Conclusions}
+\input{conclusions.tex}
+
+\section{Acknowledgements}
+FWF NRN MicDiF, Katherina Keiblinger DOC fForte
+Thanks to Andreas Bl\"ochl, Clemens Schwarzinger, and Birgit Wild for technical advice on Pyr-GC/MS techniques.
+
+\bibliographystyle{plainnat}
+\bibliography{library}
+
+\input{graphs_captions.tex}
+\input{table1.tex}
+\input{tables.tex}
+
+\end{document}

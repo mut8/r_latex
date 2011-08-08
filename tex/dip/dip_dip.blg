@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: dip_dip.aux
+The style file: plainnat.bst
+Database file #1: library.bib
+Warning--there's a number but no volume in Berg1980
+You've used 11 entries,
+            2773 wiz_defined-function locations,
+            697 strings with 8366 characters,
+and the built_in function-call counts, 7464 in all, are:
+= -- 646
+> -- 614
+< -- 8
++ -- 204
+- -- 193
+* -- 724
+:= -- 1201
+add.period$ -- 53
+call.type$ -- 11
+change.case$ -- 91
+chr.to.int$ -- 11
+cite$ -- 23
+duplicate$ -- 252
+empty$ -- 460
+format.name$ -- 210
+if$ -- 1514
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 12
+newline$ -- 81
+num.names$ -- 48
+pop$ -- 160
+preamble$ -- 1
+purify$ -- 81
+quote$ -- 0
+skip$ -- 208
+stack$ -- 0
+substring$ -- 256
+swap$ -- 35
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 116
+warning$ -- 1
+while$ -- 55
+width$ -- 0
+write$ -- 189
+(There was 1 warning)

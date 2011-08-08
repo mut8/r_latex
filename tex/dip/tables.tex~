@@ -1,0 +1,180 @@
+
+
+\newpage
+\begin{table*}[p]
+\begin{center}
+\begin{tabular}{lcccccc}
+name & RT & MW & m/z & class\footnotemark[1] & origin\footnotemark[2]&Rf\footnotemark[3]\\
+\hline
+Furan&2.35&68&39+68&f&C&1.19\\
+Methylfuran&2.74&82&81+82&f&C&1.00\\
+Methylfuran&2.91&82&81+82&f&C&b.d.l.\\
+Dimethylfuran&3.43&96&95+96&f&C&b.d.l.\\
+Dimethylfuran&3.66&96&95+96&f&C&1.10\\
+Vinylfuran&5.01&94&65+94&f&C&2.59\\
+3-Furaldehyd&11.57&96&95+96&f&C&1.65\\
+2(5H)Furanon&11.69&98&55+98&f&C&2.41\\
+2-Furaldehyd&12.22&96&95+96&f&C&1.67\\
+Acetylfuran&12.99&110&95+110&cp&C&2.38\\
+5-Methyl-2-furancarboxaldehyde&14.23&110&109+110&f&C&2.44\\
+Butyrolactone&15.22&86&56+86&cp&C&12.37\\
+Furanmethanol&15.61&98&98&cp&C&5.21\\
+5-Methyl-2(5H)-furanone&16.06&98&55+98&f&C&3.92\\
+5-hydroxymethylfuran-1-carboxaldehyde&27.51&126&97+126&f&C&2.17\\
+2-Oxopropanoic acid, methylester&7.92&102&43+102&cp&C&0.58\\
+1-Hydroxypropanone&9.24&74&43&cp&C&1.43\\
+Propanoic acid, methylester&12.10&102&43+102&cp&C&1.44\\
+2-Cyclopenten-1-one&10.26&82&53+54+52&cp&C&2.02\\
+2-Methyl-2-cyclopenten-1-one&10.51&96&53+96&cp&C&2.37\\
+3-Methyl-cyclopentanone&13.31&67+96&67+96&cp&C&4.06\\
+Dimethylcyclopentenone&13.69&110&67+95+110&cp&C&1.63\\
+2-Cyclopenten-1,4-dione&14.44&96&54+68+96&cp&C&1.68\\
+1,2-Cylopentandione&17.51&98&55+98&cp&C&2.22\\
+2-Hydroxy-3-methyl2-cyclopenten-1-one&18.14&98&98&cp&C&15.96\\
+3-Methyl-1,2-cyclopentanedione&18.42&112&69+112&cp&C&2.73\\
+Laevoglucosan&40.44&60+73&60+73&f&C&0.00\\
+unknown carbohydrate&19.06&58+86+114&58+86+114&f&C&1.83\\
+unknown carbohydrate&19.35&98+126&98+126&cp&C&5.35\\
+unknown carbohydrate&21.77&116&116&f&C&b.d.l.\\
+unknown carbohydrate&22.33&44&44&cp&C&3.34\\
+unknown carbohydrate&26.18&57+69&57+69&f&C&1.15\\
+unknown carbohydrate&31.67&73+135&73+135&f&C&7.59\\
+Toluene&&&&ar&non&b.d.l.\\
+Xylene&&&&ar&non&4.46\\
+Xylene&&&&ar&non&b.d.l.\\
+Xylene&&&&ar&non&b.d.l.\\
+Methoxymethylbenzene&&&&ar&non&4.04\\
+benzaldehyde&&&&ar&non&12.88\\
+Phenol&21.02&&&ph&Ph&1.72\\
+4-Methylphenol&22.11&&&ph&Ph&1.70\\
+3-Methylphenol&22.22&&&ph&Ph&1.35\\
+4-Ethylphenol&23.38&&&ph&Ph&1.36\\
+4-Propenylphenol[1]&26.93&&&ph&Ph&5.13\\
+4-Propenylphenol[2]&27.76&134&133+134&ph&Ph&4.78\\
+4-Propylphenol&31.11&&&ph&Ph&1.39\\
+Butylphenol&31.86&&&ph&Ph&2.42\\%peak assignment unsure
+Hydroquinon&33.4&&&ph&Ph&2.14\\%w/ Resorcinol
+\hline
+\end{tabular}
+ \footnotetext[1]{cp: Cyclopentenone - type f: Furane-type}
+ \footnotetext[2]{C: Carbohydrate pyrolysis products}
+ \footnotetext[3]{Rf: see section .. b.d.l.: peak is below detection limit in TIC integration.}
+ \caption{Table with rows, columns and footnotes}
+\end{center}
+\label{tab:pyrprod1}
+\end{table*}
+
+
+\begin{table*}
+\begin{center}
+\begin{tabular}{lcccccc}
+name & RT & MW & m/z & class & origin&Rf\\
+\hline
+Guaiacol&18.87&124&109+124&g&L&2.48\\
+Methylguaiacol&20.32&138&123+138&g&L&1.93\\
+Ethylguaiacol&21.4&152&137+152&g&L&2.18\\
+Propenylguaiacol [1]&23.29&164&149+164&g&L&3.30\\
+Ethylenguaiacol&23.69&150&135+150&g&L&2.05\\
+Propenylguaiacol [2]&24.48&164&149+164&g&L&14.20\\
+Syringol&24.58&154&139+154&sy&L&2.37\\
+Propenylguaiacol [3]&25.66&164&149+164&g&L&5.01\\
+Methylsyringol&25.67&168&153+168&sy&L&0.00\\
+Ethylsyringol&26.39&182&167+182&sy&L&1.70\\
+Propenylsyringol [1]&27.97&194&179+194&sy&L&4.58\\
+Ethylensyringol&28.37&180&165+180&sy&L&5.10\\
+Gaiacolaldehyde&28.4&152&109+152&g&L&0.00\\
+Propanylguaiacol&28.72&166&137+166&g&L&1.47\\
+Oxo-hydroxy-propanylguaiacol&28.77&182&182&g&L&20.45\\
+Propenylsyringol [2]&28.91&194&179+194&sy&L&2.71\\
+G2=O&29.2&166&151+166&g&L&1.69\\
+G3=O&29.36&180&137+180&g&L&1.70\\
+S3:1c&30.16&194&194+179&sy&L&3.76\\
+S1=O&32.68&182&139+182&sy&L&7.20\\
+Ph1=O&32.7&122&121+122&ph&Ph&0.00\\
+S3=O/-OH&32.8&212&212&sy&L&0.00\\
+GAc&32.88&182&137+182&g&L&2.04\\
+S3&33.15&196&181+196&sy&L&3.05\\
+S3=O&33.32&210&167+210&sy&L&1.64\\
+G3:1=O&35.3&178&135+178&g&L&4.12\\
+G3:1-OH&37.1&137+180&180&g&L&2.08\\
+SAc&38.78&212&212&sy&L&4.78\\
+S3:1=O&43.06&208&165+208&sy&L&2.96\\
+
+N-methyl-pyrrol&&&&p&N&5.47\\
+pyridine&&&&p&N&1.68\\
+methylpyridine1&&&&p&N&1.41\\
+methylpyridine2&&&&p&N&0.55\\
+pyrrole&&&&p&N&1.89\\
+methylpyrrol1&&&&p&N&1.84\\
+methylpyrrol2&&&&p&N&2.30\\
+Pyridol&&&&unk&unk&2.11\\
+Indole&&&&ind&N&2.97\\
+Methylindole&&&&ind&N&0.00\\
+25:0&&&&cut0&Cut&3.16\\
+25:1&&&&cut1&Cut&13.32\\
+27:0&&&&cut0&Cut&2.97\\
+27:1&&&&cut1&Cut&6.24\\
+29:0&&&&cut0&Cut&4.47\\
+29:1&&&&cut1&Cut&13.82\\
+14:0fa&2.35&68&39+68&fa&lip&50\\
+16.0fa&2.74&82&81+82&fa&lip&62.67\\
+18:0fa&2.91&82&81+82&fa&lip&29.59\\
+
+\hline
+\end{tabular}
+\end{center}
+\label{tab:pyrprod2}
+\end{table*}
+
+
+\begin{table*}
+\begin{center}
+\begin{tabular}{lcccccc}
+name & RT & MW & m/z & class & origin&Rf\\
+\hline
+alcene 5.61+5.67&&&&al&al&5.83\\
+propanol 5.62&&&&short&non&0.00\\
+unknown furan 6.36&&&&f&C&1.93\\
+cyclopentanone 6.99&&&&cp&C&0.00\\
+xylene4 6.99&&&&ar&non&4.07\\
+limonen 7.29&&&&ter&non&0.59\\
+methylpyridine3 7.54&&&&p&N&1.88\\
+methylfurane2 7.64&&&&f&C&2.00\\
+unknown 8.14&&&&unk&unk&10.20\\
+alcene 9.55&&&&al&al&5.79\\
+alcene 9.71+9.77&&&&al&al&9.77\\
+alcene 9.87&&&&al&al&7.33\\
+1-Hydroxy-2-propanone&10.69&&cp&C&2.46\\
+unknown ch 11.38&&&&cp&C&4.66\\
+alcane 11.89&&&&al&al&3.17\\
+indene 12.64&&&&ar&non&0.79\\
+unknown ch 15.56&&&&cp&C&119.68\\
+1-Methyl-4-methoxybenzene&15.98&&&ar&non&10.92\\
+unknown ch 16.17&&&&cp&C&2.58\\
+unknown 17.67&&&&cp&C&1.16\\
+4(H)pyran-4-one 18.25&&&&o&non&2.70\\
+unknown alcyl 20.00&&&&al&al&9.39\\
+unknown 20.85&&&&unk&unk&7.94\\
+unknown 20.86&&&&unk&unk&0.00\\
+unknown 22.43&&&&unk&unk&3.88\\
+unknown alkyl 22.82&&&&al&unk&12.46\\
+hexan2,4dione, -enol 23.92&&&&o&unk&1.19\\
+benzofuran 26.19&&&&bf&unk&1.45\\
+unknown 27.76&&&&unk&unk&163.60\\
+
+Acetaldehyde&2.06&44&29+44&cp&C&1.04\\
+Aceton&2.46&&&short&non&1.65\\
+2-Propenal&2.6&&&short&non&1.75\\
+Methanol&2.88&&&short&non&1.36\\
+3-Buten-2-one&3.39&&&short&non&2.93\\
+2,3-Butandione&3.67&&&short&non&1.58\\
+3-Penten-2-one&3.89&&&short&non&3.55\\
+2-Butanal&4.56&&&short&non&0.00\\
+2,3-Pentadione&4.77&&&short&non&2.46\\
+Hexanal&5.16&&&short&non&2.85\\
+1-Penten-3-one&11.28&&&short&non&2.14\\
+\hline
+\end{tabular}
+\end{center}
+\label{tab:pyrprod3}
+\end{table*}

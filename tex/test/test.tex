@@ -1,0 +1,126 @@
+
+%  text of PhD thesis for TEX
+\def\Vctr#1{\hbox{\rm\bf #1}}
+\def\pdif#1#2{\frac{\partial #1} {\partial #2}}
+\def\abs#1{\left|#1\right|}
+\def\grad{\mathop{\hbox{\rm grad}}}
+\def\diverge{\mathop{\hbox{\rm div}}}
+\def\cmparsec{\hbox{cm s}^{-1}}
+
+\newcommand{\degrees}{$^{\circ}$}
+\newcommand{\erf}{{\rm erf}}
+\newcommand{\curl}{{\rm curl}}
+
+%---assorted variations that might work for drafts
+%\documentstyle[agums,psfig]{article}
+%\documentstyle[agums,psfig,aguplus]{article}
+%\documentclass[a4paper,agums]{aguplus}
+
+\documentclass[agums]{aguplus}  % use this variant for AGU manuscripts
+%\documentclass[agums]{aguplus_ams}  % use this variant for to get parentheses for 
+                                    % American Meteorlogical Society publications
+\usepackage{times}
+
+\makeatletter
+%\def\@sluginfo{{\vspace{1in}in preparation, \today}}
+\renewcommand\revtex@pageid{}
+\makeatother
+
+
+%\renewcommand\NAT@open{(} \renewcommand\NAT@close{)}
+%\makeatother
+\sectionnumbers
+\printfigures
+%\tighten  %uncomment this line for single-spaced text
+\lefthead{author names}
+\righthead{short title}
+\received{}
+\revised{}
+\accepted{}
+\journalid{}{}
+\articleid{}{}
+\paperid{}
+\cpright{}{}
+\ccc{}
+%\printfigures
+
+
+\begin{document}
+%\figmarkoff
+
+\title{Manuscript Title}
+\author{First Author}
+\affil{Institution and address of first author\\
+}
+\author{In prep for {\it journal name}, \today}  % place holder for drafts
+\authoraddr{full author address}
+
+\begin{abstract}
+\pagenumbering{arabic}
+abstract text
+
+\noindent
+\end{abstract}
+
+\section{Introduction}
+
+Lots of text describing purpose of study and so forth.  Plus a reference to Figure~\ref{figure1.ps} and a citation of \cite{test1}.
+
+Litter decomposition controls nutrient recycling and the release of assimilated carbon and is therefore considered a key process in terrestric ecosystems \citep{Prescott2010}. In temperate forests, litter decomposition is generally considered nitrogen limited (lit). Litter nitrogen contents were shown to be affected by soil nitrogen content (and therefore by nitrogen deposition and fertilization (lit.)), its responses to elevated athmospheric CO$_{2}$ concentrations is still debated \citep{Luo2006, Norby1998}. Therefore predicting the impact of shifts in litter C:N ratio on decomposition processes and the chemical nature of the resulting organic matter [is important]. 
+
+
+\begin{figure}
+% uncomment this line if figure exists
+%\figbox*{}{}{\psfig{figure=figures/sample.ps,width=8cm}}
+\caption[]{Figure caption for first figure}
+\label{figure1.ps}
+\end{figure}
+
+\section{Another section}
+\label{section2.sec}
+
+More text with citation in brackets \cite[]{test2} and as an example 
+\cite[e.g.][]{test1}.
+
+\section{Yet another section}
+
+\subsection{With subsections}
+
+
+Table~\ref{sample.table} summarizes some results.
+\begin{planotable}{lrrrrrr}
+\tablewidth{36pc}
+\tablecaption{\label{sample.table}Table caption text.
+}
+\tablehead{ & \multicolumn{4}{c}{140-pt Filter} & 
+\multicolumn{2}{c}{180-pt Filter}\\
+ & \multicolumn{2}{c}{TOPEX Mean} & \multicolumn{2}{c}{Own Mean}  
+& \multicolumn{2}{c}{TOPEX Mean}  \\
+\colhead{Instrumental Records} & \colhead{$-\mu_1$} & 
+\colhead{w/ $\mu_1$} & \colhead{$-\mu_1$} & \colhead{w/ $\mu_1$} 
+& \colhead{$-\mu_1$} & \colhead{w/ $\mu_1$} } 
+\startdata
+TOPEX vs Jason (overlap) & 3 & 4 & & & 2 & 3 \nl
+TOPEX (full) vs Jason &  15  & 28 & 13 & 12 & 16 & 27 \nl
+TOPEX (full) vs TOPEX (overlap) &  6  & 17 & & & 10 & 18 \nl
+TOPEX (full) vs Poseidon &  12  & 15 & 9 & 8 & 9 & 7  
+\end{planotable}
+
+\section{Summary}
+\label{summary.sec}
+
+Summary of findings.
+
+\begin{acknowledgments}
+Useful discussions with X, Y, and Z.  
+Funding provided by grants .....
+\end{acknowledgments}
+
+\bibliography{ref.bib}
+%\bibliographystyle{jpo} % for AMS format
+%\bibliographystyle{agu} % for AGU format
+\bibliographystyle{copernicus} % for AGU format
+
+
+\end{document}
+

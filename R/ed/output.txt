@@ -1,0 +1,224 @@
+[1] "methanol"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 75.953  75.953  17.698 0.0005927 ***
+Residuals   17 72.956   4.292                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "X2.butanone"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 2.21256 2.21256  162.01 4.065e-10 ***
+Residuals   17 0.23217 0.01366                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "methylbutanal"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 56.696  56.696  28.423 5.512e-05 ***
+Residuals   17 33.910   1.995                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "dimethylfuran"
+            Df  Sum Sq  Mean Sq F value Pr(>F)
+tea[, 2]     1 0.09979 0.099791  1.0287 0.3247
+Residuals   17 1.64914 0.097008               
+[1] "methylvinylketon"
+            Df  Sum Sq  Mean Sq F value Pr(>F)
+tea[, 2]     1 0.00023 0.000230  0.0056 0.9413
+Residuals   17 0.70096 0.041233               
+[1] "butanedione"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 11.6280 11.6280  35.051 1.678e-05 ***
+Residuals   17  5.6397  0.3317                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "toluene"
+            Df Sum Sq Mean Sq F value  Pr(>F)  
+tea[, 2]     1 1.2490 1.24897  5.2268 0.03535 *
+Residuals   17 4.0622 0.23895                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "trimethylfuran"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 0.50585 0.50585  198.77 8.244e-11 ***
+Residuals   17 0.04326 0.00254                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "unknown_7.42"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 2.7063 2.70632  17.711 0.0005908 ***
+Residuals   17 2.5977 0.15281                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "hydroxypropanone"
+            Df Sum Sq Mean Sq F value   Pr(>F)   
+tea[, 2]     1 151.71 151.710  15.462 0.001074 **
+Residuals   17 166.80   9.812                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "cyclopentenone"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 6.4769  6.4769  69.254 2.124e-07 ***
+Residuals   17 1.5899  0.0935                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "Methylcyclopentenone"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 47.293  47.293   90.62 3.171e-08 ***
+Residuals   17  8.872   0.522                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "propenoic_acid._ME"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 2.42822 2.42822   98.26 1.761e-08 ***
+Residuals   17 0.42011 0.02471                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "X1.hydroxy.2.propenoneacetat"
+            Df   Sum Sq   Mean Sq F value Pr(>F)
+tea[, 2]     1 0.001886 0.0018863  0.7156 0.4093
+Residuals   17 0.044811 0.0026359               
+[1] "furaldehyd"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 163.175 163.175  92.053 2.831e-08 ***
+Residuals   17  30.135   1.773                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "furanylethanone"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 11.0864 11.0864  24.839 0.0001133 ***
+Residuals   17  7.5875  0.4463                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "pyrrole"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 11.3148 11.3148  437.56 1.435e-13 ***
+Residuals   17  0.4396  0.0259                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "dimethylcyclopentenone"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 3.03537 3.03537  318.56 1.906e-12 ***
+Residuals   17 0.16198 0.00953                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "unknown_15.76"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 0.91164 0.91164  20.994 0.0002651 ***
+Residuals   17 0.73822 0.04342                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "cyclopentendione"
+            Df  Sum Sq  Mean Sq F value Pr(>F)
+tea[, 2]     1 0.08297 0.082966  1.2775 0.2741
+Residuals   17 1.10402 0.064942               
+[1] "butyrolactone"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 0.37779 0.37779  21.331 0.0002452 ***
+Residuals   17 0.30109 0.01771                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "furanmethanol"
+            Df Sum Sq  Mean Sq F value Pr(>F)
+tea[, 2]     1 0.0678 0.067832  0.3499 0.5619
+Residuals   17 3.2953 0.193842               
+[1] "hydroxymethylcyclopentenone"
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 15.4310 15.4310  113.60 6.032e-09 ***
+Residuals   17  2.3091  0.1358                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "guaiacol"
+            Df Sum Sq Mean Sq F value   Pr(>F)   
+tea[, 2]     1 11.032  11.032  14.181 0.001541 **
+Residuals   17 13.225   0.778                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "X.phenol"
+            Df Sum Sq Mean Sq F value  Pr(>F)   
+tea[, 2]     1 125.79 125.792  9.6661 0.00638 **
+Residuals   17 221.23  13.014                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "ethylguaiacol"
+            Df  Sum Sq Mean Sq F value   Pr(>F)   
+tea[, 2]     1 0.36485 0.36485   9.992 0.005706 **
+Residuals   17 0.62075 0.03651                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "methylphenol"
+            Df Sum Sq Mean Sq F value  Pr(>F)  
+tea[, 2]     1 26.567  26.567  4.7047 0.04455 *
+Residuals   17 95.998   5.647                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "ethylphenol"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 9.1783  9.1783  96.776 1.968e-08 ***
+Residuals   17 1.6123  0.0948                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "vinylguaiacol"
+            Df Sum Sq Mean Sq F value  Pr(>F)  
+tea[, 2]     1 38.984  38.984  7.0569 0.01662 *
+Residuals   17 93.912   5.524                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "di.anhydro_hexose"
+            Df Sum Sq Mean Sq F value   Pr(>F)   
+tea[, 2]     1 31.644  31.644  11.987 0.002978 **
+Residuals   17 44.879   2.640                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "syringol"
+            Df  Sum Sq Mean Sq F value Pr(>F)  
+tea[, 2]     1  2.4881 2.48812  3.0573 0.0984 .
+Residuals   17 13.8351 0.81383                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "propenylguaiacol"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 54.877  54.877  134.29 1.713e-09 ***
+Residuals   17  6.947   0.409                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "benzofuran"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 320.29  320.29   90.48 3.207e-08 ***
+Residuals   17  60.18    3.54                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "indole"
+            Df  Sum Sq  Mean Sq F value  Pr(>F)  
+tea[, 2]     1 0.24850 0.248501   7.789 0.01254 *
+Residuals   17 0.54237 0.031904                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "vinylsyringol"
+            Df Sum Sq Mean Sq F value  Pr(>F)  
+tea[, 2]     1 38.984  38.984  7.0569 0.01662 *
+Residuals   17 93.912   5.524                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "propenylsyringol"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 81.570  81.570  227.54 2.832e-11 ***
+Residuals   17  6.094   0.358                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "hydroquinone"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 77.948  77.948  44.176 4.125e-06 ***
+Residuals   17 29.996   1.764                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "hydroquinone_derivative"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 49.236  49.236  28.876 5.053e-05 ***
+Residuals   17 28.986   1.705                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+[1] "unknown_40.23"
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+tea[, 2]     1 9.1009  9.1009  23.264 0.0001588 ***
+Residuals   17 6.6503  0.3912                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 

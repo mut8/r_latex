@@ -1,0 +1,44 @@
+setwd("/home/lluc/Documents/R/dip/gamba")
+
+source("/home/lluc/Documents/R/functions.R")
+
+data<-read.csv("data.csv")
+cond<-read.csv("cond.csv")
+colnames(data)
+attach(data)
+Fecha
+Fecha<-as.Date(Fecha)
+cond.date<-as.Date(cond$Fecha.LF)
+cond.date[4]
+Fecha[Fecha<cond.date[4]]
+
+rtn<-data.frame(matrix(nrow=length(cond.date)-1, ncol=6))
+colnames(rtn)<-c("date","DD", "RD", "Tmin", "Tmax", "Tmed" )
+
+Tmin<-1
+Tmax<-1
+Tmed<-1
+RD<-1
+DD<-1
+date1<-1
+date2<-1
+
+
+for(i in 2:length(cond.date))
+{
+date1[i-1]<-cond.date[i-1]
+date2[i-1]<-cond.date[i]
+DD[i-1]<-sum(Dry.Days[Fecha<cond.date[i] & Fecha>cond.date[i-1] & is.na(Fecha)!=T])
+#RD[i]<-sum(Lluvia[Fecha<cond.date[i] & Fecha>cond.date[i-1] & is.na(Fecha)!=T])
+
+Tmin[i-1]<-mean(T.min[Fecha<cond.date[i] & Fecha>cond.date[i-1] & is.na(Fecha)!=T])
+Tmax[i-1]<-mean(T.max[Fecha<cond.date[i] & Fecha>cond.date[i-1] & is.na(Fecha)!=T])
+Tmed[i-1]<-mean(T.med[Fecha<cond.date[i] & Fecha>cond.date[i-1] & is.na(Fecha)!=T])
+}
+
+write.csv(
+data.frame(as.Date(date1), as.Date(date2), date2-date1, Tmin, Tmax, Tmed
+)
+, "gmb.csv"
+rtn
+Lluvia

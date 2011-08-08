@@ -1,0 +1,274 @@
+
+cor.test
+plot(alldata$DOC, alldata$Respiration, type="n")
+alltype<-c("I", "II", "III")
+for (i in 1:length(typlev))
+for (j in 1:3)
+points(alldata$DOC[alldata$Harvest==alltype[j] & alldata$Litter==typlev[i]], alldata$Respiration[alldata$Harvest==alltype[j] & alldata$Litter==typlev[i]], pch=j, col=colscale[i])
+
+abline(lm(alldata$Respiration ~ alldata$DOC), lwd=2)
+abline(lm(alldata$Respiration[alldata$Harvest=="I"] ~ alldata$DOC[alldata$Harvest=="I"]), lty=2)
+cor.test(alldata$Respiration[alldata$Harvest=="I"], alldata$DOC[alldata$Harvest=="I"])
+abline(lm(alldata$Respiration[alldata$Harvest=="II"] ~ alldata$DOC[alldata$Harvest=="II"]), lty=3)
+cor.test(alldata$Respiration[alldata$Harvest=="II"], alldata$DOC[alldata$Harvest=="II"])
+abline(lm(alldata$Respiration[alldata$Harvest=="III"] ~ alldata$DOC[alldata$Harvest=="III"]), lty=4)
+cor.test(alldata$Respiration[alldata$Harvest=="III"], alldata$DOC[alldata$Harvest=="III"])
+
+boxplot(alldata$DOC[alldata$Harvest=="I"] ~ alldata$Litter[alldata$Harvest=="I"])
+boxplot(alldata$DOC[alldata$Harvest=="II"] ~ alldata$Litter[alldata$Harvest=="II"])
+boxplot(alldata$DOC[alldata$Harvest=="III"] ~ alldata$Litter[alldata$Harvest=="III"])
+
+pdf("doc_barplots.pdf", width=9, height=12)
+
+par(mfrow=c(4,3), tck=0.02)
+
+var<-alldata$DOC
+cond1<-alldata$Harvest=="I"
+sep<-alldata$Litter
+cond2<-alldata$Harvest=="I"
+name<-"DOC H1"
+ylab="µg C g-1 d.w."
+
+m<-tapply(var, list(sep, alldata$Harvest), mean)+tapply(var, list(sep, alldata$Harvest), function(x) CI(x, 0.04))
+ylim<-max(m[,1:3])
+
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05)  
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab=paste(ylab, "95% CI"), col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+var<-alldata$DOC
+cond1<-alldata$Harvest=="II"
+sep<-alldata$Litter
+cond2<-alldata$Harvest=="II"
+name<-"DOC H2"
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05)  
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab="", col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+var<-alldata$DOC
+cond1<-alldata$Harvest=="III"
+sep<-alldata$Litter
+cond2<-alldata$Harvest=="III"
+name<-"DOC H3"
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05) 
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab="", col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+var<-alldata$NO3.concentration
+cond1<-alldata$Harvest=="I"
+sep<-alldata$Litter
+cond2<-alldata$Harvest=="I"
+name<-"NO3- H1"
+ylab="µg NO3-N g-1 d.w."
+
+m<-tapply(var, list(sep, alldata$Harvest), mean)+tapply(var, list(sep, alldata$Harvest), function(x) CI(x, 0.04))
+ylim<-max(m[,1:3])
+
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05)  
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab=paste(ylab, "95% CI"), col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+cond1<-alldata$Harvest=="II"
+cond2<-alldata$Harvest=="II"
+name<-"NO3- H2"
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05)  
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab="", col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+cond1<-alldata$Harvest=="III"
+cond2<-alldata$Harvest=="III"
+name<-"NO3- H3"
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05) 
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab="", col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+var<-alldata$NH4.concentration
+cond1<-alldata$Harvest=="I"
+sep<-alldata$Litter
+cond2<-alldata$Harvest=="I"
+name<-"NH4+ H1"
+ylab="µg NH4-N g-1 d.w."
+
+m<-tapply(var, list(sep, alldata$Harvest), mean)+tapply(var, list(sep, alldata$Harvest), function(x) CI(x, 0.04))
+ylim<-max(m[,1:3])
+
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05)  
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab=paste(ylab, "95% CI"), col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+cond1<-alldata$Harvest=="II"
+cond2<-alldata$Harvest=="II"
+name<-"NH4+ H2"
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05)  
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab="", col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+cond1<-alldata$Harvest=="III"
+cond2<-alldata$Harvest=="III"
+name<-"NH4+ H3"
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05) 
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab="", col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+var<-alldata$TN
+cond1<-alldata$Harvest=="I"
+sep<-alldata$Litter
+cond2<-alldata$Harvest=="I"
+name<-"TN H1"
+ylab="µg N g-1 d.w."
+
+m<-tapply(var, list(sep, alldata$Harvest), mean)+tapply(var, list(sep, alldata$Harvest), function(x) CI(x, 0.04))
+ylim<-max(m[,1:3])
+
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05)  
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab=paste(ylab, "95% CI"), col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+cond1<-alldata$Harvest=="II"
+cond2<-alldata$Harvest=="II"
+name<-"TN H2"
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05)  
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab="", col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+cond1<-alldata$Harvest=="III"
+cond2<-alldata$Harvest=="III"
+name<-"TN H3"
+
+      mean<-tapply(var[cond1], sep[cond2], mean)
+      sds<-tapply(var[cond1], sep[cond2], sd)
+      ci2<-CI2(sds, 5, 0.05) 
+
+      height<-mean
+      error<-ci2
+
+      barplot2(height, ylim=c(0, ylim*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height-error, names.arg=typlev, 
+      main=name, ylab="", col=colscale, tck=0.01)
+      aov<-aov(lm(var[cond1] ~ sep[cond2]))
+      hsd<-HSD.test(aov, "sep[cond2]")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, ylim*1.15, gr)
+
+
+dev.off()

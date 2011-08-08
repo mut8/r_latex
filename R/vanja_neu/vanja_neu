@@ -1,0 +1,54 @@
+setwd("/home/lluc/Documents/R/vanja_neu")
+
+source("/home/lluc/Documents/R/functions.R")
+
+cats<-read.csv("cats.csv", header=T)
+
+cats[4:ncol(cats)]
+
+cats.rda<-rda(cats[4:ncol(cats)])
+plot(cats.rda)
+
+type<-cats[,2]
+harvest<-factor(cats[,3])
+
+typlev<-levels(type)
+harlev<-levels(harvest)
+
+col<-c(grey(0), grey(.3), grey(.5), grey(.7))
+
+for (i in 4:ncol(cats))
+timeseries(cats[,4], harvest, type, nam=)
+
+pdf("pca_categories.pdf") 
+
+ord<-cats.rda
+name<-"PCA"
+catnames<-colnames(cats[4:ncol(cats)])
+catnames
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      plot(xvar)
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, display="species", labels=catnames, cex=1)
+      legend("bottomleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+
+pdf("pca_timeseries.pdf") 
+sco<-scores(ord, display="sites", choices=1:4)
+for (i in 4:ncol(cats))
+timeseries(cats[,i], harvest, type, nam=catnames[i], xlab="harvest", ylab="relative cTIC (sum of category) SE", col=col)
+
+for (i in 4)
+timeseries(sco[,i], harvest, type, ylab=paste("PCA", i, ", SE"), xlab="harvest", col=col)
+
+
+dev.off()

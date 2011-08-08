@@ -1,0 +1,100 @@
+0,RT,name,formula,MW,type
+3.19,3.19,"2-Propenoic acid, methyl ester",C4H6O2,86,FA
+5.34,5.34,"2-Propanone, 1-methoxy-",C4H8O2,88,S
+5.44,5.44,"2-Butenoic acid, methyl ester, (E)-",C5H8O2,100,FA
+6,6,N-Methylpyrrole,C5H7N,81,N
+6.07,6.07,"Benzene, 1,4-dimethyl-",C8H10,106,A
+6.33,6.33,"Propanoic acid, 2-methoxy-, methyl ester",C5H10O3,118,FA
+6.67,6.67,"Furan, 2-methoxy-",C5H6O2,98,C
+6.76,6.76,"3-Pentenoic acid, methyl ester",C6H10O2,114,FA
+7.06,7.06,"Acetic acid, methoxy-, methyl ester",C4H8O3,104,FA
+7.7,7.7,"5-Hexenoic acid, methyl ester",C7H12O2,128,FA
+7.79,7.79,"Furan, 2-(methoxymethyl)-",C6H8O2,112,C
+8.78,8.78,"Heptanoic acid, methyl ester",C8H16O2,144,FA
+9.33,9.33,"Propanoic acid, 2-hydroxy-, methyl ester",C4H8O3,104,FA
+9.81,9.81,"Benzene, methoxy-",C7H8O,108,A
+9.98,9.98,"Benzenemethanamine, N,N-dimethyl-",C9H13N,135,N
+10.11,10.11,2-Cyclopenten-1-one,C5H6O,82,C
+10.35,10.35,"2-Cyclopenten-1-one, 2-methyl-",C6H8O,96,C
+10.72,10.72,"Octanoic acid, methyl ester",C9H18O2,158,FA
+11.09,11.09,"Benzene, 1-methoxy-2-methyl-",C8H10O,122,A
+11.4,11.4,3-Furaldehyde,C5H4O2,96,C
+11.63,11.63,"Benzene, 1-methoxy-4-methyl-",C8H10O,122,A
+11.72,11.72,"Benzene, 1-methoxy-3-methyl-",C8H10O,122,A
+12.07,12.07,Furfural,C5H4O2,96,C
+12.4,12.4,,,,
+12.62,12.62,"Nonanoic acid, methyl ester",C10H20O2,172,FA
+12.82,12.82,"2,5-Dimethylanisole",C9H12O,136,A
+13.26,13.26,"Benzene, 1-ethyl-4-methoxy-",C9H12O,136,A
+14.07,14.07,Methyl 2-furoate,C6H6O3,126,C
+14.19,14.19,"Pyridine, 3-methoxy-",C6H7NO,109,N
+14.34,14.34,"Butanedioic acid, dimethyl ester",C6H10O4,146,FA
+14.45,14.45,"Decanoic acid, methyl ester",C11H22O2,186,FA
+14.78,14.78,"2-Hexenoic acid, 3-methyl-, methyl ester",C8H14O2,142,FA
+14.9,14.9,"Benzoic acid, methyl ester",C8H8O2,136,A
+15.4,15.4,"2,3-Dimethoxytoluene",C9H12O2,152,A
+15.83,15.83,"Benzene, 1-ethenyl-4-methoxy-",C9H10O,134,A
+16.55,16.55,"Benzene, 1,2-dimethoxy-",C8H10O2,138,A
+16.82,16.82,"Benzene, 1,4-dimethoxy-",C8H10O2,138,A
+16.97,16.97,"Benzene, 1,3-dimethoxy-",C8H10O2,138,A
+17.12,17.12,"Benzaldehyde, 4-(1-methylethyl)-",C10H12O,148,A
+17.36,17.36,"Fructofuranose, 2,6-anhydro-1,3,4-tri-O-methyl-, ?-d-",C9H16O5,204,C
+17.74,17.74,"2,5-Dimethoxytoluene",C9H12O2,152,A
+17.87,17.87,"3,4-Dimethoxytoluene",C9H12O2,152,A
+18.27,18.27,"Benzene, 1-methoxy-4-(1-propenyl)-",C10H12O,148,A
+18.92,18.92,"Phenol, 3,5-dimethoxy-",C8H10O3,154,G
+19,19,"Benzene, 4-ethyl-1,2-dimethoxy-",C10H14O2,166,G
+20.2,20.2,"1,2,3-Trimethoxybenzene",C9H12O3,168,S
+20.4,20.4,N-Methylindole,C9H9N,131,N
+20.51,20.51,"3(2H)-Furanone, 4-methoxy-2,5-dimethyl-?",C7H10O3,142,C
+20.96,20.96,"Benzene, 1,2-dimethoxy-4-(2-propenyl)-",C11H14O2,178,G
+21.02,21.02,"Tetradecanoic acid, methyl ester",C15H30O2,242,FA
+21.14,21.14,"Benzaldehyde, 4-methoxy-",C8H8O2,136,A
+21.47,21.47,"Benzene, 1,2,3-trimethoxy-5-methyl-",C10H14O3,182,S
+21.64,21.64,"Benzoic acid, 3,4,5-trimethoxy-",C10H12O5,212,S
+21.96,21.96,"1,2,4-Trimethoxybenzene",C9H12O3,168,C
+22.15,22.15,"Benzoic acid, 4-methoxy-, methyl ester",C9H10O3,166,A
+22.23,22.23,"2,4,5-Trimethoxybenzaldehyde",C10H12O4,196,?
+22.49,22.49,"Pentadecanoic acid, methyl ester",C16H32O2,256,FA
+22.73,22.73,"Nonanedioic acid, dimethyl ester",C11H20O4,216,FA
+22.87,22.87,"Benzene, 1,3,5-trimethoxy-",C9H12O3,168,?
+23.21,23.21,"2,4,6-Trimethoxytoluene",C10H14O3,182,A
+23.24,23.24,"9-Hexadecenoic acid, methyl ester, (Z)-",C17H32O2,268,FA
+23.36,23.36,"Benzeneacetic acid, 4-methoxy-, methyl ester",C10H12O3,180,A
+23.91,23.91,"Hexadecanoic acid, methyl ester",C17H34O2,270,FA
+24.07,24.07,"1,2-Dimethoxy-4-(2-methoxyethenyl)benzene",C11H14O3,194,G
+24.53,24.53,"Benzenepropanoic acid, 4-methoxy-, methyl ester",C11H14O3,194,A
+24.71,24.71,Asarone,C12H16O3,208,S
+25.2,25.2,"1,2,3,4-Tetramethoxybenzene",C10H14O4,198,A?
+25.26,25.26,"Heptadecanoic acid, methyl ester",C18H36O2,284,FA
+26.06,26.06,"Benzaldehyde, 3,4-dimethoxy-",C9H10O3,166,G
+26.12,26.12,Isoelemicin,C12H16O3,208,S
+26.24,26.24,"Benzoic acid, 2,6-dimethoxy-, methyl ester",C10H12O4,196,G?
+26.56,26.56,"Octadecanoic acid, methyl ester",C19H38O2,298,FA
+26.96,26.96,"Benzoic acid, 3,4-dimethoxy-, methyl ester",C10H12O4,196,G
+26.81,26.81,"9-Octadecenoic acid (Z)-, methyl ester",C19H36O2,296,FA
+26.89,26.89,"10-Octadecenoic acid, methyl ester",C19H36O2,296,FA
+26.99,26.99,"1,2-Dimethoxy-4-(2-methoxy-1-propenyl)benzene",C12H16O3,208,G
+27.12,27.12,"2,4-Dimethoxyacetophenone",C10H12O3,180,?
+27.37,27.37,"1,2-Dimethoxy-4-(2-methoxyethenyl)benzene",C11H14O3,194,G
+27.41,27.41,"Benzeneacetic acid, 3,4-dimethoxy-, methyl ester",C11H14O4,210,G
+27.68,27.68,"3,4,5-Trimethoxybenzaldehyde",C10H12O4,196,S
+27.84,27.84,"1-(3,4-Dimethoxyphenyl)-1-propanone",C11H14O3,194,G
+28.3,28.3,"2-Propenoic acid, 3-(4-methoxyphenyl)-, methyl ester, (E)-",C11H12O3,192,A
+28.43,28.43,"Benzoic acid, 3,4,5-trimethoxy-, methyl ester",C11H14O5,226,S
+28.51,28.51,"1,2-Dimethoxy-4-(3-methoxy-1-propenyl)benzene",C12H16O3,208,G
+28.59,28.59,"3,4,5-Trimethoxyacetophenone",C11H14O4,210,S
+28.93,28.93,"Benzene, 1,2,3,4-tetramethoxy-5-(2-propenyl)-",C13H18O4,238,0
+29.03,29.03,"Eicosanoic acid, methyl ester",C21H42O2,326,FA
+29.68,29.68,"2,3,4,6-Tetramethoxystyrene",C12H16O4,224,0
+29.88,29.88,"3,4,5-Trimethoxybenzamide",0,0,N
+30.2,30.2,"Heneicosanoic acid, methyl ester",C22H44O2,340,FA
+30.47,30.47,"Benzoic acid, 3,4,5-trimethoxy-, methyl ester",C11H14O5,226,S
+30.63,30.63,"(3,4-Dimethoxyphenyl)-acatic acid",C11H16O3,196,G
+30.85,30.85,"1,2-Dimethoxy-4-(1,3-dimethoxy-1-propenyl)benzene",C13H18O4,238,G
+30.91,30.91,"1,2-Dimethoxy-4-(2,3-dimethoxy-1-propenyl)benzene",C13H18O4,238,G
+31.33,31.33,"Docosanoic acid, methyl ester",C23H46O2,254,FA
+32.05,32.05,"2-Propenoic acid, 3-(3,4-dimethoxyphenyl)-, methyl ester",C12H14O4,222,G
+33.68,33.68,"Tetracosanoic acid, methyl ester",C25H50O2,382,FA
+34.08,34.08,"2-Propenoic acid, 3-(3,4,5-trimethoxyphenyl)-, methyl ester",C13H16O5,252,G
+36.92,36.92,"Triacontanoic acid, methyl ester",C31H62O2,466,FA

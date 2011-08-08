@@ -1,0 +1,118 @@
+        X                                       name    RT  MW       m.z class
+10   cp10                                Acetylfuran 12.99 110    95+110    cp
+12   cp12                              Butyrolactone 15.22  86     56+86    cp
+13   cp13                              Furanmethanol 15.61  98        98    cp
+30    cp1                    2-Oxopropanoic Acid, ME  7.92 102    43+102    cp
+31    cp2                         1-Hydroxypropanone  9.24  74        43    cp
+32    cp3                         Propanoic acid, ME 12.10 102    43+102    cp
+34    cp5                     unknown carbohydrate 2 19.35        98+126    cp
+36    cp7                     unknown carbohydrate 4 22.33            44    cp
+40   cp11                  10.26_2-cyclopenten-1-one 10.26  82  53+54+52    cp
+41   cp21         10.51_2-methyl-2-cyclopenten-1-one 10.51  96     53+96    cp
+42   cp31              13.31_3-methyl-cyclopentanone 13.31         67+96    cp
+43    cp4               13.69_dimethylcyclopentenone 13.69 110 67+95+110    cp
+44   cp51              14.44_2-cyclopenten-1,4-dione 14.44  96  54+68+96    cp
+45    cp6                  17.51_1,2-cylopentandione 17.51  98     55+98    cp
+46   cp71 18.14_2-cyclopenten-1-one,_-2-hydroxy-3-me 18.14  98        98    cp
+47    cp8    18.42_1,2-cyclopentanedione,_-3-methyl- 18.42 112    69+112    cp
+67   cp41                        cyclopentanone_6.99    NA                  cp
+76  cp131             1-Hydroxy-2-propanone_ch_10.69    NA                  cp
+77   cp14                           unknown_ch_11.38    NA                  cp
+80   cp17                           unknown_ch_15.56    NA                  cp
+82   cp19                           unknown_ch_16.17    NA                  cp
+83   cp20                              unknown_17.67    NA                  cp
+123  cp15                               Acetaldehyde  2.06  44     29+44    cp
+    origin         tic exclude X.1 sim
+10       C   2.3787971   FALSE  NA  NA
+12       C  12.3738275   FALSE  NA  NA
+13       C   5.2067723   FALSE  NA  NA
+30       C   0.5791441   FALSE  NA  NA
+31       C   1.4286997   FALSE  NA  NA
+32       C   1.4428870   FALSE  NA  NA
+34       C   5.3499053   FALSE  NA  NA
+36       C   3.3360835   FALSE  NA  NA
+40       C   2.0205383   FALSE  NA  NA
+41       C   2.3662359   FALSE  NA  NA
+42       C   4.0617533   FALSE  NA  NA
+43       C   1.6276423   FALSE  NA  NA
+44       C   1.6790669   FALSE  NA  NA
+45       C   2.2214713   FALSE  NA  NA
+46       C  15.9585660   FALSE  NA  NA
+47       C   2.7355821   FALSE  NA  NA
+67       C   0.0000000   FALSE  NA  NA
+76       C   2.4592897   FALSE  NA  NA
+77       C   4.6641589   FALSE  NA  NA
+80       C 119.6856378   FALSE  NA  NA
+82       C   2.5775023   FALSE  NA  NA
+83       C   1.1554018   FALSE  NA  NA
+123      C   1.0441121   FALSE  NA  NA
+     X                                  name    RT  MW       m.z class origin
+1   f1                                 Furan  2.35  68     39+68     f      C
+2   f2                           Methylfuran  2.74  82     81+82     f      C
+3   f3                           Methylfuran  2.91  82     81+82     f      C
+4   f4                         Dimethylfuran  3.43  96     95+96     f      C
+5   f5                         Dimethylfuran  3.66  96     95+96     f      C
+6   f6                            Vinylfuran  5.01  94     65+94     f      C
+7   f7                          3-Furaldehyd 11.57  96     95+96     f      C
+8   f8                          2(5H)Furanon 11.69  98     55+98     f      C
+9   f9                          2-Furaldehyd 12.22  96     95+96     f      C
+11 f11        5-Methyl-2-furancarboxaldehyde 14.23 110   109+110     f      C
+14 f14               5-Methyl-2(5H)-furanone 16.06  98     55+98     f      C
+15 f15 5-hydroxymethylfuran1--carboxaldehyde 27.51 126    97+126     f      C
+33 f41                unknown carbohydrate 1 19.06     58+86+114     f      C
+35 f61                unknown carbohydrate 3 21.77           116     f      C
+37 f81                unknown carbohydrate 5 26.18         57+69     f      C
+38 f91                unknown carbohydrate 6 31.67        73+135     f      C
+39 f10                         laevoglucosan 40.44         60+73     f      C
+66 f31                    unknown_furan_6.36    NA                   f      C
+71 f82                    methylfurane2_7.64    NA                   f      C
+         tic exclude X.1 sim
+1  1.1940583   FALSE  NA  NA
+2  0.9997704   FALSE  NA  NA
+3  0.0000000   FALSE  NA  NA
+4  0.0000000   FALSE  NA  NA
+5  1.1000000   FALSE  NA  NA
+6  2.5891238   FALSE  NA  NA
+7  1.6528285   FALSE  NA  NA
+8  2.4093313   FALSE  NA  NA
+9  1.6737352   FALSE  NA  NA
+11 2.4408153   FALSE  NA  NA
+14 3.9163635   FALSE  NA  NA
+15 2.1716271   FALSE  NA  NA
+33 1.8303939   FALSE  NA  NA
+35 0.0000000   FALSE  NA  NA
+37 1.1530041   FALSE  NA  NA
+38 7.5901070   FALSE  NA  NA
+39 0.0000000   FALSE  NA  NA
+66 1.9282759   FALSE  NA  NA
+71 2.0044374   FALSE  NA  NA
+      X     name    RT      MW     m.z class origin       tic exclude X.1 sim
+93   g1       G0 18.87     124 109+124     g      L  2.482302   FALSE  NA  NA
+94   g2       G1 20.32     138 123+138     g      L  1.929273   FALSE  NA  NA
+95   g3       G2 21.40     152 137+152     g      L  2.177238   FALSE  NA  NA
+96   g4    G3:1a 23.29     164 149+164     g      L  3.302724   FALSE  NA  NA
+97   g5     G2:1 23.69     150 135+150     g      L  2.051261   FALSE  NA  NA
+98   g6    G3:1b 24.48     164 149+164     g      L 14.199633   FALSE  NA  NA
+100  g8    G3:1c 25.66     164 149+164     g      L  5.008086   FALSE  NA  NA
+106 g14     G1=O 28.40     152 109+152     g      L  0.000000   FALSE  NA  NA
+107 g15       G3 28.72     166 137+166     g      L  1.467137   FALSE  NA  NA
+108 g16 G3=O/-OH 28.77     182     182     g      L 20.451648   FALSE  NA  NA
+110 g18     G2=O 29.20     166 151+166     g      L  1.689511   FALSE  NA  NA
+111 g19     G3=O 29.36     180 137+180     g      L  1.699935   FALSE  NA  NA
+116 g24      GAc 32.88     182 137+182     g      L  2.040800   FALSE  NA  NA
+119 g27   G3:1=O 35.30     178 135+178     g      L  4.123086   FALSE  NA  NA
+120 g28  G3:1-OH 37.10 137+180     180     g      L  2.075472   FALSE  NA  NA
+       X     name    RT  MW     m.z class origin      tic exclude X.1 sim
+99   sy7       S0 24.58 154 139+154    sy      L 2.366407   FALSE  NA  NA
+101  sy9       S1 25.67 168 153+168    sy      L 0.000000   FALSE  NA  NA
+102 sy10       S2 26.39 182 167+182    sy      L 1.704106   FALSE  NA  NA
+104 sy12    S3:1a 27.97 194 179+194    sy      L 4.583377   FALSE  NA  NA
+105 sy13     S2:1 28.37 180 165+180    sy      L 5.098561   FALSE  NA  NA
+109 sy17    S3:1b 28.91 194 179+194    sy      L 2.712634   FALSE  NA  NA
+112 sy20    S3:1c 30.16 194 194+179    sy      L 3.764843   FALSE  NA  NA
+113 sy21     S1=O 32.68 182 139+182    sy      L 7.196839   FALSE  NA  NA
+115 sy23 S3=O/-OH 32.80 212     212    sy      L 0.000000   FALSE  NA  NA
+117 sy25       S3 33.15 196 181+196    sy      L 3.048146   FALSE  NA  NA
+118 sy26     S3=O 33.32 210 167+210    sy      L 1.643071   FALSE  NA  NA
+121 sy29      SAc 38.78 212     212    sy      L 4.781771   FALSE  NA  NA
+122 sy30   S3:1=O 43.06 208 165+208    sy      L 2.963976   FALSE  NA  NA

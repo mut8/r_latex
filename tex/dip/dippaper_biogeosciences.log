@@ -1,0 +1,511 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.19)  1 JUN 2011 16:58
+entering extended mode
+ %&-line parsing enabled.
+**dippaper_biogeosciences.tex
+(./dippaper_biogeosciences.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, ngerman, german, german-x-2009-06-19, ngerman-x-2009-06-19, loaded.
+
+(/home/lluc/texmf/tex/latex/copernicus.cls
+Document Class: copernicus 2009/10/28 3.2 (DS)
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/fleqn.clo
+File: fleqn.clo 1998/08/17 v1.1c Standard LaTeX option (flush left equations)
+\mathindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen103
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+)
+(/usr/share/texmf-texlive/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/usr/share/texmf-texlive/tex/latex/carlisle/fix2col.sty
+Package: fix2col 1998/08/17 v0.03 Output Routine fixes for two column mode (DPC
+,FMi)
+)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen106
+\extrarowheight=\dimen107
+\NC@list=\toks16
+\extratabsurround=\skip43
+\backup@length=\skip44
+)
+(/usr/share/texmf-texlive/tex/latex/tools/multicol.sty
+Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
+\c@tracingmulticols=\count88
+\mult@box=\box26
+\multicol@leftmargin=\dimen108
+\c@unbalance=\count89
+\c@collectmore=\count90
+\doublecol@number=\count91
+\multicoltolerance=\count92
+\multicolpretolerance=\count93
+\full@width=\dimen109
+\page@free=\dimen110
+\premulticols=\dimen111
+\postmulticols=\dimen112
+\multicolsep=\skip45
+\multicolbaselineskip=\skip46
+\partial@page=\box27
+\last@line=\box28
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count94
+\c@finalcolumnbadness=\count95
+\last@try=\dimen113
+\multicolovershoot=\dimen114
+\multicolundershoot=\dimen115
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+)
+
+Class copernicus Warning: Cannot find lineno.sty; proceeding without it.
+
+LaTeX Info: Redefining \vec on input line 670.
+\c@reaction=\count96
+LaTeX Info: Redefining \sqrt on input line 812.
+\@rxcnt=\count97
+\@rxpen=\count98
+\@centering=\skip47
+\affilsep=\skip48
+\@affilsep=\skip49
+\c@Maxaffil=\count99
+\c@authors=\count100
+\c@affil=\count101
+(/home/lluc/texmf/tex/latex/natbib.sty
+Package: natbib 2006/09/06 7.4a (PWD)
+\bibhang=\skip50
+\bibsep=\skip51
+LaTeX Info: Redefining \cite on input line 541.
+\c@NAT@ctr=\count102
+)
+\oldvsize=\dimen116
+)
+
+LaTeX Warning: Unused global option(s):
+    [journalabbreviation].
+
+(./dippaper_biogeosciences.aux)
+\openout1 = `dippaper_biogeosciences.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 25.
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 25.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count103
+\scratchdimen=\dimen117
+\scratchbox=\box52
+\nofMPsegments=\count104
+\nofMParguments=\count105
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count106
+\MPscratchDim=\dimen118
+\MPnumerator=\count107
+\everyMPtoPDFconversion=\toks18
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+LaTeX Font Info:    Try loading font information for U+msa on input line 71.
+ (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+ (./introduction.tex
+Underfull \hbox (badness 2512) in paragraph at lines 21--22
+\OT1/ptm/m/n/10 connected poly-mers based on car-bo-hy-drate and lignin
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]) (./materials.tex
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 22.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+) (./results.tex
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 4.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omlptm.fd
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 4.
+
+
+Package natbib Warning: Citation `kalbitz2006' on page 2 undefined on input lin
+e 5.
+
+[2]) (./discussion.tex)
+Underfull \hbox (badness 2409) in paragraph at lines 104--106
+[]\OT1/ptm/m/n/9 FWF NRN MicDiF, Kathe-rina Keib-linger
+ []
+
+(./dippaper_biogeosciences.bbl
+Underfull \hbox (badness 3907) in paragraph at lines 12--19
+\OT1/ptm/m/n/9 Har-mon, M. E., Hall, S. a., Burke, I. C., and Hart,
+ []
+
+
+Underfull \hbox (badness 2781) in paragraph at lines 12--19
+\OT1/ptm/m/n/9 Change Bi-ol-ogy, pp. 2636--2660, doi:$10 . 1111 / j . 1365-[]24
+86 .
+ []
+
+
+Underfull \hbox (badness 2368) in paragraph at lines 12--19
+\OT1/ptm/m/n/9 2008 . 01674 . x$, $http : / / blackwell-[]synergy . com / doi /
+ abs / 10 . 1111 / j .
+ []
+
+
+Underfull \hbox (badness 2277) in paragraph at lines 53--57
+\OT1/ptm/m/n/9 graphs, 76, 151--174, $http : / / www . esajournals . org / doi 
+/ pdf / 10 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--72
+\OT1/ptm/m/n/9 / / www . springerlink . com / index / 10 . 1007 / s10533-[]010-
+[]9439-[]0$,
+ []
+
+
+Underfull \hbox (badness 1496) in paragraph at lines 75--81
+[]\OT1/ptm/m/n/9 Vancampenhout, K., De Vos, B., Wouters, K., Van Cal-ster,
+ []
+
+
+Underfull \hbox (badness 1320) in paragraph at lines 75--81
+\OT1/ptm/m/n/9 ate for-est ecosys-tems, Soil Bi-ol-ogy and Bio-chem-istry, 42,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--98
+[]\OT1/ptm/m/n/9 record . do ? product = WOS \OMS/cmsy/m/n/9 n \OT1/ptm/m/n/9 &
+search \OMS/cmsy/m/n/9 n []\OT1/ptm/m/n/9 mode = Re^^Lne \OMS/cmsy/m/n/9 n \OT1
+/ptm/m/n/9 &qid = 2 \OMS/cmsy/m/n/9 n
+ []
+
+) <massloss_n_lit.pdf, id=15, 505.89pt x 505.89pt>
+File: massloss_n_lit.pdf Graphic file (type pdf)
+ <use massloss_n_lit.pdf>
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 148.
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <9> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 148.
+
+<resp_glcdepoly_h2.pdf, id=16, 505.89pt x 505.89pt>
+File: resp_glcdepoly_h2.pdf Graphic file (type pdf)
+
+<use resp_glcdepoly_h2.pdf>
+<resp_glcdepoly_h3.pdf, id=17, 505.89pt x 505.89pt>
+File: resp_glcdepoly_h3.pdf Graphic file (type pdf)
+
+<use resp_glcdepoly_h3.pdf>
+<carb_differences_h3h0.pdf, id=18, 505.89pt x 505.89pt>
+File: carb_differences_h3h0.pdf Graphic file (type pdf)
+
+<use carb_differences_h3h0.pdf>
+<lig_differences_h3h0.pdf, id=19, 505.89pt x 505.89pt>
+File: lig_differences_h3h0.pdf Graphic file (type pdf)
+
+<use lig_differences_h3h0.pdf> <enzymeratio.pdf, id=20, 505.89pt x 361.35pt>
+File: enzymeratio.pdf Graphic file (type pdf)
+
+<use enzymeratio.pdf> <timeseries_lci.pdf, id=21, 1517.67pt x 722.7pt>
+File: timeseries_lci.pdf Graphic file (type pdf)
+
+<use timeseries_lci.pdf> <timeseries_orig.pdf, id=22, 1517.67pt x 2168.1pt>
+File: timeseries_orig.pdf Graphic file (type pdf)
+
+<use timeseries_orig.pdf>
+Overfull \hbox (241.84842pt too wide) in paragraph at lines 196--197
+ [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 70.63313pt on input line 201.
+
+<allpeaks_allharvests_PCA12.pdf, id=23, 505.89pt x 505.89pt>
+File: allpeaks_allharvests_PCA12.pdf Graphic file (type pdf)
+
+<use allpeaks_allharvests_PCA12.pdf>
+<allpeaks_allharvests_PCA34.pdf, id=24, 505.89pt x 505.89pt>
+File: allpeaks_allharvests_PCA34.pdf Graphic file (type pdf)
+
+<use allpeaks_allharvests_PCA34.pdf>
+
+LaTeX Warning: Float too large for page by 62.39766pt on input line 212.
+
+<pca12_carbos.pdf, id=25, 505.89pt x 505.89pt>
+File: pca12_carbos.pdf Graphic file (type pdf)
+ <use pca12_carbos.pdf>
+<pca13_carbos.pdf, id=26, 505.89pt x 505.89pt>
+File: pca13_carbos.pdf Graphic file (type pdf)
+ <use pca13_carbos.pdf>
+
+LaTeX Warning: Float too large for page by 62.39766pt on input line 223.
+
+<ligonly_allharvests_PCA12.pdf, id=27, 505.89pt x 505.89pt>
+File: ligonly_allharvests_PCA12.pdf Graphic file (type pdf)
+
+<use ligonly_allharvests_PCA12.pdf>
+<ligonly_allharvests_PCA13.pdf, id=28, 505.89pt x 505.89pt>
+File: ligonly_allharvests_PCA13.pdf Graphic file (type pdf)
+
+<use ligonly_allharvests_PCA13.pdf>
+
+LaTeX Warning: Float too large for page by 62.39766pt on input line 236.
+
+<controls_h1.pdf, id=29, 1300.86pt x 722.7pt>
+File: controls_h1.pdf Graphic file (type pdf)
+ <use controls_h1.pdf>
+<controls_h2.pdf, id=30, 1300.86pt x 722.7pt>
+File: controls_h2.pdf Graphic file (type pdf)
+ <use controls_h2.pdf>
+<doc_barplots.pdf, id=31, 650.43pt x 867.24pt>
+File: doc_barplots.pdf Graphic file (type pdf)
+ <use doc_barplots.pdf>
+<plfa.pdf, id=32, 433.62pt x 505.89pt>
+File: plfa.pdf Graphic file (type pdf)
+ <use plfa.pdf>
+
+LaTeX Warning: Float too large for page by 346.04376pt on input line 437.
+
+[3] [4 <./massloss_n_lit.pdf> <./resp_glcdepoly_h2.pdf> <./resp_glcdepoly_h3.pd
+f>] [5 <./carb_differences_h3h0.pdf> <./lig_differences_h3h0.pdf> <./enzymerati
+o.pdf>] [6 <./timeseries_lci.pdf>] [7] [8
+
+
+ <./timeseries_orig.pdf>] [9 <./allpeaks_allharvests_PCA12.pdf> <./allpeaks_all
+harvests_PCA34.pdf>] [10 <./pca12_carbos.pdf> <./pca13_carbos.pdf>] [11 <./ligo
+nly_allharvests_PCA12.pdf> <./ligonly_allharvests_PCA13.pdf>] [12 <./controls_h
+1.pdf> <./controls_h2.pdf>] [13 <./doc_barplots.pdf>] [14 <./plfa.pdf>]
+
+Package natbib Warning: There were undefined citations.
+
+(./dippaper_biogeosciences.aux) ) 
+Here is how much of TeX's memory you used:
+ 2802 strings out of 495021
+ 35822 string characters out of 1181035
+ 118741 words of memory out of 3000000
+ 5934 multiletter control sequences out of 15000+50000
+ 22782 words of font info for 53 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 33i,11n,34p,781b,334s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base
+/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
+ts/cm/cmsy9.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></us
+r/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texliv
+e/fonts/type1/urw/times/utmri8a.pfb>
+Output written on dippaper_biogeosciences.pdf (14 pages, 524110 bytes).
+PDF statistics:
+ 184 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+

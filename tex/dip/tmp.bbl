@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Steinbeiss et~al.(2006)Steinbeiss, Schmidt, Heide and
+  Gleixner}]{Steinbeiss2006}
+\bibinfo{author}{Steinbeiss, S.}, \bibinfo{author}{Schmidt, C.M.},
+  \bibinfo{author}{Heide, K.}, \bibinfo{author}{Gleixner, G.},
+  \bibinfo{year}{2006}.
+\newblock \bibinfo{title}{{$\delta$13C values of pyrolysis products from
+  cellulose and lignin represent the isotope content of their precursors}}.
+\newblock \bibinfo{journal}{Journal of Analytical and Applied Pyrolysis}
+  \bibinfo{volume}{75}, \bibinfo{pages}{19--26}.
+
+\end{thebibliography}

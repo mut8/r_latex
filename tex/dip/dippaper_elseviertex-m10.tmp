@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE math:math PUBLIC "-//W3C//DTD MathML 2.0//EN" "math.dtd"> 
+ <?xtpipes file="oo-math.4xt" ?> 
+<!-- dippaper_elseviertex-m10 by TeX4ht from dippaper_elseviertex.tex line 41 2009-06-11-09:32 
+(http://www.cse.ohio-state.edu/~gurari/TeX4ht/) --> 
+ <math:math 
+ xmlns:math="http://www.w3.org/1998/Math/MathML" 
+xmlns:xlink="http://www.w3.org/1999/xlink"  
+>        <math:mi 
+>R</math:mi><math:mi 
+>f</math:mi> <math:mo 
+ >=</math:mo> <math:mi 
+>m</math:mi><math:mi 
+>e</math:mi><math:mi 
+>d</math:mi><math:mi 
+>i</math:mi><math:mi 
+>a</math:mi><math:mi 
+>n</math:mi><math:mrow ><math:mo 
+ >(</math:mo><math:mrow>               <math:mfrac><math:mrow 
+><math:mi 
+>T</math:mi><math:mi 
+>I</math:mi><math:mi 
+>C</math:mi><math:mi 
+>p</math:mi><math:mi 
+>e</math:mi><math:mi 
+>a</math:mi><math:mi 
+>k</math:mi><math:mi 
+>a</math:mi><math:mi 
+>r</math:mi><math:mi 
+>e</math:mi><math:mi 
+>a</math:mi></math:mrow>
+<math:mrow 
+><math:mi 
+>s</math:mi><math:mi 
+>p</math:mi><math:mi 
+>e</math:mi><math:mi 
+>c</math:mi><math:mi 
+>i</math:mi><math:mi 
+>f</math:mi><math:mi 
+>i</math:mi><math:mi 
+>c</math:mi><math:mi 
+>M</math:mi><math:mi 
+>S</math:mi><math:mi 
+>f</math:mi><math:mi 
+>r</math:mi><math:mi 
+>a</math:mi><math:mi 
+>g</math:mi><math:mi 
+>m</math:mi><math:mi 
+>e</math:mi><math:mi 
+>n</math:mi><math:mi 
+>t</math:mi><math:mi 
+>p</math:mi><math:mi 
+>e</math:mi><math:mi 
+>a</math:mi><math:mi 
+>k</math:mi><math:mi 
+>a</math:mi><math:mi 
+>r</math:mi><math:mi 
+>e</math:mi><math:mi 
+>a</math:mi></math:mrow></math:mfrac></math:mrow><math:mo 
+ >)</math:mo></math:mrow></math:math>

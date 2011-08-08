@@ -1,0 +1,102 @@
+htfcss: tcxb font-weight:bold;
+htfcss: tcxbi font-style:italic; font-weight:bold;
+htfcss: tcxbsl font-style:italic; font-weight:bold;
+htfcss: tcxbss font-weight:bold;
+htfcss: tcxbsssl font-style:italic; font-weight:bold;
+htfcss: tcxbtt font-weight:bold; font-family: monospace;
+htfcss: tcxbttsl font-style:italic; font-weight:bold; font-family:monospace;
+htfcss: txi font-style: italic;
+htfcss: txb  font-weight: bold;
+htfcss: txi font-style: italic;
+htfcss: cmmi font-style: italic;
+htfcss: cmmib font-style: italic; font-weight: bold;
+File: dippaper_elseviertex.4oo
+File: dippaper_elseviertex.tmp
+File: dippaper_elseviertex-settings.4os
+File: dippaper_elseviertex-styles.4oy
+File: dippaper_elseviertex-manifest.4of
+File: dippaper_elseviertex-meta.4ot
+File: dippaper_elseviertex-m2.4om
+File: dippaper_elseviertex-m3.4om
+File: dippaper_elseviertex-m4.4om
+File: dippaper_elseviertex-m5.4om
+File: dippaper_elseviertex-m6.4om
+File: dippaper_elseviertex-m7.4om
+File: dippaper_elseviertex-m8.4om
+File: dippaper_elseviertex-m9.4om
+File: dippaper_elseviertex-m10.4om
+File: dippaper_elseviertex-m11.4om
+File: dippaper_elseviertex-m12.4om
+File: dippaper_elseviertex-m13.4om
+File: dippaper_elseviertex-m14.4om
+File: dippaper_elseviertex-m15.4om
+File: dippaper_elseviertex-m16.4om
+File: dippaper_elseviertex-m17.4om
+File: dippaper_elseviertex-m18.4om
+File: dippaper_elseviertex-m19.4om
+File: dippaper_elseviertex0x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex1x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex2x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex3x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex4x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex5x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex6x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex7x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex8x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex9x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex10x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex11x.png.4og
+File: dippaper_elseviertex1.tmp
+File: dippaper_elseviertex.4od
+File: dippaper_elseviertex.odt
+--- needs --- dippaper_elseviertex.idv[1] ==> dippaper_elseviertex0x.png ---
+--- needs --- dippaper_elseviertex.idv[2] ==> dippaper_elseviertex1x.png ---
+--- needs --- dippaper_elseviertex.idv[3] ==> dippaper_elseviertex2x.png ---
+--- needs --- dippaper_elseviertex.idv[4] ==> dippaper_elseviertex3x.png ---
+--- needs --- dippaper_elseviertex.idv[5] ==> dippaper_elseviertex4x.png ---
+--- needs --- dippaper_elseviertex.idv[6] ==> dippaper_elseviertex5x.png ---
+--- needs --- dippaper_elseviertex.idv[7] ==> dippaper_elseviertex6x.png ---
+--- needs --- dippaper_elseviertex.idv[8] ==> dippaper_elseviertex7x.png ---
+--- needs --- dippaper_elseviertex.idv[9] ==> dippaper_elseviertex8x.png ---
+--- needs --- dippaper_elseviertex.idv[10] ==> dippaper_elseviertex9x.png ---
+--- needs --- dippaper_elseviertex.idv[11] ==> dippaper_elseviertex10x.png ---
+--- needs --- dippaper_elseviertex.idv[12] ==> dippaper_elseviertex11x.png ---
+--- characters ---
+Font("txb","","10","100")
+Font("txbsy","","10","100")
+Font("txbsy","","10","70")
+Font("txbsy","","10","50")
+Font("msam","10","10","100")
+Font("msam","7","7","100")
+Font("msam","5","5","100")
+Font("msbm","10","10","100")
+Font("msbm","7","7","100")
+Font("msbm","5","5","100")
+Font("txr","","10","100")
+Font("txr","","10","70")
+Font("txr","","10","50")
+Font("txmi","","10","100")
+Font("txmi","","10","70")
+Font("txmi","","10","50")
+Font("txsy","","10","100")
+Font("txsy","","10","70")
+Font("txsy","","10","50")
+Font("txex","","10","100")
+Font("txex","","10","70")
+Font("txex","","10","50")
+Font("txi","","10","100")
+Font("txr","","10","144")
+Font("txr","","10","80")
+Font("txi","","10","80")
+Font("tcxr","","10","100")

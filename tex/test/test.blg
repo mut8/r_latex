@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: test.aux
+The style file: copernicus.bst
+Database file #1: ref.bib.bib
+Warning--to sort, need author or key in test1
+Warning--to sort, need author or key in test2
+Warning--empty author in test1
+Warning--empty title in test1
+Warning--empty journal in test1
+Warning--empty author in test2
+Warning--empty title in test2
+Warning--empty journal in test2
+You've used 5 entries,
+            2811 wiz_defined-function locations,
+            1023 strings with 9248 characters,
+and the built_in function-call counts, 3187 in all, are:
+= -- 362
+> -- 50
+< -- 2
++ -- 35
+- -- 15
+* -- 194
+:= -- 293
+add.period$ -- 5
+call.type$ -- 5
+change.case$ -- 15
+chr.to.int$ -- 4
+cite$ -- 27
+duplicate$ -- 347
+empty$ -- 211
+format.name$ -- 20
+if$ -- 631
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 36
+newline$ -- 24
+num.names$ -- 12
+pop$ -- 131
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 211
+stack$ -- 0
+substring$ -- 142
+swap$ -- 265
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 45
+warning$ -- 8
+while$ -- 18
+width$ -- 0
+write$ -- 60
+(There were 8 warnings)

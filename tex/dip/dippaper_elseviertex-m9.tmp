@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE math:math PUBLIC "-//W3C//DTD MathML 2.0//EN" "math.dtd"> 
+ <?xtpipes file="oo-math.4xt" ?> 
+<!-- dippaper_elseviertex-m9 by TeX4ht from dippaper_elseviertex.tex line 27 2009-06-11-09:32 
+(http://www.cse.ohio-state.edu/~gurari/TeX4ht/) --> 
+
+<math:math 
+ xmlns:math="http://www.w3.org/1998/Math/MathML" 
+xmlns:xlink="http://www.w3.org/1999/xlink"  
+><math:mi 
+>&#x03B2;</math:mi></math:math>
+
+  

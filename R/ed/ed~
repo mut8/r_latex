@@ -1,0 +1,61 @@
+library(vegan)
+library(MASS)
+my.data1
+type<-factor(c(rep("KL",3), rep("OS",3), rep("SW",3)))
+
+tuktuk<-matrix(ncol=4, nrow=41)
+for (i in 1:41)
+{
+anova<-anova(lm(my.data1[,i] ~ type))
+aov<-aov(lm(my.data1[,i] ~ type))
+tuk<-TukeyHSD(aov)
+tuktuk[i,1:3]<-t(as.numeric(tuk$type[,4]))
+tuktuk[i,4]<-as.numeric(anova$"Pr(>F)"[1])
+}	
+write.csv(tuktuk, "/home/lluc/Desktop/tuktuk.csv")
+
+pdf("/home/lluc/Documents/R/ed/pca.pdf")
+ord1<-rda(my.data1)
+xvar<-eigenvals(ord1)/sum(eigenvals(ord1))
+
+
+      plot(ord1, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+points(ord1, pch=c(1,1,1,2,2,2,3,3,3), display="sites")
+text(ord1, display="species", labels=my.data2[,4])
+legend("topright", c("KL", "OS", "SW"),pch=1:3)
+legend("bottomright", c("l .. lignin", "ph .. phenolic", "c .. carbohydrate", "p .. protein", "n .. non-specific", "u .. unknown"))
+dev.off()
+
+
+pdf("/home/lluc/Documents/R/ed/lda.pdf")
+
+fit<-lda(my.data1, type)
+plot(fit)
+text(fit$scaling[,1],fit$scaling[,2], labels=my.data2[,1], cex=.3)
+abline(h=0, col="grey")
+abline(v=0, col="grey")
+
+dev.off()
+
+ord2<-metaMDS(my.data1)
+
+
+pdf("/home/lluc/Documents/R/ed/mds.pdf")
+
+      plot(ord2, type="n", tck=.01, 
+      #xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      #ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+points(ord2, pch=c(1,1,1,2,2,2,3,3,3), display="sites", cex=3)
+text(ord2, display="species", labels=my.data2[,4], cex=.7)
+legend("topright", c("KL", "OS", "SW"),pch=1:3)
+legend("bottomright", c("l .. lignin", "ph .. phenolic", "c .. carbohydrate", "p .. protein", "n .. non-specific", "u .. unknown"))
+abline(h=0, col="grey")
+abline(v=0, col="grey")
+dev.off()
+b
+
+tuk

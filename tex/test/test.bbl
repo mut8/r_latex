@@ -1,0 +1,34 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{{\tt #1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{tes({\natexlab{a}})}]{test1}
+{\natexlab{a}}.
+
+\bibitem[{tes({\natexlab{b}})}]{test2}
+{\natexlab{b}}.
+
+\bibitem[{Luo et~al.(2006)Luo, Hui, and Zhang}]{Luo2006}
+Luo, Y., Hui, D., and Zhang, D.: {Elevated Co 2 Stimulates Net Accumulations of
+  Carbon and Nitrogen in Land Ecosystems: a Meta-Analysis}, Ecology, 87,
+  53--63, \doi{10.1890/04-1724},
+  \urlprefix\url{http://www.esajournals.org/doi/abs/10.1890/04-1724}, 2006.
+
+\bibitem[{Norby(1998)}]{Norby1998}
+Norby, R.: {A question of litter quality}, Nature, 396, 12--13,
+  \urlprefix\url{http://dialnet.unirioja.es/servlet/articulo?codigo=448517},
+  1998.
+
+\bibitem[{Prescott(2010)}]{Prescott2010}
+Prescott, C.~E.: {Litter decomposition: what controls it and how can we alter
+  it to sequester more carbon in forest soils?}, Biogeochemistry, 101,
+  133--149, \doi{10.1007/s10533-010-9439-0},
+  \urlprefix\url{http://www.springerlink.com/index/10.1007/s10533-010-9439-0},
+  2010.
+
+\end{thebibliography}

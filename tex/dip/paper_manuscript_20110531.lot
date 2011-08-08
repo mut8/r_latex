@@ -1,0 +1,19 @@
+\begin{planotable}
+{lrrrrrr}
+\tablewidth{36pc}
+\tablecaption{\label{sample.table}Table caption text.
+}
+\tablehead{ & \multicolumn{4}{c}{140-pt Filter} &
+\multicolumn{2}{c}{180-pt Filter}\\
+ & \multicolumn{2}{c}{TOPEX Mean} & \multicolumn{2}{c}{Own Mean}
+& \multicolumn{2}{c}{TOPEX Mean}  \\
+\colhead{Instrumental Records} & \colhead{$-\mu_1$} &
+\colhead{w/ $\mu_1$} & \colhead{$-\mu_1$} & \colhead{w/ $\mu_1$}
+& \colhead{$-\mu_1$} & \colhead{w/ $\mu_1$} }
+\startdata
+TOPEX vs Jason (overlap) & 3 & 4 & & & 2 & 3 \nl
+TOPEX (full) vs Jason &  15  & 28 & 13 & 12 & 16 & 27 \nl
+TOPEX (full) vs TOPEX (overlap) &  6  & 17 & & & 10 & 18 \nl
+TOPEX (full) vs Poseidon &  12  & 15 & 9 & 8 & 9 & 7
+
+\end{planotable}

@@ -1,0 +1,249 @@
+setwd("/home/lluc/Documents/R/dip/allpeaks_20110126")
+
+source("/home/lluc/Documents/R/functions.R")
+
+peaks<-read.csv("heads.csv", sep=";", header=TRUE)
+sim<-read.csv("sim.csv", sep=";", header=TRUE)
+tic<-read.csv("tic.csv", sep=";", header=TRUE)
+
+summary(peaks)
+head(peaks)
+peaknr<-length(rownames(peaks))
+peaknr
+
+head(peaks)
+
+#sim vs. tic graphs
+
+pdf("simvstic.pdf")
+for (i in 1:peaknr)
+{
+ti<-subset(tic[,i], is.na(tic[,i])==FALSE & is.na(sim[,i])==FALSE)
+si<-subset(sim[,i], is.na(tic[,i])==FALSE & is.na(sim[,i])==FALSE)
+
+if(max(ti) > 0)
+{
+
+plot(ti ~ si, pch="+", xlab="peak area(sim)", ylab=paste("peak area(tic)", peaks[i,7])) 
+title(paste(peaks[i,4], "(", peaks[i,5], "; RT = ", peaks[i,1],")"))
+mtext(paste("R² =", formatC(cor(ti, si), digits=5)))
+abline(lm(tic[,i] ~ sim[,i]))
+}
+}
+dev.off()
+
+cTIC<-sim
+
+for (i in 1:peaknr)
+{
+cTIC[,i]<-c(rep(0,74))
+
+ti<-subset(tic[,i], is.na(tic[,i])==FALSE & is.na(sim[,i])==FALSE)
+si<-subset(sim[,i], is.na(tic[,i])==FALSE & is.na(sim[,i])==FALSE)
+orig<-data.frame(si,ti)
+mod<-lm(ti ~ si, data=orig)
+
+ti<-tic[,i]
+si<-sim[,i]
+new<-data.frame(si,ti)
+if(peaks[i,6]>0) cTIC[,i]<-sim[,i]/peaks[i,6]
+if(peaks[i,6]==0) cTIC[,i]<-predict.lm(mod, newdata=new, type="response")
+}
+
+
+predict.lm(mod, si=sim[1], type=predict)
+?predict.lm
+
+pyr<-read.csv("../calculated_tic_sums.csv", sep=";")
+#names<-read.csv("peaknames.csv", header=FALSE)
+names<-colnames(cTIC)
+kmax<-length(colnames(cTIC))
+imax<-4
+
+jmax<-4
+
+pdf("cTIC_time_series_CI.pdf")
+for (k in 1:kmax)
+timeseries_CI(cTIC[,k], pyr[,2], pyr[,1], names[k], "litter incubation (month)", "relative calculated TIC area (permille)")
+  dev.off()
+
+
+pdf("cTIC_time_series.pdf")
+for (k in 1:kmax)
+timeseries(cTIC[,k], pyr[,2], pyr[,1], names[k], "litter incubation (month)", "relative calculated TIC area (permille, 95% CI)")
+dev.off()
+warnings()
+
+#sink("mds.anovas")
+#mds1
+#mod<-lm(scores[,1] ~ factor(pyr[,1])*factor(pyr[,2]))
+#ano<-aov(mod)
+#mod
+#summary(mod)
+#summary(ano)
+#TukeyHSD (ano)
+#mds2
+#mod<-lm(scores[,2] ~ factor(pyr[,1])*factor(pyr[,2]))
+#ano<-aov(mod)
+#mod
+#summary(mod)
+#summary(ano)
+#TukeyHSD (ano)
+
+#sink()
+
+pca.ligonly<-rda(rsim[,ligs]/rowSums(rsim[,ligs]))
+h0.pca.ligonly<-rda(rsim[harvest==0,ligs]/rowSums(rsim[harvest==0,ligs]))
+
+
+ligscores<-scores(princomp(cTIC[,95:121]))
+
+pdf("lig_primcomp.pdf")
+timeseries_nolimit(ligscores[,1], pyr[,2], pyr[,1], "PC 1 (lignin)", "time (month)", "primcomp1 (lignin peaks)" )
+timeseries_nolimit(ligscores[,2], pyr[,2], pyr[,1], "PC 2 (lignin)", "time (month)", "primcomp2 (lignin peaks)" )
+biplot(princomp(cTIC[,95:121]))
+plot(princomp(cTIC[,95:121]))
+dev.off()
+
+pca.n<-princomp(cTIC[,122:130])
+nscores<-scores(princomp(cTIC[,122:130]))
+
+pdf("n_primcomp.pdf")
+timeseries_nolimit(nscores[,1], pyr[,2], pyr[,1], "PC 1 (N compounds)", "time (month)", "primcomp1 (nitrogen peaks)" )
+timeseries_nolimit(nscores[,2], pyr[,2], pyr[,1], "PC 2 (N compounds)", "time (month)", "primcomp2 (nitrogen peaks)" )
+biplot(princomp(cTIC[,122:130]))
+plot(princomp(cTIC[,122:130]))
+dev.off()
+
+
+biplot(pca.lignin, type="n", tck=.01)
+points(pca.lignin, display="sites", pch="+", col=1, font=2, cex=0.6)
+text(pca.lignin, display="species", col="blue", labels=colnames(cTIC[95:121]), font=2,cex=0.6)
+#text(pca.lignin, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+#legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("PCA (Lignin Markers)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+
+plot(pca.lignin, type="n", tck=.01)
+for (i in 1:imax)
+for (j in 1:jmax)
+points(pca.lignin, display="sites", select=harvest==harlev[j] & type==typelev[i], col=i, pch=20+j, cex=0.6)
+points(pca.lignin, display="species", pch="+", col=1, font=2, cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+title("PCA (Lignin Markers)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+plot(pca.lignin, type="n", tck=.01)
+for (i in 1:imax)
+for (j in 1:jmax)
+points(pca.lignin, display="sites", select=harvest==harlev[j] & type==typelev[i], col=i, pch=20+j, cex=0.6)
+text(pca.lignin, display="species", col="black", labels=colnames(cTIC[95:121]), font=2,cex=0.6)
+#text(lig.mds, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+#legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("MDS (Lignin Markers only)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+timeseries_nolimit(scores[,1], pyr[,2], pyr[,1], "MDS - Lignin Peaks only", "litter incubation (month)", "MDS1")
+abline(h=0, col = "gray", lty = "dotted")
+
+timeseries_nolimit(scores[,2], pyr[,2], pyr[,1], "MDS - Lignin Peaks only	", "litter incubation (month)", "MDS2")
+abline(h=0, col = "gray", lty = "dotted")
+
+dev.off()
+
+  
+metaMDS(cTIC)
+
+pdf("ligonly_mds.pdf")
+plot(lig.mds, type="n", tck=.01)
+points(lig.mds, display="sites", pch="+", col=1, font=2, cex=0.6)
+text(lig.mds, display="species",  select=names[,3]=="S", col="blue", labels=names[,1], font=2,cex=0.6)
+text(lig.mds, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("MDS (Lignin Markers only)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+
+plot(lig.mds, type="n", tck=.01)
+for (i in 1:imax)
+for (j in 1:jmax)
+points(lig.mds, display="sites", select=harvest==harlev[j] & type==typelev[i], col=i, pch=20+j, cex=0.6)
+points(lig.mds, display="species", pch="+", col=1, font=2, cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+title("MDS (Lignin Markers only)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+plot(lig.mds, type="n", tck=.01)
+for (i in 1:imax)
+for (j in 1:jmax)
+points(lig.mds, display="sites", select=harvest==harlev[j] & type==typelev[i], col=i, pch=20+j, cex=0.6)
+text(lig.mds, display="species", col="black", labels=names[,1], font=2,cex=0.6)
+#text(lig.mds, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("MDS (Lignin Markers only)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+timeseries_nolimit(scores[,1], pyr[,2], pyr[,1], "MDS - Lignin Peaks only", "litter incubation (month)", "MDS1")
+abline(h=0, col = "gray", lty = "dotted")
+
+timeseries_nolimit(scores[,2], pyr[,2], pyr[,1], "MDS - Lignin Peaks only	", "litter incubation (month)", "MDS2")
+abline(h=0, col = "gray", lty = "dotted")
+
+dev.off()
+
+lig_wo<-lig
+lig_wo$G3.1.OH<- NULL
+lig_wo
+
+lig_wo.mds<-metaMDS(lig_wo)
+scores_wo <- scores(lig_wo.mds)
+names_wo<-read.csv("peaknames_wo.csv", header=FALSE)
+
+
+
+pdf("ligonly_mds_wo.pdf")
+plot(lig_wo.mds, type="n", tck=.01)
+points(lig_wo.mds, display="sites", pch="+", col=1, font=2, cex=0.6)
+text(lig_wo.mds, display="species",  select=names_wo[,3]=="S", col="blue", labels=names_wo[,1], font=2,cex=0.6)
+text(lig_wo.mds, display="species",  select=names_wo[,3]=="G", col="red",labels=names_wo[,1], font=2,cex=0.6)
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("MDS (Lignin Markers only - w/o G3:1-OH)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+plot(lig_wo.mds, type="n", tck=.01)
+for (i in 1:imax)
+for (j in 1:jmax)
+points(lig_wo.mds, display="sites", select=harvest==harlev[j] & type==typelev[i], col=i, pch=20+j, cex=0.6)
+points(lig_wo.mds, display="species", pch="+", col=1, font=2, cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+title("MDS (Lignin Markers only - w/o G3:1-OH)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+plot(lig_wo.mds, type="n", tck=.01)
+for (i in 1:imax)
+for (j in 1:jmax)
+points(lig_wo.mds, display="sites", select=harvest==harlev[j] & type==typelev[i], col=i, pch=20+j, cex=0.6)
+text(lig_wo.mds, display="species", col="black", labels=names_wo[,1], font=2,cex=0.6)
+#text(lig.mds, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("MDS (Lignin Markers only - w/o G3:1-OH)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+timeseries_nolimit(scores_wo[,1], pyr[,2], pyr[,1], "MDS - Lignin Peaks only (w/o G3:1-OH)", "litter incubation (month)", "MDS1")
+abline(h=0, col = "gray", lty = "dotted")
+timeseries_nolimit(scores_wo[,2], pyr[,2], pyr[,1], "MDS - Lignin Peaks only (w/o G3:1-OH)", "litter incubation (month)", "MDS2")
+abline(h=0, col = "gray", lty = "dotted")
+dev.off()

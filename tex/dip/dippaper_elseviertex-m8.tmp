@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE math:math PUBLIC "-//W3C//DTD MathML 2.0//EN" "math.dtd"> 
+ <?xtpipes file="oo-math.4xt" ?> 
+<!-- dippaper_elseviertex-m8 by TeX4ht from dippaper_elseviertex.tex line 19 2009-06-11-09:32 
+(http://www.cse.ohio-state.edu/~gurari/TeX4ht/) --> 
+ <math:math 
+ xmlns:math="http://www.w3.org/1998/Math/MathML" 
+xmlns:xlink="http://www.w3.org/1999/xlink"  
+>        <math:mi 
+>R</math:mi><math:mi 
+>e</math:mi><math:mi 
+>s</math:mi><math:msub><math:mrow 
+><math:mi 
+>p</math:mi></math:mrow><math:mrow 
+><math:mi 
+>a</math:mi><math:mi 
+>c</math:mi><math:mi 
+>c</math:mi></math:mrow></math:msub 
+><math:mrow ><math:mo 
+ >(</math:mo><math:mrow><math:msub><math:mrow 
+><math:mi 
+>t</math:mi></math:mrow><math:mrow 
+><math:mi 
+>n</math:mi></math:mrow></math:msub 
+></math:mrow><math:mo 
+ >)</math:mo></math:mrow> <math:mo 
+ >=</math:mo><math:msubsup><math:mrow 
+><math:mo 
+ > &#x2211;</math:mo>
+   <!--nolimits--></math:mrow><math:mrow 
+><math:mi 
+>i</math:mi><math:mo 
+ >=</math:mo><math:mn>0</math:mn></math:mrow><math:mrow 
+><math:mi 
+>n</math:mi></math:mrow></math:msubsup 
+><math:mrow ><math:mo 
+ >(</math:mo><math:mrow><math:mi 
+>R</math:mi><math:mi 
+>e</math:mi><math:mi 
+>s</math:mi><math:mi 
+>p</math:mi><math:mrow ><math:mo 
+ >(</math:mo><math:mrow><math:msub><math:mrow 
+><math:mi 
+>t</math:mi></math:mrow><math:mrow 
+>
+<math:mi 
+>i</math:mi></math:mrow></math:msub 
+></math:mrow><math:mo 
+ >)</math:mo></math:mrow> <math:mo 
+ >+</math:mo> <math:mi 
+>R</math:mi><math:mi 
+>e</math:mi><math:mi 
+>s</math:mi><math:mi 
+>p</math:mi><math:mrow ><math:mo 
+ >(</math:mo><math:mrow><math:msub><math:mrow 
+><math:mi 
+>t</math:mi></math:mrow><math:mrow 
+><math:mi 
+>i</math:mi><math:mo 
+ >+</math:mo><math:mn>1</math:mn></math:mrow></math:msub 
+></math:mrow><math:mo 
+ >)</math:mo></math:mrow></math:mrow><math:mo 
+ >)</math:mo></math:mrow> <math:mo 
+ >&#x2217;</math:mo> <math:mrow ><math:mo 
+ >(</math:mo><math:mrow><math:msub><math:mrow 
+><math:mi 
+>t</math:mi></math:mrow><math:mrow 
+><math:mi 
+>i</math:mi><math:mo 
+ >+</math:mo><math:mn>1</math:mn></math:mrow></math:msub 
+> <math:mo 
+ >&#x2212;</math:mo> <math:msub><math:mrow 
+><math:mi 
+>t</math:mi></math:mrow><math:mrow 
+><math:mi 
+>i</math:mi></math:mrow></math:msub 
+></math:mrow><math:mo 
+ >)</math:mo></math:mrow><math:mo 
+ >&#x2215;</math:mo><math:mn>2</math:mn></math:math>

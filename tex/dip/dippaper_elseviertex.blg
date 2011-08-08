@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: dippaper_elseviertex.aux
+The style file: model2-names.bst
+Database file #1: library.bib
+Repeated entry---line 2772 of file library.bib
+ : @article{Vancampenhout2010
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2829 of file library.bib
+ : @article{Schellekens2009
+ :                         ,
+I'm skipping whatever remains of this entry
+You've used 34 entries,
+            2761 wiz_defined-function locations,
+            837 strings with 11967 characters,
+and the built_in function-call counts, 22918 in all, are:
+= -- 1810
+> -- 1060
+< -- 13
++ -- 406
+- -- 372
+* -- 2704
+:= -- 3525
+add.period$ -- 101
+call.type$ -- 34
+change.case$ -- 293
+chr.to.int$ -- 34
+cite$ -- 34
+duplicate$ -- 1434
+empty$ -- 1453
+format.name$ -- 476
+if$ -- 4122
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 320
+newline$ -- 179
+num.names$ -- 136
+pop$ -- 334
+preamble$ -- 1
+purify$ -- 260
+quote$ -- 0
+skip$ -- 452
+stack$ -- 0
+substring$ -- 1154
+swap$ -- 1266
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 303
+warning$ -- 0
+while$ -- 162
+width$ -- 0
+write$ -- 478
+(There were 2 error messages)

@@ -1,0 +1,21 @@
+pdf("output/timeseries_lci.pdf", width=21, height=10)
+
+par(mfrow=c(2,3))
+
+timeseries(orig_cTIC$L/(orig_cTIC$L+orig_cTIC$C), days, type, nam="Lignin/(Lignin+Carbohydrates)", xlab="litter incubation (days)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+timeseries(orig_cTIC$L/(orig_cTIC$L+orig_cTIC$C), days, type, nam="Lignin/(Lignin+Carbohydrates)", masslossSE=masslossSE, massloss=massloss, normalize=1, xlab="accumulated respiration (g CO2-C g-1 litter-C, SE)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+abline(h=100, col="grey")
+timeseries(orig_cTIC$L/(orig_cTIC$L+orig_cTIC$C), days, type, nam="Lignin/(Lignin+Carbohydrates)", masslossSE=masslossSE, massloss=massloss, normalize=2, xlab="accumulated respiration (g CO2-C g-1 litter-C, SE)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+abline(h=100, col="grey")
+
+
+
+timeseries(orig_cTIC$L/orig_cTIC$N, days, type, nam="Lignin/Nitrogen compounds", xlab="litter incubation (days)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+timeseries(orig_cTIC$L/orig_cTIC$N, days, type, nam="Lignin/Nitrogen compounds", masslossSE=masslossSE, massloss=massloss, normalize=1, xlab="accumulated respiration (g CO2-C g-1 litter-C, SE)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+abline(h=100, col="grey")
+timeseries(orig_cTIC$L/orig_cTIC$N, days, type, nam="Lignin/Nitrogen compounds", masslossSE=masslossSE, massloss=massloss, normalize=2, xlab="accumulated respiration (g CO2-C g-1 litter-C, SE)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+abline(h=100, col="grey")
+
+
+
+dev.off()

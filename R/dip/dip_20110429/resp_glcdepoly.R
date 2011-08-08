@@ -1,0 +1,69 @@
+cond<-is.na(alldata$Glucan.Gross.Depolymerisation)==F
+cond1<-is.na(alldata$Respiration)==F
+cond2<-cond&cond1
+cond3<-alldata$Harvest!="IV"&alldata$Peroxydase!=0
+
+pdf("resp_glcdepoly_h23.pdf", height=7, width=14)
+
+par(mfrow=c(1,2), mar=c(5.1,6.1,4.1,2.1))
+par()
+
+height<-tapply(alldata$Respiration[cond2 & alldata$Harvest=="II"]/alldata$Glucan.Gross.Depolymerisation[cond2 & alldata$Harvest=="II"], alldata$Litter[cond2 & alldata$Harvest=="II"], mean)
+error<-tapply(alldata$Respiration[cond2 & alldata$Harvest=="II"]/alldata$Glucan.Gross.Depolymerisation[cond2 & alldata$Harvest=="II"], alldata$Litter[cond2 & alldata$Harvest=="II"], function(x) CI(x, 0.05))
+
+barplot2(height, ylim=c(0, max(height+error)*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height, names.arg=typlev, 
+main=" 97 days", ylab="Respiration/Glucan Depolymerization \n µg CO2-C g-1 d.w. d-1 / µg C g-1 d.w. d-1 , CI(95%)", col=colscale, tck=0.01)
+aov<-(lm(alldata$Respiration[cond2 & alldata$Harvest=="II"]/alldata$Glucan.Gross.Depolymerisation[cond2 & alldata$Harvest=="II"] ~ alldata$Litter[cond2 & alldata$Harvest=="II"]))
+hsd<-HSD.test(aov, "alldata$Litter")
+gr<-hsd$M[order(hsd$trt)]
+gr
+text((0:3+.6)*1.2, max(height+error)*1.15, gr)
+
+height<-tapply(alldata$Respiration[cond2 & alldata$Harvest=="III"]/alldata$Glucan.Gross.Depolymerisation[cond2 & alldata$Harvest=="III"], alldata$Litter[cond2 & alldata$Harvest=="III"], mean)
+error<-tapply(alldata$Respiration[cond2 & alldata$Harvest=="III"]/alldata$Glucan.Gross.Depolymerisation[cond2 & alldata$Harvest=="III"], alldata$Litter[cond2 & alldata$Harvest=="III"], function(x) CI(x, 0.05))
+
+barplot2(height, ylim=c(0, max(height+error)*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height, names.arg=typlev, 
+main="181 days", ylab="", col=colscale, tck=0.01)
+aov<-(lm(alldata$Respiration[cond2 & alldata$Harvest=="III"]/alldata$Glucan.Gross.Depolymerisation[cond2 & alldata$Harvest=="III"] ~ alldata$Litter[cond2 & alldata$Harvest=="III"]))
+hsd<-HSD.test(aov, "alldata$Litter")
+
+gr<-hsd$M[order(hsd$trt)]
+text((0:3+.6)*1.2, max(height+error)*1.15, gr)
+
+dev.off()
+
+cond<-is.na(alldata$Glucose.Gross.Consumption)==F
+cond1<-is.na(alldata$Respiration)==F
+cond2<-cond&cond1
+cond3<-alldata$Harvest!="IV"&alldata$Peroxydase!=0
+
+
+pdf("resp_glcimmo_h2.pdf")
+
+height<-tapply(alldata$Respiration[cond2 & alldata$Harvest=="II"]/alldata$Glucose.Gross.Consumption[cond2 & alldata$Harvest=="II"], alldata$Litter[cond2 & alldata$Harvest=="II"], mean)
+error<-tapply(alldata$Respiration[cond2 & alldata$Harvest=="II"]/alldata$Glucose.Gross.Consumption[cond2 & alldata$Harvest=="II"], alldata$Litter[cond2 & alldata$Harvest=="II"], function(x) CI(x, 0.05))
+
+barplot2(height, ylim=c(0, max(height+error)*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height, names.arg=typlev, 
+main="Respiration/Glucose Consumption (Harvest 2)", ylab="µg CO2-C g-1 d.w. d-1 / µg C g-1 d.w. d-1 , CI(95%)", col=colscale, tck=0.01)
+aov<-(lm(alldata$Respiration[cond2 & alldata$Harvest=="II"]/alldata$Glucose.Gross.Consumption[cond2 & alldata$Harvest=="II"] ~ alldata$Litter[cond2 & alldata$Harvest=="II"]))
+hsd<-HSD.test(aov, "alldata$Litter")
+gr<-hsd$M[order(hsd$trt)]
+gr
+text((0:3+.6)*1.2, max(height+error)*1.15, gr)
+
+dev.off()
+
+pdf("resp_glcimmo_h3.pdf")
+
+height<-tapply(alldata$Respiration[cond2 & alldata$Harvest=="III"]/alldata$Glucose.Gross.Consumption[cond2 & alldata$Harvest=="III"], alldata$Litter[cond2 & alldata$Harvest=="III"], mean)
+error<-tapply(alldata$Respiration[cond2 & alldata$Harvest=="III"]/alldata$Glucose.Gross.Consumption[cond2 & alldata$Harvest=="III"], alldata$Litter[cond2 & alldata$Harvest=="III"], function(x) CI(x, 0.05))
+
+barplot2(height, ylim=c(0, max(height+error)*1.2), plot.ci=TRUE, ci.u=height+error,ci.l=height, names.arg=typlev, 
+main="Respiration/Glucose Consumption (Harvest 3)", ylab="µg CO2-C g-1 d.w. d-1 / µg C g-1 d.w. d-1 , CI(95%)", col=colscale, tck=0.01)
+aov<-(lm(alldata$Respiration[cond2 & alldata$Harvest=="III"]/alldata$Glucose.Gross.Consumption[cond2 & alldata$Harvest=="III"] ~ alldata$Litter[cond2 & alldata$Harvest=="III"]))
+hsd<-HSD.test(aov, "alldata$Litter")
+gr<-hsd$M[order(hsd$trt)]
+gr
+text((0:3+.6)*1.2, max(height+error)*1.15, gr)
+
+dev.off()

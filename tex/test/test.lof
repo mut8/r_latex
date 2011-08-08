@@ -1,0 +1,8 @@
+\begin{figure}
+
+% uncomment this line if figure exists
+%\figbox*{}{}{\psfig{figure=figures/sample.ps,width=8cm}}
+\caption[]{Figure caption for first figure}
+\label{figure1.ps}
+
+\end{figure}

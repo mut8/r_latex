@@ -1,0 +1,99 @@
+\begin{thebibliography}{14}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{{\tt #1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{Adair et~al.(2008)Adair, Parton, {Del Grosso}, Silver, Harmon, Hall,
+  Burke, and Hart}]{Adair2008}
+Adair, E.~C., Parton, W.~J., {Del Grosso}, S.~J., Silver, W.~L., Harmon, M.~E.,
+  Hall, S.~a., Burke, I.~C., and Hart, S.~C.: {Simple three-pool model
+  accurately describes patterns of long-term litter decomposition in diverse
+  climates}, Global Change Biology, pp. 2636--2660,
+  \doi{10.1111/j.1365-2486.2008.01674.x},
+  \urlprefix\url{http://blackwell-synergy.com/doi/abs/10.1111/j.1365-2486.2008%
+.01674.x}, 2008.
+
+\bibitem[{Berg and Staaf(1980)}]{Berg1980}
+Berg, B. and Staaf, H.: {Decomposition rate and chemical changes of Scots pine
+  needle litter. II. Influence of chemical composition}, Ecological Bulletins,
+  pp. 373--390, \urlprefix\url{http://www.jstor.org/stable/20112825}, 1980.
+
+\bibitem[{{Berg, B. \& McClaugherty}(2003)}]{BergB.&McClaugherty2003}
+{Berg, B. \& McClaugherty}, C.: {Plant Litter. Decomposition, Humus Formation,
+  Carbon Sequestration.}, SPRINGER, Berlin, 2003.
+
+\bibitem[{Kalbitz et~al.(2006)Kalbitz, Kaiser, Bargholz, and
+  Dardenne}]{Kalbitz2006}
+Kalbitz, K., Kaiser, K., Bargholz, J., and Dardenne, P.: {Lignin degradation
+  controls the production of dissolved organic matter in decomposing foliar
+  litter}, European Journal of Soil Science, 57, 504--516,
+  \doi{10.1111/j.1365-2389.2006.00797.x},
+  \urlprefix\url{http://doi.wiley.com/10.1111/j.1365-2389.2006.00797.x}, 2006.
+
+\bibitem[{Klotzb\"{u}cher et~al.(2011)Klotzb\"{u}cher, Kaiser, Guggenberger,
+  Gatzek, and Kalbitz}]{Klotzbucher2011}
+Klotzb\"{u}cher, T., Kaiser, K., Guggenberger, G., Gatzek, C., and Kalbitz, K.:
+  {A new conceptual model for the fate of lignin in decomposing plant litter},
+  America, 92, 1052--1062, 2011.
+
+\bibitem[{Leitner et~al.(2011)Leitner, , and the Crew}]{Leitner2011}
+Leitner, S., , and the Crew: {Sonjas paper}, dummy, 2011.
+
+\bibitem[{Luo et~al.(2006)Luo, Hui, and Zhang}]{Luo2006}
+Luo, Y., Hui, D., and Zhang, D.: {Elevated Co 2 Stimulates Net Accumulations of
+  Carbon and Nitrogen in Land Ecosystems: a Meta-Analysis}, Ecology, 87,
+  53--63, \doi{10.1890/04-1724},
+  \urlprefix\url{http://www.esajournals.org/doi/abs/10.1890/04-1724}, 2006.
+
+\bibitem[{Moorhead and Sinsabaugh(2006)}]{Moorhead2006}
+Moorhead, D.~L. and Sinsabaugh, R.~L.: {A theoretical model of litter decay and
+  microbial interaction}, Ecological Monographs, 76, 151--174,
+  \urlprefix\url{http://www.esajournals.org/doi/pdf/10.1890/0012-9615(2006)076%
+[0151:ATMOLD]2.0.CO;2}, 2006.
+
+\bibitem[{Mooshammer et~al.(2011)Mooshammer, , and the Crew}]{Mooshammer2011}
+Mooshammer, M., , and the Crew: {Marias paper}, ecosystems, 2011.
+
+\bibitem[{Norby(1998)}]{Norby1998}
+Norby, R.: {A question of litter quality}, Nature, 396, 12--13,
+  \urlprefix\url{http://dialnet.unirioja.es/servlet/articulo?codigo=448517},
+  1998.
+
+\bibitem[{Prescott(2010)}]{Prescott2010}
+Prescott, C.~E.: {Litter decomposition: what controls it and how can we alter
+  it to sequester more carbon in forest soils?}, Biogeochemistry, 101,
+  133--149, \doi{10.1007/s10533-010-9439-0},
+  \urlprefix\url{http://www.springerlink.com/index/10.1007/s10533-010-9439-0},
+  2010.
+
+\bibitem[{Vancampenhout et~al.(2010)Vancampenhout, {De Vos}, Wouters, {Van
+  Calster}, Swennen, Buurman, and Deckers}]{Vancampenhout2010}
+Vancampenhout, K., {De Vos}, B., Wouters, K., {Van Calster}, H., Swennen, R.,
+  Buurman, P., and Deckers, J.: {Determinants of soil organic matter chemistry
+  in maritime temperate forest ecosystems}, Soil Biology and Biochemistry, 42,
+  220--233, \doi{10.1016/j.soilbio.2009.10.020},
+  \urlprefix\url{http://linkinghub.elsevier.com/retrieve/pii/S0038071709003976%
+}, 2010.
+
+\bibitem[{Vinciguerra et~al.(2007)Vinciguerra, Napoli, Bistoni, Petrucci, and
+  Sgherzi}]{Vinciguerra2007}
+Vinciguerra, V., Napoli, A., Bistoni, A., Petrucci, G., and Sgherzi, R.: {Wood
+  decay characterization of a naturally infected London plane-tree in urban
+  environment using Py-GC/MS}, Journal of Analytical and Applied Pyrolysis, 78,
+  228--231, \doi{10.1016/j.jaap.2006.06.003},
+  \urlprefix\url{http://linkinghub.elsevier.com/retrieve/pii/S0165237006000751%
+}, 2007.
+
+\bibitem[{Wanek et~al.(2011)Wanek, Mooshammer, and Blochl}]{wanek2011}
+Wanek, W., Mooshammer, M., and Blochl, A.: {Determination of gross rates of
+  amino acid production and immobilization in decomposing leaf litter by a
+  novel N-15 isotope pool dilution technique (vol 42, pg 1293, 2010)}, SOIL
+  BIOLOGY \& BIOCHEMISTRY, 43, 221--221,
+  \urlprefix\url{http://apps.isiknowledge.com/full\_record.do?product=WOS\&sea%
+rch\_mode=Refine\&qid=2\&SID=T1J9b6g33lchabLPJIc\&page=1\&doc=1}, 2011.
+
+\end{thebibliography}

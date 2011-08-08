@@ -1,0 +1,9 @@
+\begin{figure}
+
+% uncomment this line if figure exists
+%\figbox*{}{}{\psfig{figure=figures/sample.ps,width=8cm}}
+\includegraphics[width=8.3cm, height=12cm]{massloss_n_lit.pdf}
+\caption[]{Figure caption for first figure}
+\label{n_massloss}
+
+\end{figure}

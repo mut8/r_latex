@@ -1,0 +1,29 @@
+@Article{test1,
+  author = 	 {I. Test},
+  title = 	 {Dummy article 1},
+  journal = 	 {J. Nonexistent Results},
+  year = 	 {2003},
+  OPTkey = 	 {},
+  volume = 	 {1},
+  OPTnumber = 	 {},
+  pages = 	 {1-4},
+  OPTmonth = 	 {},
+  OPTnote = 	 {},
+  OPTannote = 	 {}
+}
+
+
+@Article{test2,
+  author = 	 {I. I. Test},
+  title = 	 {Example title},
+  journal = 	 {J. Impossible Stuff},
+  year = 	 {2003},
+  OPTkey = 	 {},
+  volume = 	 {1111},
+  OPTnumber = 	 {},
+  pages = 	 {1-4},
+  OPTmonth = 	 {},
+  OPTnote = 	 {},
+  OPTannote = 	 {}
+}
+

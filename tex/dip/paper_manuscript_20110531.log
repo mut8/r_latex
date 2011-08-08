@@ -1,0 +1,340 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.4.19)  1 JUN 2011 18:00
+entering extended mode
+ %&-line parsing enabled.
+**paper_manuscript_20110531.tex
+(./paper_manuscript_20110531.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, ngerman, german, german-x-2009-06-19, ngerman-x-2009-06-19, loaded.
+
+(/home/lluc/texmf/tex/latex/aguplus.cls
+Document Class: aguplus 1998/09/14 1.5g (PWD)
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+\@maxsep=\dimen103
+\@dblmaxsep=\dimen104
+
+(/home/lluc/texmf/tex/latex/agums.sty
+AGU manuscript substyle, v4 <August 6, 1996>.
+\@cprtype=\count87
+\@rhdwidth=\dimen105
+\@slugcmmntwidth=\dimen106
+\@temptokenb=\toks14
+\c@cureqno=\count88
+\c@plate=\count89
+\lecurrentfam=\count90
+\affilnum=\count91
+\totalaffils=\count92
+\@temptokena=\toks15
+\@temptokenb=\toks16
+\pt@ncol=\count93
+\pt@width=\dimen107
+\ampcount=\count94
+\tabbox=\box26
+\totaltabdp=\dimen108
+\insidetablewd=\dimen109
+\finalcolcount=\count95
+\tabwidth=\dimen110
+\labnum=\count96
+\labloopnum=\count97
+\tablebox=\box27
+\tabnotecount=\count98
+\loopnotecount=\count99
+)
+\@title=\box28
+\wpt@width=\dimen111
+LaTeX Info: Redefining \cite on input line 942.
+\c@NAT@ctr=\count100
+\oldvsize=\dimen112
+) (/usr/share/texmf-texlive/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
+)
+(/usr/share/texmf-texlive/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+)
+`' copyright .
+(./paper_manuscript_20110531.aux)
+\openout1 = `paper_manuscript_20110531.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 49.
+
+(/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 49.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 52.
+ [1
+
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 61.
+ [1
+
+]
+(./introduction.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 5.
+ [2
+
+]) (./materials.tex
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+ [3]
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 22.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+Missing character: There is no Â in font ptmr7t!
+Missing character: There is no ° in font ptmr7t!
+ [4]) (./results.tex
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 6.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/omlptm.fd
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 6.
+ [5] [6])
+(./conclusions.tex)
+\tf@pof=\write3
+\openout3 = `paper_manuscript_20110531.lof'.
+
+
+Overfull \hbox (8.5797pt too wide) in paragraph at lines 76--76
+[][] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 119.
+(./paper_manuscript_20110531.bbl [7]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 18.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Overfull \hbox (84.11229pt too wide) in paragraph at lines 12--19
+\OT1/pcr/m/n/12 http://blackwell-synergy.com/doi/abs/10.1111/j.1365-2486.2008.0
+1674.x\OT1/ptm/m/n/12 , 
+ []
+
+
+Overfull \hbox (177.71225pt too wide) in paragraph at lines 53--57
+\OT1/pcr/m/n/12 http://www.esajournals.org/doi/pdf/10.1890/0012-9615(2006)076[0
+151:ATMOLD]2.0.CO;2\OT1/ptm/m/n/12 , 
+ []
+
+[8
+
+]
+Overfull \hbox (12.11232pt too wide) in paragraph at lines 67--72
+\OT1/pcr/m/n/12 http://www.springerlink.com/index/10.1007/s10533-010-9439-0\OT1
+/ptm/m/n/12 , 
+ []
+
+
+Overfull \hbox (26.51231pt too wide) in paragraph at lines 75--81
+\OT1/pcr/m/n/12 http://linkinghub.elsevier.com/retrieve/pii/S0038071709003976\O
+T1/ptm/m/n/12 , 
+ []
+
+
+Overfull \hbox (26.51231pt too wide) in paragraph at lines 84--90
+\OT1/pcr/m/n/12 http://linkinghub.elsevier.com/retrieve/pii/S0165237006000751\O
+T1/ptm/m/n/12 , 
+ []
+
+
+Overfull \hbox (423.95216pt too wide) in paragraph at lines 92--98
+\OT1/pcr/m/n/12 http://apps.isiknowledge.com/full[]record.do?product=WOS&search
+[]mode=Refine&qid=2&SID=T1J9b6g33lchabLPJIc&page=1&doc=1\OT1/ptm/m/n/12 , 
+ []
+
+[9]) [10] (./paper_manuscript_20110531.lof
+
+! LaTeX Error: Cannot determine size of graphic in massloss_n_lit.pdf (no Bound
+ingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 ...dth=8.3cm, height=12cm]{massloss_n_lit.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: massloss_n_lit.pdf Graphic file (type eps)
+<massloss_n_lit.pdf>) [11
+
+] (./paper_manuscript_20110531.lof
+
+! LaTeX Error: Cannot determine size of graphic in massloss_n_lit.pdf (no Bound
+ingBox).
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 ...dth=8.3cm, height=12cm]{massloss_n_lit.pdf}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+File: massloss_n_lit.pdf Graphic file (type eps)
+<massloss_n_lit.pdf>) [12
+
+
+] (./paper_manuscript_20110531.aux) ) 
+Here is how much of TeX's memory you used:
+ 1747 strings out of 495022
+ 21436 string characters out of 1181058
+ 68245 words of memory out of 3000000
+ 4941 multiletter control sequences out of 15000+50000
+ 10532 words of font info for 32 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 28i,6n,24p,783b,232s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on paper_manuscript_20110531.dvi (13 pages, 18108 bytes).

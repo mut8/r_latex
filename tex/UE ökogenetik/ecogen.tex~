@@ -1,0 +1,169 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{inputenc}
+\usepackage{graphicx}
+\usepackage{textcomp}
+%\usepackage{wrapfig}
+%\usepackage{wrapfig}
+
+
+
+%opening
+\title{Methods in Ecogenetic \\ Microbial Communities and Model Organisms \\ Molecular Genetic and Postgenomic Analysis \\ Protokoll}
+\author{Lukas Kohl \\ Mat. Nr. 0209210 \\ a0209210@unet.univie.ac.at}
+
+\begin{document}
+
+\maketitle
+
+\section{E1: Comparing the physiology of ammonia oxidizing archaea (AOA) and bacteria (AOB)}
+
+\subsection{Introduction}
+
+
+The mineralization of organic nitrogen includes several oxidation steps mediated by different microorganisms. Ammonia oxidation or nitrification is the first of these steps, oxidizing ammonia to nitrite. 
+Traditionally, ammonia oxidation was accounted exclusively to bacteria. Recently, the activity of ammonia oxidizing archea were detected in different habitates, including soils, fresh and sea water. So far, only two strains (Nitrosopumilus maritimus and Nitrososphaera viennensis) were successfully cultivated. 
+In a series of experiments we try to cultivate Nitrososphaera viennensis under various conditions. In some of these we also cultivate Nitrosospira multiformis, a well studied ammonia oxidizing bacterium, to compare AOA and AOB response to the composition of the cultivation media.
+\\The experiment consists of 3 Subexperiments. Subexperiment 1 compares the reaction of AOA and AOB in media with different content of ammonia with and with out the addition of an organic carbon source, both in pure cultures of both microorganisms and mixed cultures. From previous studies, we expect to have 
+\\Subexperiment 2 tests the capability of N. viennesis to use organic ammonia sources (free amino acids and cas-amino acids). Subexperiment 3 tries to cultivate N. viennensis under anaerobic conditions.
+
+\subsection{Material and methods}
+
+\subsubsection{Cultivation conditions}
+Fresh Water Medium (FWM) and Skinner and Walker Medium (S+W) preparation are described in the course protocol. FWM was used for the cultivation of Nitrososphaera vienensis and co-cultures of both microorganisams, while S+W was used for Nitrosospira multiformis cultures. 
+\\Briefly, while S+W contains only a very limited number of inorganic nutrients, FWM contain a wide range of inorganic salts and vitamins. Pyrovat is added as a source of organic carbon (50 µM) unless stated otherwise. Different sources of organic nitrogen were added to the media to test the microorganisms ability to use them. Carbenicillin is added to all N. viennensis pure cultures.
+\\Pure cultures are incubated at optimal growth temperature (36 °C for N. vienensis, 28 °C for N. multiformis), co-cultures were incubated at an intermediate temperature of 32 °C.
+
+\subsubsection{Treatments}
+\paragraph{Subexperiment 1 – different ammonia and pyrovat concentrations}
+Pure cultures and a co-culture of both microorganisms were incubated with 1 and 10 µM NH4Cl each  Also, both microorganisms were cultivated with 3 µM NH4Cl in a pyrovat-free medium.
+
+\paragraph{Subexperiment 2 – different organic nitrogen sources}
+N. viennensis was cultivated with 0.02 \% and 0.05 \% cas-amino acid mix or the same amount of free amino acids. Also, a negative control without nitrogen source was incubated. 
+
+\paragraph{Subexperimet 3 – anaerobic incubation}
+Anaerobic growth of N. viennensis was tested. The detailed preparation of anaerobic cultures is decribed in the course protocol. 
+
+\subsubsection{Cell count and chemical analysis}
+Samples were taken three times daily and analyzed for NO2- and NH4+ concentration. Briefly, for microscopical cell counts, 0.5 mL cultivation medium was mixed with 0.5 mL 70\% ethanol and stored at +4 °C until analysis. 10 µL of the mixture were placed on a microscopic slide, 12-15 seperate fields of view were counted per sample. 
+\\Photometric analysis was done using assays described in the course protocol.
+
+\subsection{Results}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=150mm]{e1_1.pdf}
+\caption{Nitrite and ammonia concentration and cell density for subexperiment 1 pure cultures.}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=100mm]{e1_2.pdf}
+\caption{Nitrite and ammonia concentration and cell density for subexperiment 1 co-cultures.}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=100mm]{e1_3.pdf}
+\caption{Nitrite and ammonia concentration and cell density for cultures with cas-amino acids as only nitrogen source. Open circles refer to 0.02\% cas-amino acids, full circles to 0.05\% cas-amino acids.}
+\end{center}
+\end{figure}
+
+
+\paragraph{Subexperiment 1}
+Cell number, nitrate and ammonia concentration for N. viennensis and N. multiformis pure cultures are given in fig. 1. Generally, N. multiformis shows a faster turnover of ammonia to nitrite than N. viennensis. While N. multiformis reaches the maximal cell density after approximately one week, cell density of N. viennensis is still increasing after two weeks. 
+\\The two microorganisms show different responses to different ammonia concentrations: while N. multiformis cell density is higher in a 10 mM ammonia than at 1mM ammonia medium, the relation is inverse for N. viennensis. Lack of pyrovat in the medium does not limit N. multiformis cell density (but – at least in our experiment – delays the growth), N. viennensis cultures without pyrovat show slower growth and less substrate turnover.
+
+\paragraph{Subexperiment 2}
+N. viennensis could not be cultivated without nitrogen source or with free ammino acids as the only available form of nitrogen. Nevertheless, cultivation with cas-ammino acids proofed successful, with little difference between 0.02\% and 0.05\% of cas-amino acids in the medium.
+
+\paragraph{Subexperiment 3}
+No growth of N. viennensis could be observed under any anaerobic conditions.
+
+\subsection{Discussion}
+\paragraph{Subexperiment 1}
+Our observations indicate that N. multiformis is more tolerant to high ammonium concentrations than N. viennensis. Optimal cultivation conditions for AOA are at lower ammonium concentrations than for AOB, therefore AOA are believed to be specialists on ammonia oxidation in low ammonia habitates.
+\\ Also, N. viennensis relies more on an organic carbon source in the cultivation than N. multiformis, indicating heterotrophic carbon use by N. multiformis.
+\paragraph{Subexperiment 2}
+The experiment shows that N. viennensis can use degraded protein and/or oligopeptids as an organic nitrogen source, while it is not able to make use of free ammino acids. This indicates the presence of oligopeptid transporters in N. viennensis' cell wall.
+\paragraph{Subexperiment 3}
+We account the failure of the experiment to possible reactions of components of the cultivation medium in a reducing environment, that could have produced toxic substances inhibiting N. viennensis cultivation.
+
+\section{E4: Sequence specifity of the CRISPR anti-viral defence system in sulpholobus solfataricus(SSO)}
+
+\subsection{Introduction}
+The CRISPR (Clustered Regularly Interspaced Short Palindromic Repeats) system is a microbial defence system against foreign nucleic acid sequences like viruses or plasmids. During the first contact with a potential pathogene, short sequences of pathogen DNA is sequestered into the host genome as inserts between repeats of a palindromic sequence (``spacer''). The transcript of this region is cut at the palindromic positions and the small DNA fragments hybridize with pathogen DNA (``protospacer'') at a further encounter, marking the alien DNA which is degraded by a specific protein complex. 
+\\In this experiment, we recombine several variants of the protospacer (``constructs'') with a varying number of mutations in an viral vector. A sulpholobus solphataricus strain known to posses a CRISPR system targeting this protospacer is infacted with one of the different vectors and plated with a background of uninfected sulpholobus cells. By this, we test CRISPR's tolerance to variantions between the spacer and the protospacers sequence. Infected cells are detected as plaques on the plates.
+
+
+\subsection{Material and methods}
+Most steps are describe in detail in the course protocol, therefore only key steps and changes from the procedure stated in the protocol will be covert in detail here.
+
+\subsubsection{S. solfataricus cultivation}
+SSO Cultivation medium contains 1x-diluted Brock salt mixtures , 0.2\% sucrose and 0.1\% Tryptone dilluted with SSO water (see protocol) adjusted to pH3.
+\\S. Sulfataricus was cultivated in long-neck flaskscontaining 50 ml of cultivation medium at 78°C in an oil bath. The medium was pre-heated in the oil bath for 3 minutes before inoculation with 100 µl of SSO glycerol stock.
+\\For cultivation on petri dishes at high temperatures, 6.4\% geltrine are added to the medium.
+
+\subsubsection{Determination of SSO generation time during exponential growth}
+Optical density of the SSO culture at 600 nm wavelength was measured photometricaly three times daily for four days comparing the absorbance of the culture to a water blank. Linear correlation between the cell density in the medium and absorbance and a cell number of 109 cells mL-1 at OD600 = 1was assumed according to prior experiments. 
+
+\subsubsection{Vector preparation}
+Pre-prepared proto-spacer sequence DNA different in the number and position of mutations compared to the CRISPR spacer tested prior to the experiment by direct electrophoresis to compare topology and electrophoresis after restriction with EcoRI. Restriction and electrophoresis conditions according to the protocol were applied. Furthermore, salts had to be removed prior to electroporation transformation, which was done by drop dialysis. Also conditions stated in the protocol were applied without modifications.
+
+\subsubsection{Transformation}
+For the preparation of competent cells, an overnight culture with a cell density corresponding to OD600 = 0.18 was needed, which was prepared in fresh medium inoculated with the amount of SSO culture needed (see results). 
+\\Exact steps for the preparation of competent cells are stated in the protocol. Briefely, the cultivation medium was cooled down in ice water, centrifuged and resuspended in 20 mM sucrose solution adjusted to a density of 1010 cells mL-1. 
+\\150 ng of DNA was mixed with 50 µl of competent cell suspension in pre-cooled cuvettes to be electroporated at pre-tested conditions (1250V/25µF/1000Ohm). Immediately thereafter, 75 mL pre-heated (75°C) recovery solution was added to the transformation mixture
+
+\subsubsection{Plaques assay}
+Between plaque transformation and plaque assay, transformed cells were incubated for approximately 30 minutes. Afterwards, 12 \textmu L of the suspension is mixed with 2.8 mL of cultivation medium (including geltrine), and 280 \textmu L of the SSO culture prepared as above. The mixture was evenly distributed on the surface of a cultivation plate with approximately 10 mL cultivation medium. For each construct, 3 replicas were were plated. Plates were incubated at 78°C for 3 days.
+\\For comparison, plaque numbers per ng DNA used were calculated. Data from groups without any plaques on their plates to improve data integrity. 
+
+\subsection{Results}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=100mm]{e4_3.pdf}
+\caption{Linear and exponential growth curve for SSO. Combined results from 6 groups. }
+\label{e4_3}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=75mm]{e4_4.pdf}
+\caption{SSO generation time. Error bars indicate one standard deviation. Combined results from 6 groups.}
+\label{e4_4}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=75mm]{e4_1.pdf}
+\caption{Combined results of 3 groups with positive controls. 0M, 3M, 4M, 6M, 7M, and 14M refers to the number mutated bps in the proto-spacer. Error bars indicate one standard deviation (3 replicas).}
+\label{e4_1}
+\end{center}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=75mm]{e4_2.pdf}
+\caption{Results from 3 groups. Constructs are labeled as in \ref{e4_1}. Error bars indicate one standard deviation (3 replicas).}
+\label{e4_2}
+\end{center}
+\end{figure}
+
+\subsubsection{SSO growth curve}
+SSO growth curve and generation time are shown in figure \ref{e4_3} and \ref{e4_4}. Growth curves are exponential during the first 48 hours after inoculation, until a OD600 of approximately 0.5.
+\subsubsection{Plaque assay}
+Assay response show a strong operator bias depending on the lab course group. Results from lab groups without any plaques in any of their assays were excluded from interpretation. While within groups, more plaques develop when constructs with more mutations are used (i.e. SSO shows less immunity, see \ref{e4_2} - especially groups 5 and 6 show ), such results can not be reproduced between groups (\ref{e4_1}). Results from group 1 show no differences between constructs with 7 and 14 point mutations (M7, M14) viruses insensitive to CRISPR. Results from groups 5 and 6 show declining immunity of SSO against viruses with an increasing number of mutations. 
+
+\subsection{Discussion}
+
+Although reproducing results between different operators (lab groups) proofed difficult, we could at least show a general tendency towards vanishing immunity against mutated proto-spacers. 
+\\As cultures were pooled between groups before preparing competent cells and replicate plates show low standard deviations between replicas (i.e. plating and plaque counting was precise), we can locate the source of our high response variance construct preparation and/or cell transformation. 
+
+
+\end{document}

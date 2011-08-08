@@ -1,0 +1,154 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.4.19)  1 JUN 2011 16:52
+entering extended mode
+ %&-line parsing enabled.
+**paper.tex
+(./paper.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, ngerman, german, german-x-2009-06-19, ngerman-x-2009-06-19, loaded.
+
+(/home/lluc/texmf/tex/latex/aguplus.cls
+Document Class: aguplus 1998/09/14 1.5g (PWD)
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+\@maxsep=\dimen103
+\@dblmaxsep=\dimen104
+
+(/home/lluc/texmf/tex/latex/agums.sty
+AGU manuscript substyle, v4 <August 6, 1996>.
+\@cprtype=\count87
+\@rhdwidth=\dimen105
+\@slugcmmntwidth=\dimen106
+\@temptokenb=\toks14
+\c@cureqno=\count88
+\c@plate=\count89
+\lecurrentfam=\count90
+\affilnum=\count91
+\totalaffils=\count92
+\@temptokena=\toks15
+\@temptokenb=\toks16
+\pt@ncol=\count93
+\pt@width=\dimen107
+\ampcount=\count94
+\tabbox=\box26
+\totaltabdp=\dimen108
+\insidetablewd=\dimen109
+\finalcolcount=\count95
+\tabwidth=\dimen110
+\labnum=\count96
+\labloopnum=\count97
+\tablebox=\box27
+\tabnotecount=\count98
+\loopnotecount=\count99
+)
+\@title=\box28
+\wpt@width=\dimen111
+LaTeX Info: Redefining \cite on input line 942.
+\c@NAT@ctr=\count100
+\oldvsize=\dimen112
+) (/usr/share/texmf-texlive/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+`' copyright .
+(./paper.aux)
+\openout1 = `paper.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 48.
+ (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
+ [1
+
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
+
+[1
+
+]
+
+Package natbib Warning: Citation `test1' on page 2 undefined on input line 68.
+
+\tf@pof=\write3
+\openout3 = `paper.lof'.
+
+
+Overfull \hbox (8.5797pt too wide) in paragraph at lines 70--70
+[][] 
+ []
+
+
+Package natbib Warning: Citation `test2' on page 2 undefined on input line 80.
+
+
+Package natbib Warning: Citation `test1' on page 2 undefined on input line 81.
+
+\tf@pot=\write4
+\openout4 = `paper.lot'.
+
+
+Overfull \hbox (3.0357pt too wide) in paragraph at lines 89--89
+[][] 
+ []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 112.
+(./paper.bbl) [2
+
+] (./paper.lof
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 5.
+) [3
+
+] (./paper.lot [4
+
+
+]) [5] (./paper.lof)
+[6]
+
+Package natbib Warning: There were undefined citations.
+
+(./paper.aux) ) 
+Here is how much of TeX's memory you used:
+ 893 strings out of 495022
+ 8883 string characters out of 1181058
+ 60772 words of memory out of 3000000
+ 4136 multiletter control sequences out of 15000+50000
+ 10002 words of font info for 30 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 29i,10n,27p,177b,163s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on paper.dvi (7 pages, 2944 bytes).

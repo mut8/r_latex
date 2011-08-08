@@ -1,0 +1,3608 @@
+setwd("/home/lluc/Documents/git/R/dip/dip_20110429")
+
+source("/home/lluc/Documents/R/functions.R")
+  
+source("startup.R")
+
+source("enzymes.R")
+source("siglevs.R")
+
+source("correlations.R")
+source("doc.R")
+source("plfa.R")
+source("microbialbiomass.R")
+
+source("massloss_n_lit.R")
+source("timeseries.R")
+source("resp_glcdepoly.R")
+source("pyr_diffs.R")
+
+source("pca_decomp_controls.R")
+source("pca_lig_ph.R")
+source("pca_allpeaks.R")
+
+tapply(orig_cTIC$L, list(type, harvest), mean)
+tapply(orig_cTIC$L, list(type, harvest), stderr)
+
+tapply(orig_cTIC$C, list(type, harvest), mean)
+tapply(orig_cTIC$C, list(type, harvest), stderr)
+
+tapply(orig_cTIC$L/(orig_cTIC$L+orig_cTIC$C), list(type, harvest), mean)
+tapply(orig_cTIC$L/(orig_cTIC$L+orig_cTIC$C), list(type, harvest), stderr)
+
+colnames(alldata)
+var<-(alldata$Gross.amino.acid.immobilization-alldata$Gross.N.mineralization)/alldata$Gross.amino.acid.immobilization
+cond<-is.na(var)==F&alldata$days!=14
+timeseries(var[cond], alldata$days[cond], alldata$Litter[cond], type="o", pch=pch, col="black", add=T)
+cor.test(alldata$NP_inbal[cond & alldata$days==97], var[cond&alldata$days==97], pch=pch.all[cond&alldata$days==97])
+cor.test(alldata$NP_inbal[cond & alldata$days==181], var[cond&alldata$days==181], pch=pch.all[cond&alldata$days==181])
+cor.test(alldata$CN_inbal[cond], var2[cond], pch=pch.all[cond])
+
+
+
+
+var2<-(alldata$Glucose.Gross.Consumption-alldata$Respiration)/alldata$Glucose.Gross.Consumption
+var2
+cond2<-is.na(var2)==F&alldata$days!=14
+timeseries(var2[cond2], alldata$days[cond2], alldata$Litter[cond2], type="o", pch=pch, col="grey")
+
+
+
+cor.test(alldata$N_lit[cond2 & alldata$days==97], var2[cond2&alldata$days==97], pch=pch.all[cond2&alldata$days==97])
+cor.test(alldata$C.N_lit[cond2 & alldata$days==181], var2[cond2&alldata$days==181], pch=pch.all[cond2&alldata$days==181])
+cor.test(alldata$CN_inbal[cond2 & alldata$days==97], var2[cond2&alldata$days==97], pch=pch.all[cond2&alldata$days==97])
+cor.test(alldata$CN_inbal[cond2 & alldata$days==181], var2[cond2&alldata$days==181], pch=pch.all[cond2&alldata$days==181])
+cor.test(alldata$C.N_lit[cond2], var2[cond2], pch=pch.all[cond2])
+cor.test(alldata$C.N_lit[cond2 & alldata$days==97], var2[cond2&alldata$days==97], pch=pch.all[cond2&alldata$days==97])
+cor.test(alldata$CP_inbal[cond2 & alldata$days==181], var2[cond2&alldata$days==181], pch=pch.all[cond2&alldata$days==181])
+cor.test(alldata$CP_inbal[cond2], var2[cond2], pch=pch.all[cond2])
+
+colnames(alldata)
+
+
+write.csv(peaks[peaks$origin=="C",T], "carbopeaks.csv")
+
+plot(var[alldata$days!=14], var2[alldata$days!=14], pch=c(rep(1,15),rep(16,15),rep(2,15), rep(17,15)), col=rep(c(rep(colscale[1],5), rep(colscale[3],10)),4))
+
+lig.trends<-dif.by(rsim[,cond]/rowSums(rsim[,cond]), harvest==0, type)
+
+cond<-peaks$origin=="C"
+ord.plot(rda(dif.by(rsim[,cond], harvest==0, type),scale=T), harvest, type, col=colscale, pch=pch, spe.labels=peaks$name[cond], spe.mult=2, cex=.5)
+
+peaks[peaks$origin=="N",T]
+
+timeseries((rsim[,peaks$name=="pyridine"]+rsim[,peaks$name=="methylpyridine1"]+rsim[,peaks$name=="methylpyridine2"]+rsim[,peaks$name=="pyrrole"]+rsim[,peaks$name=="methylpyrrol1"]+rsim[,peaks$name=="methylpyrrol2"])/(rsim[,peaks$name=="Indole"]+rsim[,peaks$name=="Methylindole"]), harvest, type, type="o", pch=pch, col=colscale, endsig=T)
+
+corr.ab(rsim[,peaks$origin=="N"], data.frame(samples$N_lit, samples$C.N_lit))
+pdf("N_pairs.pdf")
+pairs(rsim[,peaks$origin=="N"], upper.panel=panel.cor, lower.panel=l.panel)
+dev.off()
+
+for (i in 1:ncol(rsim) )
+if (peaks$origin[i]=="N")
+print(anova(lm(rsim[,i]~type*harvest)))
+
+ord.plot(rda(rsim[,peaks$origin=="N"]),  harvest,type, pch=pch, col=colscale, spe.labels=peaks$name[peaks$origin=="N"])
+
+timeseries(rsim[,peaks$name=="N-methylpyridol"], harvest, type, normalize=1,pch=pch, col=colscale, type="o", endsig=T)
+timeseries(rsim[,peaks$name=="N-methyl-pyrrol"], harvest, type, pch=pch, col=colscale, normalize=1, type="o", endsig=T)
+cor.test(rsim[,peaks$name=="Pyridol"],rsim[,peaks$name=="Furanmethanol"], pch=pch.all)
+ 
+peaks$name
+
+cond<-peaks$origin=="C"
+ord.plot(rda(rsim[,cond], scale=T), harvest, type, col=colscale, pch=pch, spe.labels=peaks$class[cond], spe.mult=1)
+ord.plot(rda(rsim[,cond]/rowSums(rsim[,cond]), scale=T), harvest, type, col=colscale, pch=pch, spe.labels=peaks$class[cond], spe.mult=1)
+
+timeseries(rowSums(rsim[,peaks$class=="f"])/rowSums(rsim[,peaks$class=="cp"]), days, type, type="o", col=colscale, pch=pch, endsig=T, nam=paste(peaks$name[i], peaks$origin[i], peaks$class[i], peaks$RT[i]))
+
+pdf("colmean.barplots.L.pdf")
+barplot(colMeans(rsim[,peaks$class=="sy"]), name="Syringol")
+barplot(colMeans(rsim[,peaks$class=="g"]), name="Guaiacol")
+barplot(colMeans(
+peaks[peaks$class=="ph",T]
+), name="Phenol")
+dev.off()
+
+peaks[peaks$class=="cp",]
+
+g.sy.ratios<-data.frame(
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="S0"],
+rsim[,peaks$name=="G1"]/rsim[,peaks$name=="S1"],
+rsim[,peaks$name=="G2"]/rsim[,peaks$name=="S2"],
+rsim[,peaks$name=="G2:1"]/rsim[,peaks$name=="S2:1"],
+rsim[,peaks$name=="G3:1c"]/rsim[,peaks$name=="S3:1c"],
+rsim[,peaks$name=="G1=O"]/rsim[,peaks$name=="S1=O"],
+rsim[,peaks$name=="G3=O"]/rsim[,peaks$name=="S3=O"],
+rsim[,peaks$name=="G3:1=O"]/rsim[,peaks$name=="S3:1=O"]
+)
+
+g.ph.ratios<-data.frame(
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="Phenol"],
+rsim[,peaks$name=="G1"]/rsim[,peaks$name=="Methylphenol[I]"],
+rsim[,peaks$name=="G1"]/rsim[,peaks$name=="Methylphenol[II]"],
+rsim[,peaks$name=="G2"]/rsim[,peaks$name=="Ph2"], 
+rsim[,peaks$name=="G3:1c"]/rsim[,peaks$name=="Ph3:1a"], 
+rsim[,peaks$name=="G3:1c"]/rsim[,peaks$name=="Ph3:1b"], 
+rsim[,peaks$name=="G3"]/rsim[,peaks$name=="Ph3"],
+rsim[,peaks$name=="G1=O"]/rsim[,peaks$name=="Ph1=O"]
+)
+
+
+plot.panel<-function(x,y) {
+ plot(x,y, pch=pch.all)
+}
+
+
+pdf("G_Ph_ratio.pdf")
+colnames(g.ph.ratios)<-c("G0/Ph0","G1/Ph1[I]", "G1/Ph1[II]","G2/Ph2", "G3:1c/Ph3:1[I]", "G3:1c/Ph3:1[II]", "G3/Ph3", "G1=O/S1=O")
+pairs(g.ph.ratios, cex=.3, upper.panel=panel.cor, lower.panel=l.panel)
+pairs(g.ph.ratios[harvest==0, T], cex=.5, upper.panel=panel.cor, lower.panel=l.panel)
+dev.off()
+
+
+sink("anovas.txt")
+for (i in 1:ncol(g.sy.ratios))
+print(anova(lm(g.sy.ratios[,i]~type*harvest)))
+sink()
+
+pdf("G_Sy_ratio.pdf")
+pairs(g.sy.ratios, labels=c("G0/S0","G1/S1", "G2/S2", "G2:1/S2:1","G3:1c/S3:1c", "G1=O/S1=O", "G3=O/S3=O", "G3:1=O/S3:1=O") , upper.panel=panel.cor, lower.panel=l.panel)
+pairs(g.sy.ratios[harvest==0,T],  labels=c("G0/S0","G1/S1", "G2/S2", "G2:1/S2:1","G3:1c/S3:1c", "G1=O/S1=O", "G3=O/S3=O", "G3:1=O/S3:1=O"),  upper.panel=panel.cor, lower.panel=l.panel )
+dev.off()
+
+side.chain<-data.frame(
+rsim[,peaks$name=="Phenol"],
+rsim[,peaks$name=="Methylphenol[I]"],
+rsim[,peaks$name=="Ph3:1a"],
+rsim[,peaks$name=="Ph3:1b"],
+rsim[,peaks$name=="Ph1=O"],
+rsim[,peaks$name=="G0"],
+rsim[,peaks$name=="G1"],
+rsim[,peaks$name=="G2:1"],
+rsim[,peaks$name=="G3:1c"],
+rsim[,peaks$name=="G1=O"],
+rsim[,peaks$name=="G3=O"],
+rsim[,peaks$name=="GAc"],
+rsim[,peaks$name=="S0"],
+rsim[,peaks$name=="S1"],
+rsim[,peaks$name=="S2:1"],
+rsim[,peaks$name=="S3:1c"],
+rsim[,peaks$name=="S1=O"],
+rsim[,peaks$name=="S3=O"],
+rsim[,peaks$name=="SAc"]
+)
+colnames(side.chain)<-c("Ph0", "Ph1[I]", "Ph3:1a", "Ph3:1b", "Ph1=O", "G0", "G1", "G2:1", "G3:1c", "G1=O", "G3=O", "GAc", "S0", "S1", "S2:1", "S3_1c", "S1=O", "S3=O", "SAc")
+
+?pairs
+
+
+
+cor<-cor.test(x,y)
+if(cor$p.value<0.05) {abline(lm(y~x))}
+
+pdf("lig_sidechain_ratio.pdf")
+pairs(side.chain[,1:5],  cex=.5, upper.panel=panel.cor, lower.panel=l.panel)
+pairs(side.chain[,6:12],   cex=.5, upper.panel=panel.cor, lower.panel=l.panel)
+pairs(side.chain[,13:19], cex=.5, upper.panel=panel.cor, lower.panel=l.panel)
+ dev.off()
+
+pdf("output/ch_pairs.pdf", height=40, width=40)
+pairs(rsim[,peaks$origin=="C"],upper.panel=panel.cor, lower.panel=l.panel)
+dev.off()
+
+pdf("output/sidechainratios_new.pdf", width=12, height=12)
+par(mfrow=c(4,4))
+plot(rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G1"], rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S1"], pch=pch.all, xlab="guaiacol/methylguaiacol", ylab="syringol/methylsyringol")
+plot(rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G2"], rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S2"], pch=pch.all, xlab="guaiacol/ethylguaiacol", ylab="syringol/ethylsyringol")
+plot(rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G2:1"], rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S2:1"], pch=pch.all, xlab="guaiacol/ethenylguaiacol", ylab="syringol/ethenylsyringol")
+plot(rsim[,peaks$name=="G0"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]), rsim[,peaks$name=="S0"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]), pch=pch.all, xlab="guaiacol/propenylguaiacol", ylab="syringol/propenylsyringol")
+plot(rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G1=O"], rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S1=O"], pch=pch.all, xlab="guaiacol/guaiacolaldehyde", ylab="syringol/ethylsyringolaldehyde")
+plot(rsim[,peaks$name=="G1"]/rsim[,peaks$name=="G2"], rsim[,peaks$name=="S1"]/rsim[,peaks$name=="S2"], pch=pch.all, xlab="methylguaiacol/ethylguaiacol", ylab="methylsyringol/ethylsyringol")
+plot(rsim[,peaks$name=="G1"]/rsim[,peaks$name=="G2:1"], rsim[,peaks$name=="S1"]/rsim[,peaks$name=="S2:1"], pch=pch.all, xlab="methylguaiacol/ethenylguaiacol", ylab="methylsyringol/ethenylsyringol")
+plot(rsim[,peaks$name=="G1"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]), rsim[,peaks$name=="S1"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]), pch=pch.all, xlab="methylguaiacol/propenylguaiacol", ylab="methylsyringol/propenylsyringol")
+plot(rsim[,peaks$name=="G1"]/rsim[,peaks$name=="G1=O"], rsim[,peaks$name=="S1"]/rsim[,peaks$name=="S1=O"], pch=pch.all, xlab="methylguaiacol/guaiacolaldehyde", ylab="methylsyringol/ethylsyringolaldehyde")
+plot(rsim[,peaks$name=="G2"]/rsim[,peaks$name=="G2:1"], rsim[,peaks$name=="S2"]/rsim[,peaks$name=="S2:1"], pch=pch.all, xlab="ethylguaiacol/ethenylguaiacol", ylab="ethylsyringol/ethenylsyringol")
+plot(rsim[,peaks$name=="G2"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]), rsim[,peaks$name=="S2"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]), pch=pch.all, xlab="ethylguaiacol/propenylguaiacol", ylab="ethylsyringol/propenylsyringol")
+plot(rsim[,peaks$name=="G2"]/rsim[,peaks$name=="G1=O"], rsim[,peaks$name=="S2"]/rsim[,peaks$name=="S1=O"], pch=pch.all, xlab="ethylguaiacol/guaiacolaldehyde", ylab="ethylsyringol/ethylsyringolaldehyde")
+plot(rsim[,peaks$name=="G2:1"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]), rsim[,peaks$name=="S2:1"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]), pch=pch.all, xlab="ethenylguaiacol/propenylguaiacol", ylab="ethenylsyringol/propenylsyringol")
+plot(rsim[,peaks$name=="G2:1"]/rsim[,peaks$name=="G1=O"], rsim[,peaks$name=="S2:1"]/rsim[,peaks$name=="S1=O"], pch=pch.all, xlab="ethenylguaiacol/guaiacolaldehyde", ylab="ethenylsyringol/ethylsyringolaldehyde")
+plot(rsim[,peaks$name=="G1=O"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]), rsim[,peaks$name=="S1=O"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]), pch=pch.all, xlab="guaiacolaldehyde/propenylguaiacol", ylab="syringolaldehyde/propenylsyringol")
+dev.off()
+
+sidechainratios<-data.frame(
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G1"], 
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G2"],
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G2:1"],
+rsim[,peaks$name=="G0"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]),
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G1=O"],
+rsim[,peaks$name=="G1"]/rsim[,peaks$name=="G2"],
+rsim[,peaks$name=="G1"]/rsim[,peaks$name=="G2:1"],
+rsim[,peaks$name=="G1"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]),
+rsim[,peaks$name=="G1"]/rsim[,peaks$name=="G1=O"],
+rsim[,peaks$name=="G2"]/rsim[,peaks$name=="G2:1"],
+rsim[,peaks$name=="G2"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]),
+rsim[,peaks$name=="G2"]/rsim[,peaks$name=="G1=O"],
+rsim[,peaks$name=="G2:1"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]),
+rsim[,peaks$name=="G2:1"]/rsim[,peaks$name=="G1=O"],
+rsim[,peaks$name=="G1=O"]/(rsim[,peaks$name=="G3:1a"]+rsim[,peaks$name=="G3:1b"]+rsim[,peaks$name=="G3:1c"]),
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S1"], 
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S2"],
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S2:1"],
+rsim[,peaks$name=="S0"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]),
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S1=O"],
+rsim[,peaks$name=="S1"]/rsim[,peaks$name=="S2"],
+rsim[,peaks$name=="S1"]/rsim[,peaks$name=="S2:1"],
+rsim[,peaks$name=="S1"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]),
+rsim[,peaks$name=="S1"]/rsim[,peaks$name=="S1=O"],
+rsim[,peaks$name=="S2"]/rsim[,peaks$name=="S2:1"],
+rsim[,peaks$name=="S2"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]),
+rsim[,peaks$name=="S2"]/rsim[,peaks$name=="S1=O"],
+rsim[,peaks$name=="S2:1"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"]),
+rsim[,peaks$name=="S2:1"]/rsim[,peaks$name=="S1=O"],
+rsim[,peaks$name=="S1=O"]/(rsim[,peaks$name=="S3:1a"]+rsim[,peaks$name=="S3:1b"]+rsim[,peaks$name=="S3:1c"])
+)
+
+names<-colnames(sidechainratios)
+sink("sidechainratioanovas.txt")
+for (i in 1:ncol(sidechainratios)) 
+{
+print(names[i])
+print(anova(lm(sidechainratios[,i] ~ harvest*type)) )
+}
+sink()
+
+
+
+dif.h0.rsim<-dif.by(rsim, harvest==0, type)
+
+g.sy.sidechainratios<-data.frame(
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G1"],
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S1"],
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G2:1"],
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S2:1"],
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G3:1c"],
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S3:1c"],
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G1=O"],
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S1=O"],
+rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G3=O"],
+rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S3=O"])
+
+colnames(g.sy.sidechainratios)<-c("G0/G1","S0/S1", "G0/G2:1", "S0/S2:1", "G0/G3:1c", "S0/S3:1c", "G0/G1=O", "S0/S1=O", "G0/G3=O", "S0/S3=O")
+pdf("side.chain.ratios.pdf")
+for(i in 1:(1-ncol(g.sy.sidechainratios)))
+plot(g.sy.sidechainratios[,i], g.sy.sidechainratios[,i+1], pch=pch.all, add=F)
+dev.off()
+
+
+pairs(g.sy.sidechainratios, upper.panel=panel.cor, lower.panel=l.panel)
+
+
+cor.test(rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G1"], rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S1"])
+cor.test(rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G3:1c"], rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S3:1c"])
+cor.test(rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G2"], rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S2"])
+cor.test(rsim[,peaks$name=="G1"]/rsim[,peaks$name=="G2"], rsim[,peaks$name=="S1"]/rsim[,peaks$name=="S2"])
+
+peaks[peaks$origin=="Ph",T]
+
+pdf("output/carbomarkers.pdf")
+ord.plot(rda(rsim[harvest==0,peaks$origin=="C"], scale=T), 1, type[harvest==0], pch=pch, col=colscale, spe.label=peaks$class[peaks$origin=="C"])
+warnings()
+ord.plot(rda(rsim[,peaks$origin=="C"], scale=T), harvest, type, pch=pch, col=colscale, spe.label=peaks$class[peaks$origin=="C"])
+
+ord.plot(rda(rsim[,peaks$origin=="C"], scale=T), harvest, type, pch=pch, col=colscale, spe.label=peaks$name[peaks$origin=="C"], cex=.3)
+
+ord.plot(rda(dif.by(rsim[peaks$origin=="C"], harvest==0, type), scale=T), harvest, type, pch=pch, col=colscale, spe.label=peaks$class[peaks$origin=="C"],spe.mult=2)
+ord.plot(rda(dif.by(rsim[peaks$origin=="C"], harvest==0, type), scale=T), harvest, type, pch=pch, col=colscale, spe.label=peaks$name[peaks$origin=="C"],spe.mult=2, cex=.3)
+
+dev.off()
+
+for(i in 1:length(harlev))
+for (j in 1:length(typlev))
+points(rsim[,peaks$name=="G0"]/rsim[,peaks$name=="G1"], rsim[,peaks$name=="S0"]/rsim[,peaks$name=="S1"])
+
+cor.test(difinit.rsim[,peaks$name=="G0"]-difinit.rsim[,peaks$name=="G1"], difinit.rsim[,peaks$name=="S0"]-difinit.rsim[,peaks$name=="S1"])
+
+sink("peaks.txt")
+peaks[peaks$class=="cp",T]
+peaks[peaks$class=="f",T]
+peaks[peaks$class=="g",T]
+peaks[peaks$class=="sy",T]
+sink()
+
+
+pdf("output/carbomarkers.pdf")
+for(i in 1:ncol(rsim))
+if (peaks$origin[i]=="C")
+{
+timeseries(rsim[,i], days, type, type="o", col=colscale, pch=pch, endsig=T, nam=paste(peaks$name[i], peaks$origin[i], peaks$class[i], peaks$RT[i]))
+timeseries(dif.h0.rsim[,i], days, type, type="o", col=colscale, pch=pch, endsig=T, nam=paste(peaks$name[i], peaks$origin[i], peaks$class[i], peaks$RT[i]))
+}
+dev.off()
+
+pdf("output/phenolmarkers.pdf")
+for(i in 1:ncol(rsim))
+if (peaks$origin[i]=="Ph")
+{
+timeseries(rsim[,i], days, type, type="o", col=colscale, pch=pch, endsig=T, nam=paste(peaks$name[i], peaks$origin[i], peaks$class[i], peaks$RT[i]))
+timeseries(dif.h0.rsim[,i], days, type, type="o", col=colscale, pch=pch, endsig=T, nam=paste(peaks$name[i], peaks$origin[i], peaks$class[i], peaks$RT[i]))
+}
+dev.off()
+
+timeseries(difinit.rsim[,peaks$name=="G0"]-difinit.rsim[,peaks$name=="G1"], days, type, type="o", col=colscale, pch=pch, endsig=T)
+timeseries(difinit.rsim[,peaks$name=="S0"]-difinit.rsim[,peaks$name=="S1"], days, type, type="o", col=colscale, pch=pch, endsig=T)
+timeseries(rsim[,peaks$name=="G2"]/rsim[,peaks$name=="S2"], days, type, type="o", col=colscale, pch=pch)
+timeseries(rsim[,peaks$name=="G3"]/rsim[,peaks$name=="S3"], days, type, type="o", col=colscale, pch=pch)
+timeseries(rsim[,peaks$name=="G3:1c"]/rsim[,peaks$name=="S3:1c"], days, type, type="o", col=colscale, pch=pch)
+
+timeseries(rowSums(rsim[,peaks$class=="g"]), days, type, type="o", col=colscale, pch=pch, legend=T, endsig=T)
+timeseries(rowSums(rsim[,peaks$class=="sy"]), days, type, type="o", col=colscale, pch=pch, legend=T, endsig=T)
+
+timeseries(rowSums(difinit.rsim[,peaks$class=="g"]), days, type, type="o", col=colscale, pch=pch, legend=T, endsig=T)
+timeseries(rowSums(difinit.rsim[,peaks$class=="sy"]), days, type, type="o", col=colscale, pch=pch, legend=T, endsig=T)
+
+
+
+timeseries(lig.trends[,peaks$name[cond]=="G0"]/lig.trends[,peaks$name[cond]=="S0"], days, type, type="o", col=colscale, pch=pch)
+timeseries(lig.trends[,peaks$name[cond]=="G1"]/lig.trends[,peaks$name[cond]=="S1"], days, type, type="o", col=colscale, pch=pch)
+timeseries(lig.trends[,peaks$name[cond]=="G2"]/lig.trends[,peaks$name[cond]=="S2"], days, type, type="o", col=colscale, pch=pch)
+timeseries(lig.trends[,peaks$name[cond]=="G3"]/lig.trends[,peaks$name[cond]=="S3"], days, type, type="o", col=colscale, pch=pch)
+timeseries(lig.trends[,peaks$name[cond]=="G3:1c"]/lig.trends[,peaks$name[cond]=="S3:1c"], days, type, type="o", col=colscale, pch=pch)
+
+
+
+
+cond<-peaks$origin=="C"
+pdf("output/ch_pca_difh0.pdf")
+ord.plot(rda(dif.by(rsim[,cond]/rowSums(rsim[,cond]), harvest==0, type), scale=T), harvest, type, col=colscale, pch=pch, spe.labels=peaks$name[cond], spe.mult=1)
+ord.plot(rda(rsim[,cond]/rowSums(rsim[,cond]), scale=T), harvest, type, col=colscale, pch=pch, spe.labels=peaks$name[cond], spe.mult=1)
+ord.plot(rda(rsim[,cond], scale=T), harvest, type, col=colscale, pch=pch, spe.labels=peaks$name[cond], spe.mult=2)
+ord.plot(rda(dif.by(rsim[,cond], harvest==0, type), scale=T), harvest, type, col=colscale, pch=pch, spe.labels=peaks$name[cond], spe.mult=1)
+dev.off()
+
+ord.plot(rda(rsim[harvest==0,T], scale=T), harvest[harvest==0], type[ħarvest==0], col=colscale, pch=pch, spe.labels=peaks$name[cond], spe.mult=2)
+
+cond<-peaks$origin=="N"
+ord.plot(rda(dif.by(rsim[,cond]/rowSums(rsim[,cond]), harvest==0, type), scale=T), harvest, type, col=colscale, pch=pch, spe.labels=peaks$name[cond], spe.mult=1)
+
+
+colnames(peaks)
+var<-alldata$C.N_lit/alldata$C.N_mic
+cond<-is.na(var)!=T
+timeseries(var[cond], alldata$days[cond], alldata$Litter[cond], type="o")
+
+exclude<-c(rep(T, 29), F, rep(T,49), F)
+alldata$Harvest[exclude]
+
+dif<-data.frame(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"]),
+rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"])/alldata$acc_resp[alldata$days==181], 
+rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"]), 
+rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"])/alldata$acc_resp[alldata$days==181])
+colnames(dif)<-c("diff_lig", "diff_lig/acc_resp", "diff_ch", "diff_ch/acc_resp")
+write.csv(corr.ab(alldata[alldata$days==181, c(10:69, 71:75)], dif), "export/6monthdi_cor.csv")
+write.csv(corr.ab(alldata[alldata$days==181, c(10:69, 71:75)], alldata[alldata$days==181, c(10:69, 71:75)]), "export/6month_cor.csv")
+
+Lonly.rsim<-rsim[,peaks$origin=="L"]/rowSums(rsim[,peaks$origin=="L"])
+plot(rda(Lonly.rsim))
+
+
+alldata$cell2pero<-alldata$Cellulase/alldata$Peroxydase
+alldata$cell2phen<-alldata$Cellulase/alldata$Phenoloxidase
+
+alldata$CN_inbal
+
+colnames(alldata)
+
+CN_inbal
+
+diffrsim
+ls()
+plot(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"]), CN_inbal[alldata$Harvest=="III"])
+cor.test(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"]), CN_inbal[alldata$Harvest=="III"])
+plot(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"]), CN_inbal[alldata$Harvest=="III"])
+cor.test(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"]), CN_inbal[alldata$Harvest=="III"])
+
+plot(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"]), CP_inbal[alldata$Harvest=="III"])
+cor.test(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"]), CP_inbal[alldata$Harvest=="III"])
+plot(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"]), CP_inbal[alldata$Harvest=="III"])
+cor.test(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"]), CP_inbal[alldata$Harvest=="III"])
+
+plot(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"]), NP_inbal[alldata$Harvest=="III"])
+cor.test(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"]), NP_inbal[alldata$Harvest=="III"])
+plot(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"]), NP_inbal[alldata$Harvest=="III"])
+cor.test(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"]), NP_inbal[alldata$Harvest=="III"])
+
+plot(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="L"]), CN_inbal[alldata$Harvest=="II"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="L"]), CN_inbal[alldata$Harvest=="II"&exclude])
+plot(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="C"]), CN_inbal[alldata$Harvest=="II"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="C"]), CN_inbal[alldata$Harvest=="II"&exclude])
+
+plot(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="L"]), CP_inbal[alldata$Harvest=="II"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="L"]), CP_inbal[alldata$Harvest=="II"&exclude])
+plot(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="C"]), CP_inbal[alldata$Harvest=="II"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="C"]), CP_inbal[alldata$Harvest=="II"&exclude])
+
+plot(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="L"]), NP_inbal[alldata$Harvest=="II"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="L"]), NP_inbal[alldata$Harvest=="II"&exclude])
+plot(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="C"]), NP_inbal[alldata$Harvest=="II"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==2, peaks$origin=="C"]), NP_inbal[alldata$Harvest=="II"&exclude])
+
+plot(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="L"]), CN_inbal[alldata$Harvest=="IV"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="L"]), CN_inbal[alldata$Harvest=="IV"&exclude])
+plot(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="C"]), CN_inbal[alldata$Harvest=="IV"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="C"]), CN_inbal[alldata$Harvest=="IV"&exclude])
+
+plot(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="L"]), CP_inbal[alldata$Harvest=="IV"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="L"]), CP_inbal[alldata$Harvest=="IV"&exclude])
+plot(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="C"]), CP_inbal[alldata$Harvest=="IV"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="C"]), CP_inbal[alldata$Harvest=="IV"&exclude])
+
+plot(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="L"]), NP_inbal[alldata$Harvest=="IV"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="L"]), NP_inbal[alldata$Harvest=="IV"&exclude])
+plot(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="C"]), NP_inbal[alldata$Harvest=="IV"&exclude])
+cor.test(rowSums(difinit.rcTIC[harvest==15, peaks$origin=="C"]), NP_inbal[alldata$Harvest=="IV"&exclude])
+
+plot(rowSums(difinit.rcTIC[, peaks$origin=="L"]), rowSums(difinit.rcTIC[, peaks$origin=="C"]))
+cor.test(rowSums(difinit.rcTIC[, peaks$origin=="L"]), rowSums(difinit.rcTIC[, peaks$origin=="C"]))
+abline(lm(rowSums(difinit.rcTIC[, peaks$origin=="C"])~rowSums(difinit.rcTIC[, peaks$origin=="L"]) ))
+summary(lm(rowSums(difinit.rcTIC[, peaks$origin=="C"])~rowSums(difinit.rcTIC[, peaks$origin=="L"])))
+
+plot(rowSums(difinit.rcTIC[, peaks$origin=="C"]), rowSums(difinit.rcTIC[, peaks$origin=="L"]))
+
+plot(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"])/(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"])+rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"])), CN_inbal[alldata$Harvest=="III"])
+cor.test(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"])/(rowSums(difinit.rcTIC[harvest==6, peaks$origin=="C"])+rowSums(difinit.rcTIC[harvest==6, peaks$origin=="L"])), CN_inbal[alldata$Harvest=="III"])
+
+
+dev.off()
+plfas<-read.csv("raw_data/plfa_raw.csv")
+
+cond<-plfas[,2]>0
+pca.plfa<-(rda(plfas[cond,9:ncol(plfas)]/plfas[cond,2], scale=T))
+
+ord<-pca.plfa
+name<-"plfa.pca"
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+plot(ord)
+plot(xvar)
+
+timeseries(plfas$fung_bm[cond], alldata$days[cond], alldata$Litter[cond], pch=pch, type="o" )
+
+head(plfas)
+
+pdf("output/plfas_PCA12.pdf") 
+      plot(ord, choices=c(1,2), type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"))
+
+      scores.sites<-(scores(ord, display="sites", choices=1:2))
+#        for (i in 1:length(typlev))
+#        for (j in 1:length(harlev))
+#        points(ord, choices=c(1,2),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=colscale[j], pch=pch[i], cex=.6)
+
+harlev2<-c("I", "II", "III", "IV")
+      for (i in 1:length(typlev))
+      for (j in 2:3)
+      {
+      x<-mean(scores.sites[alldata$Harvest[cond]==harlev2[j] & alldata$Litter[cond]==typlev[i],1])
+      y<-mean(scores.sites[alldata$Harvest[cond]==harlev2[j] & alldata$Litter[cond]==typlev[i],2])
+      x.err<-stderr(scores.sites[alldata$Harvest[cond]==harlev2[j] & alldata$Litter[cond]==typlev[i],1])
+      y.err<-stderr(scores.sites[alldata$Harvest[cond]==harlev2[j] & alldata$Litter[cond]==typlev[i],2])
+      plotCI(x, y, uiw=y.err, liw=y.err, col=colscale[j], pch=pch[i], cex=1, add=T, gap=0)
+      plotCI(x, y, uiw=x.err, liw=x.err, err="x", col=colscale[j], pch=pch[i], cex=1, add=T, gap=0)
+      print(paste(x,y,x.err, y.err))
+      }
+      scores<-(scores(ord, display="species", choices=1:2))
+      text(scores[,1]*2.5, scores[,2]*2.5, labels=colnames(plfas[,9:ncol(plfas)]), cex=.4)
+      title(name)
+
+dev.off()
+
+
+
+cond<-T
+cond<-harvest==2
+cond<-harvest==6
+cond<-harvest==15
+summary(lm(samples$resp[cond]~lci[cond]*samples$N_lit[cond]))
+summary
+plot(lm(samples$resp[cond]~lci2[cond]*samples$N_lit[cond]))
+
+cor.test(samples$N_lit[cond], lci[cond])
+cor.test(samples$N_lit[cond], lci2[cond])
+plot(samples$N_lit[cond], lci2[cond])
+
+lci<-orig_cTIC$L/(orig_cTIC$L+orig_cTIC$C)
+lci2<-(orig_cTIC$L+orig_cTIC$Ph)/(orig_cTIC$L+orig_cTIC$C+orig_cTIC$Ph)
+lci2
+
+which(names=="N")
+
+names<-colnames(class_cTIC)
+for (i in c(4,7))
+{print(names[i])
+ord<-rda(rsim[,peaks$class==names[i]])
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+print(xvar[1])
+cor<-cor.test(rowSums(rsim[,peaks$class==names[i]]), scores(ord, display="sites", choices=1))
+print(cor$p.value)
+print(cor$estimate)
+}
+
+names<-colnames(orig_cTIC)
+for (i in c(4,7,5))
+{print(names[i])
+ord<-rda(rsim[,peaks$orig==names[i]])
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+print(xvar[1])
+cor<-cor.test(rowSums(rsim[,peaks$orig==names[i]]), scores(ord, display="sites", choices=1))
+print(cor$p.value)
+print(cor$estimate)
+}
+
+citation("vegan")
+
+names<-colnames(alldata)
+
+colnames(alldata)
+
+sum(peaks$origin=="N")
+
+colnames(class_cTIC)
+peaks$class[peaks$orig=="C"]
+cor.test(rowSums(rsim[peaks$class=="cp"]), rsim[,peaks$class=="f.x"])
+
+for (i in 44:49)
+{
+print(names[i])
+print(anova(lm(alldata[,i] ~ alldata$Harvest*alldata$Litter)))
+means<-tapply(alldata[,i], list(alldata$Harvest,alldata$Litter), mean)
+print(means[4,T]/means[1,T])
+}
+
+ord<-rda(orig_cTIC)
+
+colnames(alldata)
+
+?pairwise.t.test
+
+class_cTIC$fa
+head(rcTIC)
+ncol(rsim)
+
+?dfa
+
+head(rsim)
+
+timeseries(class_cTIC$g/class_cTIC$sy, days, type, pch=pch, col=1, cex=2, errcol=1, lwd=.5, type="o", bg="blue", endsig=T, letters=c(0.05,0.00))
+
+anova(lm(class_cTIC$g/class_cTIC$sy ~ days*type))
+
+timeseries((orig_cTIC$L+orig_cTIC$Ph)/(orig_cTIC$C+orig_cTIC$L+orig_cTIC$Ph), days, type, 
+pch=pch, col=1, cex=2, errcol=1, lwd=.5, type="o", bg="blue", endsig=T, letters=c(0.05,0.00))
+
+
+points<-timeseries((orig_cTIC$L+orig_cTIC$Ph)/(orig_cTIC$C+orig_cTIC$L+orig_cTIC$Ph), days, type, 
+pch=22, col=1, cex=2, errcol=1, type="o", bg="blue", endsig=T, lettters=T)
+points
+text(points$massloss, points$y+(max(points$y)-min(points$y))*0.05, paste(points$xcomp, points$sepcomp))
+
+points(points$massloss, points$y, pch=22, cex=2, bg="blue")
+warnings()
+points
+
+dev.off()
+warnings()
+
+plot(alldata$Respiration, alldata$N_lit, pch=25, bg=4)
+
+plot(alldata$N_lit, alldata$DOC, type="n")
+cond<-alldata$Harvest=="I"
+      points(alldata$N_lit[cond], alldata$DOC[cond], pch=16,  col=colscale[1])
+      abline(lm(alldata$DOC[cond]~alldata$N_lit[cond]))
+cond<-alldata$Harvest=="II"
+      points(alldata$N_lit[cond], alldata$DOC[cond], pch=17,  col=colscale[2])
+      abline(lm(alldata$DOC[cond]~alldata$N_lit[cond]))
+cond<-alldata$Harvest=="III"
+      points(alldata$N_lit[cond], alldata$DOC[cond], pch=18,  col=colscale[3])
+      abline(lm(alldata$DOC[cond]~alldata$N_lit[cond]))
+cond<-alldata$Harvest=="IV"
+      points(alldata$N_lit[cond], alldata$DOC[cond], pch=18,  col=colscale[3])
+      abline(lm(alldata$DOC[cond]~alldata$N_lit[cond]))
+
+  
+colnames(alldata)
+var<-alldata$Protease/alldata$Gross.protein.depolymerization
+var<-alldata$Protease
+var<-alldata$Gross.protein.depolymerization
+
+
+harvest.alldata<-rep(c(rep(14,5), rep(97,5), rep(181,5), rep(375,5)),4)
+
+var<-(orig_cTIC$L+orig_cTIC$Ph)/(orig_cTIC$C+orig_cTIC$L+orig_cTIC$Ph)
+
+cond<-is.na(var)!=T
+
+pdf("output/n_timeseries.pdf", width=6, height=15)
+var<-alldata$Gross.protein.depolymerization
+par(mfrow=c(3,1))
+var[cond]
+timeseries(var[cond],harvest.alldata[cond], alldata$Litter[cond], ylab="protein gross depoly",
+pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(.05, .05))
+
+var<-alldata$Protease
+var[cond]
+timeseries(var[cond],harvest.alldata[cond], alldata$Litter[cond], ylab="potential protease activity",
+pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(.05, .05))
+
+var<-alldata$Protease/alldata$Gross.protein.depolymerization
+var[cond]
+timeseries(var[cond],harvest.alldata[cond], alldata$Litter[cond], ylab="potential protease activity / protein gross depoly",
+pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(.05, .05))
+
+dev.off()
+
+peak.select<-peaks$origin=="L"
+sco<-scores(rda(rsim[,peak.select], scale=T), display="sites")
+cor.test(sco[,1], rowSums(rsim[,peak.select]))
+
+peak.select<-peaks$origin=="N"
+sco<-scores(rda(rsim[,peak.select], scale=T), display="sites")
+cor.test(sco[,1], rowSums(rsim[,peak.select]))
+
+pdf("output/comparison_pca_sum_carbohydrates.pdf")
+
+par(mfrow=c(2,2))
+
+peak.select<-peaks$class=="f.f"|peaks$class=="cp.f"|peaks$class=="c.f"
+sco<-scores(rda(rsim[,peak.select], scale=T), display="sites")
+cor.test(sco[,1], rowSums(rsim[,peak.select]))
+
+timeseries(sco[,1]*(-1),harvest, type, nam="furane type carbohydrate pool", xlab="incubation time days", ylab="PCA1",
+pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(0.05,0.05))
+
+timeseries(rowSums(rsim[,peak.select]),harvest, type, nam="furane type carbohydrate pool", xlab="incubation time days", ylab="sum of cTIC ares",
+pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(0.05,0.05))
+
+peak.select<-peaks$class=="f.cp"|peaks$class=="cp.cp"|peaks$class=="c.cp"
+sco<-scores(rda(rsim[,peak.select], scale=T), display="sites")
+cor.test(sco[,1], rowSums(rsim[,peak.select]))
+
+timeseries(sco[,1],days, type, nam="cyclopentenone type carbohydrate pool", xlab="incubation time days", ylab="PCA1",
+pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(0.05,0.05))
+timeseries(rowSums(rsim[,peak.select]), days, type, nam="cyclopentenone type carbohydrate pool", xlab="incubation time days", ylab="sum of cTIC ares",
+pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(0.05,0.05))
+
+dev.off()
+
+timeseries
+
+corr.ab( alldata[,10:69 ], data.frame(alldata$DOC))
+anova(lm(alldata$DOC~alldata$Litter*alldata$Harvest-1))
+levene.test(alldata$DOC[cond], alldata$Harvest[cond])
+test<-oneway.test(orig_cTIC$L[harvest==2]~type[harvest==2])
+comp<-pairwise.t.test(orig_cTIC$L[harvest==2], type[harvest==2], p.adjust="bonferroni", pool.sd=F, var.eq=F)
+names(comp)
+comp$p.value
+
+
+transcomp(comp$p.value)q
+tmp<-multcompLetters(transcomp(comp$p.value), Letters=c("a", "b", "c", "d","e"))
+names(tmp)
+tmp
+$Letters[1]
+multcompLetters(transcomp)
+?pairwise.t.test
+?multcompLetters
+LETTERS
+
+
+sh<-shapiro.test(alldata$DOC[cond])
+levene.test(sqrt(orig_cTIC$L), type)
+filinger.test(alldata$DOC[cond]~alldata$Harvest[cond])
+?var.test
+?filinger.test
+
+write.csv(corr.ab(rsim[,peaks$origin=="C"], data.frame(orig_cTIC$C, class_cTIC$f, class_cTIC$cp, class_cTIC$c)), "marker_corr_ch.csv")
+
+colnames(alldata)
+
+class_cTIC
+
+tapply(alldata$DOC/alldata$TN, list(alldata$Litter, alldata$Harvest), mean)
+tapply(alldata$C.N_lit, list(alldata$Litter, alldata$Harvest), mean)
+
+tapply(alldata$MN.litter, list(alldata$Litter, alldata$Harvest), mean)
+    
+pch
+
+ord<-rda(difinit.rsim, scale=T)
+name<-"diff.pca"
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+plot(ord)
+plot(xvar)
+
+
+pdf("output/allpeaks_diffs_PCA12.pdf") 
+      plot(ord, choices=c(1,2), type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"))
+
+      scores.sites<-(scores(ord, display="sites", choices=1:2))
+#        for (i in 1:length(typlev))
+#        for (j in 1:length(harlev))
+#        points(ord, choices=c(1,2),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=colscale[j], pch=pch[i], cex=.6)
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      {
+      x<-mean(scores.sites[harvest==harlev[j] & type==typlev[i],1])
+      y<-mean(scores.sites[harvest==harlev[j] & type==typlev[i],2])
+      x.err<-stderr(scores.sites[harvest==harlev[j] & type==typlev[i],1])
+      y.err<-stderr(scores.sites[harvest==harlev[j] & type==typlev[i],2])
+      plotCI(x, y, uiw=y.err, liw=y.err, col=colscale[j], pch=pch[i], cex=1, add=T, gap=0)
+      plotCI(x, y, uiw=x.err, liw=x.err, err="x", col=colscale[j], pch=pch[i], cex=1, add=T, gap=0)
+      print(paste(x,y,x.err, y.err))
+      }
+      scores<-(scores(ord, display="species", choices=1:2))
+      text(scores[,1]*2.5, scores[,2]*2.5, labels=peaks$class, cex=.4)
+      title(name)
+
+      sco<-scores(ord, display="sites", choices=1:2)
+      timeseries(sco[,1],days, type, nam="differences PCA 1", xlab="incubation time days", ylab="PCA1",
+      pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(0.05,0.05))
+
+      timeseries(sco[,2],days, type, nam="differences PCA 2", xlab="incubation time days", ylab="PCA1",
+      pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(0.05,0.05))
+dev.off()
+
+pdf("output/allpeaks_diffs_PCA13.pdf") 
+      plot(ord, choices=c(1,3), type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA3", formatC(xvar[3]*100, digits=3), "% variance"))
+
+      scores<-(scores(ord, display="species", choices=1:3))
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,3),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=colscale[j], pch=pch[i], cex=1)
+
+      text(scores[,1]*2.5, scores[,2]*2.5, labels=peaks$class, cex=.4)
+      title(name)
+
+      sco<-scores(ord, display="sites", choices=1:3)
+      timeseries(sco[,1],days, type, nam="differences PCA 1", xlab="incubation time days", ylab="PCA1",
+      pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(0.05,0.05))
+
+      timeseries(sco[,2],days, type, nam="differences PCA 3", xlab="incubation time days", ylab="PCA1",
+      pch=pch, col=1, cex=1, errcol=1, type="o", bg="grey", endsig=T, legend=F, legsig=F, letters=c(0.05,0.05))
+dev.off()
+
+
+
+ord<-rda(difh2.rsim, scale=T)
+name<-"diffh2.pca"
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+plot(ord)
+plot(xvar)
+
+pdf("output/allpeaks_diffh2_PCA12.pdf") 
+      plot(ord, choices=c(1,2), type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"))
+
+      scores<-(scores(ord, display="species", choices=1:2))
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,2),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=colscale[j], pch=pch[i], cex=1)
+
+      text(scores[,1]*2.5, scores[,2]*2.5, labels=peaks$orig, cex=.4)
+      title(name)
+      fit<-envfit(ord~days)
+      fit
+      plot(fit)
+
+dev.off()
+
+
+ord<-rda(difinit.rsim, log(days+1))
+name<-"diff.pca (constrained to log(days+1))"
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+plot(ord)
+plot(xvar)
+
+pdf("output/allpeaks_diffs_const_PCA12.pdf") 
+      plot(ord, choices=c(1,2), type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"))
+
+      scores<-(scores(ord, display="sites", choices=1:2))
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,2),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=colscale[j], pch=pch[i], cex=0.6)
+      text(ord, choices=c(1,2), display="species", labels=peaks$class, cex=.6)
+      title(name)
+      fit<-envfit(ord~log(days+1))
+      fit
+      plot(fit)
+dev.off()
+
+
+
+pdf("output/allpeaks_diffs_const_PCA13.pdf") 
+      plot(ord, choices=c(1,3), type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA3", formatC(xvar[3]*100, digits=3), "% variance"))
+
+      scores<-(scores(ord, display="sites", choices=1:2))
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,3),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=colscale[j], pch=pch[i], cex=0.6)
+      text(ord, choices=c(1,3), display="species", labels=peaks$class, cex=.6)
+      title(name)
+      fit<-envfit(ord~log(days+1))
+      fit
+      plot(fit)
+dev.off()
+
+
+write.csv(corr.ab(rsim[,peaks$orig=="L"|peaks$orig=="Ph"], data.frame(orig_cTIC$L, orig_cTIC$Ph, orig_cTIC$L+orig_cTIC$Ph)),"lig_ph_markers.csv")
+
+
+corr.ab(data.frame(orig_cTIC$L, orig_cTIC$Ph, orig_cTIC$L+orig_cTIC$Ph))
+
+cond<-harvest!=15&is.na(samples$lignin)==F
+cond
+cond <- alldata$Harvest=="I"
+plot(alldata$N_lit[cond], alldata$Respiration[cond])
+cor.test(alldata$N_lit[cond], alldata$Respiration[cond])
+
+cond <- alldata$Harvest=="II"
+& is.na(alldata$Respiration)==F
+
+plot(alldata$N_lit[cond], alldata$Respiration[cond])
+cor.test(alldata$N_lit[cond], alldata$Respiration[cond])
+cond
+
+cond <- alldata$Harvest=="III"
+plot(alldata$N_lit[cond], alldata$Respiration[cond])
+cor.test(alldata$N_lit[cond], alldata$Respiration[cond])
+
+cond <- alldata$Harvest=="IV"
+plot(alldata$N_lit[cond], alldata$Respiration[cond])
+  cor.test(alldata$N_lit[cond], alldata$Respiration[cond])
+
+cond <- T
+plot(alldata$N_lit, alldata$Respiration)
+cor.test(alldata$N_lit, alldata$Respiration)
+
+summary(lm(alldata$Respiration~alldata$N_lit+alldata$Harvest-1))
+
+resp.means<-tapply(alldata$Respiration[is.na(alldata$Respiration)==F], list(alldata$Litter[is.na(alldata$Respiration)==F], alldata$Harvest[is.na(alldata$Respiration)==F]), mean)
+corr.ab(resp.means, resp.means)
+
+norm.rsim<-rsim
+norm.rsim[1:19,T]<-colSums(rsim[harvest==0 & type=="AK",T])/4
+norm.rsim[20:37,T]<-colSums(rsim[harvest==0 & type=="KL",T])/4
+norm.rsim[38:56,T]<-colSums(rsim[harvest==0 & type=="OS",T])/4
+norm.rsim[57:74,T]<-colSums(rsim[harvest==0 & type=="SW",T])/4
+
+diffs.rda<-rda(rsim[harvest!=0,T]-norm.rsim[harvest!=0,T])
+
+ord<-diffs.rda
+name<-"PCA (differences to H0)"
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+plot(ord)
+
+pdf("output/allpeaks_diffs_PCA12.pdf") 
+      plot(ord, choices=c(1,2), type="n", tck=.01, 
+      xlab=paste("PCA5", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA6", formatC(xvar[2]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,2),  display="sites", select=harvest[harvest!=0]==harlev[j] & type[harvest!=0]==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(1,2), display="species", labels=peaks$code, cex=.6)
+      title(name)
+dev.off()
+
+sco<-scores(ord, display="species")
+length(sco[,1])
+
+
+
+rsim
+sum(peaks$origin=="N")
+
+alldata$days<-rep(c(rep(14,5),rep(87,5), rep(181,5), rep(375,5)),4)
+
+cond<-is.na(alldata$Glucan.Gross.Depolymerisation)==F
+cond1<-is.na(alldata$Respiration)==F
+cond2<-cond&cond1
+cond3<-alldata$Harvest!="IV"&alldata$Peroxydase!=0
+
+
+
+
+timeseries(alldata$Cellulase[cond3], alldata$days[cond3], alldata$Litter[cond3], col=colscale)
+timeseries(alldata$Phenoloxidase[cond3], alldata$days[cond3], alldata$Litter[cond3], col=colscale)
+timeseries(alldata$Peroxydase[cond3], alldata$days[cond3], alldata$Litter[cond3], col=colscale, lty=2, add=T)
+
+
+
+
+aov<-(lm(alldata$Respiration[cond2 & alldata$Harvest=="III"]/alldata$Glucan.Gross.Depolymerisation[cond2 & alldata$Harvest=="III"] ~ alldata$Litter[cond2 & alldata$Harvest=="III"]))
+hsd<-HSD.test(aov, "alldata$Litter")
+
+
+, alldata$days[cond2], alldata$Litter[cond2], col=colscale)
+
+colnames(alldata)
+
+timeseries(alldata$DOC[cond], alldata$days[cond], alldata$Litter[cond], col=colscale)
+timeseries(alldata$DON[cond], alldata$days[cond], alldata$Litter[cond], col=colscale)
+alldata$DON
+
+cond<-harvest==15
+cor.test(samples$N_lit[cond], samples$resp[cond])
+cor.test(samples$N_lit[cond], samples$h4.massloss[cond])
+
+colnames(
+cor.test(alldata$C_lit[cond], alldata$massloss
+
+
+peaks
+bv
+tapply(peaks$RT, peaks$origin, count)
+
+count
+
+colnames(alldata)
+timeseries(alldata$Cellulase, alldata$days, alldata$Litter, col=colscale)
+
+write.csv(corr.ab(rsim[peaks$origin=="C"],rsim[peaks$origin=="C"]), "intercor_carbos.csv")
+write.csv(corr.ab(rsim[peaks$origin=="L"|peaks$origin=="Ph"],rsim[peaks$origin=="L"|peaks$origin=="Ph"]), "intercor_ligs.csv")
+levels(peaks$origin)
+
+alldata$days<-rep(c(rep(14,5), rep(97,5), rep(181,5), rep(375,5)),4)
+
+write.csv(data.frame(peaks.ord$name, peaks.ord$origin, peaks.ord$origin, peaks.ord$RT, peaks.ord$m.z), "peaksord.csv" ,  eol="\\\\ \r\n")
+
+
+
+summary(lm(samples$resp[harvest!=0]~samples$N_lit[harvest!=0]))
+summary
+anova(lm(samples$resp[harvest==15]~samples$N_lit[harvest==15]+recidx[harvest==15]))
+
+cond<-harvest==15
+response<-samples$resp
+pred<-recidx
+summary(lm(response[cond]~samples$N_lit[cond]+samples$P_lit[cond]+pred[cond]))
+anova(lm(response[cond]~samples$N_lit[cond]+samples$P_lit[cond]+pred[cond]))
+plot(pred[cond], response[cond])
+abline(lm(response[cond]~pred[cond]))
+summary(lm(response[cond]~pred[cond]))
+cor.test(response[cond], pred[cond])
+
+cor.test(pred[cond], samples$N_lit[cond]) 
+LCI<-orig_cTIC$L/(orig_cTIC$L+orig_cTIC$C)
+colnames(samples)
+alldata
+
+colscale<-c(grey(0), grey(.3), grey(.5), grey(.7))
+
+head(alldata.stat)
+
+alldata.ylabs<-alldata[1,T]
+alldata.titles<-alldata[1,T]
+
+alldata.ylabs[38:49]<-c(rep("% dry weight, SE", 3), rep("w/w, SE", 3), rep("% dry weight, SE", 3), rep("mg g-1 dry weight", 3))
+alldata.titles[38:49]<-c("Litter C content", "Litter N content", "Litter P content", "Litter C:N ratio", "Litter C:P ratio", "Litter N:P ratio", "Litter K content", "Litter Ca content", "Litter Mg content", "Litter Fe content", "Litter Mn content", "Litter Zn content")
+
+
+pdf("output/controls_h1.pdf", width=18, height=10)
+
+par(mfrow=c(2,6), tck=0.02)
+for (i in c(38:49))
+{
+height<-alldata.stat[alldata.stat$harvest=="I",i]
+error<-alldata.stat[alldata.stat$harvest=="I",(i+(ncol(alldata.stat)-2)/2)]
+barplot2(height, ylim=c(0,max(height+error)),plot.ci=TRUE, ci.u=height+error,ci.l=height ,names.arg=alldata.stat$type[alldata.stat$harvest=="I"], main=alldata.titles[i],ylab=alldata.ylabs[i], col=colscale)
+print(i)
+}
+dev.off()
+
+names(alldata)
+
+
+pdf("output/doc.pdf", width=12, height=5)
+
+par(mfrow=c(1,4), tck=0.02)
+
+height<-alldata.stat[alldata.stat$harvest=="I",i]
+error<-alldata.stat[alldata.stat$harvest=="I",(i+(ncol(alldata.stat)-2)/2)]
+barplot2(height, ylim=c(0,max(height+error)),plot.ci=TRUE, ci.u=height+error,ci.l=height ,names.arg=alldata.stat$type[alldata.stat$harvest=="I"], main=alldata.titles[i],ylab=alldata.ylabs[i], col=colscale)
+
+height<-alldata.stat[alldata.stat$harvest=="II",i]
+error<-alldata.stat[alldata.stat$harvest=="II",(i+(ncol(alldata.stat)-2)/2)]
+barplot2(height, ylim=c(0,max(height+error)),plot.ci=TRUE, ci.u=height+error,ci.l=height ,names.arg=alldata.stat$type[alldata.stat$harvest=="I"], main=alldata.titles[i],ylab=alldata.ylabs[i], col=colscale)
+
+height<-alldata.stat[alldata.stat$harvest=="III",i]
+error<-alldata.stat[alldata.stat$harvest=="III",(i+(ncol(alldata.stat)-2)/2)]
+barplot2(height, ylim=c(0,max(height+error)),plot.ci=TRUE, ci.u=height+error,ci.l=height ,names.arg=alldata.stat$type[alldata.stat$harvest=="I"], main=alldata.titles[i],ylab=alldata.ylabs[i], col=colscale)
+
+height<-alldata.stat[alldata.stat$harvest=="IV",i]
+error<-alldata.stat[alldata.stat$harvest=="IV",(i+(ncol(alldata.stat)-2)/2)]
+barplot2(height, ylim=c(0,max(height+error)),plot.ci=TRUE, ci.u=height+error,ci.l=height ,names.arg=alldata.stat$type[alldata.stat$harvest=="I"], main=alldata.titles[i],ylab=alldata.ylabs[i], col=colscale)
+
+dev.off()
+
+
+pdf("output/controls_h2.pdf", width=18, height=10)
+par(mfrow=c(2,6), tck=0.02)
+
+for (i in c(38:49))
+{
+height<-alldata.stat[alldata.stat$harvest=="II",i]
+error<-alldata.stat[alldata.stat$harvest=="II",(i+(ncol(alldata.stat)-2)/2)]
+barplot2(height, ylim=c(0,max(height+error)),plot.ci=TRUE, ci.u=height+error,ci.l=height ,
+  names.arg=alldata.stat$type[alldata.stat$harvest=="I"], main=alldata.titles[i], xlab="litter type",ylab=alldata.ylabs[i], col=colscale)
+print(i)
+}
+dev.off()
+
+timeseries(class_cTIC$cp*2, days, type, pch=pch, col=colscale, add=T)
+
+
+colnames(alldata.stat)
+par()
+timeseries(recidx, days, type, col=colscale)
+
+processes
+timeseries(
+colnames(samples)
+samples$resp[harvest!=0]
+, days[harvest!=0], type[harvest!=0], col=colscale)
+samples
+
+levene.test(sqrt(recidx), harvest)
+colnames(orig_cTIC)
+
+pdf("output/minerals.pdf", width=21, height=5)
+par(mfrow=c(1,7))
+
+for (i in 1:(ncol(minerals.stat)/2))barplot2(minerals.stat[,i], ylim=c(0, max(minerals.stat[,i])+max(minerals.stat[i+ncol(minerals.stat)/2])), 
+plot.ci=TRUE, ci.u=minerals.stat[,i]+minerals.stat[,(i+ncol(minerals.stat)/2)],ci.l=minerals.stat[,i],names.arg=rownames(minerals.stat), main=names[i+1], ,ylab=ylab[i], col=colscale)
+
+dev.off()
+
+par(mfrow=c(2,1))
+plot(days, class_cTIC$f,  ylim=c(5,12), xlim=c(0,400), type="n")
+timeseries(class_cTIC$f, days, type, pch=2,  type="o", add=T, lty=2, col=colscale)
+timeseries(class_cTIC$cp, days, type, pch=1,  type="o", add=T, lty=2, col=colscale)
+
+cor.test(class_cTIC$f, class_cTIC$cp)
+peaks[peaks$orig=="C",T]
+
+pdf("n_marker_n_lit.pdf")
+sink("n_marker_n_lit_cor.txt")
+cor<-cor.test(orig_cTIC$N, samples$N_lit)
+print(cor)
+plot(samples$N_lit, orig_cTIC$N, tck=.02, xlab="litter N content", ylab="protein pyr markers", pch=19)
+if(as.numeric(cor$p.value)<0.05)
+abline(lm(orig_cTIC$N ~ samples$N_lit))
+
+for (i in 1:peaknr)
+if (peaks$origin[i]=="N")
+{
+cor<-cor.test(rsim[,i], samples$N_lit)
+print(cor)
+plot(samples$N_lit, rsim[,i])
+if(as.numeric(cor$p.value)<0.05)
+abline(lm(rsim[,i] ~ samples$N_lit))
+title(peaks$name[i])
+}
+dev.off()
+sink()
+
+for (i in 1:ncol(class_cTIC))
+{
+timeseries(class_rsim[,i], days, type, nam=name3[i], xlab="litter incubation (days)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+timeseries(class_rsim[,i], days, type, nam=name3[i], massloss=massloss, masslossSE=masslossSE, normalize=1, xlab="accumulated respiration (g CO2-C g-1 litter-C, SE)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+abline(h=100, col="grey")
+timeseries(class_rsim[,i], days, type, nam=name3[i], massloss=massloss, masslossSE=masslossSE, normalize=2, xlab="accumulated respiration (g CO2-C g-1 litter-C, SE)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+abline(h=100, col="grey")
+}
+
+dev.off()
+
+pdf("output/timeseries1.pdf")
+
+siglev(.4)
+
+for (i in 1:ncol(rsim))
+timeseries(rsim[,i], days, type, peaks$name[i], xlab="litter incubation (days)", ylab="peak area (%sim)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), lwd=2, allpoints=T, pch=19)
+
+dev.off()
+
+
+init.dif.groups<-matrix(nrow=peaknr, ncol=length(typlev))
+init.dif.means<-matrix(nrow=peaknr, ncol=length(typlev))
+colnames(init.dif.groups)<-typlev
+rownames(init.dif.groups)<-rownames(peaks)
+colnames(init.dif.means)<-typlev
+rownames(init.dif.means)<-rownames(peaks)
+
+
+siglev(init.dif.sig[peaks$origin=="C"])
+<-1
+cond<-harvest==0
+names<-peaks$name
+
+
+pdf("output/carbos_by_type.pdf", width=12, height=30)
+par(mfrow=c(6,4))
+
+for (i in 1:peaknr)
+if (peaks$orig[i]=="C")
+{
+lim=1.2*max(tapply(rsim[,i], list(har,type), stderr)+tapply(rsim[,i], list(har,type), mean))
+for (j in 1:length(typlev))
+{
+cond<-type==typlev[j]
+har<-as.factor(harvest)
+mod<-lm(rsim[cond,i] ~ har[cond]-1)
+aov<-anova(mod)
+#init.dif.sig[i]<-aov$'Pr(>F)'[1] 
+hsd<-HSD.test(aov(mod),"har")
+#init.dif.groups[i,T]<-hsd$M[order=hsd$trt]
+#init.dif.means[i,T]<-hsd$means[order=hsd$trt]
+error<-tapply(rsim[cond,i], har[cond], stderr) 
+height<-tapply(rsim[cond,i], har[cond], mean)
+barplot2(height, ylim=c(0,lim),plot.ci=TRUE, ci.u=height+error,ci.l=height ,names.arg=paste("harvest", 1:4), main=paste(names[i],typlev[j]), ylab="% rsim", col=colscale)
+gr<-hsd$M[order(hsd$trt)]
+text(1:4, lim*.95, gr[c(1,3,4,2)])
+}
+}
+dev.off()
+hsd
+j<-1
+
+init.dif.groups<-matrix(nrow=peaknr, ncol=length(typlev))
+init.dif.means<-matrix(nrow=peaknr, ncol=length(typlev))
+colnames(init.dif.groups)<-typlev
+rownames(init.dif.groups)<-rownames(peaks)
+colnames(init.dif.means)<-typlev
+rownames(init.dif.means)<-rownames(peaks)
+init.dif.sig<-1
+end.dif.sig<-1
+
+
+pdf("output/initialandend_by_type.pdf", width=20, height=30)
+par(mfrow=c(8,6))
+for (i in 1:peaknr)
+i<-15
+{
+cond1<-harvest==0
+cond2<-harvest==15
+type015<-factor(c(rep("AK0",4),rep("KL0",4),rep("OS0",4),rep("SW0",4),rep("AK4",5),rep("KL4",5),rep("OS4",5),rep("SW4",4)))
+
+
+lim=1.2*max(c(tapply(rsim[cond1,i], type[cond1], stderr),tapply(rsim[cond2,i], type[cond2], stderr)) + c(tapply(rsim[cond1,i], type[cond1], mean),tapply(rsim[cond2,i], type[cond2], mean)))
+mod<-lm(c(rsim[cond1,i],rsim[cond2,i]) ~ type015-1)
+aov<-anova(mod)
+init.dif.sig[i]<-aov$'Pr(>F)'[1] 
+hsd<-HSD.test(aov(mod),"type015")
+#init.dif.groups[i,T]<-hsd$M[order=hsd$trt]
+#init.dif.means[i,T]<-hsd$means[order=hsd$trt]
+error<-c(tapply(rsim[cond1,i], type[cond1], stderr),tapply(rsim[cond2,i], type[cond2], stderr)) 
+height<-c(tapply(rsim[cond1,i], type[cond1], mean),tapply(rsim[cond2,i], type[cond2], mean)) 
+barplot2(height, ylim=c(0,lim),plot.ci=TRUE, ci.u=height+error,ci.l=height ,names.arg=levels(factor(type015)), main=paste(peaks$name[i],peaks$class[i], "initial"), ylab="% rsim", col=colscale)
+hsd.ord<-hsd[order(hsd$trt),T]
+text(1:8*1.2-0.5, lim*.95, hsd.ord$M[c(1,3,5,7,2,4,6,8)])
+
+}
+dev.off()
+
+for (i in 1:peaknr)
+
+
+
+
+pdf("output/massseries_class_cTIC.pdf", width=21, height=30)
+par(mfrow=c(6,3))
+
+name<-colnames(class_cTIC)
+for (i in 1:ncol(class_cTIC))
+{
+timeseries(class_cTIC[,i], days, type, nam=name[i], xlab="litter incubation (days)", ylab="peak area (%cTIC)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+timeseries(class_cTIC[,i], days, type, nam=name[i], massloss=massloss, masslossSE=masslossSE, normalize=1, xlab="accumulated respiration (g CO2-C g-1 litter-C, SE)", ylab="peak area/initial peak area (%)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+abline(h=100, col="grey")
+timeseries(class_cTIC[,i], days, type, nam=name[i], massloss=massloss, masslossSE=masslossSE, normalize=2, xlab="accumulated respiration (g CO2-C g-1 litter-C, SE)", ylab="peak area/initial peak area (%)", col=c(grey(0), grey(.3), grey(.5), grey(.7)), allpoints=T, pch=19, lwd=2, legsig=F, add=F)
+abline(h=100, col="grey")
+}
+dev.off()
+
+
+
+orig_cTIC
+
+origins<-levels(peaks$origin)
+for (i in 1:length(origins))
+
+pca.all<-rda(rsim, scale=TRUE)
+pca.all.time<-rda(rsim,days, scale=TRUE)
+
+pca.ligs<-rda(rsim[,ligs]/rowSums(rsim[,ligs]), scaled=T)
+pca.ligsph<-rda(rsim[,ligs|phen]/rowSums(rsim[,ligs|phen]), scaled=FALSE)
+
+pca.nitr.ar<-rda(rsim[,nitr|peaks$origin=="a"])
+      
+pca.ligs.h0<-rda(rsim[harvest==0,ligs]/rowSums(rsim[harvest==0,ligs]), scaled=T)pca.ligs.h2<-rda(rsim[harvest==2,ligs]/rowSums(rsim[harvest==2,ligs]), scaled=T)
+pca.ligs.h3<-rda(rsim[harvest==6,ligs]/rowSums(rsim[harvest==6,ligs]), scaled=T)
+pca.ligs.h4<-rda(rsim[harvest==15,ligs]/rowSums(rsim[harvest==15,ligs]), scaled=T)
+
+pca.al<-rda(rsim[,peaks$code2=="al"])
+pca.C<-rda(rsim[,peaks$origin=="C"])
+
+
+plot(pca.al)
+
+pdf("output/pca12_carbos.pdf") 
+
+ord<-pca.C
+name<-"PCA (carbohydrate markers only)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, display="species", labels=peaks[peaks$origin=="C",1], cex=.6)
+      legend("bottomleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+pdf("output/pca13_carbos.pdf") 
+
+ord<-pca.C
+name<-"PCA (carbohydrate markers only)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      
+      plot(ord, type="n", tck=.01, choices=c(1,3),  
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA3", formatC(xvar[3]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,3), display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(1,3), display="species", labels=peaks[peaks$origin=="C",1], cex=.6)
+      legend("bottomleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+
+plot(xvar)
+
+plot(xvar)
+
+ord<-pca.all.time
+name<-"PCA (all markers - constrained to decomposition time)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, display="species", labels=peaks$code3, cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+
+
+
+pdf("pcas/allpeaks_allharvests_PCA12.pdf") 
+
+ord<-pca.all
+name<-"PCA (all markers)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, display="species", labels=peaks$code3, cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+pdf("pcas/allpeaks_allharvests_PCA13.pdf") 
+      plot(ord, choices=c(1,3), type="n", tck=.01, xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),       ylab=paste("PCA3", formatC(xvar[3]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,3),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(1,3), display="species", labels=peaks$code3, cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+pdf("pcas/allpeaks_allharvests_PCA23.pdf") 
+      plot(ord, choices=c(2,3), type="n", tck=.01, xlab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"),       ylab=paste("PCA3", formatC(xvar[3]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(2,3),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(2,3), display="species", labels=peaks$code3, cex=.6)
+      title(name)
+dev.off()
+
+pdf("pcas/allpeaks_allharvests_PCA14.pdf") 
+      plot(ord, type="n", tck=.01, choices=c(1,4),
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA4", formatC(xvar[4]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,4), display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(1,4), display="species", labels=peaks$code3, cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+pdf("pcas/allpeaks_allharvests_PCA24.pdf") 
+      plot(ord, choices=c(2,4), type="n", tck=.01, 
+      xlab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"),
+      ylab=paste("PCA4", formatC(xvar[4]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(2,4),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(2,4), display="species", labels=peaks$code3, cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+pdf("pcas/allpeaks_allharvests_PCA34.pdf") 
+      plot(ord, choices=c(3,4), type="n", tck=.01, 
+      xlab=paste("PCA3", formatC(xvar[3]*100, digits=3), "% variance"),
+      ylab=paste("PCA4", formatC(xvar[4]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(3,4),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(3,4), display="species", labels=peaks$code3, cex=.6)
+      title(name)
+dev.off()
+
+pdf("pcas/allpeaks_allharvests_PCA56.pdf") 
+      plot(ord, choices=c(5,6), type="n", tck=.01, 
+      xlab=paste("PCA5", formatC(xvar[5]*100, digits=3), "% variance"),
+      ylab=paste("PCA6", formatC(xvar[6]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(5,6),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(5,6), display="species", labels=peaks$code3, cex=.6)
+      title(name)
+dev.off()
+
+sink("anova_pca.txt")
+for (i in 1:6)
+{
+tmp<-scores(ord, choices=i)
+print(anova(lm(tmp$sites ~ type*harvest)))
+}
+sink()
+
+tmp<-scores(ord, choices=1:6)
+write.csv(corr.ab(catrsim, tmp$sites), "anova.pca.corr.csv")
+
+pca.ligs<-rda(rsim[,ligs]/rowSums(rsim[,ligs]), scaled=T)
+
+pdf("pcas/ligonly_allharvests_PCA12.pdf") 
+
+ord<-pca.ligs
+name<-"PCA (lignin markers only)"
+
+peaks$RT[ligs]
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, display="species", labels=peaks$code[ligs], cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+pdf("pcas/ligonly_allharvests_PCA13.pdf") 
+      plot(ord, choices=c(1,3), type="n", tck=.01, xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),       ylab=paste("PCA3", formatC(xvar[3]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(1,3),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(1,3), display="species", labels=peaks$code[ligs], cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+dev.off()
+
+pdf("pcas/ligonly_allharvests_PCA23.pdf") 
+      plot(ord, choices=c(2,3), type="n", tck=.01, xlab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"),       ylab=paste("PCA3", formatC(xvar[3]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, choices=c(2,3),  display="sites", select=harvest==harlev[j] & type==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, choices=c(2,3), display="species", labels=peaks$code[ligs], cex=.6)
+      title(name)
+dev.off()
+
+ord<-pca.ligs.h0
+name<-"PCA (lignin markers only - Harvest 0)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      formatC(xvar[1], digits=3)
+
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      points(ord, display="sites", select=samples[harvest==0 ,1]==typlev[i], 
+	      col=i, pch=21, cex=0.6)
+      text(ord, display="species", labels=peaks$code[ligs], cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+
+ord<-pca.ligs.h2
+name<-"PCA (lignin markers only - Harvest 2)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      formatC(xvar[1], digits=3)
+
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      points(ord, display="sites", select=harvest==harlev[j] & samples[,1]==typlev[i], col=i, pch=22, cex=0.6)
+      text(ord, display="species", labels=peaks$code[ligs], cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+
+ord<-pca.ligs.h0
+name<-"PCA (lignin markers only - Harvest 0)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      formatC(xvar[1], digits=3)
+
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      points(ord, display="sites", select=harvest==harlev[j] & samples[,1]==typlev[i], col=i, pch=21, cex=0.6)
+      text(ord, display="species", labels=peaks$code[ligs], cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+
+ord<-pca.ligs.h0
+name<-"PCA (lignin markers only - Harvest 0)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      formatC(xvar[1], digits=3)
+
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      points(ord, display="sites", select=harvest==harlev[j] & samples[,1]==typlev[i], col=i, pch=21, cex=0.6)
+      text(ord, display="species", labels=peaks$code[ligs], cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+
+
+pdf("pcas/aliphatics_allharvests_PCA13.pdf") 
+
+pca.al<-rda(rsim[,peaks$code2=="al"])
+
+ord<-pca.al
+name<-"PCA (Aliphatics)"
+
+      xvar<-eigenvals(ord)/sum(eigenvals(ord))
+      formatC(xvar[1], digits=3)
+
+      plot(ord, type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"), 
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance")
+      )
+
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, display="sites", select=harvest==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ord, display="species", labels=peaks$code3[peaks$code2=="al"], cex=.6)
+      legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title(name)
+
+dev.off()
+
+#pdf("al_time.pdf")
+#tmp<-rsim[3:74,peaks$code2=="al"]
+#for (i in 1:ncol(tmp))
+timeseries(carbo+rowSums(rsim[,peaks$origin=="ka"]), days, type, "carbohydrates+ketoalcanes",  "days", "rsim", allpoints=T, col=T)
+timeseries(rowSums(rsim[,peaks$origin=="ka"]), days, type, "carbohydrates+ketoalcanes",  "days", "rsim", allpoints=T, col=T)
+timeseries(carbo, days, type, "carbohydrates+ketoalcanes",  "days", "rsim", allpoints=T, col=T)
+
+mass.series(carbo, days, samples$massloss, samples$masselossSE, samples$type, "nam", "days", "marker", ymin=80, ymax=120, normalize=2)
+ 
+head(samples)
+
+#dev.off()
+
+pdf("al_time.pdf")
+tmp<-rsim[3:74,peaks$code2=="al"]
+for (i in 1:ncol(tmp))
+timeseries(tmp[,i], days[3:74], type[3:74], paste("al", i, sep=""),  "days", "rsim", allpoints=T, col=T)
+dev.off()
+
+tmp<-rsim[,peaks$code2=="al"]
+tmp[harvest==0,T]
+
+timeseries(recidx, days, type, paste("al", i, sep=""),  "days", "rsim", allpoints=T, col=T)
+recidx
+head(rec)
+rsim[peaks$code3=="al13"]
+
+peaks$RT[peaks$code2=="al"]
+
+?formatC
+
+ligs2<-ligs
+ligs2[106]<-FALSE
+ligs2
+
+rsim.carbos<-rsim[,carbos]/rowSums(rsim[,carbos])
+rsim.ligs<-rsim[,ligs]/rowSums(rsim[,ligs])
+rsim.ligs2.n.ch<-rsim[,ligs2|carbos|nitr]
+h0.rsim.carbos<-rsim[harvest==0,carbos]/rowSums(rsim[harvest==0,carbos])
+h0.rsim.ligs<-rsim[harvest==0,ligs]/rowSums(rsim[harvest==0,ligs])
+h0.rsim.ligs2<-rsim[harvest==0,ligs2]/rowSums(rsim[harvest==0,ligs2])
+h0.rsim.ligs2.n.ch<-rsim[harvest==0,ligs2|carbos|nitr]/rowSums(rsim[harvest==0,ligs2|carbos|nitr])
+
+
+sw.rsim.carbos<-rsim[type=="SW",carbos]/rowSums(rsim[type=="SW",carbos])
+sw.rsim.ligs<-rsim[type=="SW",ligs]/rowSums(rsim[type=="SW",ligs])
+sw.rsim.ligs2<-rsim[type=="SW",ligs2]/rowSums(rsim[type=="SW",ligs2])
+sw.woh0.rsim.ligs2<-rsim[type=="SW"&harvest!=0,ligs2]/rowSums(rsim[type=="SW"&harvest!=0,ligs2])
+sw.ligs2.n.ch<-rsim[type=="SW",ligs2|nitr|carbos]/rowSums(rsim[type=="SW",ligs2|nitr|carbos])
+
+
+t(rsim.carbos)/colSums(rsim.carbos)
+
+
+
+markers.carbos.mds<-metaMDS(t(rsim.carbos)/colSums(rsim.carbos), zerodist="add")
+markers.ligs.mds<-metaMDS(t(rsim.ligs)/colSums(rsim.ligs), zerodist="add")
+markers.ligs2.n.ch.mds<-metaMDS(t(rsim.ligs2.n.ch)/colSums(rsim.ligs2.n.ch), zerodist="add")
+
+markers.carbos.mds.h0<-metaMDS(t(h0.rsim.carbos)/colSums(h0.rsim.carbos), zerodist="add")
+markers.ligs.mds.h0<-metaMDS(t(h0.rsim.ligs)/colSums(h0.rsim.ligs), zerodist="add")
+markers.ligs2.mds.h0<-metaMDS(t(h0.rsim.ligs2)/colSums(h0.rsim.ligs2), zerodist="add")
+markers.ligs2.n.ch.mds.h0<-metaMDS(t(h0.rsim.ligs2.n.ch)/colSums(h0.rsim.ligs2.n.ch), zerodist="add")
+
+markers.carbos.mds.sw<-metaMDS(t(sw.rsim.carbos)/colSums(sw.rsim.carbos), zerodist="add")
+markers.ligs.mds.sw<-metaMDS(t(sw.rsim.ligs)/colSums(sw.rsim.ligs), zerodist="add")
+markers.ligs2.mds.sw<-metaMDS(t(sw.rsim.ligs2)/colSums(sw.rsim.ligs2), zerodist="add")
+markers.ligs2.mds.sw.woh0<-metaMDS(t(sw.woh0.rsim.ligs2)/colSums(sw.woh0.rsim.ligs2), zerodist="add")
+markers.ligs2.n.ch.mds.sw<-metaMDS(t(sw.ligs2.n.ch)/colSums(sw.ligs2.n.ch), zerodist="add")
+
+
+h0.rsim.ligs
+peaks$code[ligs]
+
+recidx
+
+pdf("marker_distances_carbos_ligs.pdf")
+
+plot(markers.ligs2.n.ch.mds, type="n")
+for (i in 1:length(harlev))
+for (j in 1:length(typlev))
+points(markers.ligs2.n.ch.mds, select=harvest==harlev[i]&type==typlev[j], display="species", pch=20+i, col=j, cex=.5)
+text(markers.ligs2.n.ch.mds, display="sites", labels=peaks$origin[ligs2|carbos|nitr], cex=.5, col="red")
+title("Distances within lignin markers")
+abline(h=0)
+abline(v=0)
+  
+plot(markers.ligs.mds, type="n")
+points(markers.ligs.mds, display="species", pch="+")
+text(markers.ligs.mds, display="sites", labels=peaks$code[ligs], cex=.5, col="red")
+title("Distances within lignin markers")
+
+plot(markers.ligs.mds.h0, type="n")
+points(markers.ligs.mds.h0, display="species", pch="+")
+text(markers.ligs.mds.h0, display="sites", labels=peaks$code[ligs], cex=.5, col="red")
+title("Distances within lignin markers - harvest 0 only")
+
+plot(markers.ligs2.mds.h0, type="n")
+points(markers.ligs2.mds.h0, display="species", pch="+")
+text(markers.ligs2.mds.h0, display="sites", labels=peaks$code[ligs2], cex=.5, col="red")
+title("Distances within lignin markers - harvest 0 only, w/o G3:1=O/-OH")
+
+plot(markers.ligs.mds.sw, type="n")
+points(markers.ligs.mds.sw, display="species", pch="+")
+text(markers.ligs.mds.sw, display="sites", labels=peaks$code[ligs], cex=.5, col="red")
+title("Distances within lignin markers - Schottenwald only")
+
+
+plot(markers.ligs2.mds.sw, type="n")
+for (i in 1:length(harlev))
+points(markers.ligs2.mds.sw, select=harvest[type=="SW"]==harlev[i], display="species", pch=20+i)
+text(markers.ligs2.mds.sw, display="sites", labels=peaks$code[ligs2], cex=.5, col="red")
+title("Distances within lignin markers - Schottenwald only, w/o G3:1=O/-OH")
+
+plot(markers.ligs2.mds.sw.woh0, type="n")
+for (i in 2:length(harlev))
+points(markers.ligs2.mds.sw.woh0, select=harvest[type=="SW"&harvest!=0]==harlev[i], display="species", pch=20+i)
+text(markers.ligs2.mds.sw.woh0, display="sites", labels=peaks$code[ligs2], cex=.5, col="red")
+title("Distances within lignin markers - Schottenwald only, w/o G3:1=O/-OH")
+
+
+plot(markers.carbos.mds, type="n")
+points(markers.carbos.mds, display="species", pch="+")
+text(markers.carbos.mds, display="sites", labels=peaks$origin[carbos], cex=.5, col="red")
+title("Distances within carbohydrate markers")
+
+plot(markers.carbos.mds, type="n")
+points(markers.carbos.mds, display="species", pch="+")
+text(markers.carbos.mds, display="sites", labels=peaks$RT[carbos], cex=.5, col="red")
+title("Distances within carbohydrate markers")
+
+plot(markers.carbos.mds.h0, type="n")
+points(markers.carbos.mds.h0, display="species", pch="+")
+text(markers.carbos.mds.h0, display="sites", labels=peaks$origin[carbos], cex=.5, col="red")
+title("Distances within carbohydrate markers - harvest 0 only")
+
+plot(markers.carbos.mds.h0, type="n")
+points(markers.carbos.mds.h0, display="species", pch="+")
+text(markers.carbos.mds.h0, display="sites", labels=peaks$RT[carbos], cex=.5, col="red")
+title("Distances within carbohydrate markers - harvest 0 only")
+
+plot(markers.carbos.mds.sw, type="n")
+points(markers.carbos.mds.sw, display="species", pch="+")
+text(markers.carbos.mds.sw, display="sites", labels=peaks$origin[carbos], cex=.5, col="red")
+title("Distances within carbohydrate markers - harvest 0 only")
+
+plot(markers.carbos.mds.sw, type="n")
+points(markers.carbos.mds.sw, display="species", pch="+")
+text(markers.carbos.mds.sw, display="sites", labels=peaks$RT[carbos], cex=.5, col="red")
+title("Distances within carbohydrate markers - Schottenwald only")
+
+
+dev.off()
+
+peaks[carbos, 1:7]
+
+plot(samples$N_lit[h234], samples$g_n_min[h234])
+mod<-lm(samples$g_n_min[h234] ~ samples$N_lit[h234])
+plot(recidx2[h234], (samples$g_n_min[h234] - mod$coefficients[1])/mod$coefficients[2])
+anova(mod)
+
+colnames(samples)
+plot(recidx[harvest==6], samples$Cellulase[harvest==6]/samples$Peroxydase[harvest==6])
+plot
+anova(lm(samples$g_n_min[h4] ~ recidx2[h4]))
+
+mod<-lm(samples$g_n_min[h234] ~ samples$N_lit[h234])
+plot(recidx2.wo.n[h234], (samples$g_n_min[h234] - mod$coefficients[1])/mod$coefficients[2], type="n")
+points(recidx2.wo.n[harvest==2], (samples$g_n_min[harvest==2] - mod$coefficients[1])/mod$coefficients[2], col="red")
+points(recidx2.wo.n[harvest==6], (samples$g_n_min[harvest==6] - mod$coefficients[1])/mod$coefficients[2], col="blue")
+points(recidx2.wo.n[harvest==15], (samples$g_n_min[harvest==15] - mod$coefficients[1])/mod$coefficients[2], col="green")
+
+mod<-lm(samples$g_n_min[h234] ~ samples$N_lit[h234])
+
+abline(lm((samples$g_n_min[h234] - mod$coefficients[1])/mod$coefficients[2] ~ recidx2[h234]))
+abline(lm((samples$g_n_min[harvest==2] - mod$coefficients[1])/mod$coefficients[2] ~ recidx2[harvest==2]), col="red")
+abline(lm((samples$g_n_min[harvest==6] - mod$coefficients[1])/mod$coefficients[2] ~ recidx2[harvest==6]), col="blue")
+abline(lm((samples$g_n_min[harvest==15] - mod$coefficients[1])/mod$coefficients[2] ~ recidx2[harvest==15]), col="green")
+
+anova(lm((samples$g_n_min[h234] - mod$coefficients[1])/mod$coefficients[2] ~ recidx2[h234]))
+anova(lm((samples$g_n_min[harvest==2] - mod$coefficients[1])/mod$coefficients[2] ~ recidx2[harvest==2]))
+anova(lm((samples$g_n_min[harvest==6] - mod$coefficients[1])/mod$coefficients[2] ~ recidx2[harvest==6]))
+anova(lm((samples$g_n_min[harvest==15] - mod$coefficients[1])/mod$coefficients[2] ~ recidx2[harvest==15]))
+  
+ plot(recidx[h234], ((samples$g_n_min[h234&type] - mod$coefficients[1])/mod$coefficients[2]))
+
+max(recidx)
+min(recidx)
+
+
+plot(sqrt(-recidx2[h234]), -recidx2[h234])
+abline(c(0,0),c(1,1))
+
+tmp<-rec[,5]*colSums(rsim)/nrow(rsim)
+
+plot(rsim.colsums, tmp, type="n")
+abline(h=0, col="grey", lty=2)
+origins<-levels(peaks$origin)
+for (i in 1:length(origins))
+points(rsim.colsums[peaks$origin==origins[i]], tmp[peaks$origin==origins[i]], pch=i, cex=1)
+legend("bottomright", pch=1:length(origins), origins)
+
+
+recidx.ligonly<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx.ligonly[i]<-sum(t(rsim[i, peaks$origin=="g"|peaks$origin=="sy"])*rec[peaks$origin=="g"|peaks$origin=="sy",5])*1000/sum(rsim[i, peaks$origin=="g"|peaks$origin=="sy"])
+
+recidx.ph<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx.ph[i]<-sum(t(rsim[i, peaks$origin=="ph"])*rec[peaks$origin=="ph",5])*1000/sum(rsim[i, peaks$origin=="ph"])
+
+
+recidx.ch<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx.ch[i]<-
+sum(t(rsim[i, peaks$origin=="c"|peaks$origin=="ch"|peaks$origin=="f"])
+*rec[peaks$origin=="c"|peaks$origin=="ch"|peaks$origin=="f",5])*1000/sum(rsim[i, peaks$origin=="c"|peaks$origin=="ch"|peaks$origin=="f"])
+
+recidx.ph
+
+pdf("recidx.pdf")
+timeseries(recidx, days, type, c(-2 ,3), "recalcitrance index", "days", "rec index")
+dev.off()
+
+abline(h=0, col="grey", lty=2)
+
+timeseries(recidx.ph, days, type, c(-10 ,10), "name", "days", "rec index")
+abline(h=0, col="grey", lty=2)
+
+timeseries(recidx.ch, days, type, c(-6,0), "name", "days", "rec index")
+abline(h=0, col="grey", lty=2)
+
+
+
+pdf("rec.comp.pdf")
+
+lim<-c(-10, +2)
+
+plot(rec2[,5], rec2[,1], ylim=lim, xlim=lim, type="n", xlab="average recalcitrance", ylab="recalcitrance within litter type")
+points(rec2[carbos,5], rec2[carbos,1], pch=4, col=1,  cex=(colSums(rsim))/500)
+points(rec2[carbos,5], rec2[carbos,2], pch=4, col=2,  cex=(colSums(rsim))/500)
+points(rec2[carbos,5], rec2[carbos,3], pch=4, col=3,  cex=(colSums(rsim))/500)
+points(rec2[carbos,5], rec2[carbos,4], pch=4, col=4,  cex=(colSums(rsim))/500)
+title("carbohydrate Markers - relativ accumulation/depletion")
+abline(c(0,0),c(1,1))
+abline(h=-1)
+abline(v=-1)
+legend("bottomright", pch="+", col=1:4, , typlev)
+
+lim<-c(-8, +8)
+
+plot(rec2[,5], rec2[,1], ylim=lim, xlim=lim, type="n", xlab="average recalcitrance", ylab="recalcitrance within litter type")
+points(rec2[ligs,5], rec2[ligs,1], pch=4, col=1,  cex=(colSums(rsim))/500)
+points(rec2[ligs,5], rec2[ligs,2], pch=4, col=2,  cex=(colSums(rsim))/500)
+points(rec2[ligs,5], rec2[ligs,3], pch=4, col=3,  cex=(colSums(rsim))/500)
+points(rec2[ligs,5], rec2[ligs,4], pch=4, col=4,  cex=(colSums(rsim))/500)
+title("Lignin Markers - relativ accumulation/depletion")
+abline(c(0,0),c(1,1))
+abline(h=-1)
+abline(v=-1)
+legend("bottomright", pch="+", col=1:4, , typlev)
+
+lim<-c(min(rec2[nitr,1:5]), max(rec2[nitr,1:5]))
+
+plot(rec2[,5], rec2[,1], ylim=lim, xlim=lim, type="n", xlab="average recalcitrance", ylab="recalcitrance within litter type")
+points(rec2[nitr,5], rec2[nitr,1], pch=4, col=1,  cex=(colSums(rsim))/500)
+points(rec2[nitr,5], rec2[nitr,2], pch=4, col=2,  cex=(colSums(rsim))/500)
+points(rec2[nitr,5], rec2[nitr,3], pch=4, col=3,  cex=(colSums(rsim))/500)
+points(rec2[nitr,5], rec2[nitr,4], pch=4, col=4,  cex=(colSums(rsim))/500)
+title("Protein Markers - relativ accumulation/depletion")
+abline(c(0,0),c(1,1))
+abline(h=-1)
+abline(v=-1)
+legend("bottomright", pch="+", col=1:4, , typlev)
+
+dev.off()
+
+cor.test(recidx2[harvest==15], samples$h4.massloss[harvest==15]) 
+cor.test(recidx[harvest==15], samples$h4.massloss[harvest==15]) 
+cor.test(recidx[harvest==15], samples$N_lit[harvest==15]) 
+
+x<-harvest==15
+x<-h234
+mod0<-lm(samples$g_p_min[x] ~ recidx2[x])
+mod1<-lm(samples$g_p_min[x] ~ samples$N_lit[x])
+mod2<-lm(samples$g_p_min[x] ~ recidx2[x]*samples$N_lit[x])
+mod3<-lm(samples$g_p_min[x] ~ recidx[x]*samples$N_lit[x]*as.factor(harvest[x]))
+mod4<-lm(samples$g_p_min[x] ~ recidx2[x]*samples$N_lit[x]*samples$P_lit[x])
+mod5<-lm(samples$g_p_min[x] ~ recidx2[x]*samples$N_lit[x]*samples$P_lit[x]*as.factor(harvest[x]))
+
+
+h234<-harvest==2|harvest==6|harvest==15
+
+mod0<-lm(samples$h4.massloss[harvest==15] ~ recidx2[harvest==15])
+mod1<-lm(samples$h4.massloss[harvest==15] ~ samples$N_lit[harvest==15])
+mod2<-lm(samples$h4.massloss[harvest==15] ~ samples$N_lit[harvest==15]*recidx[harvest==15])
+
+mod0<-lm(samples$resp[h234] ~ lig.ch.p$lig[h234])
+mod1<-lm(samples$resp[h234] ~ samples$N_lit[h234])
+mod2<-lm(samples$resp[h234] ~ lig.ch.p$lig[h234]*samples$N_lit[h234])
+mod3<-lm(samples$resp[h234] ~ lig.ch.p$lig[h234]*as.factor(harvest[h234])*samples$N_lit[h234]*samples$P_lit[h234])
+mod4<-lm(samples$resp[h234] ~ lig.ch.p$lig[h234]*as.factor(harvest[h234])*samples$N_lit[h234])
+
+cor.test(lig.ch.p$lig[h234], samples$N_lit[h234]) 
+anova(mod3)
+
+x<-harvest==15
+mod0<-lm(samples$resp[x] ~ recidx2[x])
+mod1<-lm(samples$resp[x] ~ samples$N_lit[x])
+mod2<-lm(samples$resp[x] ~ recidx2[x]*samples$N_lit[x])
+mod3<-lm(samples$resp[x] ~ recidx2[x]*samples$N_lit[x]*samples$P_lit[x])
+
+anova(mod3)
+mod3
+
+colnames(samples)
+
+anova(mod3)
+cor.test(samples$N_lit[h234], recidx2[h234])
+cor.test(samples$P_lit[h234], recidx2[h234])
+cor.test(harvest[h234], recidx2[h234])
+ 
+
+h<-14
+
+sink("allharvests_processes_mult_regr.txt")
+#pdf("allharvests_processes_mult_regr.pdf")
+
+ll<-14
+hl<-20
+
+
+colnames.samples<-colnames(samples)
+h234.c.mod<-matrix(ncol=(hl-ll+1), nrow=24)
+h234.p.mod<-matrix(ncol=(hl-ll+1)*2, nrow=16)
+h2.mod<-matrix(ncol=(hl-ll+1)*3, nrow=8)
+h3.mod<-matrix(ncol=(hl-ll+1)*3, nrow=8)
+h4.mod<-matrix(ncol=(hl-ll+1)*3, nrow=8)
+
+coln.h234.c<-vector(length=(hl-ll+1))
+coln.h234.p<-vector(length=(hl-ll+1)*2)
+coln.h2<-vector(length=(hl-ll+1)*3)
+
+for (h in ll:hl)
+
+{
+print(colnames.samples[h])
+
+#plot(recidx[h234], samples[h234,h], type="n", ylim=c(min(samples[h234 & is.na(samples[,h])==FALSE, h]),max(samples[h234 & is.na(samples[,h])==FALSE,h])))
+#title(colnames.samples[h])
+#for (i in c(2,6,15))
+#for (j in 1:length(typlev))
+#points (recidx[h234 & harvest==i&type==typlev[j]], samples[h234&harvest==i&type==typlev[j],h], pch=i, col=j)
+#mod1<-lm(samples[h234,h] ~ recidx[h234])
+#mod1$coefficients
+#abline(mod1, col="grey", lty=1)
+#mod2<-lm(samples[harvest==2,h] ~ recidx[harvest==2])
+#mod2$coefficients
+#abline(mod2, col="grey", lty=2)
+#mod3<-lm(samples[harvest==6,h] ~ recidx[harvest==6])
+#mod3$coefficients
+#abline(mod3, col="grey", lty=3)
+#mod4<-lm(samples[harvest==15,h] ~ recidx[harvest==15])
+#mod4$coefficients
+#abline(mod4, col="grey", lty=4)
+
+mod1<-lm(scale(samples[h234,h]) ~ scale(recidx[h234])*as.factor(harvest[h234]) * scale(samples$N_lit[h234])*scale(samples$P_lit[h234]))
+mod2<-lm(scale(samples[harvest==2,h]) ~ scale(recidx[harvest==2]) * scale(samples$N_lit[harvest==2])*scale(samples$P_lit[harvest==2]))
+mod3<-lm(scale(samples[harvest==6,h]) ~ scale(recidx[harvest==6]) * scale(samples$N_lit[harvest==6])*scale(samples$P_lit[harvest==6]))
+mod4<-lm(scale(samples[harvest==15,h]) ~ scale(recidx[harvest==15]) * scale(samples$N_lit[harvest==15])*scale(samples$P_lit[harvest==15]))
+
+mod1a<-lm(scale(samples[h234,h]) ~ scale(recidx[h234])+as.factor(harvest[h234]) + scale(samples$N_lit[h234])+scale(samples$P_lit[h234]))
+mod2a<-lm(scale(samples[harvest==2,h]) ~ scale(recidx[harvest==2]) + scale(samples$N_lit[harvest==2])+scale(samples$P_lit[harvest==2]))
+mod3a<-lm(scale(samples[harvest==6,h]) ~ scale(recidx[harvest==6]) + scale(samples$N_lit[harvest==6])+scale(samples$P_lit[harvest==6]))
+mod4a<-lm(scale(samples[harvest==15,h]) ~ scale(recidx[harvest==15]) + scale(samples$N_lit[harvest==15])+scale(samples$P_lit[harvest==15]))
+
+
+mod1b<-lm(scale(samples[h234,h]) ~ as.factor(harvest[h234]) + scale(samples$N_lit[h234])+scale(samples$P_lit[h234]))
+mod1c<-lm(scale(samples[h234,h]) ~ scale(recidx[h234]) + scale(samples$N_lit[h234])+scale(samples$P_lit[h234]))
+mod1d<-lm(scale(samples[h234,h]) ~ scale(recidx[h234])+scale(log(days[h234])) + scale(samples$N_lit[h234])+scale(samples$P_lit[h234]))
+mod1e<-lm(scale(samples[h234,h]) ~ scale(log(days[h234])) + scale(samples$N_lit[h234])+scale(samples$P_lit[h234]))
+
+mod1u<-lm(scale(samples[h234,h]) ~ as.factor(harvest[h234]) + scale(samples$N_lit[h234]) + scale(samples$P_lit[h234]))
+mod1v<-lm(scale(samples[h234,h]) ~ scale(days[h234]) + scale(samples$N_lit[h234]) + scale(samples$P_lit[h234]))
+mod1w<-lm(scale(samples[h234,h]) ~ scale(log(days[h234])) + scale(samples$N_lit[h234]) + scale(samples$P_lit[h234]))
+
+mod1y<-lm(scale(samples[h234,h]) ~ scale(recidx[h234]) + scale(samples$N_lit[h234]) + scale(samples$P_lit[h234]))
+mod1z<-lm(scale(samples[h234,h]) ~ scale(recidx[h234]) + scale(samples$N_lit[h234]))
+mod1z<-lm(scale(samples[h234,h]) ~ scale(recidx[h234]) * scale(samples$N_lit[h234]))
+
+
+mod1x<-lm(scale(samples[h234,h]) ~ scale(samples$N_lit[h234]) + scale(samples$P_lit[h234]))
+
+
+summary(mod1)
+summary(mod1a)
+summary(mod4)
+summary(mod4a)
+
+anova(mod1)
+anova(mod1a)
+anova(mod4)
+anova(mod4a)
+
+summary(mod1y)
+summary(mod1x)
+anova(mod1x, mod1u)
+
+anova(mod1x)
+anova(mod1y)
+summary(mod1c)
+summary(mod1d)
+summary(mod1e)
+
+summary(mod1a)
+summary(mod1b)
+
+anova(mod1a, mod1b)
+?lm
+summary(mod2a)
+summary(mod3a)
+summary(mod4a)
+
+anova(mod1a)
+
+print(summary(mod1))
+print(anova(mod1))
+print(summary(mod2))
+print(anova(mod2))
+print(summary(mod3))
+print(anova(mod3))
+print(summary(mod4))
+print(anova(mod4))
+
+aov.h234<-anova(mod1)
+aov.h2<-anova(mod2)
+aov.h3<-anova(mod3)
+aov.h4<-anova(mod4)
+
+h234.c.mod[,(h-ll)+1]<-mod1$coefficients
+h2.mod[,(h-ll)*3+1]<-mod2$coefficients
+h3.mod[,(h-ll)*3+1]<-mod3$coefficients
+h4.mod[,(h-ll)*3+1]<-mod4$coefficients
+
+
+tmp.h234<-aov.h234[,5]
+for (i in 1:(nrow(h234.p.mod)-1))
+{
+h234.p.mod[i,(h-ll)*2+1]<-as.numeric(tmp.h234[i])
+h234.p.mod[i,(h-ll)*2+2]<-siglev(h234.p.mod[i,(h-ll)*2+1]) 
+}
+
+tmp.h2<-aov.h2[,5]
+tmp.h3<-aov.h3[,5]
+tmp.h4<-aov.h4[,5]
+
+for (i in 1:(nrow(h2.mod)-1))
+{
+h2.mod[i,(h-ll)*3+2]<-as.numeric(tmp.h2[i])
+h3.mod[i,(h-ll)*3+2]<-as.numeric(tmp.h3[i])
+h4.mod[i,(h-ll)*3+2]<-as.numeric(tmp.h4[i])
+
+
+h2.mod[i,(h-ll)*3+3]<-siglev(h2.mod[i,(h-ll)*3+2])
+h3.mod[i,(h-ll)*3+3]<-siglev(h3.mod[i,(h-ll)*3+2])
+h4.mod[i,(h-ll)*3+3]<-siglev(h4.mod[i,(h-ll)*3+2])
+}
+h2.mod[,2]
+
+coln.h234.c[h-ll+1]<-paste(colnames.samples[h], "coef.")
+coln.h234.p[(h-ll+1)*2-1]<-paste(colnames.samples[h], "p")
+coln.h234.p[(h-ll+1)*2]<-paste(colnames.samples[h], "sig")
+
+coln.h2[(h-ll+1)*3-2]<-paste(colnames.samples[h], "coef.")
+coln.h2[(h-ll+1)*3-1]<-paste(colnames.samples[h], "p")
+coln.h2[(h-ll+1)*3]<-paste(colnames.samples[h], "sig")
+
+#s.mod1<-summary(mod1)
+#s.mod1
+#f.stat<-s.mod1$fstatistic
+#f.stat
+#p[i]=1-pf(f.stat["value"],f.stat["numdf"],f.stat["dendf"])
+
+
+}
+rownames(h234.c.mod)<-names(mod1$coefficients)
+rownames(h234.p.mod)<-rownames(aov.h234)
+rownames(h2.mod)<-rownames(aov.h2)
+rownames(h3.mod)<-rownames(aov.h3)
+rownames(h4.mod)<-rownames(aov.h4)
+
+colnames(h234.c.mod)<-coln.h234.c
+colnames(h234.p.mod)<-coln.h234.p
+colnames(h2.mod)<-coln.h2
+colnames(h3.mod)<-coln.h2
+colnames(h4.mod)<-coln.h2
+
+
+sink()
+#dev.off()
+
+write.csv(h2.mod, "h2.mod.csv")
+write.csv(h3.mod, "h3.mod.csv")
+write.csv(h4.mod, "h4.mod.csv")
+write.csv(h234.c.mod, "h234.c.mod.csv")
+write.csv(h234.p.mod, "h234.p.mod.csv")
+
+
+
+
+
+names(mod2$coefficients)
+
+
+pca2.rot2<-pca.samples.rot2[,2]
+
+
+plot(recidx2[h234], samples$g_n_min[h234], type="n", ylim=c(min(samples$g_n_min[h234 & is.na(samples$g_n_min)==FALSE]),max(samples$g_n_min[h234 & is.na(samples$g_n_min)==FALSE])))
+title(colnames.samples[h])
+for (i in c(2,6,15))
+for (j in 1:length(typlev))
+points (recidx2[h234 & harvest==i&type==typlev[j]], samples$g_n_min[h234&harvest==i&type==typlev[j]], pch=i, col=j)
+mod1<-lm(samples$g_n_min[h234] ~ recidx2[h234])
+mod1$coefficients
+abline(mod1, col="grey", lty=1)
+mod2<-lm(samples$g_n_min[harvest==15] ~ recidx2[harvest==15])
+mod2$coefficients
+abline(mod2, col="grey", lty=3)
+mod3<-lm(samples$g_n_min[harvest==2] ~ recidx2[harvest==2])
+mod3$coefficients
+abline(mod3, col="grey", lty=4)
+mod4<-lm(samples$g_n_min[harvest==6] ~ recidx2[harvest==6])
+mod4$coefficients
+abline(mod4, col="grey", lty=5)
+anova(mod1)
+anova(mod2)
+anova(mod3)
+anova(mod4)
+
+lig.ch.p$lig2carbos[h234]
+
+
+anova(lm(samples$resp[h234] ~ recidx2[h234]*harvest[h234]*samples$N_lit[h234]*samples$P_lit[h234]))
+
+cor.test(recidx2[h234],harvest[h234]*samples$N_lit[h234]*samples$P_lit[h234]
+samples$respiration
+
+all.mds<-metaMDS(rsim)
+
+
+pdf("rec.pdf")
+for (i in 1:5)
+{
+boxplot(rec[,i] ~ peaks$origin, ylim=c(-.05, 0.05))
+abline(h=0, col="grey", lty=2)
+
+}
+dev.off()
+
+recidx<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx[i]<-sum(t(rsim[i, 1:peaknr])*rec[,5])
+
+recidx.wo.n<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx.wo.n[i]<-sum(t(rsim[i, peaks$origin!="p"&peaks$origin!="ind"])*rec[peaks$origin!="p"&peaks$origin!="ind",5])
+recidx.wo.n
+
+recidx2<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx2[i]<-sum(t(rsim[i, 1:peaknr])*rec2[,5])/1000
+
+recidx2.wo.n<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx2.wo.n[i]<-sum(t(rsim[i, peaks$origin!="p"&peaks$origin!="ind"])*rec2[peaks$origin!="p"&peaks$origin!="ind",5])/1000
+
+recidx.ctic<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx.ctic[i]<-sum(t(rcTIC[i, 1:peaknr])*rec.ctic[,5])
+
+recidx.wo.n.ctic<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx.wo.n.ctic[i]<-sum(t(rcTIC[i, peaks$origin!="p"&peaks$origin!="ind"])*rec.ctic[peaks$origin!="p"&peaks$origin!="ind",5])
+recidx.wo.n
+
+recidx2.ctic<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx2.ctic[i]<-sum(t(rsim[i, 1:peaknr])*rec2[,5])/1000
+
+recidx2.wo.n.ctic<-matrix(ncol=1, nrow=nrow(samples)) 
+for (i in 1:nrow(samples))
+recidx2.wo.n.ctic[i]<-sum(t(rcTIC[i, peaks$origin!="p"&peaks$origin!="ind"])*rec2.ctic[peaks$origin!="p"&peaks$origin!="ind",5])/1000
+
+
+timeseries(recidx, days, type, c(-2,3), "name", "days", "rec index")
+timeseries(recidx.wo.n, days, type, c(-3,3), "name", "days", "rec index")
+timeseries(recidx2, days, type, c(-1.5,-.5), "name", "days", "rec index")
+timeseries(recidx2.wo.n, days, type, c(-1.5,-.5), "name", "days", "rec index")
+timeseries(recidx.ctic, days, type, c(-2,3), "name", "days", "rec index")
+timeseries(recidx.wo.n.ctic, days, type, c(-3,3), "name", "days", "rec index")
+timeseries(recidx2.ctic, days, type, c(-1.5,-.5), "name", "days", "rec index")
+timeseries(recidx2.wo.n.ctic, days, type, c(-1.5,-.5), "name", "days", "rec index")
+
+
+
+recs<-data.frame(recidx, recidx2, recidx.wo.n, recidx2.wo.n)
+write.csv(corr.ab(processes[h3, 1:ncol(processes)], recs[harvest==6, 1:4]), "h3_rec_correl_proc.csv")
+write.csv(corr.ab(processes[h2, 1:ncol(processes)], recs[harvest==2, 1:4]), "h2_rec_correl_proc.csv")
+write.csv(corr.ab(controls[h3, 1:ncol(controls)], recs[harvest==6, 1:4]), "h3_rec_correl_cont.csv")
+write.csv(corr.ab(controls[h2, 1:ncol(controls)], recs[harvest==2, 1:4]), "h2_rec_correl_cont.csv")
+
+cor.test(recidx2[harvest==6], controls$P_lit[h3])
+
+
+anova(lm(processes$cellulase2peroxydase[h3] ~ controls$N_lit[h3] * recidx2.wo.n[harvest==6]))
+anova(lm(processes$cellulase2peroxydase[h3] ~ recidx2.wo.n[harvest==6]))
+anova(lm(processes$cellulase2peroxydase[h3] ~ controls$N_lit[h3]))
+
+tmp<-(controls$N_lit[h3]/recidx2.wo.n[harvest==6])
+cor.test(processes$protease2peroxydase[h3],  tmp)
+cor.test(processes$protease2peroxydase[h3],  controls$N_lit[h3])
+cor.test(tmp,  controls$N_lit[h3])
+
+tmp<-(controls$N_lit[h2]/recidx2.wo.n[harvest==2])
+cor.test(processes$protease2peroxydase[h2],  tmp)
+cor.test(processes$protease2peroxydase[h2],  controls$N_lit[h2])
+cor.test(tmp,  controls$N_lit[h2])
+
+tmp<-(controls$P_lit[h3]/recidx2.wo.n[harvest==6])
+cor.test(processes$phosphatase2peroxydase[h3],  tmp)
+cor.test(processes$phosphatase2peroxydase[h3],  controls$N_lit[h3])
+cor.test(processes$phosphatase2peroxydase[h3],  controls$P_lit[h3])
+cor.test(tmp,  controls$N_lit[h3])
+cor.test(tmp,  controls$P_lit[h3])
+
+
+tmp<-(controls$P_lit[h2]/recidx2.wo.n[harvest==2])
+cor.test(processes$phosphatase2peroxydase[h2],  tmp)
+cor.test(processes$phosphatase2peroxydase[h2],  controls$N_lit[h2])
+cor.test(processes$phosphatase2peroxydase[h2],  controls$P_lit[h2])
+cor.test(tmp,  controls$N_lit[h2])
+cor.test(tmp,  controls$P_lit[h2])
+
+
+anova(lm(processes$cellulase2peroxydase[h3] ~ controls$P_lit[h3]))
+anova(lm(processes$cellulase2peroxydase[h3] ~ controls$N_lit[h3]))
+anova(lm(samples$massloss[harvest==6] ~ recidx2.wo.n[harvest==6]))
+
+plot(recidx2.wo.n[harvest==2], processes$cellulase2peroxydase[h2], type="n")
+for (i in 1:length(typlev))
+points(recidx2.wo.n[harvest==2&type==typlev[i]], processes$cellulase2peroxydase[h2&corr$type==typlev[i]], col=i)
+mod<-lm(processes$cellulase2peroxydase[h2] ~ recidx2.wo.n[harvest==2])
+abline(mod)
+anova(mod)
+
+plot(recidx2.wo.n[harvest==2], processes$cellulase2phenolxydase[h2], type="n")
+for (i in 1:length(typlev))
+points(recidx2.wo.n[harvest==2&type==typlev[i]], processes$cellulase2phenolxydase[h2&corr$type==typlev[i]], col=i)
+mod<-lm(processes$cellulase2phenolxydase[h2] ~ recidx2.wo.n[harvest==2])
+abline(mod)
+anova(mod)
+
+
+cor.test(processes$cellulase2peroxydase[h2], recidx2.wo.n[harvest==2])
+
+anova(lm(samples$massloss[harvest==6] ~ recidx2.wo.n[harvest==6]*controls$N_lit[h3]))
+
+cor.test(recidx2.wo.n[harvest==6],controls$N_lit[h3])
+
+colnames(processes)
+
+recidx2
+timeseries(recidx2, days, type, c(-1.2,-0.8), "name", "days", "rec index")
+corr.ab(recidx, catrsim)
+
+cor(recidx2, recidx)
+recidx2[i]<-sum(t(rsim[i, peaks$origin!=p&peaks$origin!=ind])*rec2[peaks$origin!=p&peaks$origin!=ind,5])/1000
+
+
+envfit(all.pca, recidx)
+
+scor.mds<-scores(all.mds)
+scor.mds
+mds.samples.rot0<-rot(scor.mds,0)
+mds.samples.rot1<-rot(scor.mds,-3.1415/24)
+mds.samples.rot2<-rot(scor.mds,-3.1415/12)
+mds.samples.rot3<-rot(scor.mds,-3.1415/8)
+mds.samples.rot4<-rot(scor.mds,-3.1415/6)
+mds.samples.rot5<-rot(scor.mds,-3.1415*5/24)
+mds.samples.rot6<-rot(scor.mds,-3.1415/4)
+mds.samples.rot7<-rot(scor.mds,-3.1415*7/24)
+mds.samples.rot8<-rot(scor.mds,-3.1415/3)
+mds.samples.rot9<-rot(scor.mds,-3.1415*3/8)
+mds.samples.rot10<-rot(scor.mds,-3.1415*5/12)
+mds.samples.rot11<-rot(scor.mds,-3.1415*11/24)
+mds.samples.rot12<-rot(scor.mds,-3.1415/2)
+mds.samples.rot13<-rot(scor.mds,-3.1415*13/24)
+mds.samples.rot14<-rot(scor.mds,-3.1415*7/12)
+mds.samples.rot15<-rot(scor.mds,-3.1415*5/8)
+mds.samples.rot16<-rot(scor.mds,-3.1415*2/3)
+mds.samples.rot17<-rot(scor.mds,-3.1415*17/24)
+mds.samples.rot18<-rot(scor.mds,-3.1415*3/4)
+mds.samples.rot19<-rot(scor.mds,-3.1415*19/24)
+mds.samples.rot20<-rot(scor.mds,-3.1415*5/6)
+mds.samples.rot21<-rot(scor.mds,-3.1415*7/8)
+mds.samples.rot22<-rot(scor.mds,-3.1415*11/12)
+mds.samples.rot23<-rot(scor.mds,-3.1415*23/24)
+
+
+scor<-scores(all.pca)
+scor[2]
+pca.samples.rot0<-rot(scor$sites,0)
+pca.samples.rot1<-rot(scor$sites,-3.1415/24)
+pca.samples.rot2<-rot(scor$sites,-3.1415/12)
+pca.samples.rot3<-rot(scor$sites,-3.1415/8)
+pca.samples.rot4<-rot(scor$sites,-3.1415/6)
+pca.samples.rot5<-rot(scor$sites,-3.1415*5/24)
+pca.samples.rot6<-rot(scor$sites,-3.1415/4)
+
+plot(pca.samples.rot0)
+points(pca.samples.rot1, pch="+", col="red")
+points(pca.samples.rot2, pch="+", col="orange")
+points(pca.samples.rot3, pch="+", col="yellow")
+points(pca.samples.rot4, pch="+", col="red")
+points(pca.samples.rot5, pch="+", col="orange")
+points(pca.samples.rot6, pch="+", col="yellow")
+
+pca.rot<-data.frame(pca.samples.rot0, pca.samples.rot1, pca.samples.rot2,pca.samples.rot3,pca.samples.rot4,pca.samples.rot5, pca.samples.rot6)
+
+write.csv(corr.ab(samples[harvest==15, 8:13], pca.rot[harvest==15, 1:14]), "h4.pca.rot.stoech.csv")
+write.csv(corr.ab(samples[harvest==15, c(7, 14:20)], pca.rot[harvest==15, 1:14]), "h4.pca.rot.proc.csv")
+
+pca.samples.rot2[,2]
+
+colnames(samples)
+colnames(pca.rot)
+
+
+
+rot.mds<-data.frame(mds.samples.rot0,mds.samples.rot1,mds.samples.rot2,mds.samples.rot3,mds.samples.rot4,mds.samples.rot5,mds.samples.rot6)
+write.csv(corr.ab(controls[h2, 1:ncol(controls)], rot.mds[harvest==2, 1:ncol(rot.mds)]), "h2_rotations_controls.mds.csv")
+
+
+rot<-data.frame(pca.samples.rot0,pca.samples.rot1,pca.samples.rot2,pca.samples.rot3,pca.samples.rot4,pca.samples.rot5,pca.samples.rot6)
+write.csv(corr.ab(controls[h2, 1:ncol(controls)], rot[harvest==2, 1:ncol(rot)]), "h2_rotations_controls.csv")
+write.csv(corr.ab(controls[h3, 1:ncol(controls)], rot[harvest==6, 1:ncol(rot)]), "h3_rotations_controls.csv")
+write.csv(corr.ab(processes[h2, 1:ncol(processes)], rot[harvest==2, 1:ncol(rot)]), "h2_rotations_processes.csv")
+write.csv(corr.ab(processes[h3, 1:ncol(processes)], rot[harvest==6, 1:ncol(rot)]), "h3_rotations_processes.csv")
+
+harvest
+anova(lm(processes$g_prot_depoly[h2] ~ rot$PC2.rot.3[harvest==2] * controls$N_lit[h2]))
+anova(lm(processes$g_prot_depoly[h2] ~ rot$PC2.rot.3[harvest==2]))
+anova(lm(processes$g_prot_depoly[h2] ~ controls$N_lit[h2]))
+
+anova(lm(processes$g_prot_depoly[h3] ~ rot$PC2.rot.2[harvest==6] * controls$N_lit[h3]))
+anova(lm(processes$g_prot_depoly[h3] ~ rot$PC2.rot.2[harvest==6]))
+anova(lm(processes$g_prot_depoly[h3] ~ controls$N_lit[h3]))
+
+
+cor.test(processes$g_prot_depoly[h3], controls$N_lit[h3])
+
+
+sink("rot.txt")
+corr.ab(controls[h2, 1:ncol(controls)], rot[harvest==2, 7:8])
+corr.ab(processes[h3, 1:ncol(processes)], rot[harvest==6, 7:8])
+sink()
+
+colnames(controls)
+
+
+plot(scor$sites)
+pca.samples.rot<-
+plot(rot(scor$sites,0))
+
+
+#correlation matrix
+      
+
+write.csv(corr.ab(corr[corr$harvest==2,3:ncol(corr)],catrsim[harvest==2,1:ncol(catrsim)]), "h2_corr.csv")
+write.csv(corr.ab(corr[corr$harvest==6,3:ncol(corr)],catrsim[harvest==6,1:ncol(catrsim)]), "h3_corr.csv")
+
+write.csv(corr.ab(controls, processes), "h23.corr.csv")
+write.csv(corr.ab(controls[h2, 1:ncol(controls)], processes[h2, 1:ncol(processes)]), "h2.corr.csv")
+write.csv(corr.ab(controls[h3, 1:ncol(controls)], processes[h3, 1:ncol(processes)]), "h3.corr.csv")
+
+write.csv(corr.ab(controls, controls), "h23.inter.controls.csv")
+write.csv(corr.ab(controls[h2, 1:ncol(controls)], controls[h2, 1:ncol(controls)]), "h2.inter.controls.csv")
+write.csv(corr.ab(controls[h3, 1:ncol(controls)], controls[h3, 1:ncol(controls)]), "h3.inter.controls.csv")
+
+write.csv(corr.ab(processes, processes), "h23.inter.processes.csv")
+write.csv(corr.ab(processes[h2, 1:ncol(processes)], processes[h2, 1:ncol(processes)]), "h2.inter.processes.csv")
+write.csv(corr.ab(processes[h3, 1:ncol(processes)], processes[h3, 1:ncol(processes)]), "h3.inter.processes.csv")
+
+write.csv(corr.ab(rsim[harvest==2|harvest==6,1:ncol(rsim)],controls[,51:56]), "h23.stoech.rsim.csv")
+write.csv(corr.ab(rsim[harvest==2,1:ncol(rsim)], controls[h2, 51:56]), "h2.stoech.rsim.csv")
+write.csv(corr.ab(rsim[harvest==6,1:ncol(rsim)], controls[h3, 51:56]), "h3.stoech.rsim.csv")
+
+for (i in 1:ncol(processes))
+{
+print(procnames[i])
+fit<-lm(processes[,i]~controls$lig+controls$lig_ph+controls$lig2carbos+controls$N_lit+controls$C_lit+controls$P_lit+controls$C.N_lit)
+aov<-anova(fit)
+print(fit)
+print(aov)
+}
+
+summary(fit)
+plot(fit)
+anova(fit)
+
+#processes mit einfluss von pyr markern in 2 weg anova mit N_lit bzw C.N_lit: !cellulase, !chitinase, .phosphatase., .protease., .phenoloxydase., !peroxydase, 
+#!cellulase2phenoloxydase, .cellulase2peroxydase, .phosphatase2phenoloxydase, !phosphtase2peroxydase, .protease2peroxydase, .g_prot_depoly, .g_nh4_immo, .g_nitrifi, !g_p_min, .g_gucan_depoly, !C_mic, .N_.mic, .P_mic, !C.P_mic,  
+
+mod<-lm(processes$C.Pmic ~ controls$C.P_lit*controls$lig*controls$C.N_lit)
+anova(mod)
+plot(mod)
+
+for (h in c(3:44))
+for (i in c(1:3, 5:6))
+for (j in c(52,54))
+{
+pr<-paste("process =", procnames[h], "; multiple regression of", contnames[i], "and" , contnames[j])
+print(pr)
+print("harvest 2")
+x<-cor.test(controls[h2,j], controls[h2,i])
+pr<-paste("R =", x$estimate, "p =", x$p.value)
+print(pr)
+mod<-processes[h2,h]~controls[h2,j]*controls[h2,i]
+x<-summary(lm(mod))
+print("lm")
+print(x$coefficients)
+x<-anova(lm(mod))
+print("aov")
+print(x)
+
+print("harvest 3")
+x<-cor.test(controls[h3,j], controls[h3,i])
+pr<-paste("R =", x$estimate, "p =", x$p.value)
+print(pr)
+mod<-processes[h3,h]~controls[h3,j]*controls[h3,i]
+x<-summary(lm(mod))
+print("lm")
+print(x$coefficients)
+x<-anova(lm(mod))
+print("aov")
+print(x)
+
+print("harvest 2+3")
+x<-cor.test(controls[,j], controls[,i])
+pr<-paste("R =", x$estimate, "p =", x$p.value)
+print(pr)
+mod<-processes[,h]~controls[,j]*controls[,i]
+x<-summary(lm(mod))
+print("lm")
+print(x$coefficients)
+x<-anova(lm(mod))
+print("aov")
+print(x)
+}
+sink()
+
+# pca & mds harvest 2
+
+?metaMDS
+controls<-metaMDS(controls)
+
+plot(all.pca, type="n")
+    for (i in 1:length(typlev))
+    points(all.pca, display="sites", select=type==typlev[i], col=1, pch=20+i, cex=0.6)
+    text(all.pca, display="species",  col="red", labels=peaks$origin, font=2,cex=0.4)    
+    fit<-envfit(all.pca, catrsim)
+    print(fit)
+    plot(fit, p.max=0.05, cex=.5, col="blue")
+    ?abline
+    abline(c(0,0), c(1,1), col="grey")
+    abline(c(0,0), c(-1,-1), col="grey")
+
+?tan
+
+#controls_all<-matrix(nrow=nrow(samples), ncol=ncol(controls))
+#summary(controls_all)
+#colnames(controls_all)<-colnames(controls)
+#rownames(controls_all)<-rownames(samples)
+#controls_all[5:9,   1:ncol(controls)]<-controls[1:5, 1:ncol(controls)]
+#controls_all[10:14, 1:ncol(controls)]
+#<-
+#controls[6:10, 1:ncol(controls)]
+#controls_all[24:27, 1:ncol(controls_all)]<-controls[11:14, 1:ncol(controls_all)]
+#controls_all[28:32, 1:ncol(controls_all)]<-controls[15:19, 1:ncol(controls_all)]
+#controls_all[41:45, 1:ncol(controls_all)]<-controls[20:24, 1:ncol(controls_all)]
+#controls_all[46:50, 1:ncol(controls_all)]<-controls[25:29, 1:ncol(controls_all)]
+#controls_all[60:64, 1:ncol(controls_all)]<-controls[30:34, 1:ncol(controls_all)]
+#controls_all[65:69, 1:ncol(controls_all)]<-controls[35:39, 1:ncol(controls_all)]
+#
+#processes_all<-matrix(nrow=nrow(samples), ncol=ncol(processes))
+#colnames(processes_all)<-colnames(processes)
+#rownames(processes_all)<-rownames(samples)
+#processes_all[5:9, 1:ncol(processes_all)]<-processes[1:5, 1:ncol(processes_all)]
+#processes_all[10:14, 1:ncol(processes_all)]<-processes[6:10, 1:ncol(processes_all)]
+#processes_all[24:27, 1:ncol(processes_all)]<-processes[11:14, 1:ncol(processes_all)]
+#processes_all[28:32, 1:ncol(processes_all)]<-processes[15:19, 1:ncol(processes_all)]
+#processes_all[41:45, 1:ncol(processes_all)]<-processes[20:24, 1:ncol(processes_all)]
+#processes_all[46:50, 1:ncol(processes_all)]<-processes[25:29, 1:ncol(processes_all)]
+#processes_all[60:64, 1:ncol(processes_all)]<-processes[30:34, 1:ncol(processes_all)]
+#processes_all[65:69, 1:ncol(processes_all)]<-processes[35:39, 1:ncol(processes_all)]
+#
+
+ord<-c$loadings[harvest==2|harvest==6,c(2:3)]
+fit3<-envfit(ord, corr[cond2,18:24], na.rm=TRUE)  
+vegandocs("decision")
+
+stoe<-rda(controls[,51:56],,catrsim[h23, 1:ncol(catrsim)], scale=TRUE)
+plot(stoe)
+
+plot(stoe, type="n")
+    for (i in 1:length(typlev))
+    points(stoe, display="sites", select=type[cond]==typlev[i], col=i, pch=20, cex=0.6)
+    text(stoe, display="species",  col="blue", font=2,cex=0.4)
+    abline(h=0, col="grey")
+    abline(v=0, col="grey")
+
+names(processes)
+envfit(stoe ~ processes[,17])
+fit<-envfit(stoe, processes[,17:23], na.rm=TRUE)      
+fit
+plot(fit, p.max=0.05, cex=.3, col="red")
+ord<-stoe
+source("interplot.R")
+
+pdf("part_rda.pdf")
+
+#rda1<-rda(rsim[h23,1:ncol(rsim)],, data.frame(controls[,52], controls[,54]), scale=TRUE)
+rda1<-rda(rsim[h23,1:ncol(rsim)],processes[,17:19],controls[,51:53], scale=TRUE)
+
+plot(rda1)
+
+ord<-rda1
+cond<-harvest==2|harvest==6
+cond2<-corr$harvest==2|corr$harvest==6
+name<-"partial rda"
+source("interplot.R")
+
+dev.off()
+
+
+
+
+pdf("part_rda.pdf")
+
+rda1<-rda(rsim[h23,1:ncol(rsim)],, data.frame(controls[,52], controls[,54]), scale=TRUE)
+rda1
+
+ord<-rda1
+cond<-harvest==2|harvest==6
+cond2<-corr$harvest==2|corr$harvest==6
+name<-"partial rda"
+source("interplot.R")
+
+dev.off()
+
+fit
+colnames(controls)
+
+summary(h23.mds)
+h2.mds$species
+
+pdf("fit1.pdf")
+
+ord<-h2.mds
+cond<-harvest==2
+cond2<-corr$harvest==2
+cond3<-c(rep(TRUE, 19))
+name<-"Harvest 2 MDS"
+source("interplot.R")
+
+ord<-h2.pca
+cond<-harvest==2
+cond2<-corr$harvest==2
+cond3<-c(rep(TRUE, 19))
+name<-"Harvest 2 PCA"
+source("interplot.R")
+
+ord<-h3.mds
+cond<-harvest==6
+cond2<-corr$harvest==6
+cond3<-c(rep(TRUE, 20))
+name<-"Harvest 3 MDS"
+source("interplot.R")
+
+ord<-h3.pca
+cond<-harvest==6
+cond2<-corr$harvest==6
+cond3<-c(rep(TRUE, 20))
+name<-"Harvest 3 PCA"
+source("interplot.R")
+
+ord<-h23.mds
+cond<-harvest==2|harvest==6
+cond2<-corr$harvest==2|corr$harvest==6
+name<-"Harvest 2+3 MDS"
+source("interplot.R")
+
+ord<-h23.pca
+cond<-harvest==2|harvest==6
+cond2<-corr$harvest==2|corr$harvest==6
+name<-"Harvest 2+3 PCA"
+source("interplot.R")
+
+dev.off()
+
+i<-105
+h234<-harvest==2|harvest==6|harvest==15
+
+if (type=="AK") {var<-1}
+rsim[,i]/mean(rsim[type=="AK"|harvest==0,i])}
+var
+
+mod<-lm(rsim[,i] ~ samples$massloss)
+mod$coefficients
+plot(samples$massloss, rsim[,i])
+
+colnames(controls)
+colnames(processes)
+
+pdf("fit23-np.pdf")
+sink("fit23-np.txt")
+
+h23.processes.residuals.N_lit<-processes
+h2.processes.residuals.N_lit<-processes[h2, 1:ncol(processes)]
+h3.processes.residuals.N_lit<-processes[h3, 1:ncol(processes)]
+h23.processes.residuals.P_lit<-processes
+h2.processes.residuals.P_lit<-processes[h2, 1:ncol(processes)]
+h3.processes.residuals.P_lit<-processes[h3, 1:ncol(processes)]
+h23.processes.residuals.N_lit.P_lit<-processes
+h2.processes.residuals.N_lit.P_lit<-processes[h2, 1:ncol(processes)]
+h3.processes.residuals.N_lit.P_lit<-processes[h3, 1:ncol(processes)]
+
+for ( i in 1:ncol(processes))
+{
+mod<-lm(processes[,i]~controls$N_lit)
+h23.controls.residuals.N_lit[,i]<-processes[,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit
+mod$residuals
+mod<-lm(processes[h2,i]~controls$N_lit[h2])
+h2.controls.residuals.N_lit[,i]<-processes[h2,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit[h2]
+mod$residuals
+mod<-lm(processes[h3,i]~controls$N_lit[h3])
+h3.controls.residuals.N_lit[,i]<-processes[h3,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit[h3]
+mod$residuals
+mod<-lm(processes[,i]~controls$P_lit)
+h23.controls.residuals.P_lit[,i]<-processes[,i]-mod$coefficients[1]-mod$coefficients[2]*controls$P_lit
+mod$residuals
+mod<-lm(processes[h2,i]~controls$P_lit[h2])
+h2.controls.residuals.P_lit[,i]<-processes[h2,i]-mod$coefficients[1]-mod$coefficients[2]*controls$P_lit[h2]
+mod$residuals
+mod<-lm(processes[h3,i]~controls$P_lit[h3])
+h3.controls.residuals.P_lit[,i]<-processes[h3,i]-mod$coefficients[1]-mod$coefficients[2]*controls$P_lit[h3]
+mod$residuals
+mod<-lm(processes[,i]~controls$N_lit*controls$P_lit)
+h23.controls.residuals.N_lit.P_lit[,i]<-processes[,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit-mod$coefficients[3]*controls$P_lit-mod$coefficients[4]*(controls$N_lit/controls$P_lit)
+mod$residuals
+mod<-lm(processes[h2,i]~controls$N_lit[h2]*controls$P_lit[h2])
+h2.controls.residuals.N_lit.P_lit[,i]<-processes[h2,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit[h2]-mod$coefficients[3]*controls$P_lit[h2]-mod$coefficients[4]*(controls$N_lit[h2]/controls$P_lit[h2])
+h2.controls.residuals.N_lit.P_lit[,i]
+mod$residuals
+mod<-lm(processes[h3,i]~controls$N_lit[h3]*controls$P_lit[h3])
+h3.controls.residuals.N_lit.P_lit[,i]<-processes[h3,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit[h3]-mod$coefficients[3]*controls$P_lit[h3]-mod$coefficients[4]*(controls$N_lit[h3]/controls$P_lit[h3])
+mod$residuals
+}
+
+h23.controls.residuals.N_lit<-controls
+h2.controls.residuals.N_lit<-controls[h2, 1:ncol(controls)]
+h3.controls.residuals.N_lit<-controls[h3, 1:ncol(controls)]
+h23.controls.residuals.P_lit<-controls
+h2.controls.residuals.P_lit<-controls[h2, 1:ncol(controls)]
+h3.controls.residuals.P_lit<-controls[h3, 1:ncol(controls)]
+h23.controls.residuals.N_lit.P_lit<-controls
+h2.controls.residuals.N_lit.P_lit<-controls[h2, 1:ncol(controls)]
+h3.controls.residuals.N_lit.P_lit<-controls[h3, 1:ncol(controls)]
+
+for ( i in 1:ncol(controls))
+{
+mod<-lm(controls[,i]~controls$N_lit)
+h23.controls.residuals.N_lit[,i]<-controls[,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit
+mod$residuals
+mod<-lm(controls[h2,i]~controls$N_lit[h2])
+h2.controls.residuals.N_lit[,i]<-controls[h2,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit[h2]
+mod$residuals
+mod<-lm(controls[h3,i]~controls$N_lit[h3])
+h3.controls.residuals.N_lit[,i]<-controls[h3,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit[h3]
+mod$residuals
+mod<-lm(controls[,i]~controls$P_lit)
+h23.controls.residuals.P_lit[,i]<-controls[,i]-mod$coefficients[1]-mod$coefficients[2]*controls$P_lit
+mod$residuals
+mod<-lm(controls[h2,i]~controls$P_lit[h2])
+h2.controls.residuals.P_lit[,i]<-controls[h2,i]-mod$coefficients[1]-mod$coefficients[2]*controls$P_lit[h2]
+mod$residuals
+mod<-lm(controls[h3,i]~controls$P_lit[h3])
+h3.controls.residuals.P_lit[,i]<-controls[h3,i]-mod$coefficients[1]-mod$coefficients[2]*controls$P_lit[h3]
+mod$residuals
+mod<-lm(controls[,i]~controls$N_lit*controls$P_lit)
+h23.controls.residuals.N_lit.P_lit[,i]<-controls[,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit-mod$coefficients[3]*controls$P_lit-mod$coefficients[4]*(controls$N_lit/controls$P_lit)
+mod$residuals
+mod<-lm(controls[h2,i]~controls$N_lit[h2]*controls$P_lit[h2])
+h2.controls.residuals.N_lit.P_lit[,i]<-controls[h2,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit[h2]-mod$coefficients[3]*controls$P_lit[h2]-mod$coefficients[4]*(controls$N_lit[h2]/controls$P_lit[h2])
+h2.controls.residuals.N_lit.P_lit[,i]
+mod$residuals
+mod<-lm(controls[h3,i]~controls$N_lit[h3]*controls$P_lit[h3])
+h3.controls.residuals.N_lit.P_lit[,i]<-controls[h3,i]-mod$coefficients[1]-mod$coefficients[2]*controls$N_lit[h3]-mod$coefficients[3]*controls$P_lit[h3]-mod$coefficients[4]*(controls$N_lit[h3]/controls$P_lit[h3])
+mod$residuals
+}
+
+
+
+ord<-h2.pca
+cont<-controls[h2, 1:ncol(controls)]
+proc<-processes[h2, 1:ncol(processes)]
+cond<-harvest==2
+cond2<-corr$harvest==2
+name<-"Harvest 2 PCA"
+print(name)
+source("interplot.R")
+
+ord<-h2.wo.n.pca
+cont<-h2.controls.residuals.N_lit
+proc<-h2.processes.residuals.N_lit
+name<-"Harvest 2 partial rda (w/o N_lit)"
+print(name)
+source("interplot.R")
+
+
+ord<-h2.wo.p.pca
+cont<-h2.controls.residuals.P_lit
+proc<-h2.processes.residuals.P_lit
+name<-"Harvest 2 partial rda (w/o P_lit)"
+print(name)
+source("interplot.R")
+
+ord<-h2.wo.n.p.pca
+cont<-h2.controls.residuals.N_lit.P_lit
+proc<-h2.processes.residuals.N_lit.P_lit
+name<-"Harvest 2 partial rda (w/o N_lit & P_lit)"
+print(name)
+source("interplot.R")
+
+ord<-h3.pca
+cont<-controls[h3, 1:ncol(controls)]
+proc<-controls[h3, 1:ncol(processes)]
+cond<-harvest==6
+cond2<-corr$harvest==6
+name<-"Harvest 3 PCA"
+print(name)
+source("interplot.R")
+
+ord<-h3.wo.n.pca
+cont<-h3.controls.residuals.N_lit
+proc<-h3.processes.residuals.N_lit
+name<-"Harvest 3 partial rda (w/o N_lit)"
+print(name)
+source("interplot.R")
+
+
+ord<-h3.wo.p.pca
+cont<-h3.controls.residuals.P_lit
+proc<-h3.processes.residuals.P_lit
+name<-"Harvest 3 partial rda (w/o P_lit)"
+print(name)
+source("interplot.R")
+
+ord<-h3.wo.n.p.pca
+cont<-h3.controls.residuals.N_lit.P_lit
+proc<-h3.processes.residuals.N_lit.P_lit
+name<-"Harvest 3 partial rda (w/o N_lit & P_lit)"
+print(name)
+source("interplot.R")
+
+
+ord<-h23.pca
+proc<-processes[, 1:ncol(processes)]
+cont<-controls[, 1:ncol(controls)]
+cond<-harvest==2|harvest==6
+cond2<-corr$harvest==2|corr$harvest==6
+name<-"Harvest 2+3 PCA"
+print(name)
+source("interplot.R")
+
+ord<-h23.wo.n.pca
+cont<-h23.controls.residuals.N_lit
+proc<-h23.processes.residuals.N_lit
+name<-"Harvest 2+3 partial rda (w/o N_lit)"
+print(name)
+source("interplot.R")
+
+
+ord<-h23.wo.p.pca
+cont<-h23.controls.residuals.P_lit
+proc<-h23.processes.residuals.P_lit
+name<-"Harvest 2+3 partial rda (w/o P_lit)"
+print(name)
+source("interplot.R")
+
+ord<-h23.wo.n.p.pca
+cont<-h23.controls.residuals.N_lit.P_lit
+proc<-h23.processes.residuals.N_lit.P_lit
+name<-"Harvest 2+3 partial rda (w/o N_lit & P_lit)"
+print(name)
+source("interplot.R")
+
+sink()
+dev.off()
+
+  pdf("pca.all.4corr.pdf")
+  ord<-all.pca
+  plot(ord, type="n")
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ord, display="sites", select=type==typlev[i]&harvest==harlev[j], col=i, pch=20+j, cex=0.6)
+      text(ord, display="species",  col="red", labels=peaks$origin, font=2,cex=0.4)
+      abline(h=0, col="grey")
+      abline(v=0, col="grey")
+
+  fit<-envfit(ord, lig.ch.p.catrsim, na.rm=TRUE)      
+  fit
+  plot(fit, p.max=0.05, cex=.5, col="blue")
+
+  fit<-envfit(ord, catrsim, na.rm=TRUE)      
+  fit
+  plot(fit, p.max=0.05, cex=.5, col="grey")
+
+  dev.off()
+
+
+
+sco<-scores(ord, display="sites", choices=1)
+pca1<-sco[1:74]
+sco<-scores(ord, display="sites", choices=2)
+pca2<-sco[1:74]
+
+pca.scores<-data.frame(pca1,pca2)
+
+summary(type)
+
+
+#sim vs. tic graphs
+
+      pdf("simvstic.pdf")
+      for (i in 1:peaknr)
+      {
+      ti<-subset(tic[,i], is.na(tic[,i])==FALSE & is.na(sim[,i])==FALSE)
+      si<-subset(sim[,i], is.na(tic[,i])==FALSE & is.na(sim[,i])==FALSE)
+
+      if(max(ti) > 0)
+      {
+
+      plot(ti ~ si, pch="+",
+	  xlab="peak area(sim)", ylab=paste("peak area(tic)", 
+	  peaks[i,7]), xlim=c(0,max(si)), ylim=c(0, max(ti))
+	)
+
+      title(paste(peaks[i,4], "(", peaks[i,5], "; RT = ", peaks[i,1],")"))
+      mtext(paste("R² =", formatC(cor(ti, si), digits=5)))
+      abline(lm(tic[,i] ~ sim[,i]))
+      }
+      }
+      dev.off()
+
+
+
+# nr of significant differences between at least 2 litter types in original litter per peak
+orig_litter_type_aov<-peaks$RT
+
+      ext.cond<-harvest==0
+      for (i in 1:peaknr)
+      {
+      testvar<-rsim[,i]
+      aov.res<-anova(lm(testvar[ext.cond] ~ type[ext.cond]))
+      aov.res2<-aov.res[5]
+      orig_litter_type_aov[i]<-aov.res2[1,1]
+      }
+      orig_litter_type_aov
+
+t.test(testvar[harvest==0 & type=="SW"],testvar[harvest==6 & type=="SW"])
+ttt<-
+ttest$p.value
+
+h
+?t.test
+
+      summary(orig_litter_type_aov<0.05)
+      summary(orig_litter_type_aov[peaks$origin=="sy"|peaks$origin=="g"]<0.05)
+      summary(orig_litter_type_aov[peaks$origin=="c"|peaks$origin=="ch"|peaks$origin=="f"]<0.05)
+      summry(orig_litter_type_aov[peaks$origin=="p"|peaks$origin=="ind"]<0.05)
+      summary(orig_litter_type_aov[peaks$origin=="u"]<0.05)
+      summary(orig_litter_type_aov[peaks$origin=="ka"]<0.05)
+      summary(orig_litter_type_aov[peaks$origin=="al"]<0.05)
+
+# nr of significant differences between at least 2 harvest in per peak and litter type
+      harvest_aov_by_type<-matrix(nrow=peaknr, ncol=length(typlev))
+      harvest_ttest_by_type_h0_h6<-matrix(nrow=peaknr, ncol=length(typlev))
+      harvest_ttest_by_type_h0_h15<-matrix(nrow=peaknr, ncol=length(typlev))
+for (k in 1:length(typlev))
+{
+      ext.cond<-type==typlev[k]
+      for (i in 1:peaknr)
+      {
+      testvar<-rsim[,i]
+      aov.res<-anova(lm(testvar[ext.cond] ~ harvest[ext.cond]))
+      aov.res2<-aov.res[5]
+      harvest_aov_by_type[i,k]<-aov.res2[1,1]
+      ttest<-t.test(testvar[harvest==0 & type==typlev[k]],testvar[harvest==6 & type==typlev[k]])
+      if (ttest$p.value <.05 & mean(testvar[harvest==0 & type==typlev[k]]) < mean(testvar[harvest==6 & type==typlev[k]]))
+      harvest_ttest_by_type_h0_h6[i,k]<-"up"
+      if (ttest$p.value <.05 & mean(testvar[harvest==0 & type==typlev[k]]) > mean(testvar[harvest==6 & type==typlev[k]]))
+      harvest_ttest_by_type_h0_h6[i,k]<-"down"
+      if (ttest$p.value >.05 )
+      harvest_ttest_by_type_h0_h6[i,k]<-"="
+      ttest<-t.test(testvar[harvest==0 & type==typlev[k]],testvar[harvest==15 & type==typlev[k]])
+      if (ttest$p.value <.05 & mean(testvar[harvest==0 & type==typlev[k]]) < mean(testvar[harvest==15 & type==typlev[k]]))
+      harvest_ttest_by_type_h0_h15[i,k]<-"up"
+      if (ttest$p.value <.05 & mean(testvar[harvest==0 & type==typlev[k]]) > mean(testvar[harvest==15 & type==typlev[k]]))
+      harvest_ttest_by_type_h0_h15[i,k]<-"down"
+      if (ttest$p.value >.05 )
+      harvest_ttest_by_type_h0_h15[i,k]<-"="
+
+      }
+}
+harvest_ttest_by_type
+
+summary(peaks$origin)
+
+      summary(harvest_ttest_by_type=="down")
+      summary(harvest_ttest_by_type=="up")
+
+      summary(harvest_ttest_by_type_h0_h6[peaks$origin=="sy"|peaks$origin=="g",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="sy"|peaks$origin=="g",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h6[peaks$origin=="sy"|peaks$origin=="g",1:4]=="up")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="sy"|peaks$origin=="g",1:4]=="up")
+
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="ch"|peaks$origin=="c"|peaks$origin=="f",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="ch"|peaks$origin=="c"|peaks$origin=="f",1:4]=="up")
+      summary(harvest_ttest_by_type_h0_h6[peaks$origin=="ch"|peaks$origin=="c"|peaks$origin=="f",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h6[peaks$origin=="ch"|peaks$origin=="c"|peaks$origin=="f",1:4]=="up")
+
+
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="s"|peaks$origin=="ka"|peaks$origin=="al",1:4]=="up")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="a",1:4]=="up")
+
+
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="c",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="c",1:4]=="up")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="ch",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="ch",1:4]=="up")
+
+
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="p"|peaks$origin=="ind",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="p"|peaks$origin=="ind",1:4]=="up")
+
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="ph",1:4]=="up")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="t",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="ka",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="ka",1:4]=="up")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="s",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="s",1:4]=="up")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="al",1:4]=="down")
+      summary(harvest_ttest_by_type_h0_h15[peaks$origin=="al",1:4]=="up")
+
+catrcTIC
+
+
+      summary(harvest_aov_by_type[peaks$origin=="p"|peaks$origin=="ind",1:4]<0.05)
+      summary(harvest_aov_by_type[peaks$origin=="p"|peaks$origin=="ind",1:4]<0.05)
+      summary(harvest_aov_by_type[peaks$origin=="p"|peaks$origin=="ind",1:4]<0.05)
+
+
+
+lm1<-lm(rsim[,1] ~ type * harvest)
+a<-summary(lm1)
+a$r.squared
+f.stat<-a$fstatistic
+f.stat[3]
+p.value<-1-pf(f.stat[1],f.stat[2], f.stat[3])
+p.value
+#for (k in 1:length(typlev))
+#{
+#for (l in (k+1):length(typlev))
+#{
+#k=1
+#l=3
+#cond1<-ext.cond & type == typlev[k]
+#cond1
+#cond2<-ext.cond & type == typlev[l]
+#cond2
+#t.test(testvar[cond1,1], testvar[cond2,1])
+#}
+#}
+#?t.test
+
+
+#correlations with process data
+
+      lig.ch.n<-har2means(data.frame((catrcTIC$g+catrcTIC$sy), (catrcTIC$c+catrcTIC$ch+catrcTIC$f), (catrcTIC$p+catrcTIC$ind), ((catrcTIC$g+catrcTIC$sy)/(catrcTIC$c+catrcTIC$ch+catrcTIC$f)), ((catrcTIC$g+catrcTIC$sy)/(catrcTIC$p+catrcTIC$ind)), ((catrcTIC$c+catrcTIC$ch+catrcTIC$f)/(catrcTIC$p+catrcTIC$ind))))
+lig.ch.n
+      colnames(lig.ch.n)<-c("lig.h2","ch.h2","n.h2","lig:ch.h2","lig:n.h2","ch:n.h2")
+      cor.p.proc.ligchn.h2<-corr.p.ab(lig.ch.n, proc[2:ncol(proc)])
+      cor.coef.proc.ligchn.h2<-corr.coef.ab(lig.ch.n, proc[2:ncol(proc)])
+
+      write.csv(cor.p.proc.ligchn.h2, "cor_p_proc_ligchn_h2.csv")
+      write.csv(cor.coef.proc.ligchn.h2, "cor_coef_proc_ligchn_h2.csv")
+  
+      cor.p.proc.catrcTIC.h2<-corr.p.ab(har2means(catrcTIC), proc[2:5])
+      cor.coef.proc.catrcTIC.h2<-corr.coef.ab(har2means(catrcTIC), proc[2:5])
+
+
+
+#massseries
+
+      pdf("mass_series3.pdf")
+
+      timeseries((catrcTIC$g+catrcTIC$sy)/(catrcTIC$ch+catrcTIC$c+catrcTIC$f), days, type, "Lignin:Carbohydrates", "litter incubation (days)", "relative peak area (ratio, SE)",  allpoints=FALSE, col=TRUE)
+      timeseries((catrcTIC$g+catrcTIC$sy)/(catrcTIC$ind+catrcTIC$p), days, type, "Lignin:N-compounds", "litter incubation (days)", "relative peak area (ratio, SE)",  allpoints=FALSE, col=TRUE)
+      timeseries((catrcTIC$ch+catrcTIC$c+catrcTIC$f)/(catrcTIC$ind+catrcTIC$p), days, type, "Carbohydrates:N-compounds", "litter incubation (days)", "relative peak area (ratio, SE)",  allpoints=FALSE, col=TRUE)
+      timeseries(catrcTIC$f/catrcTIC$c, days, type, "Furane:Cyclopentenone derivatives", "litter incubation (days)", "relative peak area (ratio, SE)",  allpoints=FALSE, col=TRUE)
+
+
+      timeseries((catrcTIC$g+catrcTIC$sy), days, type, "Lignin", "litter incubation (days)", "relative peak area (ratio, SE)",  allpoints=FALSE, col=TRUE)
+      timeseries((catrcTIC$ch+catrcTIC$c+catrcTIC$f), harvest, type, "Carbohydrates", "litter incubation (days)", "relative peak area (cTIC)", allpoints=FALSE, col=TRUE)
+      timeseries((catrcTIC$p+catrcTIC$ind), harvest, type, "N compounds", "litter incubation (days)", "relative peak area (cTIC)",  allpoints=FALSE, col=TRUE)
+
+
+      mass.series((catrcTIC$g+catrcTIC$sy), harvest, samples$massloss, samples$masslossSE, type, "Lignin related compounds", "remaining dry mass (%, SE)", "(remaining dry mass) * (relative peak areas/initial relative peak area) (%, SE)", c(75,110), allpoints=FALSE, col=TRUE, normalize=TRUE, legende=TRUE, losscorr=TRUE)
+      mass.series((catrcTIC$ch+catrcTIC$c+catrcTIC$f), harvest, samples$massloss, samples$masslossSE, type, "Carbohydrates", "remaining dry mass (%, SE)", "(remaining dry mass) * (relative peak areas/initial relative peak area) (%, SE)", c(75,110), allpoints=FALSE, col=TRUE, normalize=TRUE, legende=FALSE, losscorr=TRUE)
+      mass.series((catrcTIC$p+catrcTIC$ind), harvest, samples$massloss, samples$masslossSE, type, "N compounds", "remaining dry mass (%, SE)", "(remaining dry mass) * (peak areas/initial relative peak area) (%, SE)", c(75,110), allpoints=FALSE, col=TRUE, normalize=TRUE, legende=FALSE, losscorr=TRUE)
+
+      mass.series((catrcTIC$g+catrcTIC$sy), harvest, samples$massloss, samples$masslossSE, type, "Lignin related compounds", "dry mass loss(%, SE)", "relative peak areas/initial relative peak area (%, SE)", c(80,120), allpoints=FALSE, col=TRUE, normalize=TRUE, legende=TRUE, losscorr=FALSE)
+      mass.series((catrcTIC$ch+catrcTIC$c+catrcTIC$f), harvest, samples$massloss, samples$masslossSE, type, "Carbohydrates", "dry mass loss(%, SE)", "relative peak areas/initial relative peak area (%, SE)", c(80,120), allpoints=FALSE, col=TRUE, normalize=TRUE, legende=FALSE, losscorr=FALSE)
+      mass.series((catrcTIC$p+catrcTIC$ind), harvest, samples$massloss, samples$masslossSE, type, "N compounds", "dry mass loss(%, SE)", "peak areas/initial relative peak area (%, SE)", c(80,120), allpoints=FALSE, col=TRUE, normalize=TRUE, legende=FALSE, losscorr=FALSE)
+      catnames<-colnames(catrcTIC)
+      for (i in 1:ncol(catrcTIC))
+      {
+      timeseries(catrcTIC[,i], days, type, catnames[i], "litter incubation (days)", "relative peak area (permille, SE)",  allpoints=FALSE, col=TRUE)
+      mass.series(catrcTIC[,i], harvest, samples$massloss, samples$masslossSE, type, catnames[i], "remaining dry mass (%, SE)", "(remaining dry mass) * (relative peak areas/initial relative peak area) (%, SE)", c(75,120), allpoints=FALSE, col=TRUE, normalize=TRUE, losscorr=TRUE)
+      mass.series(catrcTIC[,i], harvest, samples$massloss, samples$masslossSE, type, catnames[i], "remaining dry mass (%, SE)", "relative peak areas/initial relative peak area (%, SE)", c(75,120), allpoints=FALSE, col=TRUE, normalize=TRUE, losscorr=FALSE)
+      }
+
+      for (i in 1:peaknr)
+      {
+      timeseries(rsim[,i], days, type, paste(peaks$ID[i], "( RT =", peaks$RT[i], ") [", peaks$origin[i], "]"), "litter incubation (days)", "relative peak area (permille, SE)",  allpoints=FALSE, col=TRUE)
+      mass.series(rsim[,i], harvest, samples$massloss, samples$masslossSE, type, paste(peaks$ID[i], "( RT =", peaks$RT[i], ") [", peaks$origin[i], "]"), "remaining dry mass (%, SE)", "(remaining dry mass) * (relative peak areas/initial relative peak area) (%, SE)", c(60,130), allpoints=FALSE, col=TRUE, normalize=TRUE, losscorr=TRUE)
+      mass.series(rsim[,i], harvest, samples$massloss, samples$masslossSE, type, paste(peaks$ID[i], "( RT =", peaks$RT[i], ") [", peaks$origin[i], "]"), "remaining dry mass (%, SE)", "relative peak areas/initial relative peak area (%, SE)", c(50,200), allpoints=FALSE, col=TRUE, normalize=TRUE, losscorr=FALSE)
+      }
+
+      timeseries(rsim[,94]/rsim[,95], days, type, "G0:G1", "litter incubation (days)", "relative peak area (permille, SE)",  allpoints=FALSE, col=TRUE)
+      timeseries(rsim[,107]/rsim[,108], days, type, "S0:S1", "litter incubation (days)", "relative peak area (permille, SE)",  allpoints=FALSE, col=TRUE)
+      timeseries(rsim[,94]/rsim[,95], days, type, "(G0+S0):(G1+S1)", "litter incubation (days)", "relative peak area (permille, SE)",  allpoints=FALSE, col=TRUE)
+ 
+
+      dev.off()
+
+
+#timeseries for dry mass loss: lost vs. remaining dry mass, ylim to 0 or min, CI or stdev, H2 included or excluded
+      pdf("dry_mass_loss.pdf")
+      noH2<-samples[,2]!=2
+      timeseries_CI(drymass[,1]*100, samples[,2], samples[,1], "dry mass left", "month incubation", "remaining dry mass (%, CI 95%)", 0.05)
+      timeseries(drymass[,1]*100, samples[,2], samples[,1], "dry mass left", "month incubation", "remaining dry mass (%, stdev)")
+      timeseries_CI_nolimit(drymass[,1]*100, samples[,2], samples[,1], "dry mass left", "month incubation", "remaining dry mass (%, CI 95%)", 0.05)
+      timeseries_nolimit(drymass[,1]*100, samples[,2], samples[,1], "dry mass left", "month incubation", "remaining dry mass (%, stdev)")
+      timeseries_CI((1-drymass[,1])*100, samples[,2], samples[,1], "dry mass loss", "month incubation", "lost dry mass (%, CI 95%)", 0.05)
+      timeseries((1-drymass[,1])*100, samples[,2], samples[,1], "dry mass loss", "month incubation", "lost dry mass (%, stdev)")
+      timeseries_CI_nolimit((1-drymass[,1])*100, samples[,2], samples[,1], "dry mass loss", "month incubation", "lost dry mass (%, CI 95%)", 0.05)
+      timeseries_nolimit((1-drymass[,1])*100, samples[,2], samples[,1], "dry mass loss", "month incubation", "lost dry mass (%, stdev)")
+      timeseries_CI(drymass[noH2,1]*100, samples[noH2,2], samples[noH2,1], "dry mass left", "month incubation", "remaining dry mass (%, CI 95%)", 0.05)
+      timeseries(drymass[noH2,1]*100, samples[noH2,2], samples[noH2,1], "dry mass left", "month incubation", "remaining dry mass (%, stdev)")
+      timeseries_CI_nolimit(drymass[noH2,1]*100, samples[noH2,2], samples[noH2,1], "dry mass left", "month incubation", "remaining dry mass (%, CI 95%)", 0.05)
+      timeseries_nolimit(drymass[noH2,1]*100, samples[noH2,2], samples[noH2,1], "dry mass left", "month incubation", "remaining dry mass (%, stdev)")
+      timeseries_CI((1-drymass[noH2,1])*100, samples[noH2,2], samples[noH2,1], "dry mass loss", "month incubation", "lost dry mass (%, CI 95%)", 0.05)
+      timeseries((1-drymass[noH2,1])*100, samples[noH2,2], samples[noH2,1], "dry mass loss", "month incubation", "lost dry mass (%, stdev)")
+      timeseries_CI_nolimit((1-drymass[noH2,1])*100, samples[noH2,2], samples[noH2,1], "dry mass loss", "month incubation", "lost dry mass (%, CI 95%)", 0.05)
+      timeseries_nolimit((1-drymass[noH2,1])*100, samples[noH2,2], samples[noH2,1], "dry mass loss", "month incubation", "lost dry mass (%, stdev)")
+      dev.off()
+
+#timeseries of category sums
+
+      pdf("rel_area_by_category_new.pdf")
+      for (j in 1:ncol(catrsim)) {      
+      timeseries_CI(catrsim[,j], samples[,2], samples[,1], seplev[j], "month incubation", "sum of SIM areas (CI alpha=.05)", 0.05)
+      timeseries_CI(catrcTIC[,j], samples[,2], samples[,1], seplev[j], "month incubation", "sum of cTIC areas (CI alpha=.05)", 0.05)
+      }
+      dev.off()
+
+      pdf("princomps1.pdf")
+      for (j in 1:length(seplev)) {
+      if (ncol(rsim[sep==seplev[j]])>1) {
+      pc<-princomp(rsim[sep==seplev[j]])
+      plot(pc)
+      mtext(seplev[j])
+      biplot(pc)
+      title(seplev[j])
+
+
+      }
+      }
+      dev.off()
+
+#ratios between compound classes
+
+      ncol(rsim[sep=="t"])
+
+      pdf("rsimligcarboratio.pdf")
+      attach(catrsim)
+      timeseries_CI((g+sy)/(c+ch+f), samples[,2], samples[,1], "Lignin/Carbohydrates", "month incubation", "ratio of sim areas (CI alpha=.05)", 0.05)
+      attach(catrcTIC)
+      timeseries_CI((g+sy)/(c+ch+f), samples[,2], samples[,1], "Lignin/Carbohydrates", "month incubation", "ratio of cTIC areas (CI alpha=.05)", 0.05)
+      detach()
+      dev.off()
+
+      pdf("rsimligNratio.pdf")
+      attach(catrsim)
+      timeseries_CI((g+sy)/(ind+p), samples[,2], samples[,1], "Lignin/N-containing", "month incubation", "ratio of sim areas (CI alpha=.05)", 0.05)
+      attach(catrcTIC)
+      timeseries_CI((g+sy)/(ind+p), samples[,2], samples[,1], "Lignin/N-containing", "month incubation", "ratio of cTIC areas (CI alpha=.05)", 0.05)
+      detach()
+      dev.off()
+
+ pdf("catrcTICpars.pdf")
+pairs(catrcTIC)
+dev.off()
+
+#mds of peaks from t(sim)
+    tsim<-t(sim)
+    rtsim<-1000*tsim/rowSums(tsim)
+
+    rownames(rtsim)<-paste(peaks$origin, peaks$RT)rtsim
+    dist.rtsim<-vegdist(rtsim)
+    dist.rtsim.har0only<-vegdist(rtsim[,harvest==0])
+    dist.rtsim.swonly<-vegdist(rtsim[,type=="SW"])
+
+
+    clust.rtsim<-hclust(dist.rtsim, method="complete")
+    clust.rtsim.har0only<-hclust(dist.rtsim.har0only, method="complete")
+    clust.rtsim.swonly<-hclust(dist.rtsim.swonly, method="complete")
+
+
+    pdf("marker_clusters.pdf")
+    plot(clust.rtsim, cex=.25)
+    mtext("peak clustering [all samples]")
+    plot(clust.rtsim.har0only, cex=.25)
+    mtext("peak clustering [original litter only]")
+    plot(clust.rtsim.swonly, cex=.25)
+    mtext("peak clustering [Schottenwald samples only]")
+    dev.off()
+
+    pdf("marker_mds.pdf")
+
+    rowSums(rtsim)
+    rtsim.mds<-metaMDS(rtsim, zerodist="add")
+    plot(rtsim.mds, type="n")
+    abline(h=0, col = "gray")
+    abline(v=0, col = "gray")
+    for (i in 1:length(typlev))
+    for (j in 1:length(harlev))
+    points(rtsim.mds, display="species", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.5)
+    text(rtsim.mds, display="sites", labels=peaks$origin, cex=.2)
+    legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+
+    plot(rtsim.mds, type="n")
+    abline(h=0, col = "gray")
+    abline(v=0, col = "gray")
+    for (i in 1:length(typlev))
+    for (j in 1:length(harlev))
+    points(rtsim.mds, display="species", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.5)
+    text(rtsim.mds, display="sites", labels=peaks$RT, cex=.2)
+    legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+
+
+    rtsim.mds.har0only<-metaMDS(rtsim[,harvest==0], zerodist="add")
+    plot(rtsim.mds.har0only, type="n")
+    abline(h=0, col = "gray")
+    abline(v=0, col = "gray")
+    for (i in 1:length(typlev))
+    #for (j in 1:length(harlev))
+    points(rtsim.mds.har0only, display="species", select=samples[harvest==0,1]==typlev[i], col=i, pch=20+1, cex=0.5)
+    text(rtsim.mds.har0only, display="sites", labels=peaks$origin, cex=.2)
+    legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+
+    plot(rtsim.mds.har0only, type="n")
+    abline(h=0, col = "gray")
+    abline(v=0, col = "gray")
+    for (i in 1:length(typlev))
+    #for (j in 1:length(harlev))
+    points(rtsim.mds.har0only, display="species", select=samples[harvest==0,1]==typlev[i], col=i, pch=20+1, cex=0.5)
+    text(rtsim.mds.har0only, display="sites", labels=peaks$RT, cex=.2)
+    legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+
+    rtsim.mds.swonly<-metaMDS(rtsim[,type=="SW"], zerodist="add")
+    plot(rtsim.mds.swonly, type="n")
+    abline(h=0, col = "gray")
+    abline(v=0, col = "gray")
+    #for (i in 1:length(typlev))
+    for (j in 1:length(harlev))
+    points(rtsim.mds.swonly, display="species", select=samples[type=="SW",2]==harlev[j], col=4, pch=20+j, cex=0.5)
+    text(rtsim.mds.swonly, display="sites", labels=peaks$origin, cex=.2)
+    legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+
+    plot(rtsim.mds.swonly, type="n")
+    abline(h=0, col = "gray")
+    abline(v=0, col = "gray")
+    #for (i in 1:length(typlev))
+    for (j in 1:length(harlev))
+    points(rtsim.mds.swonly, display="species", select=samples[type=="SW",2]==harlev[j], col=4, pch=20+j, cex=0.5)
+    text(rtsim.mds.swonly, display="sites", labels=peaks$RT, cex=.2)
+    legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+    dev.off()
+
+    carbos
+    carbos.rcTIC<-(rcTIC[carbos])
+    carbos.orig<-sep[carbos]
+    codes<-peaks[,5]
+    carbos.codes<-codes[carbos]
+
+# mds carbohydrate peaks only
+
+    carbos.mds<-metaMDS(carbos.rcTIC/rowSums(carbos.rcTIC))
+    scores<-scores(carbos.mds)
+    carbos.mds
+
+    pdf("carbos_only.pdf")
+    plot(carbos.mds, type="n", tck=.01)
+    points(carbos.mds, display="sites", pch="+", col=1, font=2, cex=0.6)
+    text(carbos.mds, display="species",  select=carbos.orig=="c", col="blue", labels=peaks[carbos,1], font=2,cex=0.6)
+    text(carbos.mds, display="species",  select=carbos.orig=="f", col="red",labels=peaks[carbos,1], font=2,cex=0.6)
+    text(carbos.mds, display="species",  select=carbos.orig=="ch", col="green",labels=peaks[carbos,1], font=2,cex=0.6)
+
+    legend("topleft", pch=21, col=c("blue", "red","green"), legend=c("cyclopentan derivatives", "furan derivatives", "other carbohydrate markers"))
+    title("MDS (Carbohydrate Markers only)")
+    abline(h=0, col = "gray", lty = "dotted")
+    abline(v=0, col = "gray", lty = "dotted")
+
+    plot(carbos.mds, type="n", tck=.01)
+    points(carbos.mds, display="sites", pch="+", col=1, font=2, cex=0.6)
+    text(carbos.mds, display="species",  select=carbos.orig=="c", col="blue", labels=peaks[carbos,1], font=2,cex=0.6)
+    text(carbos.mds, display="species",  select=carbos.orig=="f", col="red",labels=peaks[carbos,1], font=2,cex=0.6)
+    text(carbos.mds, display="species",  select=carbos.orig=="ch", col="green",labels=peaks[carbos,1], font=2,cex=0.6)
+
+    legend("topleft", pch=21, col=c("blue", "red","green"), legend=c("cyclopentan derivatives", "furan derivatives", "other carbohydrate markers"))
+    title("MDS (Carbohydrate Markers only)")
+    abline(h=0, col = "gray", lty = "dotted")
+    abline(v=0, col = "gray", lty = "dotted")
+
+
+    plot(carbos.mds, type="n", tck=.01)
+    for (i in 1:length(typlev))
+    for (j in 1:length(harlev))
+    points(carbos.mds, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+    points(carbos.mds, display="species", pch="+", col=1, font=2, cex=0.6)
+    legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+    title("MDS (Carbohydrate Markers only)")
+    abline(h=0, col = "gray", lty = "dotted")
+    abline(v=0, col = "gray", lty = "dotted")
+
+    plot(carbos.mds, type="n", tck=.01)
+    for (i in 1:length(typlev))
+    for (j in 1:length(harlev))
+    points(carbos.mds, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+    text(carbos.mds, display="species",  select=carbos.orig=="c", col="blue", labels=peaks[carbos,1], font=2,cex=0.4)
+    text(carbos.mds, display="species",  select=carbos.orig=="f", col="red",labels=peaks[carbos,1], font=2,cex=0.4)
+    text(carbos.mds, display="species",  select=carbos.orig=="ch", col="green",labels=peaks[carbos,1], font=2,cex=0.4)
+
+
+    #text(lig.mds, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+    legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+    legend("topleft", pch=21, col=c("blue", "red","green"), legend=c("cyclopentan derivatives", "furan derivatives", "other carbohydrate markers"))
+
+    title("MDS (Carbohydrate Markers only)")
+    abline(h=0, col = "gray", lty = "dotted")
+    abline(v=0, col = "gray", lty = "dotted")
+
+    timeseries_nolimit(scores[,1], samples[,2], samples[,1], "MDS - Carbohydrate Peaks only", "litter incubation (month)", "MDS1")
+    abline(h=0, col = "gray", lty = "dotted")
+
+    timeseries_nolimit(scores[,2], samples[,2], samples[,1], "MDS - Carbohydrate Peaks only	", "litter incubation (month)", "MDS2")
+    abline(h=0, col = "gray", lty = "dotted")
+
+# scaled pca carbohydrate peaks only
+
+      carbos.pca<-rda(carbos.rcTIC/rowSums(carbos.rcTIC))
+      scores<-scores(carbos.pca, choises=1:2)
+      summary(carbos.pca)
+
+      carbos.pcas<-rda(carbos.rcTIC/rowSums(carbos.rcTIC), scale=TRUE)
+      scores<-scores(carbos.pcas, choises=1:2)
+      summary(carbos.pcas)
+
+      #plot(carbos.pca)
+      #title("pca eigenvalues (carbohydrates only)")
+
+      plot(carbos.pcas, type="n", tck=.01)
+      points(carbos.pcas, display="sites", pch="+", col=1, font=2, cex=0.6)
+      text(carbos.pcas, display="species",  select=carbos.orig=="c", col="blue", labels=peaks[carbos,1], font=2,cex=0.6)
+      text(carbos.pcas, display="species",  select=carbos.orig=="f", col="red",labels=peaks[carbos,1], font=2,cex=0.6)
+      text(carbos.pcas, display="species",  select=carbos.orig=="ch", col="green",labels=peaks[carbos,1], font=2,cex=0.6)
+
+      legend("topleft", pch=21, col=c("blue", "red","green"), legend=c("cyclopentan derivatives", "furan derivatives", "other carbohydrate markers"))
+      title("scaled pca (Carbohydrate Markers only)")
+
+
+      plot(carbos.pcas, type="n", tck=.01)
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(carbos.pcas, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+      points(carbos.pcas, display="species", pch="+", col=1, font=2, cex=0.6)
+      legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title("scaled PCA (Carbohydrate Markers only)")
+
+      plot(carbos.pcas, type="n", tck=.01)
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(carbos.pcas, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(carbos.pcas, display="species",  select=carbos.orig=="c", col="blue", labels=peaks[carbos,1], font=2,cex=0.4)
+      text(carbos.pcas, display="species",  select=carbos.orig=="f", col="red",labels=peaks[carbos,1], font=2,cex=0.4)
+      text(carbos.pcas, display="species",  select=carbos.orig=="ch", col="green",labels=peaks[carbos,1], font=2,cex=0.4)
+
+
+
+      #text(lig.mds, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+      legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      legend("topleft", pch=21, col=c("blue", "red","green"), legend=c("cyclopentan derivatives", "furan derivatives", "other carbohydrate markers"))
+
+      title("scaled PCA (Carbohydrate Markers only)")
+      dev.off()
+
+ligs.rcTIC<-(rcTIC[ligs])
+ligs.orig<-sep[ligs]
+ligs.codes<-codes[ligs]
+ligs.peaks<-peaks[ligs,1:7]
+
+ligs.peaks
+
+ncol(ligs.rcTIC)
+length(ligs.orig)
+
+# mds lignin peaks only
+
+      ligs.mds<-metaMDS(ligs.rcTIC/rowSums(ligs.rcTIC))
+      scores<-scores(ligs.mds)
+
+      pdf("lignin_only.pdf")
+
+for (i in 1:ncol(ligs.rcTIC))
+timeseries(ligs.rcTIC[,i], samples[,2], samples[,1], paste(ligs.peaks[i,1],ligs.peaks[i,5]), "litter incubation (month)", "permille of total peak ares (cTIC)")
+
+      plot(ligs.mds, type="n", tck=.01)
+      points(ligs.mds, display="sites", pch="+", col=1, font=2, cex=0.6)
+      text(ligs.mds, display="species",  select=ligs.orig=="g", col="blue", labels=peaks[ligs,5], font=2,cex=0.6)
+      text(ligs.mds, display="species",  select=ligs.orig=="sy", col="red",labels=peaks[ligs,5], font=2,cex=0.6)
+
+      legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl marker", "other carbohydrate markers"))
+      title("MDS (Lignin Markers only)")
+      abline(h=0, col = "gray", lty = "dotted")
+      abline(v=0, col = "gray", lty = "dotted")
+
+      plot(ligs.mds, type="n", tck=.01)
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ligs.mds, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+      points(ligs.mds, display="species", pch="+", col=1, font=2, cex=0.6)
+      legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      title("MDS (Lignin Markers only)")
+      abline(h=0, col = "gray", lty = "dotted")
+      abline(v=0, col = "gray", lty = "dotted")
+
+      plot(ligs.mds, type="n", tck=.01)
+      for (i in 1:length(typlev))
+      for (j in 1:length(harlev))
+      points(ligs.mds, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+      text(ligs.mds, display="species",  select=ligs.orig=="g", col="blue", labels=peaks[ligs,5], font=2,cex=0.6)
+      text(ligs.mds, display="species",  select=ligs.orig=="sy", col="red",labels=peaks[ligs,5], font=2,cex=0.6)
+      legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+      legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl marker", "other carbohydrate markers"))
+
+      title("MDS (Lignin Markers only)")
+      abline(h=0, col = "gray", lty = "dotted")
+      abline(v=0, col = "gray", lty = "dotted")
+
+      timeseries_nolimit(scores[,1], samples[,2], samples[,1], "MDS - Lignin Peaks only", "litter incubation (month)", "MDS1")
+      abline(h=0, col = "gray", lty = "dotted")
+
+      timeseries_nolimit(scores[,2], samples[,2], samples[,1], "MDS - Lignin only	", "litter incubation (month)", "MDS2")
+      abline(h=0, col = "gray", lty = "dotted")
+
+dif1<-length(ncol(ligs.rcTIC))
+for (i in 1:ncol(ligs.rcTIC))
+dif1[i]<-mean(-ligs.rcTIC[samples[,1]=="SW" & samples[,2]==0,i])+mean(ligs.rcTIC[samples[,1]=="SW" & samples[,2]==6,i])
+ncol(dif1)
+
+mds1.species<-scores(ligs.mds, display="species")
+
+plot(mds1.species[,2], dif1)
+
+t.ligs.rcTIC<-t(ligs.rcTIC)
+
+mean(t.ligs.rcTIC[1,samples[,1]=="SW" & samples[,2]==0])
+
+dev.off()
+
+# scaled pca carbohydrate peaks only
+
+carbos.pcas<-rda(carbos.rcTIC/rowSums(carbos.rcTIC), scale=TRUE)
+scores<-scores(ligs.pcas, choises=1:2)
+
+scores[2]
+
+plot(ligs.pcas, type="n", tck=.01)
+points(ligs.pcas, display="sites", pch="+", col=1, font=2, cex=0.6)
+text(ligs.pcas, display="species",  select=ligs.orig=="g", col="blue", labels=peaks[ligs,5], font=2,cex=0.6)
+text(ligs.pcas, display="species",  select=carbos.orig=="sy", col="red",labels=peaks[carbos,5], font=2,cex=0.6)
+text(ligs.pcas, display="species",  col="red", labels=peaks[ligs,5], font=2,cex=0.6)
+
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl marker", "other carbohydrate markers"))
+title("PCA (Lignin Markers only)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+plot(ligs.pcas, type="n", tck=.01)
+for (i in 1:length(typlev))
+for (j in 1:length(harlev))
+points(ligs.pcas, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+points(ligs.pcas, display="species", pch="+", col=1, font=2, cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+title("PCA (Lignin Markers only)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+
+plot(ligs.pcas, type="n", tck=.01)
+for (i in 1:length(typlev))
+for (j in 1:length(harlev))
+points(ligs.pcas, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+text(ligs.pcas, display="species",  select=carbos.orig=="g", col="blue", labels=peaks[carbos,5], font=2,cex=0.6)
+text(ligs.pcas, display="species",  select=carbos.orig=="sy", col="red",labels=peaks[carbos,5], font=2,cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl marker", "other carbohydrate markers"))
+
+title("PCA (Lignin Markers only)")
+abline(h=0, col = "gray", lty = "dotted")
+abline(v=0, col = "gray", lty = "dotted")
+dev.off()
+
+
+# pcas für einen harvest bzw einen littertypen
+
+	har0.pca<-rda(rsim[harvest==0,1:peaknr])
+	plot(har0.pca, type="n", tck=.01)
+      #  for (i in 1:length(typlev))
+      #  for (j in 1:length(harlev))
+      #  points(har0.pca, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+1, cex=0.6)
+	text(har0.pca, display="sites")
+	text(har0.pca, display="species", labels=peaks$origin, cex=.3)
+	legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+
+	sw.pca<-rda(rsim[type=="SW",1:peaknr])
+	plot(sw.pca, type="n", tck=.01)
+      #  for (i in 1:length(typlev))
+      #  for (j in 1:length(harlev))
+      #  points(har0.pca, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+1, cex=0.6)
+	text(sw.pca, display="sites", col="blue", cex=.5)
+	text(sw.pca, display="species", labels=peaks$origin, cex=.3)
+	legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+
+
+#unscaled pca for all peaks
+
+  all.pca<-(rda(rsim, scaled=FALSE))
+summary(all.pca)
+
+  ligs.tmp<-scores(rda(rsim[,ligs]))
+  ligs.tmp2<-as.data.frame(ligs.tmp[2])
+  ligs.pca1<-ligs.tmp2[,1]
+  nitro.tmp<-scores(rda(rsim[,nitr]))
+  nitro.tmp2<-as.data.frame(nitro.tmp[2])
+  nitro.pca1<-nitro.tmp2[,1]
+  carbos.tmp<-scores(rda(rsim[,carbos]))
+  carbos.tmp2<-as.data.frame(carbos.tmp[2])
+  carbo.pca1<-carbos.tmp2[,1]*(-1)
+  phen.tmp<-scores(rda(rsim[,phen]))
+  phen.tmp2<-as.data.frame(phen.tmp[2])
+  phen.pca1<-phen.tmp2[,1]
+  al.tmp<-scores(rda(rsim[,al]))
+  al.tmp2<-as.data.frame(al.tmp[2])
+  al.pca1<-al.tmp2[,1]*(-1)	
+  ka.tmp<-scores(rda(rsim[,ka]))
+  ka.tmp2<-as.data.frame(ka.tmp[2])
+  ka.pca1<-ka.tmp2[,1]
+
+  pdf("pca_allpeaks1.pdf")
+  
+
+  plot(all.pca, type="n", tck=.01, xlab="PCA1 (46.4% variance)", ylab="PCA2 (40.4% variance)")
+  for (i in 1:length(typlev))
+  for (j in 1:length(harlev))
+  points(all.pca, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+  points(all.pca, display="species", pch="+", cex=.5)
+  #text(all.pca, display="species", labels=peaks[,2], cex=.5)
+  legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+  title("PCA (all peaks)")
+
+
+  plot(all.pca, type="n", tck=.01, xlab="PCA1 (46.4% variance)", ylab="PCA2 (40.4% variance)")
+  for (i in 1:length(typlev))
+  for (j in 1:length(harlev))
+  points(all.pca, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch="+", cex=0.6)
+  text(all.pca, display="species", labels=peaks[,2], cex=.75)
+  title("PCA (all peaks)")
+
+#  plot(envfit(all.pca~massloss), cex=.5)
+  carbohydr<-rowSums(rcTIC[carbos])
+  plot(envfit(all.pca~carbohydr), cex=.75)
+  nitrogen<-rowSums(rcTIC[nitr])
+  plot(envfit(all.pca~nitrogen), cex=.75)
+  lignin<-rowSums(rcTIC[ligs])
+  plot(envfit(all.pca~lignin), cex=.75)
+#  LCratio=ligsums/carbosums
+#  plot(envfit(all.pca~LCratio), cex=.5)
+#  LNratio=ligsums/nsums
+#  plot(envfit(all.pca~LNratio), cex=.5)
+  phenolic<-rowSums(rcTIC[phen])
+  plot(envfit(all.pca~phenolic), cex=.75)
+#  alsums<-rowSums(rcTIC[al])
+#  plot(envfit(all.pca~alsums), cex=.5)
+#  kasums<-rowSums(rcTIC[ka])
+#  plot(envfit(all.pca~kasums), cex=.5)
+#  massloss<-1-drymass[,1]
+#  plot(envfit(all.pca~massloss), cex=.5)
+
+dev.off()
+
+
+pdf("subset_pcas.pdf")
+
+  lignin.pca<-rda((rsim[,ligs]/rowSums(rsim[,ligs])), scaled=FALSE)
+summary(lignin.pca)
+
+  plot(lignin.pca, type="n", tck=.01, xlab="PCA1 (65.4% variance)", ylab="PCA2 (1.4% variance)")
+  for (i in 1:length(typlev))
+  for (j in 1:length(harlev))
+  points(lignin.pca, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+  text(lignin.pca, display="species", labels=peaks$code[ligs], cex=.75)
+  legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+  title("PCA (lignin markers only)")
+
+  carbos.pca<-(rda((rsim[,carbos]/rowSums(rsim[,carbos])), scaled=FALSE))
+summary(carbos.pca)
+  plot(carbos.pca, type="n", tck=.01, xlab="PCA (91.0% variance)", ylab="PCA2 (5.7% variance)")
+  for (i in 1:length(typlev))
+  for (j in 1:length(harlev))
+  points(carbos.pca, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+  text(carbos.pca, display="species", labels=peaks[carbos,2], cex=.75)
+  title("PCA (carbohydrate markers)")
+  carbos.pca<-(rda(rsim[,carbos], scaled=FALSE))
+
+  phen.pca<-(rda((rsim[,phen]/rowSums(rsim[,phen])), scaled=FALSE))
+summary(phen.pca)
+  plot(phen.pca, type="n", tck=.01, xlab="PCA (74.2% variance)", ylab="PCA2 (16.6% variance)")
+  for (i in 1:length(typlev))
+  for (j in 1:length(harlev))
+  points(phen.pca, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+  text(phen.pca, display="species", labels=peaks[phen, 2], cex=.75)
+  title("PCA (Phenol derivative markers)")
+
+dev.off()
+
+  plot(envfit(all.pca~massloss), cex=.5)
+  carbosums<-rowSums(rcTIC[carbos])
+  plot(envfit(all.pca~carbosums), cex=.5)
+  nsums<-rowSums(rcTIC[nitr])
+  plot(envfit(all.pca~nsums), cex=.5)
+  ligsums<-rowSums(rcTIC[ligs])
+  plot(envfit(all.pca~ligsums), cex=.5)
+  LCratio=ligsums/carbosums
+  plot(envfit(all.pca~LCratio), cex=.5)
+  LNratio=ligsums/nsums
+  plot(envfit(all.pca~LNratio), cex=.5)
+  phensums<-rowSums(rcTIC[phen])
+  plot(envfit(all.pca~phensums), cex=.5)
+  alsums<-rowSums(rcTIC[al])
+  plot(envfit(all.pca~alsums), cex=.5)
+  kasums<-rowSums(rcTIC[ka])
+  plot(envfit(all.pca~kasums), cex=.5)
+  massloss<-1-drymass[,1]
+  plot(envfit(all.pca~massloss), cex=.5)
+
+
+
+
+
+  plot(envfit(all.pca~ligs.pca1), cex=.5)
+  plot(envfit(all.pca~carbo.pca1), cex=.5)
+  plot(envfit(all.pca~nitro.pca1), cex=.5)
+  plot(envfit(all.pca~ka.pca1), cex=.5)
+  plot(envfit(all.pca~al.pca1), cex=.5)
+  plot(envfit(all.pca~phen.pca1), cex=.5)
+
+#  plot(all.pca, type="n", tck=.01)
+#  for (i in 1:length(typlev))
+#  for (j in 1:length(harlev))
+#  points(all.pca, display="sites", select=samples[,2]==harlev[j] & samples[,1]==typlev[i], col=i, pch=20+j, cex=0.6)
+#  text(all.pca, display="species", labels=peaks[,2], cex=.3)
+#  legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+#  title("unscaled PCA for all peaks")
+
+  plot(envfit(all.pca~harvest), cex=.5)
+  carbosums<-rowSums(rcTIC[carbos])
+  plot(envfit(all.pca~carbosums), cex=.5)
+  nsums<-rowSums(rcTIC[nitr])
+  plot(envfit(all.pca~nsums), cex=.5)
+  ligsums<-rowSums(rcTIC[ligs])
+  plot(envfit(all.pca~ligsums), cex=.5)
+  LCratio=ligsums/carbosums
+  plot(envfit(all.pca~LCratio), cex=.5)
+  LNratio=ligsums/nsums
+  plot(envfit(all.pca~LNratio), cex=.5)
+  phensums<-rowSums(rcTIC[phen])
+  plot(envfit(all.pca~phensums), cex=.5)
+  alsums<-rowSums(rcTIC[al])
+  plot(envfit(all.pca~alsums), cex=.5)
+  kasums<-rowSums(rcTIC[ka])
+  plot(envfit(all.pca~kasums), cex=.5)
+  massloss<-1-drymass[,1]
+  plot(envfit(all.pca~massloss), cex=.5)
+massloss
+
+timeseries_CI_nolimit(ligs.pca1, samples$harvest, samples$type, "Lignin peaks(PC 1)", "litter incubation (month)", "relative calculated TIC area (permille)", .05)
+timeseries_CI(ligsums, samples$harvest, samples$type, "Lignin peaks(sum cTIC)", "litter incubation (month)", "relative calculated TIC area (permille)", .05)
+timeseries_CI_nolimit(nitro.pca1, samples$harvest, samples$type, "N peaks(PC 1)", "litter incubation (month)", "relative calculated TIC area (permille)", .05)
+timeseries_CI(nsums, samples$harvest, samples$type, "N peaks(sum cTIC)", "litter incubation (month)", "relative calculated TIC area (permille)", .05)
+timeseries_CI_nolimit(carbo.pca1, samples$harvest, samples$type, "Carbohydrates peaks(PC 1)", "litter incubation (month)", "relative calculated TIC area (permille)", .05)
+timeseries_CI(carbosums, samples$harvest, samples$type, "Carbohydrates peaks(sum cTIC)", "litter incubation (month)", "relative calculated TIC area (permille)", .05)
+
+
+summary(all.pca)
+
+
+
+pdf("test.pdf")
+par(mfcol=c(2,1))
+plot(sim[,1], sim[,2])
+plot(sim[,1], sim[,2])
+dev.off()
+
+timeseries_CI(sim[,1], pyr[,2], pyr[,1], names[k], "litter incubation (month)", "relative calculated TIC area (permille)")
+
+write.csv(cor(corr), "corr_coef_mat.csv")
+write.csv(corr.p.ab(corr,corr), "corr_p_mat.csv")
+
+cor.pcas<-data.frame(har2means(scores(all.pca, display="sites", choices=1)),har2means(scores(all.pca, display="sites", choices=2)), har2means(scores(lignin.pca, display="sites", choices=1)), har2means(scores(carbos.pca, display="sites", choices=1)))
+colnames(cor.pcas)<-c("all.pca1", "all.pca2", "lig.pca1", "carbos.pca1")
+rownames(cor.pcas)<-c("AK", "KL", "OS", "SW")
+corr.coef.ab(cor.pcas,corr)

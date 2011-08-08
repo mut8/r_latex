@@ -1,0 +1,308 @@
+
+#packete laden
+library("vegan")
+library("MASS")
+library("Hmisc")
+library("gplots")
+
+#funktion für standard error
+stderr <- function(x) sqrt(var(x)/length(x))
+
+#timeseries funktion
+#ma = datenmatrix
+#xfac = factor x axis
+#sep fac = factor seperating plots
+#nam = diagram title names
+
+mat <- lig[,3]
+xfac<-harvest
+sepfac<-type
+nam<-"test"
+xlab<-"x"
+ylab<-"y"
+
+timeseries <- function(mat,xfac,sepfac,nam,xlab, ylab) {
+#xfac<-as.factor<-as.numeric(xfac)
+
+xf<-as.numeric(xfac)
+xlev<-sort(as.numeric(levels(factor(xfac))))
+xf<-as.numeric(xfac)
+sepfac<-as.factor(sepfac)
+seplev<-levels(sepfac)
+mat<-as.numeric(mat)
+
+means<-1
+ste<-1
+ano<-1
+sig <-1
+#plot(mat[,2], mat[,3])
+
+jmax<-length(xlev)
+jmax
+imax<-length(seplev)
+imax
+#i sind die unterschiedlichen treatments, j die unterschiedlichen zeitpunkte
+for (i in 1:imax) {
+for (j in 1:jmax) {
+
+
+means[j]<-mean(subset(mat, sepfac==seplev[i] & xf == xlev[i]))
+ste[j]<-stderr(subset(mat, sepfac==seplev[j] & xf == xlev[j]))
+}
+
+means
+ste
+lim<-(c(0,max(mat)))
+
+if (i==1) 
+{
+plotCI(xlev, means, uiw=ste, liw=ste, ylim=lim, cex=.5, gap=0, xlab=xlab, ylab=ylab, tck=.01)
+}
+
+else 
+{
+plotCI(as.numeric(xlev), means, uiw=ste, liw=ste, add=TRUE, cex=.5, gap=0)
+}
+
+#linien
+lines(xlev, means, type="l", lty=i)
+#1-way anovas nach für einzelne littertypen
+tmp<-anova(lm(subset(mat, sepfac==seplev[i]) ~ (subset(xf, sepfac==seplev[i]))))
+ano<-tmp[5]
+sig[i]<- ifelse (ano <= 0.001, "***", ifelse (ano <=0.01, "**", ifelse (ano <=0.05, "*", ifelse (ano <=0.01, ".", ""))))
+
+}
+
+leg <- paste(seplev, sig)
+#sternchen in legende für signifikanzniveaus für 1.way anovas für einzelne littertypen
+legend("bottomleft", leg, lty=1:4)
+title(nam)
+
+#1-way anovas für einzelne zeitpunkte mit sternchen über dem zeitpunkt für signifikanzniveaus
+for (j in 1:jmax) {
+tmp<-anova(lm(subset(mat, xf==xlev[j]) ~ (subset(sepfac, xf==xlev[j]))))
+ano<-tmp[5]
+sig[j]<- ifelse (ano <= 0.001, "***", ifelse (ano <=0.01, "**", ifelse (ano <=0.05, "*", ifelse (ano <=0.01, ".", ""))))
+text(xlev[j], max(mat), sig[j])
+}
+
+#twoway<-anova(lm(mat ~ sepfac*xf))
+#text(6, lim*0.3, twoway[5])
+#twoway[5]
+}
+
+
+#arbeitsverzeichnis
+setwd("/home/lluc/Documents/R/lig_only")
+lig<-read.csv("lig_rel_calc_tic.csv", sep=",", dec=".", header=TRUE)
+names<-read.csv("peaknames.csv", sep=",", dec=".", header=FALSE)
+
+type <- c(rep("AK", 19), rep("KL", 18), rep("OS", 19), rep("SW", 18))
+harvest <- c(rep(0,4), rep(2,5), rep(6,5), rep(15,5), rep(0,4), rep(2,4), rep(6,5), rep(15,5), rep(0,4), rep(2,5), rep(6,5), rep(15,5),rep(0,4), rep(2,5), rep(6,5), rep(15,4))
+type<-factor(type)
+harvest<-factor(harvest)
+
+
+xlab<-"incubation time(month)"
+ylab<-"permille calculated tic (lignin peaks only)"
+
+pdf("lignin_series_new.pdf")
+ligframe<-as.data.frame(lig)
+names<-colnames(ligframe)
+
+kmax<-length(names)
+for (k in 1:kmax) timeseries(lig[,k],harvest,type,names[k],xlab,ylab)
+dev.off()
+
+pca.lig<-princomp(lig)
+cca.lig <- cca(lig)
+summary(pca.lig)
+biplot(pca.lig)
+dev.off()
+
+
+#pca display samples
+pdf("cca_lig.pdf")
+
+plot.cca(cca.lig, choices = c(1,2), type="n", display = c("wa"),scaling=3)
+plot.scores<-scores(cca.lig,choices = c(1,2),display = "sites",scaling=3)
+
+imax <- length(levels(type))
+typelev <- levels(type)
+jmax <- length(levels(harvest))
+harlev <- levels(harvest)
+
+
+for (i in 1:imax)
+for (j in 1:jmax)
+points(plot.scores[type==typelev[i] & harvest == harlev[j], 1:2],pch=20+j, col=i)
+
+legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+title("CCA (lignin markers only)")
+
+#pca display markers
+plot.cca(cca.lig,choices = c(1,2), type="points", display = c("wa"),scaling=3)
+
+text(cca.lig, display="species",  select=names[,3]=="S", col="blue", labels=names[,1], font=2,cex=0.8,scaling=3)
+text(cca.lig, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="g", col="black",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="c", col="blue",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="f", col="blue",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="ch", col="blue",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="p", col="green",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="in", col="green",labels=peak[,2], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="s", col="grey",labels=peak[,2], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="l", col="grey",labels=peak[,2], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="ph", col="red",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="a", col="grey",labels=peak[,2], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="t", col="yellow",labels=peak[,2], font=2,cex=0.8,scaling=3)
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("CCA (lignin markers only)")
+
+plot.cca(cca.lig, choices = c(1,2), type="none", display = c("wa"),scaling=3)
+plot.scores<-scores(cca.lig,choices = c(1,2),display = "sites",scaling=3)
+
+imax <- length(levels(type))
+typelev <- levels(type)
+jmax <- length(levels(harvest))
+harlev <- levels(harvest)
+
+
+for (i in 1:imax)
+for (j in 1:jmax)
+points(plot.scores[type==typelev[i] & harvest == harlev[j], 1:2],pch=20+j, col=i)
+
+text(cca.lig, display="species",  select=names[,3]=="S", col="blue", labels=names[,1], font=2,cex=0.8,scaling=3)
+text(cca.lig, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="g", col="black",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="c", col="blue",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="f", col="blue",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="ch", col="blue",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="p", col="green",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="in", col="green",labels=peak[,2], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="s", col="grey",labels=peak[,2], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="l", col="grey",labels=peak[,2], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="ph", col="red",labels=peak[,3], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="a", col="grey",labels=peak[,2], font=2,cex=0.8,scaling=3)
+#text(pyr.cca2, display="species",  select=peak[,2]=="t", col="yellow",labels=peak[,2], font=2,cex=0.8,scaling=3)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("CCA (lignin markers only)")
+
+dev.off()
+
+#mds
+lig.mds <- metaMDS(lig)
+
+pdf("ligonly_mds.pdf")
+plot(lig.mds, type="n")
+points(lig.mds, display="sites", pch="+", col=1, font=2, cex=0.6)
+text(lig.mds, display="species",  select=names[,3]=="S", col="blue", labels=names[,1], font=2,cex=0.6)
+text(lig.mds, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("MDS (Lignin Markers only)")
+
+plot(lig.mds, type="n")
+for (i in 1:imax)
+for (j in 1:jmax)
+points(lig.mds, display="sites", select=harvest==harlev[j] & type==typelev[i], col=i, pch=20+j, cex=0.6)
+points(lig.mds, display="species", pch="+", col=1, font=2, cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+title("MDS (Lignin Markers only)")
+
+plot(lig.mds, type="n")
+for (i in 1:imax)
+for (j in 1:jmax)
+points(lig.mds, display="sites", select=harvest==harlev[j] & type==typelev[i], col=i, pch=20+j, cex=0.6)
+text(lig.mds, display="species", col="black", labels=names[,1], font=2,cex=0.6)
+#text(lig.mds, display="species",  select=names[,3]=="G", col="red",labels=names[,1], font=2,cex=0.6)
+legend("topright", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+legend("topleft", pch=21, col=c("blue", "red"), legend=c("coniferyl markers", "sinapyl markers"))
+title("MDS (Lignin Markers only)")
+
+dev.off()
+
+#two way anovas for mds axis
+
+#anova_output <- function(dep, fac1, fac2)
+#{
+#mod<-lm(dep ~ fac)
+# #ano<-aov(mod)
+#summary(ano)
+#TukeyHSD(ano)
+#}
+
+anova_output(scores.lig.mds[,2], type*harvest)
+
+scores.lig.mds<-scores(lig.mds, choices = c(1,2), display = "sites")
+lm(scores.lig.mds[,1] ~ type*harvest)
+
+ano<-aov(lm(scores.lig.mds[,1] ~ type*harvest))
+summary(ano)
+TukeyHSD(ano)
+lm(scores.lig.mds[,2] ~ type*harvest)
+ano<-aov(lm(scores.lig.mds[,2] ~ type*harvest))
+summary(ano)
+TukeyHSD(ano)
+
+scores<-as.matrix(scores.lig.mds)
+scores[,1]
+timeseries(scores[,1], harvest, type, "mds1", "x", "y")
+
+
+boxplot(scores.lig.mds[,1] ~ harvest+type)
+boxplot(scores.lig.mds[,2] ~ harvest+type)  
+
+dev.off()
+#one-way-anovas
+
+for (i in 1:imax)
+i<-1
+typelev[1]
+scores.lig.mds<-scores(lig.mds, choices = c(1,2), display = "sites", select=harvest==harlev[i])
+scores.lig.mds
+mod<-l
+
+harvest==0
+harvest==2
+harvest==6
+harvest==15
+
+type==AK
+type==KL
+type==OS
+type==SW
+
+MDS1
+MDS2
+
+
+scores.lig.mds<-scores(lig.mds, choices = c(1,2), display = "sites")
+
+ano<-anova(lm(scores.lig.mds[,1] ~ type*harvest))
+
+
+
+
+scores.lig.mds<-scores(lig.mds, choices = c(1,2), display = "sites", select=harvest==0)
+scores.lig.mds[harvest==0]
+anova(lm(scores.lig.mds[,1] ~ type))
+
+
+?scores
+
+?subset
+
+for (i in 1:imax)
+for (j in 1:jmax)
+
+
+
+legend("topleft", pch=c(rep(c( 21, 22, 23, 24),4)), col=c(rep(1,4), rep(2,4), rep(3,4), rep(4,4)), legend=c("AK0","AK2","AK3","AK4","KL0","KL2", "KL3", "KL4", "OS0","OS2","OS3","OS4","SW0","SW2","SW3","SW4"))
+
+ 
+
+
+?ordipointlabel
+ordipointlabel(lig.mds)
+ 

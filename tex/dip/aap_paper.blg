@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: aap_paper.aux
+The style file: elsarticle-num.bst
+Database file #1: library.bib
+Repeated entry---line 2829 of file library.bib
+ : @article{Schellekens2009
+ :                         ,
+I'm skipping whatever remains of this entry
+You've used 8 entries,
+            2937 wiz_defined-function locations,
+            743 strings with 7442 characters,
+and the built_in function-call counts, 2845 in all, are:
+= -- 285
+> -- 101
+< -- 0
++ -- 39
+- -- 31
+* -- 263
+:= -- 417
+add.period$ -- 12
+call.type$ -- 8
+change.case$ -- 8
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 75
+empty$ -- 289
+format.name$ -- 39
+if$ -- 693
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 7
+newline$ -- 42
+num.names$ -- 8
+pop$ -- 47
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 131
+stack$ -- 0
+substring$ -- 196
+swap$ -- 22
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 22
+width$ -- 9
+write$ -- 84
+(There was 1 error message)

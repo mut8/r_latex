@@ -1,0 +1,73 @@
+mean.init.lig<-tapply(orig_cTIC$L[harvest==0], type[harvest==0], mean) 
+ligdif<-c(rep(mean.init.lig[1],19), rep(mean.init.lig[2],18), rep(mean.init.lig[3],19), rep(mean.init.lig[4],18))-orig_cTIC$L
+  
+
+contr<-data.frame(orig_cTIC$L[harvest==6], ligdif[harvest==6], samples$C.N_lit[harvest==6], 
+    samples$Phenoloxidase[harvest==6], samples$Cellulase[harvest==6], samples$Cellulase[harvest==6]/samples$Phenoloxidase[harvest==6], 
+    alldata$TN[alldata$Harvest=="III"], alldata$DOC[alldata$Harvest=="III"],
+    alldata$FE.litter[alldata$Harvest=="III"], alldata$MN.litter[alldata$Harvest=="III"], alldata$ZN.litter[alldata$Harvest=="III"])
+colnames(contr)<-c("lignin%cTIC", "lignin diff", "litter C:N", "Phenoloxidase", "Cellulase", "Cellulase/Phenoloxidase", "TN", "DOC", "Fe", "Mn", "Zn")
+
+ord<-rda(contr, scale=T)
+
+name<-"PCA (Lignin decomposition controls (6 month))"
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+
+pdf("output/h3_decomp_contr.pdf", width=7, height=14) 
+
+par(mfrow=c(2,1))
+par()
+      plot(ord, choices=c(1,2), type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      points(ord, choices=c(1,2),  display="sites", select=type[harvest==6]==typlev[i], col=1, pch=pch[i], cex=1)
+
+      text(ord, choices=c(1,2), display="species", labels=colnames(contr), cex=.6)
+      title(name)
+
+legend("topleft", col=1, pch=pch, typlev)
+
+
+
+
+
+mean.init.ch<-tapply(orig_cTIC$C[harvest==0], type[harvest==0], mean) 
+chdif<-c(rep(mean.init.lig[1],19), rep(mean.init.lig[2],18), rep(mean.init.lig[3],19), rep(mean.init.lig[4],18))-orig_cTIC$C
+  
+
+contr<-data.frame(orig_cTIC$C[harvest==6], chdif[harvest==6], samples$C.N_lit[harvest==6], 
+    samples$Phenoloxidase[harvest==6], samples$Cellulase[harvest==6], samples$Cellulase[harvest==6]/samples$Phenoloxidase[harvest==6], alldata$TN[alldata$Harvest=="III"], alldata$DOC[alldata$Harvest=="III"],
+    alldata$FE.litter[alldata$Harvest=="III"], alldata$MN.litter[alldata$Harvest=="III"], alldata$ZN.litter[alldata$Harvest=="III"])
+
+colnames(contr)<-c("carbohydrates %cTIC", "carbohydrates diff", "litter C:N", "Phenoloxidase", "Cellulase", "Cellulase/Phenoloxidase", "TN"
+, "DOC", "Fe", "Mn", "Zn")
+
+ord<-rda(contr, scale=T)
+
+name<-"PCA (Carbohydrate decomposition controls (6 month))"
+xvar<-eigenvals(ord)/sum(eigenvals(ord))
+
+par(mfrow=c(2,1))
+par()
+      plot(ord, choices=c(1,2), type="n", tck=.01, 
+      xlab=paste("PCA1", formatC(xvar[1]*100, digits=3), "% variance"),
+      ylab=paste("PCA2", formatC(xvar[2]*100, digits=3), "% variance"))
+
+      for (i in 1:length(typlev))
+      points(ord, choices=c(1,2),  display="sites", select=type[harvest==6]==typlev[i], col=1, pch=pch[i], cex=1)
+
+      text(ord, choices=c(1,2), display="species", labels=colnames(contr), cex=.6)
+      title(name)
+
+
+dev.off()
+
+contr<-data.frame(orig_cTIC$L[harvest==6], ligdif[harvest==6],orig_cTIC$C[harvest==6], chdif[harvest==6], samples$C.N_lit[harvest==6], 
+    samples$Phenoloxidase[harvest==6], samples$Cellulase[harvest==6], samples$Cellulase[harvest==6]/samples$Phenoloxidase[harvest==6], alldata$TN[alldata$Harvest=="III"], alldata$DOC[alldata$Harvest=="III"],
+    alldata$FE.litter[alldata$Harvest=="III"], alldata$MN.litter[alldata$Harvest=="III"], alldata$ZN.litter[alldata$Harvest=="III"])
+
+colnames(contr)<-c("lignin %TIC", "lignin diff", "carbohydrates %cTIC", "carbohydrates diff", "litter C:N", "Phenoloxidase", "Cellulase", "Cellulase/Phenoloxidase", "TN", "DOC", "Fe", "Mn", "Zn")
+controls<-corr.ab(contr, contr)
+write.csv(controls, "contr.csv")

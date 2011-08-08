@@ -1,0 +1,75 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Schellekens2009}
+J.~Schellekens, P.~Buurman, X.~Pontevedra-Pombal,
+  \href{http://linkinghub.elsevier.com/retrieve/pii/S0146638009000680}{{Select%
+ing parameters for the environmental interpretation of peat molecular chemistry
+  – A pyrolysis-GC/MS study}}, Organic Geochemistry 40~(6) (2009) 678--691.
+\newblock \href {http://dx.doi.org/10.1016/j.orggeochem.2009.03.006}
+  {\path{doi:10.1016/j.orggeochem.2009.03.006}}.
+\newline\urlprefix\url{http://linkinghub.elsevier.com/retrieve/pii/S0146638009%
+000680}
+
+\bibitem{Franchini2002}
+J.~Franchini, F.~Gonzalez-Vila, J.~Rodrigues,
+  \href{http://apps.isiknowledge.com/full\_record.do?product=UA\&colname=WOS\&%
+search\_mode=CitingArticles\&qid=32\&SID=W1Ad1MhL1J1nejkjoKD\&page=14\&doc=136%
+}{{Decomposition of plant residues used in no-tillage systems as revealed by
+  flash pyrolysis}}, Journal of Analytical and Applied Pyrolysis 62~(1) (2002)
+  35--43.
+\newline\urlprefix\url{http://apps.isiknowledge.com/full\_record.do?product=UA%
+\&colname=WOS\&search\_mode=CitingArticles\&qid=32\&SID=W1Ad1MhL1J1nejkjoKD\&p%
+age=14\&doc=136}
+
+\bibitem{Klotzbucher2011}
+T.~Klotzb\"{u}cher, K.~Kaiser, G.~Guggenberger, C.~Gatzek, K.~Kalbitz, {A new
+  conceptual model for the fate of lignin in decomposing plant litter}, America
+  92~(5) (2011) 1052--1062.
+
+\bibitem{Wanek2010}
+W.~Wanek, M.~Mooshammer, A.~Bl\"{o}chl, A.~Hanreich, A.~Richter,
+  \href{http://linkinghub.elsevier.com/retrieve/pii/S0038071710001331}{{Determ%
+ination of gross rates of amino acid production and immobilization in
+  decomposing leaf litter by a novel N-15 isotope pool dilution technique}},
+  SOIL BIOLOGY BIOCHEMISTRY 42~(8) (2010) 1293--1302.
+\newblock \href {http://dx.doi.org/10.1016/j.soilbio.2010.04.001}
+  {\path{doi:10.1016/j.soilbio.2010.04.001}}.
+\newline\urlprefix\url{http://linkinghub.elsevier.com/retrieve/pii/S0038071710%
+001331}
+
+\bibitem{Kuder1998}
+T.~Kuder, M.~A. Kruge,
+  \href{http://dx.doi.org/10.1016/S0146-6380(98)00092-8}{{Preservation of
+  biomolecules in sub-fossil plants from raised peat bogs — a potential
+  paleoenvironmental proxy}}, Organic Geochemistry 29~(5-7) (1998) 1355--1368.
+\newblock \href {http://dx.doi.org/10.1016/S0146-6380(98)00092-8}
+  {\path{doi:10.1016/S0146-6380(98)00092-8}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1016/S0146-6380(98)00092-8}
+
+\bibitem{Ralph1991a}
+J.~Ralph, R.~D. Hatfield,
+  \href{http://pubs.acs.org/doi/abs/10.1021/jf00008a014}{{Pyrolysis-GC-MS
+  characterization of forage materials}}, Journal of Agricultural and Food
+  Chemistry 39~(8) (1991) 1426--1437.
+\newblock \href {http://dx.doi.org/10.1021/jf00008a014}
+  {\path{doi:10.1021/jf00008a014}}.
+\newline\urlprefix\url{http://pubs.acs.org/doi/abs/10.1021/jf00008a014}
+
+\bibitem{Chiavari1992}
+G.~Chiavari, G.~C. Galletti, {Pyrolysis-gas chromatography/mass spectrometry of
+  amino acids}, Journal of Analytical and Applied Pyrolysis 24 (1992) 123--
+  137.
+
+\bibitem{Oksanen2011}
+J.~Oksanen, F.~G. Blanchet, R.~Kindt, P.~Legendre, R.~O'Hara, G.~L. Simpson,
+  P.~Slymos, M.~H.~H. Stevens, H.~Wagner,
+  \href{http://cran.r-project.org/package=vegan}{{vegan: Community Ecology
+  Package. R packge version 1.17-9}} (2011).
+\newline\urlprefix\url{http://cran.r-project.org/package=vegan}
+
+\end{thebibliography}

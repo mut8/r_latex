@@ -1,0 +1,70 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Berg and Staaf(1980)]{Berg1980}
+B~Berg and H~Staaf.
+\newblock {Decomposition rate and chemical changes of Scots pine needle litter.
+  II. Influence of chemical composition}.
+\newblock \emph{Ecological Bulletins}, \penalty0 (32):\penalty0 373--390, 1980.
+\newblock URL \url{http://www.jstor.org/stable/20112825}.
+
+\bibitem[Chapin et~al.(2002)Chapin, Matson, and Mooney]{Chapin2002}
+F.~Stuart Chapin, Pamela~A. Matson, and Harold~A. Mooney.
+\newblock \emph{{Principles of Terrestrial Ecosystem Ecology}}.
+\newblock Springer Science and Buisness Media, Inc., New York, 2002.
+
+\bibitem[Couˆteaux et~al.(1995)Couˆteaux, Bottner, and Berg]{Couteaux1995}
+Marie-Madeleine Couˆteaux, Pierre Bottner, and Bj\"{o}rn Berg.
+\newblock {Litter decomposition, climate and liter quality.}
+\newblock \emph{Trends in ecology \& evolution (Personal edition)}, 10\penalty0
+  (2):\penalty0 63--66, February 1995.
+\newblock ISSN 0169-5347.
+\newblock \doi{10.1016/S0169-5347(00)88978-8}.
+\newblock URL \url{http://www.ncbi.nlm.nih.gov/pubmed/21236954}.
+
+\bibitem[Leitner et~al.(2011)Leitner, , and the Crew]{Leitner2011}
+Sonja Leitner, , and the Crew.
+\newblock {Sonjas paper}.
+\newblock \emph{dummy}, 2011.
+
+\bibitem[Moldoveanu(1998)]{Moldoveanu}
+Serban~C. Moldoveanu.
+\newblock {Analytical Pyrolysis of Natural Organic Polymers}, 1998.
+
+\bibitem[Prescott(2010)]{Prescott2010}
+Cindy~E. Prescott.
+\newblock {Litter decomposition: what controls it and how can we alter it to
+  sequester more carbon in forest soils?}
+\newblock \emph{Biogeochemistry}, 101\penalty0 (1-3):\penalty0 133--149, April
+  2010.
+\newblock ISSN 0168-2563.
+\newblock \doi{10.1007/s10533-010-9439-0}.
+\newblock URL
+  \url{http://www.springerlink.com/index/10.1007/s10533-010-9439-0}.
+
+\bibitem[Ralph and Hatfield(1991)]{Ralph1991}
+John Ralph and Ronald~D. Hatfield.
+\newblock {Pyrolysis-GC-MS characterization of forage materials}.
+\newblock \emph{Journal of Agricultural and Food Chemistry}, 39\penalty0
+  (8):\penalty0 1426--1437, August 1991.
+\newblock ISSN 0021-8561.
+\newblock \doi{10.1021/jf00008a014}.
+\newblock URL \url{http://pubs.acs.org/doi/abs/10.1021/jf00008a014}.
+
+\bibitem[Steinbeiss et~al.(2006)Steinbeiss, Schmidt, Heide, and
+  Gleixner]{Steinbeiss2006}
+Sibylle Steinbeiss, Christian~M. Schmidt, Klaus Heide, and Gerd Gleixner.
+\newblock {$\delta$13C values of pyrolysis products from cellulose and lignin
+  represent the isotope content of their precursors}.
+\newblock \emph{Journal of Analytical and Applied Pyrolysis}, 75\penalty0
+  (1):\penalty0 19--26, January 2006.
+\newblock ISSN 01652370.
+\newblock \doi{10.1016/j.jaap.2005.03.009}.
+\newblock URL
+  \url{http://linkinghub.elsevier.com/retrieve/pii/S016523700500080X}.
+
+\end{thebibliography}

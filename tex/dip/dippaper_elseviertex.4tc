@@ -1,0 +1,41 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi
+\doTocEntry\tocsection{1}{\csname a:TocLink\endcsname{1}{x1-10001}{QQ2-1-1}{Introduction}}{2}\relax 
+\doTocEntry\tocsection{2}{\csname a:TocLink\endcsname{1}{x1-20002}{QQ2-1-2}{Material and methods}}{4}\relax 
+\doTocEntry\tocsubsection{2.1}{\csname a:TocLink\endcsname{1}{x1-30002.1}{QQ2-1-3}{Litter decomposition experiment}}{4}\relax 
+\doTocEntry\tocsubsection{2.2}{\csname a:TocLink\endcsname{1}{x1-40002.2}{QQ2-1-4}{Bulk litter, extractable, and microbial biomass stoichiometry}}{4}\relax 
+\doTocEntry\tocsubsection{2.3}{\csname a:TocLink\endcsname{1}{x1-50002.3}{QQ2-1-5}{Respiration measurements}}{6}\relax 
+\doTocEntry\tocsubsection{2.4}{\csname a:TocLink\endcsname{1}{x1-60002.4}{QQ2-1-6}{Enzyme activities}}{9}\relax 
+\doTocEntry\tocsubsection{2.5}{\csname a:TocLink\endcsname{1}{x1-70002.5}{QQ2-1-7}{Glucan depolymerization}}{10}\relax 
+\doTocEntry\tocsubsection{2.6}{\csname a:TocLink\endcsname{1}{x1-80002.6}{QQ2-1-8}{Pyrolysis-GC/MS}}{10}\relax 
+\doTocEntry\tocsubsection{2.7}{\csname a:TocLink\endcsname{1}{x1-90002.7}{QQ2-1-9}{Statistical analysis}}{10}\relax 
+\doTocEntry\tocsubsection{2.8}{\csname a:TocLink\endcsname{1}{x1-100002.8}{QQ2-1-10}{Principal component analysis}}{10}\relax 
+\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-110003}{QQ2-1-11}{Results}}{10}\relax 
+\doTocEntry\tocsubsection{3.1}{\csname a:TocLink\endcsname{1}{x1-120003.1}{QQ2-1-12}{Litter stoichiometry and micronutrient content}}{10}\relax 
+\doTocEntry\tocsubsection{3.2}{\csname a:TocLink\endcsname{1}{x1-130003.2}{QQ2-1-13}{Decomposition Processes}}{11}\relax 
+\doTocEntry\tocsubsubsection{3.2.1}{\csname a:TocLink\endcsname{1}{x1-140003.2.1}{QQ2-1-14}{Litter mass loss and respiration}}{11}\relax 
+\doTocEntry\tocsubsection{3.3}{\csname a:TocLink\endcsname{1}{x1-150003.3}{QQ2-1-15}{Microbial biomass abundance and stoichiometry}}{13}\relax 
+\doTocEntry\tocsubsubsection{3.3.1}{\csname a:TocLink\endcsname{1}{x1-160003.3.1}{QQ2-1-16}{Potential enzyme activities}}{13}\relax 
+\doTocEntry\tocsubsection{3.4}{\csname a:TocLink\endcsname{1}{x1-170003.4}{QQ2-1-17}{Pyrolysis - GC/MS}}{13}\relax 
+\doTocEntry\tocsubsubsection{3.4.1}{\csname a:TocLink\endcsname{1}{x1-180003.4.1}{QQ2-1-18}{Differences between litter from different sites}}{19}\relax 
+\doTocEntry\tocsubsubsection{3.4.2}{\csname a:TocLink\endcsname{1}{x1-190003.4.2}{QQ2-1-19}{Decomposition trends}}{19}\relax 
+\doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-200004}{QQ2-1-20}{Discussion}}{19}\relax 
+\doTocEntry\tocsubsection{4.1}{\csname a:TocLink\endcsname{1}{x1-210004.1}{QQ2-1-21}{Intra-specific variance in beech litter and decomposition trends .. }}{19}\relax 
+\doTocEntry\tocsubsection{4.2}{\csname a:TocLink\endcsname{1}{x1-220004.2}{QQ2-1-22}{Nutrient controls on carbon chemistry}}{20}\relax 
+\doTocEntry\tocsubsection{4.3}{\csname a:TocLink\endcsname{1}{x1-230004.3}{QQ2-1-23}{Changes in decomposition controls over time}}{20}\relax 
+\doTocEntry\tocsubsection{4.4}{\csname a:TocLink\endcsname{1}{x1-240004.4}{QQ2-1-24}{.. HMW control over decomposition processes .. }}{20}\relax 
+\doTocEntry\tocsection{5}{\csname a:TocLink\endcsname{1}{x1-250005}{QQ2-1-25}{Conclusions}}{21}\relax 
+\doTocEntry\tocsection{6}{\csname a:TocLink\endcsname{1}{x1-260006}{QQ2-1-26}{Acknowledgements}}{21}\relax 
+\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-270006}{QQ2-1-27}{References}}{21}\relax 
+\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-270011}{}{\ignorespaces Difference in \% cTIC (sum of lig markers). error bars indicate 95\% confidence intervall.}}{figure}\relax 
+\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-270022}{}{\ignorespaces Microbial C, N and P content and their ratios.}}{figure}\relax 
+\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-270033}{}{\ignorespaces Potential activities of cellulase, phenoloxidase and perodase.}}{figure}\relax 
+\doTocEntry\toclof{4}{\csname a:TocLink\endcsname{1}{x1-270044}{}{\ignorespaces Ratio between cellulase and two oxidative enzymes (phenolxydase and peroxydase). The two ratios are strongly correlated, oxidative enzymes are higher in AK than in other litter types.}}{figure}\relax 
+\doTocEntry\toclof{5}{\csname a:TocLink\endcsname{1}{x1-270055}{}{\ignorespaces Development of the LCI (Lignin:(Lignin+Carbohydrates) and Lignin:N ratio}}{figure}\relax 
+\doTocEntry\toclof{6}{\csname a:TocLink\endcsname{1}{x1-270066}{}{\ignorespaces Decomposition dynamics of HMW compound classes}}{figure}\relax 
+\doTocEntry\toclof{7}{\csname a:TocLink\endcsname{1}{x1-270077}{}{\ignorespaces Decomposition dynamics of lipophilic compound classes}}{figure}\relax 
+\doTocEntry\toclof{8}{\csname a:TocLink\endcsname{1}{x1-270088}{}{\ignorespaces PCA of relative abundances of all 125 pyrolysis products. Open circles - AK, full circles - KL, open triangles - OS, full triangles - SW. black to light grey: harvest 0, 2, 3, and 4. Errorbars indicate 1 SE (n=4-5).}}{figure}\relax 
+\doTocEntry\toclof{9}{\csname a:TocLink\endcsname{1}{x1-270099}{}{\ignorespaces PCA of relative abundances of 125 products minus the mean relative abundance of the product in initial litter of the corresponding litter type. Open circles - AK, full circles - KL, open triangles - OS, full triangles - SW. black to light grey: harvest 0, 2, 3, and 4. Errorbars indicate 1 SE (n=4-5). Decompositino trends follow PCA1 for SW and PCA2 for AK. KL and OS show mixed trends.}}{figure}\relax 
+\doTocEntry\toclof{10}{\csname a:TocLink\endcsname{1}{x1-2701010}{}{\ignorespaces Litter chemistry: content of macro and micronutrients, 14 days after innoculation, n=5}}{figure}\relax 
+\doTocEntry\toclof{11}{\csname a:TocLink\endcsname{1}{x1-2701111}{}{\ignorespaces Litter Chemistry: Dissolved organic carbon, total dissolved nitrogen, NO3-, NH4+}}{figure}\relax 
+\doTocEntry\toclot{1}{\csname a:TocLink\endcsname{1}{x1-270121}{}{\ignorespaces Summary of context data}}{table}\relax 
+\doTocEntry\toclot{2}{\csname a:TocLink\endcsname{1}{x1-270162}{}{\ignorespaces Table with rows, columns and footnotes}}{table}\relax 
