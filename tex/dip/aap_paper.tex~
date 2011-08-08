@@ -139,22 +139,17 @@
 
 \section{Introduction}
 
+Research on litter decomposition is [en vogue] \cite{Prescott2010}. Insufficient specifity of traditional methods to determine plant fibres is widely accepted \cite{Hatfield2005}. Analytical pyrolysis can provide and fast a cheap method to investigate chemical transformations of plant polymers during decomposition. 
 
-Analytical pyrolysis is frequently applied to characterize natural organic polymers like soil organic matter, dissolved organic matter or plant ligno-cellulose. Plant derived compounds make up an important part of pyrolysis products found. The relative abundances of such markers were shown to hold key information on past climates and decomposition conditions \cite{i.e. Kuder1998, Schellekens2009, Schellekens2011}. Interestingly, only a handful of Pyr-GC/MS studies tracing changing pyrolysis markers during decomposition processes  were published. 
+Analytical pyrolysis is also frequently applied to characterize natural organic polymers in soil organic matter [and dissolved organic matter?]. Plant derived compounds make up an important part of pyrolysis products found. The relative abundances of such markers were shown to hold key information on past climates and decomposition conditions \cite{i.e. Kuder1998, Schellekens2009, Schellekens2011}. 
 
-%In several recent studies, fossil pyrolysis products is often based on their origin from plant polymers. \cite{Kuder1998} analyzes subfosil plant particles and \cite{Schellekens2009, Schellekens2011} soil organic matter (SOM) fractions to reconstruct past climate and vegetation from a peat profile.
+Only a handful of Pyr-GC/MS studies tracing changing pyrolysis markers during litter decomposition were published, none of them includes indepth. [To our best knowledge] The only published work directly studying the decay of plant leaf litter is \cite{Franchini2002}. \site{Snajdr2010} presents basic thermochemolysis data.  Straw was incubated with n. Several studies monitor the decomposition of woody material with Pyr GC/MS [lit.] or litter/soils mixtures[lit.]. None of the studies mentioned above analysis decomposition trends of individual pyrolysis products.
 
-[To our best knowledge] The only published work directly studying the decay of plant leaf litter is \cite{Franchini2002}. In a number of cases, litter was mixed with soils to follow decomposition by GC/MS. Straw was incubated with n.
+While assignment to major compounds classes (like ligin or carbohydrate) based on pyrolysis reaction mechnisms is common, little is known on whether the composition of individual pyrolysis products within this groups yields information. 
 
-the decomposition dynamics, from which pyrolysis products result are far from elucidated. While assignment to major compounds classes (like ligin or carbohydrate) based on pyrolysis reaction mechnisms is common, little is known on whether the composition of individual pyrolysis products within this groups yields information. 
+This study compares pyrograms of beech litter from different site after up to 15 month of climate chamber decomposition. Beech litter shows exceptionally slow decomposition rates both in nature \citep{Klotzbucher2011} and in our climate chamber experiment. Therefore, we do not focus on the accumulation of recalcitrant compounds, but focus on how individual pyrolysis markers accumulate or deplete relative to their compounds of origin which might provide insight into changes in polymer condensation patterns. Additionally, we explore to which extend differences of pyrolysis products remain after incubation.
 
-The lack of reliable methods for lignin quantification led to the application of analytical pyrolysis as a cheap and fast method to estimate fibre content and nutrient quality of forage material. 
-
- n. ...
-
-This study compares pyrograms of beech litter from different site after up to 15 month of decomposition. Beech litter has an exceptionally slow decomposition both in nature \citep{Klotzbucher2011} and in our climate chamber experiment. However, several  
-
-Inter-site comparison of litter traits within a given species give a 
+[hypothesis?]
 
 \section{Material and Methods}
 
@@ -162,7 +157,7 @@ We analyzed samples from a litter decomposition experiment with Pyr-GC/MS. Beech
 Total mass loss after 15 month was between 7 and 15 \%.
 Accumulated respiration after 6 month accounts for nn.to nn\% of the litter carbon pool, after 15 month between n and n\.
 
-Pyrolysis-GC/MS was performed on a Pyroprobe 5250 pyrolysis system (CDS Analytical) coupled to a Thermo Trace gas chromatograph and a DSQ II MS detector (both Thermo Scientific) equipped with a carbowax colomn (Supelcowax 10, Sigma-Aldrich). 2-300 \textmu g dried and finely ball-milled litter were heated to 600\textdegree C for 10 seconds in helium atmosphere. The temperature of the valve oven and the transfer line to the GC injection port were set to 250\textdegree C,a 10x split injection was applied with the injector heated to 240\textdegree C. GC Oven temperature was constant at 50 \textdegree C for 2 minutes, followed by an increase of 7\textdegree C/min to a final temperature of 260 \textdegree C, which was held for 15 minutes. The transfer line was heated to 270 \textdegree C. The MS detector was set for electron ionization at 70 EV, the ion source was heated to 270\textdegree C. Detection was set to cycle between m/z 20 and 300 with a cycle time of 0.3 seconds.
+Pyrolysis-GC/MS was performed on a Pyroprobe 5250 pyrolysis system (CDS Analytical) coupled to a Thermo Trace gas chromatograph an a DSQ II MS detector (both Thermo Scientific) equipped with a carbowax colomn (Supelcowax 10, Sigma-Aldrich). 2-300 \textmu g dried and finely ball-milled litter were heated to 600\textdegree C for 10 seconds in helium atmosphere. The temperature of the valve oven and the transfer line to the GC injection port were set to 250\textdegree C,a 10x split injection was applied with the injector heated to 240\textdegree C. GC Oven temperature was constant at 50 \textdegree C for 2 minutes, followed by an increase of 7\textdegree C/min to a final temperature of 260 \textdegree C, which was held for 15 minutes. The transfer line was heated to 270 \textdegree C. The MS detector was set for electron ionization at 70 EV, the ion source was heated to 270\textdegree C. Detection was set to cycle between m/z 20 and 300 with a cycle time of 0.3 seconds.
 
 Peaks were assignment was based on NiSt 05 MS library and comparison with reference material measured. 133 peaks were identified and selected for integration due to their hight abundance or diagnostic value. For each peak between one and four dominant mass fragments selected for high abundance and specificity were integrated (i.e. \cite{Schellekens2009, Kuder1998}). Peak areas are stated as \% of the sum of all integrated peaks of a sample. 
 
@@ -178,21 +173,22 @@ Peak areas were multiplied by Rf before addition to calculate percentages of TIC
 
 Relative peak areas in both integrations are different from weight\%, but allow tracing of accumulation/depletion of these substance classes during decomposition \citep{Schellekens2009}. 
 
+\subsection{Litter mass loss and respiration}
 
 \subsection{Statistical analysis}
 All statistical analyses were performed with the software and statistical computing environment R using the R package ``vegan'' \citep{Oksanen2011}. If not mentioned otherwise, results were considered significant, when p\textless 0.05. All correlations refer to Pearson correlations.
 All data presented was tested for significant differences between harvests and litter types. Normal distribution assumed but could not be tested due to the small number of cases per treatment (n=4-5). A substantial part of variables had heterogeneous variances when tested ẃith Levene's test. Therefore, (one-way) Welch anova was used to calculate significant differences between harvests within each litter type and litter types within each harvest (alpha=0.05). For post-hoc group assignment, paired Welch's t-tests with Bonferroni corrected p limits were used. Principal component analysis was performed using vegan function ``rda'' scaling variables.
+
 \section{Results}
+
+\subsection{Mass loss and respiration}
 
 \subsection{Pyrolysis products}
 
-A total of 128 pyrolysis products were identified and quantified.
+A total of 128 peaks quantified with 38 phenolic, 11 nitrogen containing compounds and 42 carbohydrate derived compounds. Fig Inter-site differences dominate both initial and incubted litter.
 
-\subsection{Lignin and other Phenoles}
-
-Pyrolysis products of lignin are 2-methoxyphenol (guaiacol) and 2,6-dimethoxyphenol (syringol) with alkyl chains of up to 3 C-atoms at C$_4$.
-
-A total of 38 phenolic pyrolysis products were identified, 15 of which had guaiacol-, 13 syringol-, and 10 non-methoxylated ring systems. Guaiacol/Syringol (G/S) ratios were tightly (all R=0.68-0.94, p<0.001) correlated between the more abundant side chains (-H, -CH$_3$, -CH$_2$CH$_3$, -CH=CH$_2$, -CH$_3$CH=CH$_2$). This correlation is weaker or non-significant for less abundant side chains (-CHO, -CH$_2$CH$_2$CHO), probably due to higher variances in their detection [see fig.,]. 
+\Subsection{Lignin}
+Of 38 phenolic pyrolysis products were identified, 15 of which had guaiacol-, 13 syringol-, and 10 non-methoxylated ring systems. Guaiacol/Syringol (G/S) ratios were tightly (all R=0.68-0.94, p<0.001) correlated between the more abundant side chains (-H, -CH$_3$, -CH$_2$CH$_3$, -CH=CH$_2$, -CH$_3$CH=CH$_2$). This correlation is weaker or non-significant for less abundant side chains (-CHO, -CH$_2$CH$_2$CHO), probably due to higher variances in their detection [see fig.,]. 
 
 Part of non-methoxylated phenols pyrolysis products (side chains -CH$_2$CH$_3$, -CH$_2$CH$_2$CH$_3$ -CH$_3$CH=CH$_2$)show clear structural similarity to pyrolysis products of lignin, suggesting that they are pyrolysis products of p-hydroxypropanylphenol based lignin. Other side chains (-H, -CH$_3$, -CHO) are less specific and are reported for other sources, although in small amounts. Furthermore, some of the phenolic compounds (i.e. hydroxyquinone) are not lignin derived. 
 
@@ -210,8 +206,9 @@ The pattern of abundances of different side chains was the same for guaiacol and
 
 \subsection{N compounds}
 
-11 N containing compounds were identified. They were tightly correlated to each other, especially methylindol and indole (R=0.98, p\textless 0.05?0.001?). and 6 pyridin and pyrrol derivatives (all R \textgreater 0.9, p\textless 0.05?0.001?). The two groups were correlated to each other (R = 0.77-0.87, p\textless 0.05?0.001?). 2 pyrrol derivatices (N-methyl-pyrrol and methylpyrrol[II]) and pyridol showed were not or less strict correlated to the other compounds, due to low abundance. Furthermore, all N markers except the three mentioned before were correlated to litter N content (R \textgreater 0.81, p \textless 0.001.
+11 nitrogen containing compounds were identified, including two indole three pyridine and 7 pyrrol derrivatives. Within the N compounds, peaks were highly correlated within two groups.  (methylindol and indole (R=0.98, p\textless 0.05?0.001?) and  and 6 pyridin and pyrrol derivatives (all R \textgreater 0.9, p\textless 0.05?0.001?). The two groups were correlated to each other (R = 0.77-0.87, p\textless 0.05?0.001?). 
 
+2 pyrrol derivatices (N-methyl-pyrrol and methylpyrrol[II]) and pyridol showed were not or less strict correlated to the other compounds, due to low abundance. Furthermore, all N markers except the three mentioned before were correlated to litter N content (R \textgreater 0.81, p \textless 0.001.
 
 While N compounds generally increase in 
 
@@ -225,6 +222,9 @@ Furanmethanol shows an especially high degradation rate, loosing 15 to 30 \% of 
 
 
 \section{Discussion}
+
+\subsection{Inter-site variance during litter decomposition}
+We found that differences in litter pyrolysis products persist at least during early litter decomposition. Differences 
 
 \subsection{Lignin side chains}
 Until now, studies following lignin degradation with Pyr-GC/MS \citep{ were focusing on changes between the frequency of lignin pyrolysis products, only the ratio between guaiacol/syringol/phenol based ring system was investigated. We found substantial differences in the frequency of different lignin side chains between litter collected at different sites. We found that these differences remained nearly constant during during 15 month of litter decomposition. 
@@ -359,9 +359,9 @@ F1=Oa&		3-Furaldehyd&			Furan&			&		11.57&		96&	95+96&		f&	C&	1.65\\
 &		2(5H)Furanon&			Furan&			&		11.69&		98&	55+98&		f&	C&	2.41\\
 F1=Ob&		2-Furaldehyd&			Furan&			&		12.22&		96&	95+96&		f&	C&	1.67\\
 FAc&		Acetylfuran&			Furan&			&		12.99&		110&	95+110&		cp&	C&	2.38\\
-% "11","f11","5-Methyl-2-furancarboxaldehyde",14.23,"110","109+110","f","C",2.440815327,FALSE,NA,NA
-% "12","cp12","Butyrolactone",15.22,"86","56+86","cp","C",12.373827545,FALSE,NA,NA
-% "13","cp13","Furanmethanol",15.61,"98","98","cp","C",5.206772312,FALSE,NA,NA
+F1.1=O&		5-Methyl-2-furancarboxaldehyde&	Furan&			&		14.23&		110&	109+110&	f&	C&	2.44\\
+F=O&		Butyrolactone&			Furan&			&		15.22&		86&	56+86&		cp&	C&	12.37\\
+F1-OH&		Furanmethanol&			Furan&			&		15.61&		98&	98&		cp&	C&	5.21\\
 % "14","f14","5-Methyl-2(5H)-furanone",16.06,"98","55+98","f","C",3.9163635165,FALSE,NA,NA
 % "15","f15","5-hydroxymethylfuran1--carboxaldehyde",27.51,"126","97+126","f","C",2.171627102,FALSE,NA,NA
 % "30","cp1","2-Oxopropanoic Acid, ME",7.92,"102","43+102","cp","C",0.579144112,FALSE,NA,NA
