@@ -10,9 +10,10 @@ Repeated entry---line 2941 of file library.bib
  : @article{Schellekens2009
  :                         ,
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Snajdr2010"
 You've used 11 entries,
             2937 wiz_defined-function locations,
-            773 strings with 8306 characters,
+            775 strings with 8326 characters,
 and the built_in function-call counts, 3863 in all, are:
 = -- 396
 > -- 125

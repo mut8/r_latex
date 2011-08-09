@@ -23,6 +23,9 @@ Only minimal amounts of microbial carbon were detected after 14 days (1-2 mg mic
 
 After 97 and 181 days, microbial C:N ratio are highest in SW, after 181 days they are lowest in AK. OS and Kl have intermediate C:N ratios. After 375 days, the relation between litter types turn around: SW has the most narrow C:N ratio, AK the widest (fig. \ref{fig:bm} D).
 
+\section{Microbial Community}
+[Fungi to bacteria ratio highest in SW and lowest in AK, with 
+
 \subsubsection{Potential enzyme activities}
 
 Absolute potential enzyme activities were generally correlated to litter N, respiration and other other decomposition processes [stat[. For all enzymes and at all time points, SW showed the highest and AK the lowest activity. After 14 days, only minimal activities could be detected. Cellulases activity is highest after 3 month and decreases between 97 and 181 days. Peroxidase and Peroxidase activities reach their maximum after 181 days and were highly correlated to each other (fig. \ref{fig:enz}).. After between 6 and 15 month, cellulase activity strongly increased. After 375 days, the activity of oxidative enzymes was below the detection limit [data not shown]
@@ -34,8 +37,6 @@ The ratio between the potential activities of cellulases and oxidative enzymes w
 % Results are presented in fig. \ref{fig:resp_depoly}. Complete data is available only for H2 and H3.  After 97 days, the ratio between respiration and glucose depolymerization is highest in AK and lowest in SW, while after 181 days, it is correlated [stat!] to litter N content, i.e. highest for SW and lowest for AK and OS.
 %  
 \subsection{Pyrolysis - GC/MS}
-
-Within 128 peaks quantified 5 main groups were identified: N containing compounds (protein derived, 10 peaks), 28 para-substituted derivatives of 2-mono- and 2,6-di-methoxyphenoles (lignin pyrolysis products, 28 peaks), other (non-lignin) phenolic compounds (10 peaks), and two different carbohydrate groups (together 42 peaks). The two sets of carbohydrate derived pyrolysis products were negatively correlated to each other due to inverse initial levels in litter, roughly dividing between cyclopentenone and furan derrivatives. [see suplementary table]
 
 %Each group of pyrolysis products was followed by the sum of the peaks of the group.
 To verify that the sum of TIC peak areas represents a general trend for all substances in the group, we calculated the correlation both between the sum of a group and the first principal component of all peaks. For all groups except lignin the first principal component represents at least 84\% of the total variance within the group and correlated to the sum of the peaks with R\textgreater 0.99. Only for lignin peaks, only 55\% of variance are explained by the first principal component and it is correlated to the sum of lignin pyrolysis products with R=0.9. All correlations are highly significant (p=***). 
@@ -87,6 +88,5 @@ The lipophilic compounds found show different trends: Alkanes and alkenes show a
 %\subsubsection{Fatty acids and aliphatic pyrolysis products}
 %Fatty acids are the most comon origin of aliphatic pyrolysis products. (decarboxylisatio)
 
-\section{Microbial Community}
 
-Metaproteom
+

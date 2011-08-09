@@ -35,8 +35,6 @@ The ratio between the potential activities of cellulases and oxidative enzymes w
 %  
 \subsection{Pyrolysis - GC/MS}
 
-Within 128 peaks quantified 5 main groups were identified: N containing compounds (protein derived, 10 peaks), 28 para-substituted derivatives of 2-mono- and 2,6-di-methoxyphenoles (lignin pyrolysis products, 28 peaks), other (non-lignin) phenolic compounds (10 peaks), and two different carbohydrate groups (together 42 peaks). The two sets of carbohydrate derived pyrolysis products were negatively correlated to each other due to inverse initial levels in litter, roughly dividing between cyclopentenone and furan derrivatives. [see suplementary table]
-
 %Each group of pyrolysis products was followed by the sum of the peaks of the group.
 To verify that the sum of TIC peak areas represents a general trend for all substances in the group, we calculated the correlation both between the sum of a group and the first principal component of all peaks. For all groups except lignin the first principal component represents at least 84\% of the total variance within the group and correlated to the sum of the peaks with R\textgreater 0.99. Only for lignin peaks, only 55\% of variance are explained by the first principal component and it is correlated to the sum of lignin pyrolysis products with R=0.9. All correlations are highly significant (p=***). 
 
@@ -67,8 +65,8 @@ Among the lignin derived pyrolysis products, while most other peaks are tightly 
 \subsubsection{Decomposition trends}
 
 To balance for initial differences in litter composition, for each peak in each sample, we substrate the mean of the relative peak area of the respective peak in initial litter of the litter type. A PCA calculated with the results allows us to demonstrate shifts between pyrolysis products during litter decomposition (fig. \ref{fig:pca.dif}). The first to principal components represent ~45\% of the total variance. Initial litter samples cluster cluster in the bottom right corner of the graph with positive loadings on PCA 1 and negative loadings on PCA2. Decomposed samples are shifted versus fresh litter along different axis: While decomposed SW samples are in the bottom left quadrant of the samples, shifted along PCA 1 toward more negative values and indifferent along PCA2, decomposed AK samples are shifted along PCA2 towards more positive values and do not shift along PCA1. KL and OS show intermediate decomposition trends. Their decomposed samples are placed in the top left corner, combining both decomposition trends.  
-Pyrolysis products that are positioned in the bottom-right quadrant  are depleated in all litter types, while products in the top left quadrant are accumulated in all litter types. Substances in the bottom left quadrant are depleated in AK and accumulated in SW, substances in the top-right quadrant show the oposite trend. 
-Most lignin markers have negative loadings on PCA1 and PCA2, indicating accumulation in SW and depleation in AK. 
+Pyrolysis products that are positioned in the bottom-right quadrant  are depleted in all litter types, while products in the top left quadrant are accumulated in all litter types. Substances in the bottom left quadrant are depleted in AK and accumulated in SW, substances in the top-right quadrant show the opposite trend. 
+Most lignin markers have negative loadings on PCA1 and PCA2, indicating accumulation in SW and depletion in AK. 
 
 Figure \ref{fig:timeseries} shows shifts in pyrolysis products relative to incubation time and accumulated respiration. Lignin contents were rising and carbohydrate contents decreasing for all litter types except AK. The two litter types with the highest lignin content show a (non-significant) decrease between 6 an 15 month harvests. Non-lignin phenolic pyrolysis products increase for all litter types, with SW's phenols showing increasing less then other litter.
 
@@ -81,10 +79,12 @@ Fig. \ref{fig:car_lig_6month} shows lignin and carbohydrate differences after 6 
 To discriminate between lignin accumulation because of higher or lower litter turnover and different substrate preferences, we compared changes in pyrolysis products to accumulated respiration. LCI index is rising in all litter types except AK, where it fell insignificantly.
 Fig. \ref{fig:lci} (right)
 
-The lipophilic compounds found show different trends: Alkanes and alkenes show a drastic increase (+80\%) during the first three month. This increase can not be explained by passive accumulation. Unlike alkene, alkanes are decomposed between month 6-15. The unknown compound at RT 20.00 and fatty acids are depleted during litter decomposition, i.e. decomposed faster than average litter biomass. (Fig nn). The last two lipophilic compound classes are decomposed faster in N-poor litter. Especially fatty acids were found in isolated AUR lignin fractions. 
+The lipophilic compounds found show different trends: Alkanes and alkenes show a drastic increase (+80\%) during the first three month. This increase can not be explained by passive accumulation. Unlike alkene, alkanes are decomposed between month 6-15. The unknown compound at RT 20.00 and fatty acids are depleted during litter decomposition, i.e. decomposed faster than average litter biomass (fig \ref{fig:waxes}), and are decomposed faster in N-poor than in N-rich litter. 
 
 
 %\subsubsection{Fatty acids and aliphatic pyrolysis products}
 %Fatty acids are the most comon origin of aliphatic pyrolysis products. (decarboxylisatio)
 
+\section{Microbial Community}
 
+Metaproteom

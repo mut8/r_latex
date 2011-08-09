@@ -1,8 +1,3 @@
-errcol<-"black"
-lwd<-.3
-cex<-2
-lty=1
-pch<-c(1,16,2,17)
 pch.all<-c(rep(pch[1],19), rep(pch[2],18), rep(pch[3],19), rep(pch[4],18))
 
 addpeaks<-function(source, sep=",") {
@@ -48,7 +43,7 @@ minerals<-read.csv("raw_data/minerals.csv", sep=",", header=TRUE)
 alldata<-read.csv("raw_data/micdif_alldata.csv", sep=",", header=TRUE)
 alldata$days<-rep(c(rep(14,5), rep(97,5), rep(181,5), rep(375,5)),4)
 
-
+peaks
 
 sim<-read.csv("raw_data/sim.csv", sep=",", header=TRUE)
 rownames(sim)<-sim[,1]
@@ -61,17 +56,6 @@ corr$pH.CaCl2<-NULL
 #remove excluded
 sim<-sim[,peaks$exclude==F]
 peaks<-peaks[peaks$exclude==F,T]
-
-colnames(peaks[10])<-"orig2"
-
-peaks$origin[peaks$orig2=="C"]<-"Carbohydrates"
-peaks$origin[peaks$orig2=="L"]<-"Lignin"
-peaks$origin[peaks$orig2=="N"]<-"Nitrogen"
-peaks$origin[peaks$orig2=="Cut"]<-"Waxes"
-peaks$origin[peaks$orig2=="non"]<-"non-specific"
-peaks$origin[peaks$orig2=="unk"]<-"unknown"
-
-peaks$origin<-factor(peaks$origin)
 
 days<-samples$day
 accresp<-samples$accresp
@@ -144,11 +128,6 @@ colnames(peaks)
 samples$massloss->massloss
 samples$masslossSE->masslossSE
 
-processes<-data.frame(corr[,38], corr[,3:30], corr[,51:56], corr[,61:69])
-controls<-data.frame(class_cTIC[harvest==2|harvest==6, T], orig_cTIC[harvest==2|harvest==6, T],  corr[,31:34], corr[,39:44], corr[,35:37], corr[,57:59], corr[,45:50], corr[,60])
-
-contnames<-colnames(controls)
-procnames<-colnames(processes)
 
 h2<-corr$harvest==2
 h3<-corr$harvest==6
@@ -177,21 +156,21 @@ h4<-harvest==15
 #h3.wo.n.p.pca<-rda(rsim[harvest==6, 1:ncol(rsim)],,controls[h3,52:53], scale=TRUE)
 
 
- 	  rec<-matrix(ncol=5, nrow=peaknr) 
- 	  colnames(rec)<-c(typlev, "mean")
- 	  rownames(rec)=rownames(peaks)
- 	  for (i in 1:peaknr)
- 	  {
- 	  for (j in 1:length(typlev))
- 	  {
-
- 	  tmp<-rsim[type==typlev[j]&harvest!=0,i]/mean(rsim[type==typlev[j]&harvest!=0,i])
- 	  mod<-lm(tmp ~ samples$massloss[type==typlev[j]&harvest!=0])
- 	  rec[i,j]<-mod$coefficients[2]
- 	  }
- 	  rec[i,5]<-mean(rec[i, 1:4])
- 	  }
- 	  rec
+#  	  rec<-matrix(ncol=5, nrow=peaknr) 
+#  	  colnames(rec)<-c(typlev, "mean")
+#  	  rownames(rec)=rownames(peaks)
+#  	  for (i in 1:peaknr)
+#  	  {
+#  	  for (j in 1:length(typlev))
+#  	  {
+# 
+#  	  tmp<-rsim[type==typlev[j]&harvest!=0,i]/mean(rsim[type==typlev[j]&harvest!=0,i])
+#  	  mod<-lm(tmp ~ samples$massloss[type==typlev[j]&harvest!=0])
+#  	  rec[i,j]<-mod$coefficients[2]
+#  	  }
+#  	  rec[i,5]<-mean(rec[i, 1:4])
+#  	  }
+#  	  rec
 
 # 	  rec2<-matrix(ncol=5, nrow=peaknr) 
 # 	  colnames(rec2)<-c(typlev, "mean")
@@ -243,9 +222,9 @@ h4<-harvest==15
 # 
 # 	  rsim.colsums<-colSums(rsim)
 # 
- 	  recidx<-matrix(ncol=1, nrow=nrow(samples)) 
- 	  for (i in 1:nrow(samples))
- 	  recidx[i]<-sum(t(rcTIC[i, 1:peaknr])*rec[,5])
+#  	  recidx<-matrix(ncol=1, nrow=nrow(samples)) 
+#  	  for (i in 1:nrow(samples))
+#  	  recidx[i]<-sum(t(rcTIC[i, 1:peaknr])*rec[,5])
 	 
 # 	  recidx.wo.n<-matrix(ncol=1, nrow=nrow(samples)) 
 # 	  for (i in 1:nrow(samples))
@@ -314,45 +293,8 @@ cond<-harvest==0
 by<-type
 
 
-data
-
-sum(dif.by(rsim, harvest==0, type)!=difinit.rsim)
-
-mea
-meaninit.rsim
-sum(rsim-mea!=data-mea)
-sum(rsim-difinit.rsim!=data-difinit.rsim)
-sum(data-mea!=data-difinit.rsim)
-sum(data-difinit.rsim!=rsim-difinit.rsim)
 
 
-
-difinit.rsim-
-dif
-
-meaninit.rsim<-rsim
-for (i in 1:nrow(samples))
-meaninit.rsim[i,T]<-colSums(rsim[harvest==0 & type==type[i], T])/4
-difinit.rsim<-rsim-meaninit.rsim
-
-meaninit.rcTIC<-rcTIC
-for (i in 1:nrow(samples))
-meaninit.rcTIC[i,T]<-colSums(rcTIC[harvest==0 & type==type[i], T])/4
-mean(rcTIC[type=="KL"&harvest==0,T])-meaninit.rcTIC[23,T]
-difinit.rcTIC<-rcTIC-meaninit.rcTIC
-
-qinit.rsim<-rsim[harvest!=0]/(meaninit.rsim[harvest!=0]*samples$massloss[harvest!=0])
-
-
-
-meanh2.rsim<-rsim
-for (i in 1:nrow(samples))
-meanh2.rsim[i,T]<-colSums(rsim[harvest==2 & type==type[i], T])/length(rsim[harvest==2 & type==type[i], 1])
-difh2.rsim<-rsim-meanh2.rsim
-qh2.rsim<-rsim/meanh2.rsim
-
-f<-peaks$class=="f.f"|peaks$class=="c.f"|peaks$class=="cp.f"
-cp<-peaks$class=="f.cp"|peaks$class=="c.cp"|peaks$class=="cp.cp"
 # 
 # for (i in 1:peaknr)
 # 	 cTIC[,i]<-sim[,i] * peaks$tic[i]

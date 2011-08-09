@@ -1,7 +1,7 @@
 \section{Material and methods}
 
 \subsection{Litter decomposition experiment}
-A detailed description of our litter decomposition experiment was published in \cite{Wanek2011}. Briefly, beech litter from four sites in Austria (Achenkirch (AK), Klausenleopoldsdorf(KL), Ossiach(OS), and Schottenwald(SW); refered to as litter types) was collected in October 2008. Litter was homogenized, sterilized and inoculated (1.5\% w/w) with a mixture of litter and soil to assure all litter types share the same initial microbial community. From each type, four samples of  litter were taken after inoculation. [[!!check!!]]
+A detailed description of our litter decomposition experiment was published in \cite{Wanek2011}. Briefly, beech litter from four sites in Austria (Achenkirch (AK), Klausenleopoldsdorf(KL), Ossiach(OS), and Schottenwald(SW); refered to as litter types) was collected in October 2008. Litter was homogenized, sterilized and inoculated (1.5\% w/w) with a mixture of litter and soil to assure all litter types share the same initial microbial community. From each type, four samples of  litter were taken after inoculation.
 Samples of 60g litter (fresh weight) were kept at 15 \textdegree C and 60\% water content in mesocosms for a duration between 2 weeks to 15 month. For each litter type 5 replicas were removed and analyzed after 14, 97, 181 and 375 days. 
 
 \subsection{Bulk litter, extractable, and microbial biomass nutrient content}
@@ -9,11 +9,16 @@ To calculate litter mass loss, litter dry mass content was measurement in 5 g li
 
 To determine soluble C, N, and P contents, 1.8g litter (fresh weight) were extracted with 50 ml 0.5M K\textsubscript{2}SO\textsubscript{4}. Samples were shaken on a reciprocal shaker with the extractant for 30 minutes, filtered with ash-free filters and frozen at -20 \textdegree C until analysis. For quantifying microbial biomass C, N and P pools, the same extraction was used after chloroform fumigation . Microbial biomass was determined as the difference between fumigated and non-fumigated extractions. C and N concentration in extracts were determined with a TOC/TN analyzer (TOC-VCPH and TNM, Schimadzu), Phosphorous was determined photometrically [..] [lit: schinner 1996]
 
-\subsection{Metaproteom (and Metatranscriptom?) analysis}
-...
+Substrate-consumer stoichiometric inbalances \emph{X:Y$_{inbal}$} were calculated as
+
+ \begin{equation}
+X:Y_{inbal}=\frac{X:Y_{litter}}{X:Y_{microbial}} \label{eq:resp.acc}
+ \end{equation}
+
+where \emph{X} and \emph{Y} stand for on of the elements C, N, or P.
 
 \subsection{Microbial Respiration}
-Respiration of the litter within the microcosms was monitored weekly [!!for the first 6 month and after 15 month!!] using an infrared gas analyzer (IRGA, EGM4 with SRC1, PPSystems, USA). CO2 concentration was measured over 70 seconds and increase per second was calculated based on g dry weight of the litter. Measurements of ambient air were performed before and after each measurement to assess possible leaks or base-line drifts IRGA. %Measurements were conducted using the following settings: volume of the chamber 1551 cm³, area of the chamber 115 cm², linear measurement, at 15\textdegree.
+Respiration of the litter within the microcosms was monitored weekly for the first 6 month and immediately before the last harvest using an infrared gas analyzer (IRGA, EGM4 with SRC1, PPSystems, USA). CO2 concentration was measured over 70 seconds and increase per second was calculated based on g dry weight of the litter. Measurements of ambient air were performed before and after each measurement to assess possible leaks or base-line drifts IRGA. %Measurements were conducted using the following settings: volume of the chamber 1551 cm³, area of the chamber 115 cm², linear measurement, at 15\textdegree.
 Accumulated respiration was calculated assuming linear transition between measurements.
 %as stated in equation \ref{eq:resp.acc}, where \emph{Resp\textsubscript{acc}} stands for the accumulated respiration, \emph{Resp\textsubscript{n}} and \emph{t\textsubscript{n}} for the actual respiration at and the decomposition time until time point \emph{n}.
 
@@ -32,6 +37,9 @@ Glucan depolymerization and Glucose consumption were measured by \cite{Leitner20
 \begin{equation}
 CUE = (\frac{Glucose Consumption - Respiration}{Respiration})
 \end{equation}
+
+\subsection{Metaproteom (and Metatranscriptom?) analysis}
+...
 
 \subsection{Pyrolysis-GC/MS}
 Pyrolysis-GC/MS was performed on a Pyroprobe 5250 pyrolysis system (CDS Analytical) coupled to a Thermo Trace gas chromatograph and a DSQ II MS detector (both Thermo Scientific) equipped with a carbowax colomn (Supelcowax 10, Sigma-Aldrich).

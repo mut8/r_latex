@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.19)  5 AUG 2011 14:44
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.19)  9 AUG 2011 20:35
 entering extended mode
  %&-line parsing enabled.
 **dippaper_elseviertex.tex
@@ -228,22 +228,17 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3])
 (./materials.tex [4] [5] [6]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 59.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 69.
  (/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 59.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 69.
 Missing character: There is no á in font cmr12!
 Missing character: There is no º in font cmr12!
 Missing character: There is no ƒ in font cmr12!
-) (./results.tex [7] [8] [9]
-Overfull \hbox (6.63725pt too wide) in paragraph at lines 38--39
-\OT1/cmr/m/n/12 tein de-rived, 10 peaks), 28 para-substituted deriva-tives of 2
--mono- and 2,6-di-methoxyphenoles
- []
-
-[10] [11] [12]) (./discussion.tex [13] [14] [15]) (./conclusions.tex [16])
+) (./results.tex [7] [8] [9] [10] [11] [12]) (./discussion.tex [13] [14]
+[15] [16]) (./conclusions.tex)
 Overfull \hbox (3.91124pt too wide) in paragraph at lines 172--174
 []\OT1/cmr/m/n/12 FWF NRN MicDiF, Kathe-rina Keib-linger DOC fForte Thanks to A
 n-dreas Bl^^?ochl, Clemens
@@ -260,33 +255,34 @@ Missing character: There is no ” in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
+ [19]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
- [19]) (./graphs_captions.tex [20])
-(./table1.tex) [21] (./dippaper_elseviertex.aux) ) 
+ [20]) (./graphs_captions.tex
+[21]) (./table1.tex) [22] (./dippaper_elseviertex.aux) ) 
 Here is how much of TeX's memory you used:
- 2315 strings out of 495021
- 28986 string characters out of 1181035
- 77228 words of memory out of 3000000
- 5465 multiletter control sequences out of 15000+50000
+ 2316 strings out of 495021
+ 28999 string characters out of 1181035
+ 77236 words of memory out of 3000000
+ 5466 multiletter control sequences out of 15000+50000
  12659 words of font info for 48 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 32i,8n,34p,1335b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/lluc/.texmf-var/fonts
-/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
-/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti7.pfb>
-Output written on dippaper_elseviertex.pdf (21 pages, 206133 bytes).
+ 32i,8n,34p,1335b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/lluc/.texmf-var
+/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
+nts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti
+12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti7.pfb>
+Output written on dippaper_elseviertex.pdf (22 pages, 209738 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
+ 123 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

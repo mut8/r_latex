@@ -29,14 +29,42 @@ samples$acc_resp_h3
 ##Timeseries qPCR Fungi to Bacteria ratio##
 ###########################################
 
-timeseries(alldata$F2BqPCR, alldata$days, alldata$Litter)
-, col=colscale, pch=pch, type="o", endsig=T, legend=T)
+var<-alldata$F2BqPCR
+cond<-is.na(var)!=T
+timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=colscale, pch=pch, type="o", endsig=T, legend=T)
 
-dev.off()
+#from H2 on
+
+cond<-is.na(var)!=T&alldata$days!=14
+timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=colscale, pch=pch, type="o", endsig=T, legend=T)
+
+alldata$C_mic/alldata$C_lit
+ 
+alldata$N_.mic/alldata$N_lit*10
+
+##################################################
+##Correlations with qPCR Fungi to Bacteria ratio##
+##################################################
+
+plot(alldata$F2BqPCR[alldata$days==181],alldata$C.N_mic[alldata$days==181], pch=c(rep(1,5),rep(16,5),rep(2,5),rep(17,5)))
+plot(alldata$F2BqPCR,alldata$C.N_mic, pch=c(rep(1,20),rep(16,20),rep(2,20),rep(17,20)), col=rep(c(rep(colscale[1],5),rep(colscale[2],5),rep(colscale[3],5),rep(colscale[4],5)),4))
+
+
+plot(alldata$ratioF.B.2[alldata$days==181],alldata$C.N_mic[alldata$days==181], pch=c(rep(1,5),rep(16,5),rep(2,5),rep(17,5)))
+plot(alldata$F2BqPCR, alldata$ratioF.B.2, pch=c(rep(1,20),rep(16,20),rep(2,20),rep(17,20)), col=rep(c(rep(colscale[1],5),rep(colscale[2],5),rep(colscale[3],5),rep(colscale[4],5)),4))
+
+
+
+"ratioF.B.2" 
+colnames(alldata)
 
 ##################################################
 ##graph mit Lig & CH differenzen  (H0-H3, H3-H4)##
 ##################################################
+
+dif.orig.cTIC<-dif.by(orig_cTIC, harvest==0, type)
+timeseries(dif.orig.cTIC$C, harvest, type, pch=pch, col=colscale)
+
 
 h3.respcor.L.mean<-tapply(orig_cTIC$L[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], mean)
 h3.respcor.L.se<-tapply(orig_cTIC$L[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], stderr)

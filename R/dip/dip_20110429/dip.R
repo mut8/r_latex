@@ -1,6 +1,6 @@
 setwd("/home/lluc/Documents/git/R/dip/dip_20110429")
 
-source("/home/lluc/Documents/R/functions.R")
+source("/home/lluc/Documents/git/R/functions.R")
   
 source("startup.R")
 
@@ -10,6 +10,8 @@ source("siglevs.R")
 source("correlations.R")
 source("doc.R")
 source("plfa.R")
+
+
 source("microbialbiomass.R")
 
 source("massloss_n_lit.R")
@@ -20,6 +22,190 @@ source("pyr_diffs.R")
 source("pca_decomp_controls.R")
 source("pca_lig_ph.R")
 source("pca_allpeaks.R")
+
+samples$acc_resp_h3
+
+###########################################
+##Timeseries qPCR Fungi to Bacteria ratio##
+###########################################
+
+var<-alldata$F2BqPCR
+cond<-is.na(var)!=T
+timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=colscale, pch=pch, type="o", endsig=T, legend=T)
+
+#from H2 on
+
+cond<-is.na(var)!=T&alldata$days!=14
+timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=colscale, pch=pch, type="o", endsig=T, legend=T)
+ 
+##################################################
+##Correlations with qPCR Fungi to Bacteria ratio##
+##################################################
+
+plot(alldata$F2BqPCR[alldata$days==181],alldata$C.N_mic[alldata$days==181], pch=c(rep(1,5),rep(16,5),rep(2,5),rep(17,5)))
+plot(alldata$F2BqPCR,alldata$C.N_mic, pch=c(rep(1,20),rep(16,20),rep(2,20),rep(17,20)), col=rep(c(rep(colscale[1],5),rep(colscale[2],5),rep(colscale[3],5),rep(colscale[4],5)),4))
+
+
+plot(alldata$ratioF.B.2[alldata$days==181],alldata$C.N_mic[alldata$days==181], pch=c(rep(1,5),rep(16,5),rep(2,5),rep(17,5)))
+plot(alldata$F2BqPCR, alldata$ratioF.B.2, pch=c(rep(1,20),rep(16,20),rep(2,20),rep(17,20)), col=rep(c(rep(colscale[1],5),rep(colscale[2],5),rep(colscale[3],5),rep(colscale[4],5)),4))
+
+
+
+"ratioF.B.2" 
+colnames(alldata)
+
+##################################################
+##graph mit Lig & CH differenzen  (H0-H3, H3-H4)##
+##################################################
+
+h3.respcor.L.mean<-tapply(orig_cTIC$L[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], mean)
+h3.respcor.L.se<-tapply(orig_cTIC$L[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], stderr)
+h3.respcor.L.ci<-tapply(orig_cTIC$L[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], CI)
+
+h3.respcor.L.ci
+
+init.L.mean<-tapply(orig_cTIC$L[harvest==0], type[harvest==0], mean)
+init.L.ci<-tapply(orig_cTIC$L[harvest==0], type[harvest==0], CI)
+init.L
+
+h3.resp.mean<-tapply(samples$acc_resp_h3[harvest==6], type[harvest==6], mean)
+
+h3.respcor.C.mean<-tapply(orig_cTIC$C[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], mean)
+h3.respcor.C.se<-tapply(orig_cTIC$C[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], stderr)
+h3.respcor.C.ci<-tapply(orig_cTIC$C[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], CI)
+
+
+init.C.mean<-tapply(orig_cTIC$C[harvest==0], type[harvest==0], mean)
+init.C.ci<-tapply(orig_cTIC$C[harvest==0], type[harvest==0], CI)
+
+h3.resp.mean<-tapply(samples$acc_resp_h3[harvest==6], type[harvest==6], mean)
+
+
+barplot.def((h3.respcor.L.mean-init.L.mean)/(init.L.mean*h3.resp.mean), h3.respcor.L.se/(init.L.mean*h3.resp.mean),ylim=c(-2.5, 0))
+abline(h=-1)
+
+barplot.def((h3.respcor.C.mean-init.C.mean)/(init.C.mean*h3.resp.mean), h3.respcor.C.se/(init.C.mean*h3.resp.mean),ylim=c(-2.5, 0))
+abline(h=-1)
+
+colnames(samples)
+samples
+$accresp
+
+
+
+      aov<-aov(lm(var ~ sep))
+      hsd<-HSD.test(aov, "sep")
+      gr<-hsd$M[order(hsd$trt)]
+      text(((0:3)+.6)*1.2, max(mean+error)*1.15, gr)
+
+
+
+
+
+
+
+ type[harvest==6], mean)
+-tapply(orig_cTIC$L[harvest==0], type[harvest==0], mean)
+
+tmp<-dif.by(orig_cTIC, harvest==0, type)
+actdeg.L<-tapply(tmp$L[harvest==6], type[harvest==6], mean)
+
+resp<-tapply(samples$acc_resp_h3[harvest==6], type[harvest==6], mean)
+
+barplot((actdeg.L-nodeg.L)/resp)
+
+nodeg.C<-tapply(orig_cTIC$C[harvest==0], type[harvest==0], mean)/tapply(1-samples$acc_resp_h3[harvest==6], type[harvest==6], mean)-tapply(orig_cTIC$C[harvest==0], type[harvest==0], mean)
+ 
+tmp<-dif.by(orig_cTIC, harvest==0, type)
+actdeg.C<-tapply(tmp$C[harvest==6], type[harvest==6], mean)
+
+pdf("absloss.pdf", width=9, height=3)
+
+par(mfrow=c(1,3))
+barplot(actdeg.L-nodeg.L, main="absolute lignin loss", col=colscale, ylab="%TIC")
+barplot(actdeg.C-nodeg.C, main="absolute carbohydrate loss", col=colscale, ylab="%TIC")
+barplot((actdeg.L-nodeg.L)/(actdeg.C-nodeg.C), , main="absolute lignin loss / absolute carbohydrate loss", col=colscale, ylab="%TIC")
+abline(h=1)
+
+dev.off()
+
+pdf("output/h3stoech.pdf", width=9, height=12)
+
+par(mfrow=c(4,3))
+
+bplot(alldata$C_lit[alldata$days==181], alldata$Litter[alldata$days==181], main="C litter (H3)", xlab="Litter type", ylab="g/g")
+bplot(alldata$N_lit[alldata$days==181], alldata$Litter[alldata$days==181], main="N litter (H3)", xlab="Litter type", ylab="g/g")
+bplot(alldata$P_lit[alldata$days==181], alldata$Litter[alldata$days==181], main="P litter (H3)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$C_mic[alldata$days==181], alldata$Litter[alldata$days==181], main="C mic (H3)", xlab="Litter type", ylab="g/g")
+bplot(alldata$N_.mic[alldata$days==181], alldata$Litter[alldata$days==181], main="N mic (H3)", xlab="Litter type", ylab="g/g")
+bplot(alldata$P_mic[alldata$days==181], alldata$Litter[alldata$days==181], main="P mic (H3)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$DOC[alldata$days==14], alldata$Litter[alldata$days==14], main="DOC (H1)", xlab="Litter type", ylab="g/g")
+bplot(alldata$TN[alldata$days==14], alldata$Litter[alldata$days==14], main="TN (H1)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$NH4[alldata$days==14], alldata$Litter[alldata$days==14], main="NH4+ (H1)", xlab="Litter type", ylab="g/g")
+bplot(alldata$NO3[alldata$days==14], alldata$Litter[alldata$days==14], main="NO3 (H1)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$PO4[alldata$days==14], alldata$Litter[alldata$days==14], main="PO4 (H1)", xlab="Litter type", ylab="g/g")
+
+tmp<-dif.by(orig_cTIC, harvest==0, type)
+
+# bplot(tmp$L[alldata$days==181], alldata$Litter[alldata$days==181], main="Lignin difference (H0-H3)", xlab="Litter type", ylab="g/g")
+# bplot(tmp$C[alldata$days==181], alldata$Litter[alldata$days==181], main="Carbohydrate difference (H0-H3)", xlab="Litter type", ylab="g/g") 
+
+plot(F, type="n")
+
+bplot(alldata$C.N_lit[alldata$days==181], alldata$Litter[alldata$days==181], main="C:N litter (H3)", xlab="Litter type", ylab="g/g")
+bplot(alldata$C.P_lit[alldata$days==181], alldata$Litter[alldata$days==181], main="C:P litter (H3)", xlab="Litter type", ylab="g/g")
+bplot(alldata$N.P_lit[alldata$days==181], alldata$Litter[alldata$days==181], main="N:P litter (H3)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$DOC[alldata$days==14]/alldata$TN[alldata$days==14], alldata$Litter[alldata$days==14], main="DOC/TN (H1)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$DOC[alldata$days==14]/alldata$PO4[alldata$days==14], alldata$Litter[alldata$days==14], main="DOC/PO4 (H1)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$TN[alldata$days==14]/alldata$PO4[alldata$days==14], alldata$Litter[alldata$days==14], main="TN /PO4 (H1)", xlab="Litter type", ylab="g/g")
+
+
+bplot(alldata$C.N_mic[alldata$days==181], alldata$Litter[alldata$days==181], main="C:N micr (H3)", xlab="Litter type", ylab="g/g")
+bplot(alldata$C.Pmic[alldata$days==181], alldata$Litter[alldata$days==181], main="C:P micr (H3)", xlab="Litter type", ylab="g/g")
+bplot(alldata$N.Pmic[alldata$days==181], alldata$Litter[alldata$days==181], main="N:P micr (H3)", xlab="Litter type", ylab="g/g")
+
+
+bplot(alldata$NP_inbal[alldata$days==181], alldata$Litter[alldata$days==181], main="N:P inbalance (H3)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$CN_inbal[alldata$days==181], alldata$Litter[alldata$days==181], main="C:N inbalance (H3)", xlab="Litter type", ylab="g/g")
+
+bplot(alldata$CP_inbal[alldata$days==181], alldata$Litter[alldata$days==181], main="C:P inbalance (H3)", xlab="Litter type", ylab="g/g")
+
+dev.off()
+
+plfa<-read.csv("raw_data/plfa_raw.csv")
+plfa1<-plfa[harvest==2 & harvest==6 , 9:ncol(plfa)]
+plfa.mds<-metaMDS(plfa[rowSums(plfa)>0,9:ncol(plfa)] / rowSums(plfa[rowSums(plfa)>0,9:ncol(plfa)])
+)
+
+plot(plfa.mds)
+samples.plfas<-scores(plfa.mds, display="site")
+write.csv(scores(plfa.mds, display="species"), "plfa.plfas.csv")
+write.csv(scores(plfa.mds, display="sites"), "plfa.samples.csv")
+summary(
+plfa.mds
+)
+
+
+pdf("output/plfa.mds.pdf")
+plot(plfa.mds, type="n")
+text(scores(plfa.mds, display="species", choices=1:2),labels=colnames(plfa[,9:ncol(plfa)]), cex=.5)
+points(scores(plfa.mds, display="sites", choices=1:2), pch=c(rep(1,10), rep(16,10),rep(2,10), rep(17,9)), col=c(rep(c(rep("black",5),rep("grey",5)),3), rep("black",4), rep("grey",5)))
+abline(h=0, col="grey")
+abline(v=0, col="grey")
+legend("bottomleft", pch=pch, typlev)
+legend("bottomright", col=c("black", "grey"), pch=16, c("3 month", "6 month"))
+dev.off()
+
+rowSums(plfa[,9:ncol(plfa)])
+
 
 tapply(orig_cTIC$L, list(type, harvest), mean)
 tapply(orig_cTIC$L, list(type, harvest), stderr)
@@ -34,7 +220,7 @@ colnames(alldata)
 var<-(alldata$Gross.amino.acid.immobilization-alldata$Gross.N.mineralization)/alldata$Gross.amino.acid.immobilization
 cond<-is.na(var)==F&alldata$days!=14
 timeseries(var[cond], alldata$days[cond], alldata$Litter[cond], type="o", pch=pch, col="black", add=T)
-cor.test(alldata$NP_inbal[cond & alldata$days==97], var[cond&alldata$days==97], pch=pch.all[cond&alldata$days==97])
+cor.test(alldata$NP_inbal[cond & alldata$days=97], var[cond&alldata$days==97], pch=pch.all[cond&alldata$days==97])
 cor.test(alldata$NP_inbal[cond & alldata$days==181], var[cond&alldata$days==181], pch=pch.all[cond&alldata$days==181])
 cor.test(alldata$CN_inbal[cond], var2[cond], pch=pch.all[cond])
 
