@@ -107,28 +107,52 @@ h0.C<-orig_cTIC$C-diftoh0.rsim.cTIC$C
 h0.L
 
 L_masscorrected_percent<-timeseries((orig_cTIC$L*(1-100*samples$massloss/c_lit)-h0.L)*100/h0.L, days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+
 L_masscorrected_abs<-timeseries((orig_cTIC$L*(1-100*samples$massloss/c_lit)-h0.L), days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+
+LCI_percent<-timeseries(((orig_cTIC$L * (1-100*samples$massloss/c_lit) - h0.L)*100/ h0.L)/(((orig_cTIC$C*(1-100*samples$massloss/c_lit)-h0.C)*100/h0.C)+((orig_cTIC$L*(1-100*samples$massloss/c_lit)-h0.C)*100/h0.L)), days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+
+LCI_abs<-timeseries((orig_cTIC$L*(1-100*samples$massloss/c_lit)-h0.L) 
+/ (orig_cTIC$L*(1-100*samples$massloss/c_lit) + orig_cTIC$C*(1-100*samples$massloss/c_lit) -h0.L - h0.C), days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+abline(h=0)
+abline(h=1)
+
 
 C_masscorrected_percent<-timeseries((orig_cTIC$C*(1-100*samples$massloss/c_lit)-h0.C)*100/h0.C, days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
 C_masscorrected_abs<-timeseries((orig_cTIC$C*(1-100*samples$massloss/c_lit)-h0.C), days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
 
 timeseries(orig_cTIC$C*(1-100*samples$massloss/c_lit)-h0.C, days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
 
-L_masscorrected_percent$y[L_masscorrected_percent$xfac==181]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==0]
-L_masscorrected_abs$y[L_masscorrected_abs$xfac==181]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==0]
 
-L_masscorrected_percent$y[L_masscorrected_percent$xfac==375]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==0]
-L_masscorrected_abs$y[L_masscorrected_abs$xfac==181]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==0]
+pdf("losses_ch_l_h0h3_h3h4.pdf")
+  par(mfrow=c(2,2))
 
-barplot.def(L_masscorrected_abs$y[L_masscorrected_abs$xfac==181]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==0], L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==181])
+  barplot.def(L_masscorrected_abs$y[L_masscorrected_abs$xfac==181]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==0], sqrt(L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==181]^2+L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==0]^2), ylim=c(-6,0), main="lignin loss (H0-H3)", ylab="d%TIC", names.arg=typlev)
 
-barplot.def(C_masscorrected_abs$y[C_masscorrected_abs$xfac==181]-C_masscorrected_abs$y[C_masscorrected_abs$xfac==0],C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==181], ylim=c(-5,0))
+  barplot.def(C_masscorrected_abs$y[C_masscorrected_abs$xfac==181]-C_masscorrected_abs$y[C_masscorrected_abs$xfac==0], sqrt(C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==181]^2+C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==0]^2), ylim=c(-6,0), main="carbohydrate loss (H0-H3)", ylab="d%TIC", names.arg=typlev)
 
-barplot.def(L_masscorrected_abs$y[L_masscorrected_abs$xfac==375]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==181
-L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==375])
+#   barplot.def(L_C_abs$y[L_C_abs$xfac==181]-L_C_abs$y[L_C_abs$xfac==0], sqrt(L_C_abs$y.errbar[L_C_abs$xfac==181]^2+L_C_abs$y.errbar[L_C_abs$xfac==0]^2), ylim=c(-3,5), main="carbohydrate loss (H0-H3)", ylab="d%TIC", names.arg=typlev)
+
+  barplot.def(L_masscorrected_abs$y[L_masscorrected_abs$xfac==475]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==181], sqrt(L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==475]^2+L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==475]^2), ylim=c(-6,0), main="lignin loss (H3-H4)", ylab="d%TIC", names.arg=typlev)
+
+  barplot.def(C_masscorrected_abs$y[C_masscorrected_abs$xfac==475]-C_masscorrected_abs$y[C_masscorrected_abs$xfac==181], sqrt(C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==475]^2+C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==475]^2), ylim=c(-6,0), main="carbohydrate loss (H3-H4)", ylab="d%TIC", names.arg=typlev)
+
+massloss.181d<-100*tapply(samples$massloss[days==181], type[days==181], mean)/tapply(alldata$C_lit[alldata$days==14]/100, alldata$Litter[alldata$days==14], mean)
+massloss.475d<-100*
+(tapply(samples$massloss[days==475], type[days==475], mean)-tapply(samples$massloss[days==181], type[days==181], mean))/
+tapply(alldata$C_lit[alldata$days==14]/100, alldata$Litter[alldata$days==14], mean)
+
+  barplot.def((L_masscorrected_percent$y[L_masscorrected_percent$xfac==181]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==0])/massloss.181d,sqrt(L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==181]^2+L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==0]^2)/massloss.181d, ylim=c(-2.5,.5), main="lignin loss (H0-H3)", ylab="% lignin lost : % litter carbon lost", names.arg=typlev)
+
+  barplot.def((C_masscorrected_percent$y[C_masscorrected_percent$xfac==181]-C_masscorrected_percent$y[C_masscorrected_percent$xfac==0])/massloss.181d, sqrt(C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==181]^2+C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==0]^2)/massloss.181d, ylim=c(-2.5,.5), main="carbohydrate loss (H0-H3)", ylab="% carbohydrates lost : % litter carbon lost", names.arg=typlev)
+
+  barplot.def((L_masscorrected_percent$y[L_masscorrected_percent$xfac==475]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==181])/massloss.475d, sqrt(L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==475]^2+L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==475]^2), ylim=c(-2.5,.5), main="lignin loss (H3-H4)", ylab="% lignin lost : % litter carbon lost", names.arg=typlev)
+
+  barplot.def((C_masscorrected_percent$y[C_masscorrected_percent$xfac==475]-C_masscorrected_percent$y[C_masscorrected_percent$xfac==181])/massloss.475d, sqrt(C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==475]^2+C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==475]^2), ylim=c(-2.5,.5), main="carbohydrate loss (H3-H4)", ylab="% carbohydrates lost : % litter carbon lost", names.arg=typlev)
 
 
-barplot.def(C_masscorrected_abs$y[C_masscorrected_abs$xfac==181]-C_masscorrected_abs$y[C_masscorrected_abs$xfac==0],C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==181], ylim=c(-5,0))
+  dev.off()
+
 
 
 
