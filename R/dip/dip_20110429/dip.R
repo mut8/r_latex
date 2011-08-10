@@ -1,7 +1,7 @@
 setwd("/home/lluc/Documents/git/R/dip/dip_20110429")
 
 source("/home/lluc/Documents/git/R/functions.R")
-  
+
 source("startup.R")
 
 source("enzymes.R")
@@ -29,6 +29,17 @@ samples$acc_resp_h3
 ##Timeseries qPCR Fungi to Bacteria ratio##
 ###########################################
 
+
+
+samples$massloss
+colnames(samples)
+
+###########################################
+##Timeseries qPCR Fungi to Bacteria ratio##
+###########################################
+
+pdf("output/timeseries_qPCR.pdf")
+
 var<-alldata$F2BqPCR
 cond<-is.na(var)!=T
 timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=colscale, pch=pch, type="o", endsig=T, legend=T)
@@ -38,6 +49,8 @@ timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=
 cond<-is.na(var)!=T&alldata$days!=14
 timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=colscale, pch=pch, type="o", endsig=T, legend=T)
  
+dev.off()
+
 ##################################################
 ##Correlations with qPCR Fungi to Bacteria ratio##
 ##################################################
@@ -66,7 +79,6 @@ h3.respcor.L.ci
 
 init.L.mean<-tapply(orig_cTIC$L[harvest==0], type[harvest==0], mean)
 init.L.ci<-tapply(orig_cTIC$L[harvest==0], type[harvest==0], CI)
-init.L
 
 h3.resp.mean<-tapply(samples$acc_resp_h3[harvest==6], type[harvest==6], mean)
 
@@ -87,6 +99,108 @@ abline(h=-1)
 barplot.def((h3.respcor.C.mean-init.C.mean)/(init.C.mean*h3.resp.mean), h3.respcor.C.se/(init.C.mean*h3.resp.mean),ylim=c(-2.5, 0))
 abline(h=-1)
 
+
+diftoh0.rsim.cTIC<-dif.by(data.frame(orig_cTIC), harvest==0, type)
+h0.L<-orig_cTIC$L-diftoh0.rsim.cTIC$L
+h0.C<-orig_cTIC$C-diftoh0.rsim.cTIC$C
+
+h0.L
+
+L_masscorrected_percent<-timeseries((orig_cTIC$L*(1-100*samples$massloss/c_lit)-h0.L)*100/h0.L, days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+L_masscorrected_abs<-timeseries((orig_cTIC$L*(1-100*samples$massloss/c_lit)-h0.L), days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+
+C_masscorrected_percent<-timeseries((orig_cTIC$C*(1-100*samples$massloss/c_lit)-h0.C)*100/h0.C, days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+C_masscorrected_abs<-timeseries((orig_cTIC$C*(1-100*samples$massloss/c_lit)-h0.C), days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+
+timeseries(orig_cTIC$C*(1-100*samples$massloss/c_lit)-h0.C, days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+
+L_masscorrected_percent$y[L_masscorrected_percent$xfac==181]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==0]
+L_masscorrected_abs$y[L_masscorrected_abs$xfac==181]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==0]
+
+L_masscorrected_percent$y[L_masscorrected_percent$xfac==375]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==0]
+L_masscorrected_abs$y[L_masscorrected_abs$xfac==181]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==0]
+
+par(mfrow=c(2,2))
+
+barplot.def(L_masscorrected_abs$y[L_masscorrected_abs$xfac==181]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==0], L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==181], ylim=c(-6,0), main="lignin loss (H0-H3)", ylab="d%TIC", names.arg=typlev)
+
+barplot.def(C_masscorrected_abs$y[C_masscorrected_abs$xfac==181]-C_masscorrected_abs$y[C_masscorrected_abs$xfac==0],C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==181], ylim=c(-6,0), main="carbohydrate loss (H0-H3)", ylab="d%TIC", names.arg=typlev)
+
+barplot.def(L_masscorrected_abs$y[L_masscorrected_abs$xfac==475]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==181], L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==475], ylim=c(-6,0), main="lignin loss (H3-H4)", ylab="d%TIC", names.arg=typlev)
+
+barplot.def(C_masscorrected_abs$y[C_masscorrected_abs$xfac==475]-C_masscorrected_abs$y[C_masscorrected_abs$xfac==181], C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==475], ylim=c(-6,0), main="carbohydrate loss (H3-H4)", ylab="d%TIC", names.arg=typlev)
+
+dev.off()
+
+
+abline(a=100, b=-100)
+abline(h=100)
+, massloss=100*samples$massloss/c_lit,normalize=1
+timeseries(orig_cTIC$L*(1-100*samples$massloss/c_lit), days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft")
+
+
+timeseries((orig_cTIC$L+orig_cTIC$Ph)*(1-100*samples$massloss/c_lit), days, type, pch=pch, col=colscale, endsig=T, legend="bottomleft", massloss=100*samples$massloss/c_lit, normalize=1)
+
+
+
+dev.off()
+  
+abline(a=100, b=-100)
+
+tapply(orig_cTIC$L[harvest==0]*(1-(100*samples$massloss[harvest==0]/c_lit[harvest==0]), type[harvest==0],mean)
+tapply(orig_cTIC$L[harvest==2]*(1-100*samples$massloss[harvest==2]/c_lit[harvest==2]), type[harvest==2], mean)
+tapply(orig_cTIC$L[harvest==6]*(1-100*samples$massloss[harvest==6]/c_lit[harvest==6]), type[harvest==6], mean)
+tapply(orig_cTIC$L[harvest==15]*(1-100*samples$massloss[harvest==15]/c_lit[harvest==15]), type[harvest==15], mean)
+
+c_lit<-samples$C_lit
+c_lit[harvest==0]<-c(rep(mean(alldata$C_lit[alldata$days==14 & type=="AK"]),4),
+rep(mean(alldata$C_lit[alldata$days==14&type=="KL"]),4),
+rep(mean(alldata$C_lit[alldata$days==14&type=="OS"]),4),
+rep(mean(alldata$C_lit[alldata$days==14&type=="SW"]),4))
+
+
+samples$N_lit
+colnames(samples)
+
+h3.respcor.L.mean.old<-tapply(orig_cTIC$L[harvest==6]*(1-samples$massloss[harvest==6]), type[harvest==6], mean)
+h3.respcor.L.se.old<-tapply(orig_cTIC$L[harvest==6]*(1-samples$massloss[harvest==6]), type[harvest==6], stderr)
+h3.respcor.L.ci.old<-tapply(orig_cTIC$L[harvest==6]*(1-samples$massloss[harvest==6]), type[harvest==6], CI)
+
+
+h4.respcor.L.mean.old<-
+tapply(orig_cTIC$L[harvest==15]*(1-samples$massloss[harvest==15]), type[harvest==15], mean)
+h4.respcor.L.se.old<-tapply(orig_cTIC$L[harvest==15]*(1-samples$massloss[harvest==15]), type[harvest==15], stderr)
+h4.respcor.L.ci.old<-tapply(orig_cTIC$L[harvest==15]*(1-samples$massloss[harvest==15]), type[harvest==15], CI)
+
+
+h4.resp.mean.old <- tapply(samples$massloss[harvest==15], type[harvest==15], mean)
+h3.resp.mean.old <- tapply(samples$massloss[harvest==6], type[harvest==6], mean)
+
+h4.respcor.C.mean<-tapply(orig_cTIC$C[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], mean)
+h4.respcor.C.se<-tapply(orig_cTIC$C[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], stderr)
+h4.respcor.C.ci<-tapply(orig_cTIC$C[harvest==6]*(1-samples$acc_resp_h3[harvest==6]), type[harvest==6], CI)
+
+barplot.def((h4.respcor.L.mean.old-h3.respcor.L.mean.old),h4.respcor.L.se,ylim=c(-3, 0))
+
+
+barplot.def((
+h4.respcor.L.mean
+-
+init.L.mean
+)/(init.L.mean*h4.resp.mean.old),
+h3.respcor.L.se/(init.L.mean*h3.resp.mean),ylim=c(-2.5, 0))
+abline(h=-1)
+
+barplot.def(
+tapply(alldata$DOC[alldata$days==14],alldata$Litter[alldata$days==14], mean)
+
+
+
+
+
+
+
+###############################################
 colnames(samples)
 samples
 $accresp

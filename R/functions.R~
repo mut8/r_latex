@@ -319,10 +319,10 @@ timeseries <- function(y, xfac, sepfac, nam="", xlab="", ylab="",
 #   errcol<-"darkgrey"
 
       xlev<-sort(as.numeric(levels(factor(xfac))))
-      xf<-as.numeric(xfac)
-      sepfac<-as.factor(sepfac)
+      xf<-as.numeric(xfac[is.na(y)==F])
+      sepfac<-as.factor(sepfac[is.na(y)==F])
       seplev<-levels(sepfac)
-      y<-as.numeric(y)
+      y<-as.numeric(y[is.na(y)==F])
       if(length(col)<length(seplev)) col<-rep(col, length(seplev))
       if(length(lwd)<length(seplev)) lwd<-rep(lwd, length(seplev))
       if(length(lty)<length(seplev)) lty<-rep(lty, length(seplev))

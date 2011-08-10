@@ -39,9 +39,12 @@ print("files added")
 samples<-read.csv("raw_data/samples.csv", sep=";", header=TRUE)
 addpeaks(c("raw_data/furane.csv","raw_data/aromates.csv", "raw_data/phenole.csv", "raw_data/carbos_neu.csv", "raw_data/cyclopentenone.csv", "raw_data/n_compounds_neu.csv", "raw_data/alkan_en_cleaned.csv", "raw_data/the_rest.csv", "raw_data/lignin2.csv", "raw_data/keto-alkyl_alcohole.csv", "raw_data/fa.csv"), sep=",")
 
+peaks
+
+peaks<-read.csv("raw_data/peaks.csv", sep=",", header=TRUE)
 minerals<-read.csv("raw_data/minerals.csv", sep=",", header=TRUE)
 alldata<-read.csv("raw_data/micdif_alldata.csv", sep=",", header=TRUE)
-alldata$days<-rep(c(rep(14,5), rep(97,5), rep(181,5), rep(375,5)),4)
+alldata$days<-rep(c(rep(14,5), rep(97,5), rep(181,5), rep(475,5)),4)
 
 peaks
 
