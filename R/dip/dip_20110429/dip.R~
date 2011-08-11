@@ -25,6 +25,81 @@ source("pca_allpeaks.R")
 
 samples$acc_resp_h3
 
+#################
+##MDS für plfas##
+#################
+
+
+plfa<-read.csv("raw_data/plfa_raw.csv")
+plfa.mds<-metaMDS(plfa[rowSums(plfa)>0,9:ncol(plfa)] / rowSums(plfa[rowSums(plfa)>0,9:ncol(plfa)])
+)
+
+plot(plfa.mds)
+samples.plfas<-scores(plfa.mds, display="site")
+write.csv(scores(plfa.mds, display="species"), "plfa.plfas.csv")
+write.csv(scores(plfa.mds, display="sites"), "plfa.samples.csv")
+summary(
+plfa.mds
+)
+
+
+pdf("output/plfa.mds.pdf")
+plot(plfa.mds, type="n")
+text(scores(plfa.mds, display="species", choices=1:2),labels=colnames(plfa[,9:ncol(plfa)]), cex=.5)
+points(scores(plfa.mds, display="sites", choices=1:2), pch=c(rep(1,10), rep(16,10),rep(2,10), rep(17,9)), col=c(rep(c(rep("black",5),rep("grey",5)),3), rep("black",4), rep("grey",5)))
+abline(h=0, col="grey")
+abline(v=0, col="grey")
+legend("bottomleft", pch=pch, typlev)
+legend("bottomright", col=c("black", "grey"), pch=16, c("3 month", "6 month"))
+dev.off()
+
+##correlation plfas mit fungi to bacteria ratios
+
+is.element(alldata$days, c(14,97,181))->cond
+
+envfit(plfa.mds, data.frame(
+alldata$F2BqPCR[rowSums(plfa)>0,9:ncol(plfa)],
+alldata$F2Bprot
+[rowSums(plfa)>0,9:ncol(plfa)]))
+?envfit
+
+
+##########################################################
+##correlation qPCR and proteomic Fungi to Bacteria ratio##
+##########################################################
+colnames(alldata)
+is.element(alldata$days, c(14,97,181))->cond
+cor.test(tapply(alldata$F2Bprot[cond], list(alldata$Litter[cond],alldata$days[cond]), function(x) mean(x, na.rm=T)),
+tapply(alldata$F2BqPCR[cond], list(alldata$Litter[cond],alldata$days[cond]), function(x) mean(x, na.rm=T)))
+
+pdf("output/qPCR_prot_f2b.pdf")
+plot(tapply(alldata$F2Bprot[cond], list(alldata$Litter[cond],alldata$days[cond]), function(x) mean(x, na.rm=T)),
+tapply(alldata$F2BqPCR[cond], list(alldata$Litter[cond],alldata$days[cond]), function(x) mean(x, na.rm=T)), pch=pch)
+dev.off()
+
+?mean
+
+###############################
+##N compound ratio timeseries##
+###############################
+
+timeseries(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
+timeseries(rowSums(rcTIC[,peaks$class=="ind"]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
+
+timeseries(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))])/rowSums(rcTIC[,peaks$class=="ind"]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
+
+N.groups.rcTIC<-data.frame(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))]),
+rowSums(rcTIC[,peaks$class=="ind"]),
+rcTIC[,peaks$name=="Pyridol"],
+rcTIC[,peaks$name=="N-methyl-pyrrol"])
+
+for(i in 1:4)
+timeseries(N.groups.rcTIC[,i],days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale, normalize=1)
+
+pairs(N.groups.rcTIC, diag.panel=timeseries.panel, upper.panel=panel.cor, lower.panel=l.panel)
+
+rcTIC
+
 ###########################################
 ##Timeseries qPCR Fungi to Bacteria ratio##
 ###########################################
@@ -46,7 +121,7 @@ timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=
 
 #from H2 on
 
-cond<-is.na(var)!=T&alldata$days!=14
+# cond<-is.na(var)!=T&alldata$days!=14
 timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=colscale, pch=pch, type="o", endsig=T, legend=T)
  
 dev.off()
@@ -128,14 +203,18 @@ pdf("losses_ch_l_h0h3_h3h4.pdf")
   par(mfrow=c(2,2))
 
   barplot.def(L_masscorrected_abs$y[L_masscorrected_abs$xfac==181]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==0], sqrt(L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==181]^2+L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==0]^2), ylim=c(-6,0), main="lignin loss (H0-H3)", ylab="d%TIC", names.arg=typlev)
+abline(h=-1)
 
   barplot.def(C_masscorrected_abs$y[C_masscorrected_abs$xfac==181]-C_masscorrected_abs$y[C_masscorrected_abs$xfac==0], sqrt(C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==181]^2+C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==0]^2), ylim=c(-6,0), main="carbohydrate loss (H0-H3)", ylab="d%TIC", names.arg=typlev)
+abline(h=-1)
 
 #   barplot.def(L_C_abs$y[L_C_abs$xfac==181]-L_C_abs$y[L_C_abs$xfac==0], sqrt(L_C_abs$y.errbar[L_C_abs$xfac==181]^2+L_C_abs$y.errbar[L_C_abs$xfac==0]^2), ylim=c(-3,5), main="carbohydrate loss (H0-H3)", ylab="d%TIC", names.arg=typlev)
 
   barplot.def(L_masscorrected_abs$y[L_masscorrected_abs$xfac==475]-L_masscorrected_abs$y[L_masscorrected_abs$xfac==181], sqrt(L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==475]^2+L_masscorrected_abs$y.errbar[L_masscorrected_abs$xfac==475]^2), ylim=c(-6,0), main="lignin loss (H3-H4)", ylab="d%TIC", names.arg=typlev)
+abline(h=-1)
 
   barplot.def(C_masscorrected_abs$y[C_masscorrected_abs$xfac==475]-C_masscorrected_abs$y[C_masscorrected_abs$xfac==181], sqrt(C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==475]^2+C_masscorrected_abs$y.errbar[C_masscorrected_abs$xfac==475]^2), ylim=c(-6,0), main="carbohydrate loss (H3-H4)", ylab="d%TIC", names.arg=typlev)
+abline(h=-1)
 
 massloss.181d<-100*tapply(samples$massloss[days==181], type[days==181], mean)/tapply(alldata$C_lit[alldata$days==14]/100, alldata$Litter[alldata$days==14], mean)
 massloss.475d<-100*
@@ -143,12 +222,16 @@ massloss.475d<-100*
 tapply(alldata$C_lit[alldata$days==14]/100, alldata$Litter[alldata$days==14], mean)
 
   barplot.def((L_masscorrected_percent$y[L_masscorrected_percent$xfac==181]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==0])/massloss.181d,sqrt(L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==181]^2+L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==0]^2)/massloss.181d, ylim=c(-2.5,.5), main="lignin loss (H0-H3)", ylab="% lignin lost : % litter carbon lost", names.arg=typlev)
+abline(h=-1)
 
   barplot.def((C_masscorrected_percent$y[C_masscorrected_percent$xfac==181]-C_masscorrected_percent$y[C_masscorrected_percent$xfac==0])/massloss.181d, sqrt(C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==181]^2+C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==0]^2)/massloss.181d, ylim=c(-2.5,.5), main="carbohydrate loss (H0-H3)", ylab="% carbohydrates lost : % litter carbon lost", names.arg=typlev)
+abline(h=-1)
 
-  barplot.def((L_masscorrected_percent$y[L_masscorrected_percent$xfac==475]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==181])/massloss.475d, sqrt(L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==475]^2+L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==475]^2), ylim=c(-2.5,.5), main="lignin loss (H3-H4)", ylab="% lignin lost : % litter carbon lost", names.arg=typlev)
+  barplot.def((L_masscorrected_percent$y[L_masscorrected_percent$xfac==475]-L_masscorrected_percent$y[L_masscorrected_percent$xfac==181])/massloss.475d, sqrt(L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==475]^2+L_masscorrected_percent$y.errbar[L_masscorrected_percent$xfac==475]^2)/massloss.475d, ylim=c(-2.5,.5), main="lignin loss (H3-H4)", ylab="% lignin lost : % litter carbon lost", names.arg=typlev)
+abline(h=-1)
 
-  barplot.def((C_masscorrected_percent$y[C_masscorrected_percent$xfac==475]-C_masscorrected_percent$y[C_masscorrected_percent$xfac==181])/massloss.475d, sqrt(C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==475]^2+C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==475]^2), ylim=c(-2.5,.5), main="carbohydrate loss (H3-H4)", ylab="% carbohydrates lost : % litter carbon lost", names.arg=typlev)
+  barplot.def((C_masscorrected_percent$y[C_masscorrected_percent$xfac==475]-C_masscorrected_percent$y[C_masscorrected_percent$xfac==181])/massloss.475d, sqrt(C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==475]^2+C_masscorrected_percent$y.errbar[C_masscorrected_percent$xfac==475]^2)/massloss.475d, ylim=c(-2.5,.5), main="carbohydrate loss (H3-H4)", ylab="% carbohydrates lost : % litter carbon lost", names.arg=typlev)
+abline(h=-1)
 
 
   dev.off()

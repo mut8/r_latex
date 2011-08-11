@@ -122,6 +122,8 @@ barplot.def(mean, error, ylab=ylab, names.arg=levels(sep), main=main, ylim=ylim,
 #######################
 ##functions for pairs##
 #######################
+#!!colors and pch hardcoded - change below!!
+
 
 panel.cor <- function(x, y, digits=2, prefix="", cex.cor)
 {
@@ -141,6 +143,13 @@ points(x,y, pch=pch.all, cex=.3)
 cor<-cor.test(x,y)
 if(cor$p.value<0.05) {abline(lm(y~x))}
 }
+
+timeseries.panel<- function(x, ...) {
+plot<-timeseries(x,harvest, type, pch=pch, col=colscale, endsig=T, type="o", add=T)
+plot(plot$y,plot$massloss, type="n", add=T)
+timeseries(x,harvest, type, pch=pch, col=colscale, endsig=T, type="o", add=T)
+}
+
 
 
 #####################

@@ -1,6 +1,7 @@
 pch.all<-c(rep(pch[1],19), rep(pch[2],18), rep(pch[3],19), rep(pch[4],18))
 
 addpeaks<-function(source, sep=",") {
+peaks<-1
 
 for (i in 1:length(source))
 {
@@ -44,7 +45,7 @@ peaks
 peaks<-read.csv("raw_data/peaks.csv", sep=",", header=TRUE)
 minerals<-read.csv("raw_data/minerals.csv", sep=",", header=TRUE)
 alldata<-read.csv("raw_data/micdif_alldata.csv", sep=",", header=TRUE)
-alldata$days<-rep(c(rep(14,5), rep(97,5), rep(181,5), rep(375,5)),4)
+alldata$days<-rep(c(rep(14,5), rep(97,5), rep(181,5), rep(475,5)),4)
 
 peaks
 
@@ -286,16 +287,6 @@ stderr(alldata[alldata$Litter==alldata.stat$type[i] & alldata$Harvest==alldata.s
 }
 
 colscale<-c(grey(0), grey(.3), grey(.5), grey(.7))
-controls$recidx<-recidx[harvest==2 | harvest==6]
-controls$L_PH<-controls$L+controls$Ph
-
-pch<-c(1,16,2,17)
-
-data<-rsim
-cond<-harvest==0
-by<-type
-
-
 
 
 # 
@@ -312,3 +303,5 @@ by<-type
 alldata$CN_inbal<-alldata$C.N_lit/alldata$C.N_mic
 alldata$CP_inbal<-alldata$C.P_lit/alldata$C.Pmic
 alldata$NP_inbal<-alldata$N.P_lit/alldata$C.Pmic
+
+

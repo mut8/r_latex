@@ -1,31 +1,9 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.19)  9 AUG 2011 19:10
+This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2011.8.9)  11 AUG 2011 18:47
 entering extended mode
+ Source specials enabled.
  %&-line parsing enabled.
-**aap_paper.tex
-(./aap_paper.tex
-LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, ngerman, german, german-x-2009-06-19, ngerman-x-2009-06-19, loaded.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2 d
-     %% This is file `elsarticle-template-1a-num.tex',
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no d in font nullfont!
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 2--26
-[] 
- []
-
-(/home/lluc/texmf/tex/latex/elsarticle.cls
+**\input aap_paper.tex
+(./aap_paper.tex (/home/lluc/texmf/tex/latex/elsarticle.cls
 Document Class: elsarticle 2009/09/17, 1.20b: Elsevier Ltd
 \@bls=\dimen102
 (/usr/share/texmf-texlive/tex/latex/base/article.cls
@@ -33,18 +11,18 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size12.clo
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen103
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+)
 (/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -61,11 +39,11 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/etc/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: xetex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
-\Gread@gobject=\count87
+(/usr/share/texmf-texlive/tex/xelatex/xetex-def/xetex.def
+File: xetex.def 2009/11/22 v0.94 LaTeX color/graphics driver for XeTeX (RRM/JK)
+
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
@@ -196,139 +174,93 @@ LaTeX Info: Redefining \em on input line 420.
 ) (./aap_paper.aux)
 \openout1 = `aap_paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 82.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 81.
 
 (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Try loading font information for U+msa on input line 130.
 
-(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count95
-\scratchdimen=\dimen110
-\scratchbox=\box30
-\nofMPsegments=\count96
-\nofMParguments=\count97
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count98
-\MPscratchDim=\dimen111
-\MPnumerator=\count99
-\everyMPtoPDFconversion=\toks19
-)
-LaTeX Font Info:    Try loading font information for U+msa on input line 131.
- (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 131.
+LaTeX Font Info:    Try loading font information for U+msb on input line 130.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 
-Package natbib Warning: Citation `i.e. Kuder1998' on page 2 undefined on input 
-line 145.
+Package natbib Warning: Citation `i.e. Kuder1998' on page 1 undefined on input 
+line 144.
 
 
-Package natbib Warning: Citation `Snajdr2010' on page 2 undefined on input line
- 147.
+Package natbib Warning: Citation `Snajdr2010' on page 1 undefined on input line
+ 146.
 
-[2
+[1
 
 
 ]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 157.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 154.
 
  (/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 157.
-
-Runaway argument?
-! Paragraph ended before \OT1\. was complete.
-<to be read again> 
-                   \par 
-l.160 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-[3] [4]
-Missing character: There is no á in font cmr12!
-Missing character: There is no º in font cmr12!
-Missing character: There is no ƒ in font cmr12!
- [5]
-! Undefined control sequence.
-l.191 \Subsection
-                 {Lignin}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Overfull \hbox (8.44331pt too wide) in paragraph at lines 194--195
-[]\OT1/cmr/m/n/12 Part of non-methoxylated phe-nols py-rol-y-sis prod-ucts (sid
-e chains -CH$[]$CH$[]$,
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 154.
+ [2] [3]
+Missing character: There is no áºƒ in font cmr12!
+ [4]
+Overfull \hbox (2.44592pt too wide) in paragraph at lines 190--191
+[][]\OT1/cmr/m/n/12 Of 38 phe-no-lic py-rol-y-sis prod-ucts were iden-ti-fied, 
+15 of which had guaiacol-
  []
 
 
-Overfull \hbox (65.30777pt too wide) in paragraph at lines 194--195
+Overfull \hbox (8.44331pt too wide) in paragraph at lines 192--193
+[][]\OT1/cmr/m/n/12 Part of non-methoxylated phe-nols py-rol-y-sis prod-ucts (s
+ide chains -CH$[]$CH$[]$,
+ []
+
+
+Overfull \hbox (65.30777pt too wide) in paragraph at lines 192--193
 \OT1/cmr/m/n/12 prod-ucts of lignin, sug-gest-ing that they are py-rol-y-sis pr
 od-ucts of p-hydroxypropanylphenol
  []
 
-[6]
-Overfull \hbox (39.90073pt too wide) in paragraph at lines 209--210
-\OT1/cmr/m/n/12 p\OML/cmm/m/it/12 <\OT1/cmr/m/n/12 0.05?0.001?) and and 6 pyrid
-in and pyrrol deriva-tives (all R \OML/cmm/m/it/12 >\OT1/cmr/m/n/12 0.9, p\OML/
-cmm/m/it/12 <\OT1/cmr/m/n/12 0.05?0.001?).
+
+Overfull \hbox (0.30577pt too wide) in paragraph at lines 196--197
+\OT1/cmr/m/n/12 ra-tios are are dif-fer-ent for G/S com-pounds with dif-fer-ent
+ side chains, propably
  []
 
-[7]
-Runaway argument?
-{ were focusing on changes between the frequency of lignin pyrolysis \ETC.
-! Paragraph ended before \@citex was complete.
-<to be read again> 
-                   \par 
-l.229 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
-(./aap_paper.bbl
+[5] [6] [7] (./aap_paper.bbl
 Overfull \hbox (25.88448pt too wide) in paragraph at lines 9--17
 \OT1/cmr/m/n/12 URL \OT1/cmtt/m/n/12 http://www.springerlink.com/index/10.1007/
 s10533-010-9439-0 
  []
 
-
+[8]
 Overfull \hbox (32.05948pt too wide) in paragraph at lines 19--24
 \OT1/cmr/m/n/12 URL \OT1/cmtt/m/n/12 http://crop.scijournals.org/cgi/doi/10.213
 5/cropsci2004.0238 
  []
 
-[8]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
+Missing character: There is no â€“ in font cmr12!
 
 Overfull \hbox (38.23448pt too wide) in paragraph at lines 26--34
 \OT1/cmr/m/n/12 URL \OT1/cmtt/m/n/12 http://linkinghub.elsevier.com/retrieve/pi
@@ -354,63 +286,38 @@ do?product=UA&colname=WOS&search[]mode=CitingArticles&qid=32&SID=W1Ad1MhL1J1nej
 kjoKD&page=14&doc=136 
  []
 
-
+[9]
 Overfull \hbox (38.23448pt too wide) in paragraph at lines 63--72
 \OT1/cmr/m/n/12 URL \OT1/cmtt/m/n/12 http://linkinghub.elsevier.com/retrieve/pi
 i/S0038071710001331 
  []
 
-[9]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ” in font cmr12!
-) [10] <sidechainratios_new.pdf, id=42, 867.24pt x 867.24pt>
-File: sidechainratios_new.pdf Graphic file (type pdf)
-
-<use sidechainratios_new.pdf> <G_Sy_ratio.pdf, id=43, 505.89pt x 505.89pt>
-File: G_Sy_ratio.pdf Graphic file (type pdf)
-
-<use G_Sy_ratio.pdf>
-Overfull \hbox (74.04848pt too wide) in paragraph at lines 295--340
- [] 
+Missing character: There is no â€” in font cmr12!
+[10]) [11]
+File: sidechainratios_new.pdf Graphic file (type QTm)
+ <use  "sidechainratios_new.pdf" >
+File: G_Sy_ratio.pdf Graphic file (type QTm)
+ <use  "G_Sy_ratio.pdf" >
+Overfull \hbox (74.04848pt too wide) in paragraph at lines 311--356
+ [][] 
  []
 
 
-Overfull \hbox (125.22258pt too wide) in paragraph at lines 348--398
- [] 
+Overfull \hbox (125.22258pt too wide) in paragraph at lines 364--414
+ [][] 
  []
 
 
 Package natbib Warning: There were undefined citations.
 
-[11 <./sidechainratios_new.pdf>] [12] [13] [14 <./G_Sy_ratio.pdf>]
-(./aap_paper.aux) )
-(\end occurred inside a group at level 1)
-
-### semi simple group (level 1) entered at line 228 (\begingroup)
-### bottom level 
+[12] [13] [14] [15] (./aap_paper.aux) ) 
 Here is how much of TeX's memory you used:
- 2243 strings out of 495021
- 27950 string characters out of 1181035
- 107001 words of memory out of 3000000
- 5418 multiletter control sequences out of 15000+50000
+ 1896 strings out of 495683
+ 23191 string characters out of 1187627
+ 93890 words of memory out of 3000000
+ 5032 multiletter control sequences out of 15000+50000
  11425 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 32i,8n,30p,1012b,288s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/lluc/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.60
-0pk></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmr5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb><
-/usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type
-1/public/amsfonts/cm/cmtt12.pfb>
-Output written on aap_paper.pdf (14 pages, 381035 bytes).
-PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 32i,8n,30p,1063b,259s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+Output written on aap_paper.pdf (15 pages).

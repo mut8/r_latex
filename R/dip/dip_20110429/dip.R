@@ -25,6 +25,82 @@ source("pca_allpeaks.R")
 
 samples$acc_resp_h3
 
+#################
+##MDS für plfas##
+#################
+
+
+plfa<-read.csv("raw_data/plfa_raw.csv")
+plfa.mds<-metaMDS(plfa[rowSums(plfa)>0,9:ncol(plfa)] / rowSums(plfa[rowSums(plfa)>0,9:ncol(plfa)])
+)
+
+plot(plfa.mds)
+samples.plfas<-scores(plfa.mds, display="site")
+write.csv(scores(plfa.mds, display="species"), "plfa.plfas.csv")
+write.csv(scores(plfa.mds, display="sites"), "plfa.samples.csv")
+summary(
+plfa.mds
+)
+
+
+pdf("output/plfa.mds.pdf")
+plot(plfa.mds, type="n")
+text(scores(plfa.mds, display="species", choices=1:2),labels=colnames(plfa[,9:ncol(plfa)]), cex=.5)
+points(scores(plfa.mds, display="sites", choices=1:2), pch=c(rep(1,10), rep(16,10),rep(2,10), rep(17,9)), col=c(rep(c(rep("black",5),rep("grey",5)),3), rep("black",4), rep("grey",5)))
+abline(h=0, col="grey")
+abline(v=0, col="grey")
+legend("bottomleft", pch=pch, typlev)
+legend("bottomright", col=c("black", "grey"), pch=16, c("3 month", "6 month"))
+dev.off()
+
+##correlation plfas mit fungi to bacteria ratios
+
+is.element(alldata$days, c(14,97,181))->cond
+
+envfit(plfa.mds, alldata$F2BqPCR[rowSums(plfa)>0], na.rm=T)
+,
+alldata$F2Bprot
+[rowSums(plfa)>0,9:ncol(plfa)]))
+?envfit
+
+
+
+##########################################################
+##correlation qPCR and proteomic Fungi to Bacteria ratio##
+##########################################################
+colnames(alldata)
+is.element(alldata$days, c(14,97,181))->cond
+cor.test(tapply(alldata$F2Bprot[cond], list(alldata$Litter[cond],alldata$days[cond]), function(x) mean(x, na.rm=T)),
+tapply(alldata$F2BqPCR[cond], list(alldata$Litter[cond],alldata$days[cond]), function(x) mean(x, na.rm=T)))
+
+pdf("output/qPCR_prot_f2b.pdf")
+plot(tapply(alldata$F2Bprot[cond], list(alldata$Litter[cond],alldata$days[cond]), function(x) mean(x, na.rm=T)),
+tapply(alldata$F2BqPCR[cond], list(alldata$Litter[cond],alldata$days[cond]), function(x) mean(x, na.rm=T)), pch=pch)
+dev.off()
+
+?mean
+
+###############################
+##N compound ratio timeseries##
+###############################
+
+timeseries(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
+timeseries(rowSums(rcTIC[,peaks$class=="ind"]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
+
+timeseries(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))])/rowSums(rcTIC[,peaks$class=="ind"]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
+
+N.groups.rcTIC<-data.frame(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))]),
+rowSums(rcTIC[,peaks$class=="ind"]),
+rcTIC[,peaks$name=="Pyridol"],
+rcTIC[,peaks$name=="N-methyl-pyrrol"])
+
+for(i in 1:4)
+timeseries(N.groups.rcTIC[,i],days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale, normalize=1)
+
+pairs(N.groups.rcTIC, diag.panel=timeseries.panel, upper.panel=panel.cor, lower.panel=l.panel)
+
+rcTIC
+
 ###########################################
 ##Timeseries qPCR Fungi to Bacteria ratio##
 ###########################################
@@ -46,7 +122,7 @@ timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=
 
 #from H2 on
 
-cond<-is.na(var)!=T&alldata$days!=14
+# cond<-is.na(var)!=T&alldata$days!=14
 timeseries(alldata$F2BqPCR[cond], alldata$days[cond], alldata$Litter[cond], col=colscale, pch=pch, type="o", endsig=T, legend=T)
  
 dev.off()

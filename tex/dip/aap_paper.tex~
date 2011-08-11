@@ -1,5 +1,5 @@
 
-d%% This is file `elsarticle-template-1a-num.tex',
+%% This is file `elsarticle-template-1a-num.tex',
 %%
 %% Copyright 2009 Elsevier Ltd
 %%
@@ -58,27 +58,26 @@ d%% This is file `elsarticle-template-1a-num.tex',
 %% provided with \biboptions{...} command. Following options are
 %% valid:
 
-%%   round  -  round parentheses are used (default)
-%%   square -  square brackets are used   [option]
-%%   curly  -  curly braces are used      {option}
-%%   angle  -  angle brackets are used    <option>
-%%   semicolon  -  multiple citations separated by semi-colon
-%%   colon  - same as semicolon, an earlier confusion
-%%   comma  -  separated by comma
-%%   numbers-  selects numerical citations
-%%   super  -  numerical citations as superscripts
-%%   sort   -  sorts multiple citations according to order in ref. list
-%%   sort&compress   -  like sort, but also compresses numerical citations
-%%   compress - compresses without sorting
-%%
-%% \biboptions{comma,round}
+%  round  -  round parentheses are used (default)
+%  square -  square brackets are used   [option]
+%  curly  -  curly braces are used      {option}
+%  angle  -  angle brackets are used    <option>
+%  semicolon  -  multiple citations separated by semi-colon
+%  colon  - same as semicolon, an earlier confusion
+%  comma  -  separated by comma
+%  numbers-  selects numerical citations
+%  super  -  numerical citations as superscripts
+%  sort   -  sorts multiple citations according to order in ref. list
+%  sort&compress   -  like sort, but also compresses numerical citations
+%  compress - compresses without sorting
+
+\biboptions{comma,round}
 
 % \biboptions{}
 \usepackage{textcomp, fixltx2e}
 
 
- \journal{Journal of Analytical and Applied Pyrolysis}
-
+\journal{Journal of Analytical and Applied Pyrolysis}
 \begin{document}
 
 \begin{frontmatter}
@@ -142,7 +141,7 @@ d%% This is file `elsarticle-template-1a-num.tex',
 
 Research on litter decomposition is [en vogue] \cite{Prescott2010}. Insufficient specifity of traditional methods to determine plant fibres is widely accepted \cite{Hatfield2005}. Analytical pyrolysis can provide and fast a cheap method to investigate chemical transformations of plant polymers during decomposition. 
 
-Analytical pyrolysis is also frequently applied to characterize natural organic polymers in soil organic matter [and dissolved organic matter?]. Plant derived compounds make up an important part of pyrolysis products found. The relative abundances of such markers were shown to hold key information on past climates and decomposition conditions \cite{i.e. Kuder1998, Schellekens2009, Schellekens2011}. 
+Analytical pyrolysis was frequently applied to characterize natural organic polymers in soil organic matter [and dissolved organic matter?]. Plant derived compounds make up an important part of pyrolysis products found. The relative abundances of such markers were shown to hold key information on past climates and decomposition conditions \cite{i.e. Kuder1998, Schellekens2009, Schellekens2011}. 
 
 Only a handful of Pyr-GC/MS studies tracing changing pyrolysis markers during litter decomposition were published, none of them includes indepth. [To our best knowledge] The only published work directly studying the decay of plant leaf litter is \cite{Franchini2002}. \cite{Snajdr2010} presents basic thermochemolysis data.  Straw was incubated with n. Several studies monitor the decomposition of woody material with Pyr GC/MS [lit.] or litter/soils mixtures[lit.]. None of the studies mentioned above analysis decomposition trends of individual pyrolysis products.
 
@@ -150,13 +149,13 @@ While assignment to major compounds classes (like ligin or carbohydrate) based o
 
 This study compares pyrograms of beech litter from different site after up to 15 month of climate chamber decomposition. Beech litter shows exceptionally slow decomposition rates both in nature \citep{Klotzbucher2011} and in our climate chamber experiment. Therefore, we do not focus on the accumulation of recalcitrant compounds, but focus on how individual pyrolysis markers accumulate or deplete relative to their compounds of origin which might provide insight into changes in polymer condensation patterns. Additionally, we explore to which extend differences of pyrolysis products remain after incubation.
 
-[hypothesis?]
+
 
 \section{Material and Methods}
 
 We analyzed samples from a litter decomposition experiment with Pyr-GC/MS. Beech litter from 4 different sites in Austria was collected in October 2008, cut to pieces \textless 0.5 cm, homogenized, sterilized and inoculated with a common inoculate for all sites. Litter was incubated in a climate chamber at 15 \textdegree C and was kept at 60 \% moisture \citep{Wanek2010}.
 Total mass loss after 15 month was between 7 and 15 \%.
-Accumulated respiration after 6 month accounts for nn.to nn\% of the litter carbon pool, after 15 month between n and n\.
+Accumulated respiration after 6 month accounts for nn.to nn\% of the litter carbon pool, after 15 month between n and n.
 
 Pyrolysis-GC/MS was performed on a Pyroprobe 5250 pyrolysis system (CDS Analytical) coupled to a Thermo Trace gas chromatograph an a DSQ II MS detector (both Thermo Scientific) equipped with a carbowax colomn (Supelcowax 10, Sigma-Aldrich). 2-300 \textmu g dried and finely ball-milled litter were heated to 600\textdegree C for 10 seconds in helium atmosphere. The temperature of the valve oven and the transfer line to the GC injection port were set to 250\textdegree C,a 10x split injection was applied with the injector heated to 240\textdegree C. GC Oven temperature was constant at 50 \textdegree C for 2 minutes, followed by an increase of 7\textdegree C/min to a final temperature of 260 \textdegree C, which was held for 15 minutes. The transfer line was heated to 270 \textdegree C. The MS detector was set for electron ionization at 70 EV, the ion source was heated to 270\textdegree C. Detection was set to cycle between m/z 20 and 300 with a cycle time of 0.3 seconds.
 
@@ -195,7 +194,7 @@ Part of non-methoxylated phenols pyrolysis products (side chains -CH$_2$CH$_3$, 
 
 In both syringol and gaiacol the ratio between the abundances of pyrolysis products is the same.
 
-Guaiacol to Syringol ratios were constant over decomposition time. 
+Guaiacol to Syringol ratios were constant over decomposition time. The ratios are are different for G/S compounds with different side chains, propably due to changing MS resposes of the compounds 
 
 Most important differences between sites were observed in the ratio between Guaiacol
 
@@ -206,16 +205,18 @@ The pattern of abundances of different side chains was the same for guaiacol and
 
 \subsection{N compounds}
 
-11 nitrogen containing compounds were identified, including two indole three pyridine and 7 pyrrol derrivatives. Within the N compounds, peaks were highly correlated within two groups.  (methylindol and indole (R=0.98, p\textless 0.05?0.001?) and  and 6 pyridin and pyrrol derivatives (all R \textgreater 0.9, p\textless 0.05?0.001?). The two groups were correlated to each other (R = 0.77-0.87, p\textless 0.05?0.001?). 
-
-2 pyrrol derivatices (N-methyl-pyrrol and methylpyrrol[II]) and pyridol showed were not or less strict correlated to the other compounds, due to low abundance. Furthermore, all N markers except the three mentioned before were correlated to litter N content (R \textgreater 0.81, p \textless 0.001.
+11 nitrogen containing compounds were identified, including two indole three pyridine and 5 pyrrol derrivatives. Methylindol and indole (R=0.98, p\textless 0.05?0.001?) were highly correlated to each other  as  and 6 pyridin and pyrrol derivatives (all R \textgreater 0.9, p\textless 0.05?0.001?). The two groups were correlated to each other (R = 0.77-0.87, p\textless 0.05?0.001?). 
+2 pyrrol derivatices (N-methyl-pyrrol and methylpyrrol[II]) and pyridol showed were not or less strictly correlated to the other compounds, due to low abundance. 
+Furthermore, all N markers except the three mentioned before were correlated to litter N content (R \textgreater 0.81, p \textless 0.001.
 
 While N compounds generally increase in 
 
 Pyridol looses during first three month, then follows general N trend.
 
 \subsection{Carbohydrates}
-In total, 42 carbohydrate derived pyrolysis products were identified either by their structure or by comparison to reference material (celluluse, xylran, glucose, ...). Unlike lignin or N compounds, carbohydrate pyrolysis products do not follow a common trend, but - reflecting the differences within this group, 
+In total, 42 carbohydrate derived pyrolysis products were identified either by their structure or by comparison to reference material (celluluse, xylran, glucose, ...). Unlike lignin or N compounds, carbohydrate pyrolysis products do not follow a common trend, but - reflecting the differences within this group. About a third of the peaks could not be identified but were assigned to carbohydrates because they are present reference pyrograms of cabrohydrates, but not in other compounds.
+
+Methylated cyclopentenone derivatives show an increase over decomposition, while derivative with keto- or hydroxy- side chains show decreases over decomposition.
 
 Furanmethanol shows an especially high degradation rate, loosing 15 to 30 \% of it's initial contribution to the total peak area over 15 month.
 
@@ -361,7 +362,7 @@ F1.1=O&		5-Methyl-2-furancarboxaldehyde&	Furan&			&		14.23&		110&	109+110&	f&	C&
 F=O&		Butyrolactone&			Furan&			&		15.22&		86&	56+86&		cp&	C&	12.37\\
 F1-OH&		Furanmethanol&			Furan&			&		15.61&		98&	98&		cp&	C&	5.21\\
 FH2-1&		5-Methyl-2(5H)-furanone&	Furan&			&		16.06&		98&	55+98&		f&	C&	3.92\\
-F-OH.1.1=O	5-hydroxymethylfuran-1-carboxaldehyde&	Furan&		&		27.51&		126&	97+126&		f&	C&	2.17\\
+F-OH.1.1=O&	5-hydroxymethylfuran-1-carboxaldehyde&	Furan&		&		27.51&		126&	97+126&		f&	C&	2.17\\
 &		Unknown furan derivative&	Furan&			&		6.36&		&	&		f&	C&	1.93\\
 
 \\

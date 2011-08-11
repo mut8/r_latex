@@ -1,5 +1,5 @@
 
-d%% This is file `elsarticle-template-1a-num.tex',
+%% This is file `elsarticle-template-1a-num.tex',
 %%
 %% Copyright 2009 Elsevier Ltd
 %%
@@ -58,27 +58,26 @@ d%% This is file `elsarticle-template-1a-num.tex',
 %% provided with \biboptions{...} command. Following options are
 %% valid:
 
-%%   round  -  round parentheses are used (default)
-%%   square -  square brackets are used   [option]
-%%   curly  -  curly braces are used      {option}
-%%   angle  -  angle brackets are used    <option>
-%%   semicolon  -  multiple citations separated by semi-colon
-%%   colon  - same as semicolon, an earlier confusion
-%%   comma  -  separated by comma
-%%   numbers-  selects numerical citations
-%%   super  -  numerical citations as superscripts
-%%   sort   -  sorts multiple citations according to order in ref. list
-%%   sort&compress   -  like sort, but also compresses numerical citations
-%%   compress - compresses without sorting
-%%
-%% \biboptions{comma,round}
+%  round  -  round parentheses are used (default)
+%  square -  square brackets are used   [option]
+%  curly  -  curly braces are used      {option}
+%  angle  -  angle brackets are used    <option>
+%  semicolon  -  multiple citations separated by semi-colon
+%  colon  - same as semicolon, an earlier confusion
+%  comma  -  separated by comma
+%  numbers-  selects numerical citations
+%  super  -  numerical citations as superscripts
+%  sort   -  sorts multiple citations according to order in ref. list
+%  sort&compress   -  like sort, but also compresses numerical citations
+%  compress - compresses without sorting
+
+\biboptions{comma,round}
 
 % \biboptions{}
 \usepackage{textcomp, fixltx2e}
 
 
- \journal{Journal of Analytical and Applied Pyrolysis}
-
+\journal{Journal of Analytical and Applied Pyrolysis}
 \begin{document}
 
 \begin{frontmatter}
@@ -142,7 +141,7 @@ d%% This is file `elsarticle-template-1a-num.tex',
 
 Research on litter decomposition is [en vogue] \cite{Prescott2010}. Insufficient specifity of traditional methods to determine plant fibres is widely accepted \cite{Hatfield2005}. Analytical pyrolysis can provide and fast a cheap method to investigate chemical transformations of plant polymers during decomposition. 
 
-Analytical pyrolysis is also frequently applied to characterize natural organic polymers in soil organic matter [and dissolved organic matter?]. Plant derived compounds make up an important part of pyrolysis products found. The relative abundances of such markers were shown to hold key information on past climates and decomposition conditions \cite{i.e. Kuder1998, Schellekens2009, Schellekens2011}. 
+Analytical pyrolysis was frequently applied to characterize natural organic polymers in soil organic matter [and dissolved organic matter?]. Plant derived compounds make up an important part of pyrolysis products found. The relative abundances of such markers were shown to hold key information on past climates and decomposition conditions \cite{i.e. Kuder1998, Schellekens2009, Schellekens2011}. 
 
 Only a handful of Pyr-GC/MS studies tracing changing pyrolysis markers during litter decomposition were published, none of them includes indepth. [To our best knowledge] The only published work directly studying the decay of plant leaf litter is \cite{Franchini2002}. \cite{Snajdr2010} presents basic thermochemolysis data.  Straw was incubated with n. Several studies monitor the decomposition of woody material with Pyr GC/MS [lit.] or litter/soils mixtures[lit.]. None of the studies mentioned above analysis decomposition trends of individual pyrolysis products.
 
@@ -156,7 +155,7 @@ This study compares pyrograms of beech litter from different site after up to 15
 
 We analyzed samples from a litter decomposition experiment with Pyr-GC/MS. Beech litter from 4 different sites in Austria was collected in October 2008, cut to pieces \textless 0.5 cm, homogenized, sterilized and inoculated with a common inoculate for all sites. Litter was incubated in a climate chamber at 15 \textdegree C and was kept at 60 \% moisture \citep{Wanek2010}.
 Total mass loss after 15 month was between 7 and 15 \%.
-Accumulated respiration after 6 month accounts for nn.to nn\% of the litter carbon pool, after 15 month between n and n\.
+Accumulated respiration after 6 month accounts for nn.to nn\% of the litter carbon pool, after 15 month between n and n.
 
 Pyrolysis-GC/MS was performed on a Pyroprobe 5250 pyrolysis system (CDS Analytical) coupled to a Thermo Trace gas chromatograph an a DSQ II MS detector (both Thermo Scientific) equipped with a carbowax colomn (Supelcowax 10, Sigma-Aldrich). 2-300 \textmu g dried and finely ball-milled litter were heated to 600\textdegree C for 10 seconds in helium atmosphere. The temperature of the valve oven and the transfer line to the GC injection port were set to 250\textdegree C,a 10x split injection was applied with the injector heated to 240\textdegree C. GC Oven temperature was constant at 50 \textdegree C for 2 minutes, followed by an increase of 7\textdegree C/min to a final temperature of 260 \textdegree C, which was held for 15 minutes. The transfer line was heated to 270 \textdegree C. The MS detector was set for electron ionization at 70 EV, the ion source was heated to 270\textdegree C. Detection was set to cycle between m/z 20 and 300 with a cycle time of 0.3 seconds.
 
@@ -361,25 +360,26 @@ F1.1=O&		5-Methyl-2-furancarboxaldehyde&	Furan&			&		14.23&		110&	109+110&	f&	C&
 F=O&		Butyrolactone&			Furan&			&		15.22&		86&	56+86&		cp&	C&	12.37\\
 F1-OH&		Furanmethanol&			Furan&			&		15.61&		98&	98&		cp&	C&	5.21\\
 FH2-1&		5-Methyl-2(5H)-furanone&	Furan&			&		16.06&		98&	55+98&		f&	C&	3.92\\
-F-OH.1.1=O	5-hydroxymethylfuran-1-carboxaldehyde&	Furan&		&		27.51&		126&	97+126&		f&	C&	2.17\\
+F-OH.1.1=O&	5-hydroxymethylfuran-1-carboxaldehyde&	Furan&		&		27.51&		126&	97+126&		f&	C&	2.17\\
+&		Unknown furan derivative&	Furan&			&		6.36&		&	&		f&	C&	1.93\\
+
 \\
-% "40","cp11","10.26_2-cyclopenten-1-one",10.26,"82","53+54+52","cp","C",2.020538261,FALSE,NA,NA
-% "41","cp21","10.51_2-methyl-2-cyclopenten-1-one",10.51,"96","53+96","cp","C",2.36623591,FALSE,NA,NA
-% "42","cp31","13.31_3-methyl-cyclopentanone",13.31,"","67+96","cp","C",4.0617533325,FALSE,NA,NA
-% "43","cp4","13.69_dimethylcyclopentenone",13.69,"110","67+95+110","cp","C",1.6276422925,FALSE,NA,NA
-% "44","cp51","14.44_2-cyclopenten-1,4-dione",14.44,"96","54+68+96","cp","C",1.6790668675,FALSE,NA,NA
-% "45","cp6","17.51_1,2-cylopentandione",17.51,"98","55+98","cp","C",2.2214713485,FALSE,NA,NA
-% "46","cp71","18.14_2-cyclopenten-1-one,_-2-hydroxy-3-me",18.14,"98","98","cp","C",15.95856595,FALSE,NA,NA
-% "47","cp8","18.42_1,2-cyclopentanedione,_-3-methyl-",18.42,"112","69+112","cp","C",2.735582125,FALSE,NA,NA
-% "66","f31","unknown_furan_6.36",NA,"","","f","C",1.9282758805,FALSE,NA,NA
-% "67","cp41","cyclopentanone_6.99",NA,"","","cp","C",0,FALSE,NA,NA
-% "71","f82","methylfurane2_7.64",NA,"","","f","C",2.0044374263,FALSE,NA,NA
-% "76","cp131","1-Hydroxy-2-propanone_ch_10.69",NA,"","","cp","C",2.4592896545,FALSE,NA,NA
-% "77","cp14","unknown_ch_11.38",NA,"","","cp","C",4.6641589255,FALSE,NA,NA
-% "80","cp17","unknown_ch_15.56",NA,"","","cp","C",119.6856377927,FALSE,NA,NA
-% "82","cp19","unknown_ch_16.17",NA,"","","cp","C",2.5775022825,FALSE,NA,NA
-% "83","cp20","unknown_17.67",NA,"","","cp","C",1.1554018384,FALSE,NA,NA
-% "123","cp15","Acetaldehyde",2.06,"44","29+44","cp","C",1.044112118,FALSE,NA,NA
+&		2-Cyclopenten-1-one&		Cyclopentenone&		&		10.26&		82&	53+54+52&	cp&	C&	2.02\\
+&		2-Methyl-2-cyclopenten-1-one&	Cyclopentenone&		&		10.51&		96&	53+96&		cp&	C&	2.37\\
+&		3-Methyl-cyclopentanone&	Cyclopentenone&		&		13.31&		&	67+96&		cp&	C&	4.06\\
+&		Dimethylcyclopentenone&		Cyclopentenone&		&		13.69&		110&	67+95+110&	cp&	C&	1.63\\
+&		2-Cyclopenten-1,4-dione&	Cyclopentenone&		&		14.44&		96&	54+68+96&	cp&	C&	1.68\\
+&		1,2-Cylopentandione&		Cyclopentenone&		&		17.51&		986	55+98&		cp&	C&	2.22\\
+&		2-Hydroxy-3-methyl-2-cyclopenten-1-one&	Cyclopentenone&	&		18.14&		98&	98&		cp&	C&	15.96\\
+&		3-Methyl-1,2-cyclopentanedione&	Cyclopentenone&		&		18.42&		112&	69+112&		cp&	C&	2.74\\
+&		Cyclopentanone&			Cyclopentenone&		&		6.99&		&	&		cp&	C&	b.d.\\
+&		Methylfurane[II]&		Furan&			&		7.64&		&	&		f&	C&	2.00\\
+&		1-Hydroxy-2-propanone&		&			&		10.69&		&	&		cp&	C&	2.46\\
+&		Unknown carbohydrate&		&			&		11.38&		&	&		cp&	C&	4.66\\
+&		Unknown carbohydrate&		&			&		15.56&		&	&		cp&	C&	119.69\\
+&		Unknown carbohydrate&		&			&		16.17&		&	&		cp&	C&	2.58\\
+&		Unknown carbohydrate&		&			&		17.67&		&	&		cp&	C&	1.16\\
+&		Acetaldehyde&			&			&		2.06&		44&	29+44&		cp&	C&	1.04\\
 \\
 &		2-Oxopropanoic Acid, ME&	&			&		7.92&		102&	43+102&		cp&	C&	0.58\\
 &		1-Hydroxypropanone&		&			&		9.24&		74&	43&		cp&	C&	1.43\\

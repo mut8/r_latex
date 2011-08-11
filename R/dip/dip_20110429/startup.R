@@ -39,8 +39,6 @@ print("files added")
 samples<-read.csv("raw_data/samples.csv", sep=";", header=TRUE)
 addpeaks(c("raw_data/furane.csv","raw_data/aromates.csv", "raw_data/phenole.csv", "raw_data/carbos_neu.csv", "raw_data/cyclopentenone.csv", "raw_data/n_compounds_neu.csv", "raw_data/alkan_en_cleaned.csv", "raw_data/the_rest.csv", "raw_data/lignin2.csv", "raw_data/keto-alkyl_alcohole.csv", "raw_data/fa.csv"), sep=",")
 
-peaks
-
 peaks<-read.csv("raw_data/peaks.csv", sep=",", header=TRUE)
 minerals<-read.csv("raw_data/minerals.csv", sep=",", header=TRUE)
 alldata<-read.csv("raw_data/micdif_alldata.csv", sep=",", header=TRUE)
@@ -286,16 +284,6 @@ stderr(alldata[alldata$Litter==alldata.stat$type[i] & alldata$Harvest==alldata.s
 }
 
 colscale<-c(grey(0), grey(.3), grey(.5), grey(.7))
-controls$recidx<-recidx[harvest==2 | harvest==6]
-controls$L_PH<-controls$L+controls$Ph
-
-pch<-c(1,16,2,17)
-
-data<-rsim
-cond<-harvest==0
-by<-type
-
-
 
 
 # 
@@ -312,3 +300,5 @@ by<-type
 alldata$CN_inbal<-alldata$C.N_lit/alldata$C.N_mic
 alldata$CP_inbal<-alldata$C.P_lit/alldata$C.Pmic
 alldata$NP_inbal<-alldata$N.P_lit/alldata$C.Pmic
+
+

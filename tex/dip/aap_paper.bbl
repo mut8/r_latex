@@ -70,15 +70,6 @@ ination of gross rates of amino acid production and immobilization in
 \newline\urlprefix\url{http://linkinghub.elsevier.com/retrieve/pii/S0038071710%
 001331}
 
-\bibitem{Kuder1998}
-T.~Kuder, M.~A. Kruge,
-  \href{http://dx.doi.org/10.1016/S0146-6380(98)00092-8}{{Preservation of
-  biomolecules in sub-fossil plants from raised peat bogs — a potential
-  paleoenvironmental proxy}}, Organic Geochemistry 29~(5-7) (1998) 1355--1368.
-\newblock \href {http://dx.doi.org/10.1016/S0146-6380(98)00092-8}
-  {\path{doi:10.1016/S0146-6380(98)00092-8}}.
-\newline\urlprefix\url{http://dx.doi.org/10.1016/S0146-6380(98)00092-8}
-
 \bibitem{Ralph1991a}
 J.~Ralph, R.~D. Hatfield,
   \href{http://pubs.acs.org/doi/abs/10.1021/jf00008a014}{{Pyrolysis-GC-MS
@@ -92,6 +83,15 @@ J.~Ralph, R.~D. Hatfield,
 G.~Chiavari, G.~C. Galletti, {Pyrolysis-gas chromatography/mass spectrometry of
   amino acids}, Journal of Analytical and Applied Pyrolysis 24 (1992) 123--
   137.
+
+\bibitem{Kuder1998}
+T.~Kuder, M.~A. Kruge,
+  \href{http://dx.doi.org/10.1016/S0146-6380(98)00092-8}{{Preservation of
+  biomolecules in sub-fossil plants from raised peat bogs — a potential
+  paleoenvironmental proxy}}, Organic Geochemistry 29~(5-7) (1998) 1355--1368.
+\newblock \href {http://dx.doi.org/10.1016/S0146-6380(98)00092-8}
+  {\path{doi:10.1016/S0146-6380(98)00092-8}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1016/S0146-6380(98)00092-8}
 
 \bibitem{Oksanen2011}
 J.~Oksanen, F.~G. Blanchet, R.~Kindt, P.~Legendre, R.~O'Hara, G.~L. Simpson,
