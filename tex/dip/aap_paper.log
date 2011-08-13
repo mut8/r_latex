@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2011.8.9)  11 AUG 2011 18:47
+This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2011.8.9)  12 AUG 2011 21:02
 entering extended mode
  Source specials enabled.
  %&-line parsing enabled.
@@ -297,27 +297,28 @@ Missing character: There is no — in font cmr12!
 File: sidechainratios_new.pdf Graphic file (type QTm)
  <use  "sidechainratios_new.pdf" >
 File: G_Sy_ratio.pdf Graphic file (type QTm)
- <use  "G_Sy_ratio.pdf" >
-Overfull \hbox (74.04848pt too wide) in paragraph at lines 311--356
+ <use  "G_Sy_ratio.pdf" > [12]
+Overfull \hbox (74.04848pt too wide) in paragraph at lines 312--357
  [][] 
  []
 
-
-Overfull \hbox (125.22258pt too wide) in paragraph at lines 364--414
+[13]
+Overfull \hbox (125.22258pt too wide) in paragraph at lines 366--416
  [][] 
  []
 
+[14]
 
 Package natbib Warning: There were undefined citations.
 
-[12] [13] [14] [15] (./aap_paper.aux) ) 
+[15] [16] (./aap_paper.aux) ) 
 Here is how much of TeX's memory you used:
- 1896 strings out of 495683
- 23191 string characters out of 1187627
- 93890 words of memory out of 3000000
- 5032 multiletter control sequences out of 15000+50000
+ 1897 strings out of 495683
+ 23202 string characters out of 1187627
+ 78890 words of memory out of 3000000
+ 5033 multiletter control sequences out of 15000+50000
  11425 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  32i,8n,30p,1063b,259s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on aap_paper.pdf (15 pages).
+Output written on aap_paper.pdf (16 pages).

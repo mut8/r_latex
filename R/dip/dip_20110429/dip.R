@@ -25,6 +25,10 @@ source("pca_allpeaks.R")
 
 samples$acc_resp_h3
 
+
+
+
+
 #################
 ##MDS für plfas##
 #################
@@ -87,7 +91,7 @@ dev.off()
 timeseries(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
 timeseries(rowSums(rcTIC[,peaks$class=="ind"]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
 
-timeseries(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))])/rowSums(rcTIC[,peaks$class=="ind"]),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
+timeseries(rowSums(rcTIC[,peaks$class=="ind"]/rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p7"))])),days, type, endsig=T, legend="bottomleft", pch=pch, col=colscale)
 
 N.groups.rcTIC<-data.frame(rowSums(rcTIC[,is.element(peaks$X, c("p2","p3","p4", "p5", "p6", "p2"))]),
 rowSums(rcTIC[,peaks$class=="ind"]),
@@ -99,7 +103,14 @@ timeseries(N.groups.rcTIC[,i],days, type, endsig=T, legend="bottomleft", pch=pch
 
 pairs(N.groups.rcTIC, diag.panel=timeseries.panel, upper.panel=panel.cor, lower.panel=l.panel)
 
-rcTIC
+which(peaks$origin=="N")
+
+for (i in which(peaks$origin=="N")){
+print(peaks$name[i])
+aov<-anova(lm(rsim[,i] ~ harvest*type))
+print(aov)
+}
+
 
 ###########################################
 ##Timeseries qPCR Fungi to Bacteria ratio##

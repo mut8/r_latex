@@ -57,11 +57,12 @@ dev.off()
 
 is.element(alldata$days, c(14,97,181))->cond
 
-envfit(plfa.mds, data.frame(
-alldata$F2BqPCR[rowSums(plfa)>0,9:ncol(plfa)],
+envfit(plfa.mds, alldata$F2BqPCR[rowSums(plfa)>0], na.rm=T)
+,
 alldata$F2Bprot
 [rowSums(plfa)>0,9:ncol(plfa)]))
 ?envfit
+
 
 
 ##########################################################
