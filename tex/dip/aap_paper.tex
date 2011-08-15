@@ -169,6 +169,12 @@ Peak areas were multiplied by Rf before addition to calculate percentages of TIC
 
 Relative peak areas in both integrations are different from weight\%, but allow tracing of accumulation/depletion of these substance classes during decomposition \citep{Kuder1998}. 
 
+Percent of the initial content lost during decomposition were calculated according to
+
+\begin{equation}
+\% lost = \frac {mean()actual \%)} {1-\frac{carbon respired}{initial carbon content}} - \% mean initial content
+\end{equation}
+
 \subsection{Litter mass loss and respiration}
 
 \subsection{Statistical analysis}
@@ -229,6 +235,21 @@ Methylated cyclopentenone derivatives show an increase over decomposition, while
 Furanmethanol shows an especially high degradation rate, loosing 15 to 30 \% of it's initial contribution to the total peak area over 15 month.
 
 \subsection{Fatty acids}
+Three saturated fatty acids were found in litter pyrograms (14:0, 16:0, 18:0). Fatty acids were reported as underrepresented in pyrgrams due to their decarboxylation during pyrolysis [lit], so only the most abundant fatty acids are expected to be found. Additionally, free fatty acids are hard to seperate on our chromatographic system . The three fatty acids were also most abundant in THM analysis of this litter material (data not shown).
+
+For fatty acid analysis 2 samples were excluded as contaminations were encountered.
+
+Initial content of fatty acids showed differences of up to 30 \% between sites.
+Fot the three fatty acids found, between 15 and 50 \% were degraded over 15 month, indication that both accumulation and depletion occurs in certain sites.
+
+\subsection{Long chained alkanes and alkenes}
+
+We found C25-C29 alkanes and alkenes in our pyrograms. The two had different decomposition trends: While 
+
+\subsection{Terpenoid compounds}
+ 
+We found two compounds with terpenoid structure:
+One identified as Phytol, a C20H40O and a second one identified as Limonene by the NiSt data base. 
 
 \section{Discussion}
 
@@ -242,6 +263,10 @@ Until now, studies following lignin degradation with Pyr-GC/MS were focusing on 
 
 The ration between indene and pyridine/pyrrol ring pyroylsis products drops during decomposition by about 20\%. Initial differences between sites (OS is higher than the rest) remain. 
 Increase in tryptophan content among amino acids in bacterial protein?
+
+\subsection{Lipophilic compounds}
+
+From our dataset, we see that (1) alcenes are accumulated 
 
 \section{Conclusions}
 
@@ -422,9 +447,61 @@ F-OH.1.1=O&	5-hydroxymethylfuran-1-carboxaldehyde&	Furan&		&		27.51&		126&	97+12
 \begin{table*}[h!]
 \begin{center}
 {\tiny
-\begin{tabular}{llclcccccc}
-code & name & ring & side chain & RT & MW & m/z & class & origin&Rf\\
-F0&		Furan&				Furan&			&		2.35&		68&	39+68&		f&	C&	1.19\\
+\begin{tabular}{lcccccc}
+\hline
+name & RT & MW & m/z & class & origin&Rf\\
+\hline
+Toluene&NA&ar&non&b.d.\\
+Xylene1&NA&ar&non&4.46\\
+Xylene2&NA&ar&non&b.d.\\
+Xylene3&NA&ar&non&b.d.\\
+Methoxymethylbenzene&NA&ar&non&4.04\\
+Benzaldehyde&NA&ar&non&12.88\\
+N-methyl-pyrrol&NA&p&N&5.47\\
+Pyridine&NA&p&N&1.68\\
+Methylpyridine1&NA&p&N&1.41\\
+Methylpyridine2&NA&p&N&0.55\\
+Pyrrole&NA&p&N&1.89\\
+% 53               methylpyrrol1    NA                 p      N   1.8407914
+% 54               methylpyrrol2    NA                 p      N   2.2955035
+% 55                     Pyridol    NA                 p      N   2.1142457
+% 56                      Indole    NA               ind      N   2.9698643
+% 57                Methylindole    NA               ind      N   0.0000000
+% 58                        25:0    NA              cut0    Cut   3.1630146
+% 59                        25:1    NA              cut1    Cut  13.3215300
+% 60                        27:0    NA              cut0    Cut   2.9741360
+% 61                        27:1    NA              cut1    Cut   6.2380446
+% 62                        29:0    NA              cut0    Cut   4.4698657
+% 63                        29:1    NA              cut1    Cut  13.8218011
+% 68                xylene4_6.99    NA                ar    non   4.0670482
+% 69                limonen_7.29    NA               ter    non   0.5925572
+% 70        methylpyridine3_7.54    NA                 p      N   1.8775678
+% 79                indene_12.64    NA                ar    non   0.7905236
+% 81   1-Methyl-4-methoxybenzene 15.98                ar    non  10.9189835
+% 85         unknown_alcyl_20.00    NA                al     al   9.3875369
+% 86               unknown_20.85    NA               unk    unk   7.9403920
+% 87               unknown_20.86    NA               unk    unk   0.0000000
+% 88               unknown_22.43    NA               unk    unk   3.8791695
+% 89         unknown_alkyl_22.82    NA                al    unk  12.4633995
+% 90  hexan2,4dione,_-enol_23.92    NA                 o    unk   1.1928005
+% 91            benzofuran_26.19    NA                bf    unk   1.4484175
+% 92               unknown_27.76    NA               unk    unk 163.6031069
+% 103                     Ph3:1b 27.76 134 133+134    ph     Ph   4.7795856
+% 114                      Ph1=O 32.70 122 121+122    ph     Ph   0.0000000
+% 124                     Aceton  2.46             short    non   1.6472435
+% 125                 2-Propenal  2.60             short    non   1.7549368
+% 126                   Methanol  2.88             short    non   1.3607664
+% 127              3-Buten-2-one  3.39             short    non   2.9318465
+% 128             2,3-Butandione  3.67             short    non   1.5758264
+% 129             3-Penten-2-one  3.89             short    non   3.5475272
+% 130                  2-Butanal  4.56             short    non   0.0000000
+% 131             2,3-Pentadione  4.77             short    non   2.4595113
+% 132                    Hexanal  5.16             short    non   2.8490305
+% 133             1-Penten-3-one 11.28             short    non   2.1402314
+% 134                     14:0fa  2.35  68   39+68    fa    lip  50.0000000
+% 135                     16.0fa  2.74  82   81+82    fa    lip  62.6700000
+% 136                     18:0fa  2.91  82   81+82    fa    lip  29.5900000
+
 \hline
 \end{tabular}}
 \caption{Carbohydrate pyrolysis products.}
