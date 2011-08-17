@@ -1,13 +1,9 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.19)  9 AUG 2011 20:35
+This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2011.8.9)  17 AUG 2011 14:13
 entering extended mode
+ Source specials enabled.
  %&-line parsing enabled.
-**dippaper_elseviertex.tex
-(./dippaper_elseviertex.tex
-LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, ngerman, german, german-x-2009-06-19, ngerman-x-2009-06-19, loaded.
-
-(/home/lluc/texmf/tex/latex/elsarticle.cls
+**\input dippaper_elseviertex.tex
+(./dippaper_elseviertex.tex (/home/lluc/texmf/tex/latex/elsarticle.cls
 Document Class: elsarticle 2009/09/17, 1.20b: Elsevier Ltd
 \@bls=\dimen102
 (/usr/share/texmf-texlive/tex/latex/base/article.cls
@@ -15,14 +11,14 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size12.clo
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen103
@@ -43,11 +39,11 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/etc/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: xetex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
-\Gread@gobject=\count87
+(/usr/share/texmf-texlive/tex/xelatex/xetex-def/xetex.def
+File: xetex.def 2009/11/22 v0.94 LaTeX color/graphics driver for XeTeX (RRM/JK)
+
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
@@ -183,42 +179,30 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (./dippaper_elseviertex.aux)
 \openout1 = `dippaper_elseviertex.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 86.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 87.
+LaTeX Font Info:    ... okay on input line 87.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 87.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 87.
  (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 86.
- (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count95
-\scratchdimen=\dimen110
-\scratchbox=\box30
-\nofMPsegments=\count96
-\nofMParguments=\count97
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count98
-\MPscratchDim=\dimen111
-\MPnumerator=\count99
-\everyMPtoPDFconversion=\toks19
-) (./abstract.tex)
-LaTeX Font Info:    Try loading font information for U+msa on input line 157.
+LaTeX Font Info:    ... okay on input line 87.
+ (./abstract.tex)
+LaTeX Font Info:    Try loading font information for U+msa on input line 158.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 157.
+LaTeX Font Info:    Try loading font information for U+msb on input line 158.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -226,63 +210,39 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3])
-(./materials.tex [4] [5] [6]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 69.
- (/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
+] [2] [3]) (./materials.tex [4] [5] [6]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 70.
+
+(/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 69.
-Missing character: There is no · in font cmr12!
-Missing character: There is no ∫ in font cmr12!
-Missing character: There is no É in font cmr12!
-) (./results.tex [7] [8] [9] [10] [11] [12]) (./discussion.tex [13] [14]
-[15] [16]) (./conclusions.tex)
-Overfull \hbox (3.91124pt too wide) in paragraph at lines 172--174
-[]\OT1/cmr/m/n/12 FWF NRN MicDiF, Kathe-rina Keib-linger DOC fForte Thanks to A
-n-dreas Bl^^?ochl, Clemens
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 70.
+Missing character: There is no ·∫É in font cmr12!
+) (./results.tex [7]
+[8] [9] [10] [11] [12] [13]) (./discussion.tex [14] [15] [16])
+(./conclusions.tex)
+Overfull \hbox (3.91124pt too wide) in paragraph at lines 173--175
+[][]\OT1/cmr/m/n/12 FWF NRN MicDiF, Kathe-rina Keib-linger DOC fForte Thanks to
+ An-dreas Bl^^?ochl, Clemens
  []
 
-(./dippaper_elseviertex.bbl
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ê in font cmr12!
- [17] [18]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no î in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
+(./dippaper_elseviertex.bbl [17]
+Missing character: There is no ‚Äê in font cmr12!
+ [18]
+Missing character: There is no ‚Äî in font cmr12!
  [19]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
+Missing character: There is no ‚Äì in font cmr12!
+Missing character: There is no ‚Äì in font cmr12!
  [20]) (./graphs_captions.tex
 [21]) (./table1.tex) [22] (./dippaper_elseviertex.aux) ) 
 Here is how much of TeX's memory you used:
- 2316 strings out of 495021
- 28999 string characters out of 1181035
- 77236 words of memory out of 3000000
- 5466 multiletter control sequences out of 15000+50000
+ 1974 strings out of 495683
+ 24386 string characters out of 1187627
+ 69670 words of memory out of 3000000
+ 5086 multiletter control sequences out of 15000+50000
  12659 words of font info for 48 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 32i,8n,34p,1335b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/lluc/.texmf-var
-/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texmf-texlive/fonts/typ
-e1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/a
-msfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/te
-xmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/
-fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti
-12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti7.pfb>
-Output written on dippaper_elseviertex.pdf (22 pages, 209738 bytes).
-PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 32i,8n,34p,1342b,260s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+Output written on dippaper_elseviertex.pdf (22 pages).
