@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2011.8.9)  17 AUG 2011 14:13
+This is XeTeX, Version 3.1415926-2.2-0.9995.2 (TeX Live 2009/Debian) (format=xelatex 2011.8.9)  18 AUG 2011 13:09
 entering extended mode
  Source specials enabled.
  %&-line parsing enabled.
@@ -206,23 +206,21 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 158.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) (./introduction.tex
-[1
+) [1
 
 
-] [2] [3]) (./materials.tex [4] [5] [6]
+] [2] [3]
+(./materials.tex [4] [5] [6]
 LaTeX Font Info:    Try loading font information for OML+cmr on input line 70.
-
-(/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
+ (/usr/share/texmf-texlive/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 70.
 Missing character: There is no ẃ in font cmr12!
-) (./results.tex [7]
-[8] [9] [10] [11] [12] [13]) (./discussion.tex [14] [15] [16])
-(./conclusions.tex)
-Overfull \hbox (3.91124pt too wide) in paragraph at lines 173--175
+) (./results.tex [7] [8] [9] [10] [11] [12] [13]) (./discussion.tex [14]
+[15] [16]) (./conclusions.tex)
+Overfull \hbox (3.91124pt too wide) in paragraph at lines 260--262
 [][]\OT1/cmr/m/n/12 FWF NRN MicDiF, Kathe-rina Keib-linger DOC fForte Thanks to
  An-dreas Bl^^?ochl, Clemens
  []
@@ -237,12 +235,12 @@ Missing character: There is no – in font cmr12!
  [20]) (./graphs_captions.tex
 [21]) (./table1.tex) [22] (./dippaper_elseviertex.aux) ) 
 Here is how much of TeX's memory you used:
- 1974 strings out of 495683
- 24386 string characters out of 1187627
+ 1971 strings out of 495683
+ 24340 string characters out of 1187627
  69670 words of memory out of 3000000
  5086 multiletter control sequences out of 15000+50000
  12659 words of font info for 48 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 32i,8n,34p,1342b,260s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 32i,8n,34p,1317b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on dippaper_elseviertex.pdf (22 pages).
