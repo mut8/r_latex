@@ -428,17 +428,22 @@ timeseries <- function(y, xfac, sepfac, nam="", xlab="", ylab="",
   if (legend!=F) {
     if (legsig==T) {leg <- paste(seplev, sig)} else {leg <- seplev}
                                         #sternchen in legende für signifikanzniveaus für 1.way anovas für einzelne littertypen
-    legend(legend, leg, col=col[1:length(seplev)], lty=lty[1:length(seplev)], lwd=lwd[1:length(seplev)])
+    legend(legend, leg, col=col[1:length(seplev)],
+           lty=lty[1:length(seplev)], lwd=lwd[1:length(seplev)], ...)
   }
 
   if (endsig == T) {
     select<-mat$xfac==max(xfac)
-    text(rep(xlim[2], length(seplev)), mat$y[select], labels=sig)
+    text(rep(xlim[2], length(seplev)), mat$y[select],
+         labels=sig,cex=.5)
   }
 
   if (allpoints==TRUE)
     for (j in 1:length(xlev))
-      points (rep (mat$massloss[mat$sepfac==seplev[i] & mat$xf==xlev[j]], length(y[xfac==xlev[j]&sepfac==seplev[i]])), y[xfac==xlev[j]&sepfac==seplev[i]], col=col[i],cex=.08, pch=pch[i])
+      points (rep (mat$massloss[mat$sepfac==seplev[i] &
+                                mat$xf==xlev[j]], length(y[xfac==xlev[j]&sepfac==seplev[i]])),
+              y[xfac==xlev[j]&sepfac==seplev[i]], col=col[i],cex=.08,
+              pch=pch[i], ...)
 
 
                                         #1-way anovas für einzelne zeitpunkte mit sternchen über dem zeitpunkt für signifikanzniveaus
@@ -457,7 +462,7 @@ timeseries <- function(y, xfac, sepfac, nam="", xlab="", ylab="",
 
           mat$sepcomp[mat$xf==xlev[j]]<-tmp$Letters
           sig[j] <- siglev(aov$p.value)
-          text(xlev[j], ylim[2], sig[j])
+          text(xlev[j], ylim[2], sig[j], cex=.5)
         }
     }
 

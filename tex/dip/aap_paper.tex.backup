@@ -71,7 +71,7 @@
 %  sort&compress   -  like sort, but also compresses numerical citations
 %  compress - compresses without sorting
 
-\biboptions{comma,round}
+\biboptions{comma,square}
 
 % \biboptions{}
 \usepackage{textcomp, fixltx2e}
@@ -147,19 +147,15 @@ Only a handful of Pyr-GC/MS studies tracing changing pyrolysis markers during li
 
 While assignment to major compounds classes (like ligin or carbohydrate) based on pyrolysis reaction mechnisms is common, little is known on whether the composition of individual pyrolysis products within this groups yields information. 
 
-This study compares pyrograms of beech litter from different site after up to 15 month of climate chamber decomposition. Beech litter shows exceptionally slow decomposition rates both in nature \citep{Klotzbucher2011} and in our climate chamber experiment. Therefore, we do not focus on the accumulation of recalcitrant compounds, but focus on how individual pyrolysis markers accumulate or deplete relative to their compounds of origin which might provide insight into changes in polymer condensation patterns. Additionally, we explore to which extend differences of pyrolysis products remain after incubation.
-
-[hypothesis?]
+This study compares pyrograms of beech litter from different site after up to 15 month of climate chamber decomposition. Beech litter were reported for exceptionally slow decomposition rates (12\% mass losso in the first year) in nature \citep{Klotzbucher2011} and showed similar decomposition rates our climate chamber experiment. Therefore, we do not focus on the accumulation of recalcitrant compounds, but focus on how individual pyrolysis markers accumulate or deplete relative to their compounds of origin which might provide insight into changes in polymer condensation patterns. Additionally, we explore to which extend differences of pyrolysis products remain after incubation.
 
 \section{Material and Methods}
 
-We analyzed samples from a litter decomposition experiment with Pyr-GC/MS. Beech litter from 4 different sites in Austria was collected in October 2008, cut to pieces \textless 0.5 cm, homogenized, sterilized and inoculated with a common inoculate for all sites. Litter was incubated in a climate chamber at 15 \textdegree C and was kept at 60 \% moisture \citep{Wanek2010}.
-Total mass loss after 15 month was between 7 and 15 \%.
-Accumulated respiration after 6 month accounts for nn.to nn\% of the litter carbon pool, after 15 month between n and n.
+Beech litter from 4 different sites in Austria was collected in October 2008, cut to pieces \textless 0.5 cm, homogenized, sterilized and inoculated with a common inoculate for all sites. Litter was incubated in a climate chamber at 15 \textdegree C and was kept at 60 \% moisture \citep{Wanek2010}. Total mass loss after 15 month was between 7 and 12 \%. Accumulated respiration after 6 month accounts for nn.to nn\% of the litter carbon pool, after 15 month between n and n.
 
-Pyrolysis-GC/MS was performed on a Pyroprobe 5250 pyrolysis system (CDS Analytical) coupled to a Thermo Trace gas chromatograph an a DSQ II MS detector (both Thermo Scientific) equipped with a carbowax colomn (Supelcowax 10, Sigma-Aldrich). 2-300 \textmu g dried and finely ball-milled litter were heated to 600\textdegree C for 10 seconds in helium atmosphere. The temperature of the valve oven and the transfer line to the GC injection port were set to 250\textdegree C,a 10x split injection was applied with the injector heated to 240\textdegree C. GC Oven temperature was constant at 50 \textdegree C for 2 minutes, followed by an increase of 7\textdegree C/min to a final temperature of 260 \textdegree C, which was held for 15 minutes. The transfer line was heated to 270 \textdegree C. The MS detector was set for electron ionization at 70 EV, the ion source was heated to 270\textdegree C. Detection was set to cycle between m/z 20 and 300 with a cycle time of 0.3 seconds.
+Pyrolysis-GC/MS was performed on a Pyroprobe 5250 pyrolysis system (CDS Analytical) coupled to a Thermo Trace gas chromatograph an a DSQ II MS detector (both Thermo Scientific) equipped with a carbowax colomn (Supelcowax 10, Sigma-Aldrich). 2-300 \textmu g dried and finely ball-milled litter were heated to 600\textdegree C for 10 seconds in helium atmosphere. The temperature of the valve oven and the transfer line to the GC injection port were set to 250\textdegree C,a 10x split injection was applied with the injector heated to 240\textdegree C. Carrier gas flow was set to 1ml min$^{-1}$. GC Oven temperature was constant at 50 \textdegree C for 2 minutes, followed by an increase of 7\textdegree C/min to a final temperature of 260 \textdegree C, which was held for 15 minutes. The transfer line was heated to 270 \textdegree C. The MS detector was set for electron ionization at 70 EV, the ion source was heated to 270\textdegree C. Detection was set to cycle between m/z 20 and 300 with a cycle time of 0.3 seconds.
 
-Peaks were assignment was based on NiSt 05 MS library and comparison with reference material measured. 133 peaks were identified and selected for integration due to their hight abundance or diagnostic value. For each peak between one and four dominant mass fragments selected for high abundance and specificity were integrated (i.e. \cite{Schellekens2009, Kuder1998}). Peak areas are stated as \% of the sum of all integrated peaks of a sample. 
+Peaks were assignment was based on NiSt 05 MS library and comparison with reference material measured. 133 peaks were selected for integration due to their hiht abundance or diagnostic value. For each peak between one and four mass fragments selected for high abundance and specificity were integrated (i.e. \cite{Schellekens2009}). Peak areas are stated as \% of the sum of all integrated peaks of a sample. 
 
 Pyrolysis products were assigned to their substances of origin by comparison to reference material, structural similarity and in accordance with literature (\cite{Ralph1991a, Schellekens2009, Chiavari1992}[more lit!]). The sum of all peak areas of the pyrolysis products of a class was calculated based on total ion current (TIC) peak areas. TIC peak areas are (1) less specific as areas of specific MS fragments and (2) integration was not possible for all peaks a/o all samples. Therefore a MS response factor Rf was calculated for each detected substance:
 
@@ -167,11 +163,17 @@ Pyrolysis products were assigned to their substances of origin by comparison to 
 Rf = median (\frac{TIC peak area}{specific MS fragment peak area})
 \end{equation}
 
-Peak areas were multiplied by Rf before addition to calculate percentages of TIC area without loosing the specifity of integrating single m/z traces.
+Peak areas were multiplied by Rf before addition to calculate percentages of TIC area without loosing the specifity of integrating single m/z traces \citep{Kuder1998}.
 
 % However, during interpretation, we found little difference between direct sums of the integrated fragments and sums of corrected areas, indicating little sensitivity for exact 
 
-Relative peak areas in both integrations are different from weight\%, but allow tracing of accumulation/depletion of these substance classes during decomposition \citep{Schellekens2009}. 
+Relative peak areas in both integrations are different from weight\%, but allow tracing of accumulation/depletion of these substance classes during decomposition \citep{Kuder1998}. 
+
+Percent of the initial content lost during decomposition were calculated according to
+
+\begin{equation}
+\% lost = \frac {mean()actual \%)} {1-\frac{carbon respired}{initial carbon content}} - \% mean initial content
+\end{equation}
 
 \subsection{Litter mass loss and respiration}
 
@@ -183,20 +185,25 @@ All data presented was tested for significant differences between harvests and l
 
 \subsection{Mass loss and respiration}
 
+Accumulated mass loss during the first 181 days ranged between 
+
 \subsection{Pyrolysis products}
 
-A total of 128 peaks quantified with 38 phenolic, 11 nitrogen containing compounds and 42 carbohydrate derived compounds. Inter-site differences dominate both initial and incubated litter.
+A total of 128 peaks quantified with 38 phenolic, 11 nitrogen containing compounds and 42 carbohydrate derived compounds. Inter-site differences dominate both initial and incubated litter. 
+%Our chromatography system using a carbowax column allows to measure some more hydrophilic compounds (i.e. Pyridol), on the other hand we miss several 
 
-\Subsection{Lignin}
+Of this compounds, nn show increase/decrease in nn litter types.
+
+\subsection{Lignin}
 Of 38 phenolic pyrolysis products were identified, 15 of which had guaiacol-, 13 syringol-, and 10 non-methoxylated ring systems. Guaiacol/Syringol (G/S) ratios were tightly (all R=0.68-0.94, p<0.001) correlated between the more abundant side chains (-H, -CH$_3$, -CH$_2$CH$_3$, -CH=CH$_2$, -CH$_3$CH=CH$_2$). This correlation is weaker or non-significant for less abundant side chains (-CHO, -CH$_2$CH$_2$CHO), probably due to higher variances in their detection [see fig.,]. 
 
 Part of non-methoxylated phenols pyrolysis products (side chains -CH$_2$CH$_3$, -CH$_2$CH$_2$CH$_3$ -CH$_3$CH=CH$_2$)show clear structural similarity to pyrolysis products of lignin, suggesting that they are pyrolysis products of p-hydroxypropanylphenol based lignin. Other side chains (-H, -CH$_3$, -CHO) are less specific and are reported for other sources, although in small amounts. Furthermore, some of the phenolic compounds (i.e. hydroxyquinone) are not lignin derived. 
 
 In both syringol and gaiacol the ratio between the abundances of pyrolysis products is the same.
 
-Guaiacol to Syringol ratios were constant over decomposition time. 
+Guaiacol to Syringol ratios were constant over decomposition time. The ratios are are different for G/S compounds with different side chains, propably due to changing MS resposes of the compounds 
 
-Most important differences between sites were observed in the ratio between Guaiacol
+Most important difference between sites were observed in the ratio between Guaiacol
 
 The pattern of abundances of different side chains was the same for guaiacol and syringol derived compounds. Fig \ref{sidechainratios}shows that the ratios between 15 pairs of side chains are highly significant in guaiacol and syringol lignin based pyrolysis products. However, there are some site-specific differences in these patterns: the abundance of -H and -CH$_3$ side chains relative to other side chains is different between the litter types, but consistent between guaiacol and syringol derivatives. 
   de chains with oxygen based functional groups were present, but in abundances much lower than the before mentioned. 
@@ -205,18 +212,45 @@ The pattern of abundances of different side chains was the same for guaiacol and
 
 \subsection{N compounds}
 
-11 nitrogen containing compounds were identified, including two indole three pyridine and 7 pyrrol derrivatives. Within the N compounds, peaks were highly correlated within two groups.  (methylindol and indole (R=0.98, p\textless 0.05?0.001?) and  and 6 pyridin and pyrrol derivatives (all R \textgreater 0.9, p\textless 0.05?0.001?). The two groups were correlated to each other (R = 0.77-0.87, p\textless 0.05?0.001?). 
+11 nitrogen containing compounds were identified, including two indole three pyridine and 5 pyrrol derrivatives. Methylindol and indole (R=0.98, p\textless 0.05?0.001?) were highly correlated to each other, as were 6 pyridin and pyrrol derivatives (all R \textgreater 0.9, p\textless 0.05?0.001?). These two groups were correlated to each other (R = 0.77-0.87, p\textless 0.05?0.001?), but less strict as within the groups. 
 
-2 pyrrol derivatices (N-methyl-pyrrol and methylpyrrol[II]) and pyridol showed were not or less strict correlated to the other compounds, due to low abundance. Furthermore, all N markers except the three mentioned before were correlated to litter N content (R \textgreater 0.81, p \textless 0.001.
+N-methyl-pyrrol and Methylpyrrol[II]  were not or less strictly correlated to the other compounds and 
 
-While N compounds generally increase in 
+One Methylpyr? peak was of very low abundance with high variance and did not correlate to other N markers but with each other (R=0.74, p=***). They show different trends:
 
-Pyridol looses during first three month, then follows general N trend.
+
+
+Furthermore, all N markers except the three mentioned before were correlated to litter N content (R \textgreater 0.81, p \textless 0.001.
+
+%While N compounds generally increase in 
+
+Pyridol looses during first three month, then follows general N trend. 
+N-methyl-pyrrol shows an increase between 5 and 35\% (\%TIC) during the first 6 month and remains stable thereafter.
+
 
 \subsection{Carbohydrates}
-In total, 42 carbohydrate derived pyrolysis products were identified either by their structure or by comparison to reference material (celluluse, xylran, glucose, ...). Unlike lignin or N compounds, carbohydrate pyrolysis products do not follow a common trend, but - reflecting the differences within this group, 
+In total, 42 carbohydrate derived pyrolysis products were identified either by their structure or by comparison to reference material (celluluse, xylran, glucose, ...). Unlike lignin or N compounds, carbohydrate pyrolysis products do not follow a common trend, but - reflecting the differences within this group. About a third of the peaks could not be identified but were assigned to carbohydrates because they are present reference pyrograms of cabrohydrates, but not in other compounds.
+
+Methylated cyclopentenone derivatives show an increase over decomposition, while derivative with keto- or hydroxy- side chains show decreases over decomposition.
 
 Furanmethanol shows an especially high degradation rate, loosing 15 to 30 \% of it's initial contribution to the total peak area over 15 month.
+
+\subsection{Fatty acids}
+Three saturated fatty acids were found in litter pyrograms (14:0, 16:0, 18:0). Fatty acids were reported as underrepresented in pyrgrams due to their decarboxylation during pyrolysis [lit], so only the most abundant fatty acids are expected to be found. Additionally, free fatty acids are hard to seperate on our chromatographic system . The three fatty acids were also most abundant in THM analysis of this litter material (data not shown).
+
+For fatty acid analysis 2 samples were excluded as contaminations were encountered.
+
+Initial content of fatty acids showed differences of up to 30 \% between sites.
+Fot the three fatty acids found, between 15 and 50 \% were degraded over 15 month, indication that both accumulation and depletion occurs in certain sites.
+
+\subsection{Long chained alkanes and alkenes}
+
+We found C25-C29 alkanes and alkenes in our pyrograms. The two had different decomposition trends: While 
+
+\subsection{Terpenoid compounds}
+ 
+We found two compounds with terpenoid structure:
+One identified as Phytol, a C20H40O and a second one identified as Limonene by the NiSt data base. 
 
 \section{Discussion}
 
@@ -224,7 +258,16 @@ Furanmethanol shows an especially high degradation rate, loosing 15 to 30 \% of 
 We found that differences in litter pyrolysis products persist at least during early litter decomposition. Differences in Lignin side chains are characteristic for 
 
 \subsection{Lignin side chains}
-Until now, studies following lignin degradation with Pyr-GC/MS \citep{ were focusing on changes between the frequency of lignin pyrolysis products, only the ratio between guaiacol/syringol/phenol based ring system was investigated. We found substantial differences in the frequency of different lignin side chains between litter collected at different sites. We found that these differences remained nearly constant during during 15 month of litter decomposition. 
+Until now, studies following lignin degradation with Pyr-GC/MS were focusing on changes between the frequency of lignin pyrolysis products, only the ratio between guaiacol/syringol/phenol based ring system was investigated. We found substantial differences in the frequency of different lignin side chains between litter collected at different sites. We found that these differences remained nearly constant during during 15 month of litter decomposition. 
+
+\subsection{Pyridine/Pyrrol to Indole ratio}
+
+The ration between indene and pyridine/pyrrol ring pyroylsis products drops during decomposition by about 20\%. Initial differences between sites (OS is higher than the rest) remain. 
+Increase in tryptophan content among amino acids in bacterial protein?
+
+\subsection{Lipophilic compounds}
+
+From our dataset, we see that (1) alcenes are accumulated 
 
 \section{Conclusions}
 
@@ -286,9 +329,10 @@ Until now, studies following lignin degradation with Pyr-GC/MS \citep{ were focu
     \includegraphics[width=0.5\textwidth]{G_Sy_ratio.pdf}
 \end{figure}
 
+\newpage
 \section{Tables}
 
-\begin{table*}[p!]
+\begin{table*}[h!]
 \begin{center}
 {\tiny
 \begin{tabular}{llclcccccc}
@@ -341,7 +385,8 @@ S3:1=O&		Oxo-propenylsyringol&		Syringol&	-CH=CH-CHO&		43.06&		208&	165+208&	sy&
 \label{tab:ligprod}
 \end{table*}
 
-\begin{table*}[p!]
+\newpage
+\begin{table*}[h!]
 \begin{center}
 {\tiny
 \begin{tabular}{llclcccccc}
@@ -398,6 +443,73 @@ F-OH.1.1=O&	5-hydroxymethylfuran-1-carboxaldehyde&	Furan&		&		27.51&		126&	97+12
 \end{center}
 \label{tab:chprod}
 \end{table*}
+
+\newpage
+\begin{table*}[h!]
+\begin{center}
+{\tiny
+\begin{tabular}{lcccccc}
+\hline
+name & RT & MW & m/z & class & origin&Rf\\
+\hline
+Toluene&NA&ar&non&b.d.\\
+Xylene1&NA&ar&non&4.46\\
+Xylene2&NA&ar&non&b.d.\\
+Xylene3&NA&ar&non&b.d.\\
+Methoxymethylbenzene&NA&ar&non&4.04\\
+Benzaldehyde&NA&ar&non&12.88\\
+N-methyl-pyrrol&NA&p&N&5.47\\
+Pyridine&NA&p&N&1.68\\
+Methylpyridine1&NA&p&N&1.41\\
+Methylpyridine2&NA&p&N&0.55\\
+Pyrrole&NA&p&N&1.89\\
+% 53               methylpyrrol1    NA                 p      N   1.8407914
+% 54               methylpyrrol2    NA                 p      N   2.2955035
+% 55                     Pyridol    NA                 p      N   2.1142457
+% 56                      Indole    NA               ind      N   2.9698643
+% 57                Methylindole    NA               ind      N   0.0000000
+% 58                        25:0    NA              cut0    Cut   3.1630146
+% 59                        25:1    NA              cut1    Cut  13.3215300
+% 60                        27:0    NA              cut0    Cut   2.9741360
+% 61                        27:1    NA              cut1    Cut   6.2380446
+% 62                        29:0    NA              cut0    Cut   4.4698657
+% 63                        29:1    NA              cut1    Cut  13.8218011
+% 68                xylene4_6.99    NA                ar    non   4.0670482
+% 69                limonen_7.29    NA               ter    non   0.5925572
+% 70        methylpyridine3_7.54    NA                 p      N   1.8775678
+% 79                indene_12.64    NA                ar    non   0.7905236
+% 81   1-Methyl-4-methoxybenzene 15.98                ar    non  10.9189835
+% 85         unknown_alcyl_20.00    NA                al     al   9.3875369
+% 86               unknown_20.85    NA               unk    unk   7.9403920
+% 87               unknown_20.86    NA               unk    unk   0.0000000
+% 88               unknown_22.43    NA               unk    unk   3.8791695
+% 89         unknown_alkyl_22.82    NA                al    unk  12.4633995
+% 90  hexan2,4dione,_-enol_23.92    NA                 o    unk   1.1928005
+% 91            benzofuran_26.19    NA                bf    unk   1.4484175
+% 92               unknown_27.76    NA               unk    unk 163.6031069
+% 103                     Ph3:1b 27.76 134 133+134    ph     Ph   4.7795856
+% 114                      Ph1=O 32.70 122 121+122    ph     Ph   0.0000000
+% 124                     Aceton  2.46             short    non   1.6472435
+% 125                 2-Propenal  2.60             short    non   1.7549368
+% 126                   Methanol  2.88             short    non   1.3607664
+% 127              3-Buten-2-one  3.39             short    non   2.9318465
+% 128             2,3-Butandione  3.67             short    non   1.5758264
+% 129             3-Penten-2-one  3.89             short    non   3.5475272
+% 130                  2-Butanal  4.56             short    non   0.0000000
+% 131             2,3-Pentadione  4.77             short    non   2.4595113
+% 132                    Hexanal  5.16             short    non   2.8490305
+% 133             1-Penten-3-one 11.28             short    non   2.1402314
+% 134                     14:0fa  2.35  68   39+68    fa    lip  50.0000000
+% 135                     16.0fa  2.74  82   81+82    fa    lip  62.6700000
+% 136                     18:0fa  2.91  82   81+82    fa    lip  29.5900000
+
+\hline
+\end{tabular}}
+\caption{Carbohydrate pyrolysis products.}
+\end{center}
+\label{tab:nprod}
+\end{table*}
+
 
 \end{document}
 
